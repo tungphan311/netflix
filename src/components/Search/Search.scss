@@ -1,0 +1,29 @@
+.search {
+    &__container {
+        height: 100%;
+        width: 400px;
+        background-color: rgba($grey, .18);
+        box-shadow: 3px 3px 6px 0 rgba($black, .07);
+        border-radius: 5px;
+        display: flex;
+    }
+
+    &__button {
+        flex-grow: 1;
+        border: none;
+        background-color: transparent;
+        text-align: right;
+        padding: 0;
+        padding-right: 6px;
+        cursor: pointer;
+    }
+
+    &__input {
+        flex-grow: 9;
+        background-color: transparent;
+        border: none;
+        color: $white;
+        font-size: $small;
+        padding: 0 15px;
+    }
+}
