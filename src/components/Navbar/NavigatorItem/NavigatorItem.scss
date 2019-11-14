@@ -1,0 +1,18 @@
+.navbar__navigator__item {
+    list-style-type: none;
+    margin-left: 18px;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+    color: $grey;
+    display: flex;
+    align-items: center;
+    font-size: 0.972vw;
+}
+
+.active {
+    color: $white;
+    font-weight: bold;
+}

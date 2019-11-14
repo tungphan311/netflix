@@ -3,13 +3,18 @@ import React from "react";
 import "./NavBar.scss";
 import NavigatorItem from "./NavigatorItem/NavigatorItem";
 
-function NavBar() {
+function NavBar({ route }) {
   return (
     <div className="navbar__container">
       <a aria-label="Netflix" className="navbar_logo" href="/" />
       <ul className="navbar__navigator">
-        {NAV_ITEMS.map(item => (
-          <NavigatorItem title={item} />
+        {NAV_ITEMS.map(({ title, href }) => (
+          <NavigatorItem
+            key={title}
+            title={title}
+            href={href}
+            isActive={route === href}
+          />
         ))}
       </ul>
     </div>
@@ -18,4 +23,9 @@ function NavBar() {
 
 export default NavBar;
 
-const NAV_ITEMS = ["Home", "TV Shows", "Movies", "My favorites", "Filter"];
+const NAV_ITEMS = [
+  { title: "Home", href: "/" },
+  { title: "TV Shows", href: "#" },
+  { title: "Movies", href: "#" },
+  { title: "My favorites", href: "#" }
+];
