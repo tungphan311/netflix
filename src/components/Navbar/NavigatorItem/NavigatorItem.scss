@@ -1,18 +1,50 @@
 .navbar__navigator__item {
-    list-style-type: none;
-    margin-left: 18px;
+  @include navigator;
+}
+
+.navbar__sub-navigator__item {
+  cursor: pointer;
+  line-height: 24px;
+  display: block;
 }
 
 a {
-    text-decoration: none;
-    cursor: pointer;
-    color: $grey;
-    display: flex;
-    align-items: center;
-    font-size: 0.972vw;
+  text-decoration: none;
+  cursor: pointer;
+  color: $grey;
+}
+
+.menu__item {
+  font-size: 0.972vw;
+  @include align-center;
+}
+
+.sub-menu__item {
+  @include set-width-height(260px, 50px);
+  @include align-center;
+  justify-content: center;
+  position: relative;
+  color: $grey1;
+  transition: background-color 400ms;
+
+  &:hover {
+    background-color: rgba($color: $white, $alpha: 0.05);
+  }
 }
 
 .active {
-    color: $white;
-    font-weight: bold;
+  color: $white;
+  font-weight: bold;
+}
+
+@media (min-width: $normal-screen) {
+  .menu__item {
+    font-size: $small;
+  }
+}
+
+@media (max-width: $ipad-screen) {
+  .navbar__navigator__item {
+    display: none;
+  }
 }

@@ -1,51 +1,137 @@
-.navbar__container {
-    width: 100%;
-    height: 70px;
-    background-color: $dark;
-    position: fixed;
-    top: 0;
-    padding: 0 4%;
-    display: flex;
-    align-items: center;
-}
-
-@media (max-width: 950px) {
-    .navbar__container {
-        height: 41px;
-    }
-}
-
-@media (min-width: 950px) {
-    .navbar_logo {
-        font-size: 25px;
-    }
-}
-
 @font-face {
-  font-family: 'nf-icon';
-  src: url('https://assets.nflxext.com/ffe/siteui/fonts/nf-icon-v1-93.eot');
-  src: url('https://assets.nflxext.com/ffe/siteui/fonts/nf-icon-v1-93.eot?#iefix') format('embedded-opentype'), url('https://assets.nflxext.com/ffe/siteui/fonts/nf-icon-v1-93.woff') format('woff'), url('https://assets.nflxext.com/ffe/siteui/fonts/nf-icon-v1-93.ttf') format('truetype'), url('https://assets.nflxext.com/ffe/siteui/fonts/nf-icon-v1-93.svg#nf-icon-v1-93') format('svg');
+  font-family: "nf-icon";
+  src: url("https://assets.nflxext.com/ffe/siteui/fonts/nf-icon-v1-93.eot");
+  src: url("https://assets.nflxext.com/ffe/siteui/fonts/nf-icon-v1-93.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://assets.nflxext.com/ffe/siteui/fonts/nf-icon-v1-93.woff")
+      format("woff"),
+    url("https://assets.nflxext.com/ffe/siteui/fonts/nf-icon-v1-93.ttf")
+      format("truetype"),
+    url("https://assets.nflxext.com/ffe/siteui/fonts/nf-icon-v1-93.svg#nf-icon-v1-93")
+      format("svg");
   font-weight: normal;
   font-style: normal;
 }
 
-.navbar_logo {
-    text-decoration: none;
-    color: $primary;
-    display: inline-block;
-    vertical-align: middle;
-    cursor: pointer;
-    margin-right: 5px;
-    font-family: 'nf-icon';
+.navbar__container {
+  width: 100%;
+  height: 70px;
+  background-color: $dark;
+  position: fixed;
+  top: 0;
+  padding: 0 calc(25vw / 6);
+  @include align-center;
+}
 
-    &::before {
-        content: '\e5d0';
-    }
+.navbar_logo {
+  text-decoration: none;
+  color: $primary;
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+  margin-right: 5px;
+  font-family: "nf-icon";
+
+  &::before {
+    content: "\e5d0";
+  }
 }
 
 .navbar__navigator {
-    margin: 0;
+  margin: 0;
+  padding: 0;
+  @include align-center;
+
+  &__selector {
+    @include navigator;
+  }
+}
+
+.menu-trigger {
+  font-weight: $fw-bold;
+  font-size: 0.972vw;
+  height: 100%;
+  @include align-center;
+
+  &:hover {
+    color: $white !important;
+  }
+
+  &::after {
+    content: "";
+    border-style: solid;
+    border-width: 5px 5px 0 5px;
+    border-color: $white transparent transparent transparent;
+    margin-left: 5px;
+    @include size-0;
+  }
+}
+
+.navbar__sub-navigator {
+  margin-left: -90px;
+  position: absolute;
+  box-sizing: border-box;
+  background-color: rgba($color: $black, $alpha: 0.9);
+  color: $white;
+  font-size: $x-small;
+  line-height: 21px;
+  border: solid 1px rgba($color: $white, $alpha: 0.15);
+
+  &__show {
+    opacity: 1;
+    transition-duration: 150ms;
+  }
+}
+
+.callout-arrow {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  border-width: 7px;
+  margin-left: -7px;
+  border-color: transparent transparent $grey;
+  border-style: solid;
+  @include size-0;
+}
+
+.topbar {
+  position: absolute;
+  top: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: $grey;
+}
+
+.navbar__sub-navigator {
+  &__menu {
     padding: 0;
-    display: flex;
-    align-items: center;
+    height: auto;
+  }
+}
+
+@media (max-width: $ipad-screen) {
+  .navbar__container {
+    height: 41px;
+  }
+
+  .navbar__sub-navigator {
+    top: 64px;
+  }
+}
+
+@media (min-width: $ipad-screen) {
+  .navbar_logo {
+    font-size: 25px;
+  }
+
+  .navbar__navigator__selector {
+    display: none;
+  }
+}
+
+@media (min-width: $normal-screen) {
+  .navbar__container {
+    padding: 0 60px;
+  }
 }

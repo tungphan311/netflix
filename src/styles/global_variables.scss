@@ -1,11 +1,49 @@
-$primary: #E50914;
+// define color variable
+$primary: #e50914;
 $secondary: #f25961;
 
-$grey: 	#e5e5e5;
+$grey: #e5e5e5;
+$grey1: #b3b3b3;
 $black: #000;
 $dark: #141414;
 $white: #fff;
 
+// define font-size
+$x-small: 13px;
 $small: 14px;
 $medium: 16px;
+$large: 20px;
+$x-large: 24px;
+$xx-large: 32px;
 
+// define font-weight:
+$fw-normal: 400;
+$fw-medium: 500;
+$fw-semi-bold: 600;
+$fw-bold: 700;
+$fw-extra-bold: 800;
+$fw-heavy: 900;
+
+// define screen width:
+$normal-screen: 1440px;
+$ipad-screen: 950px;
+
+@mixin navigator {
+  list-style-type: none;
+  margin-left: 18px;
+}
+
+@mixin align-center {
+  display: flex;
+  align-items: center;
+}
+
+@mixin size-0 {
+  width: 0;
+  height: 0;
+}
+
+@mixin set-width-height($width, $height) {
+  width: $width;
+  height: $height;
+}
