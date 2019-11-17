@@ -1,0 +1,20 @@
+.filterblock{
+    &__container{
+        width:300px;
+        height:auto;
+        background-color: #3D3D3D;
+        flex-direction: column;
+        display:flex;
+    }
+    &__header{
+        padding: 10px;
+        padding-left: 30px;
+        font-size:$small;
+    }
+    &__line{
+        width:90%;
+        height:1px;
+        background-color: $white;
+        align-self: center;
+    }
+}
