@@ -15,7 +15,7 @@ a {
 }
 
 .menu__item {
-  font-size: 0.972vw;
+  font-size: $small;
   @include align-center;
 }
 
