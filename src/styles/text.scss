@@ -1,0 +1,58 @@
+.text {
+  &--white {
+    color: $white;
+  }
+}
+
+.font__size {
+  &--x-small {
+    font-size: $x-small;
+  }
+  &--small {
+    font-size: $small;
+  }
+  &--medium {
+    font-size: $medium;
+  }
+  &--large {
+    font-size: $large;
+  }
+  &--x-large {
+    font-size: $x-large;
+  }
+  &--xx-large {
+    font-size: $xx-large;
+  }
+}
+
+.font__weight {
+  &--normal {
+    font-weight: $fw-normal;
+  }
+  &--medium {
+    font-weight: $fw-medium;
+  }
+  &--semi-bold {
+    font-weight: $fw-semi-bold;
+  }
+  &--bold {
+    font-weight: $fw-bold;
+  }
+  &--extra-bold {
+    font-weight: $fw-extra-bold;
+  }
+}
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.no-wrap {
+  white-space: nowrap;
+}
+
+.no-select {
+  user-select: none;
+}

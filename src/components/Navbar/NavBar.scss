@@ -48,10 +48,17 @@
 }
 
 .menu-trigger {
-  font-weight: $fw-bold;
   font-size: 0.972vw;
   height: 100%;
   @include align-center;
+
+  &--Browser {
+    font-weight: $fw-bold;
+  }
+
+  &--Filter {
+    font-weight: $fw-normal;
+  }
 
   &:hover {
     color: $white !important;
@@ -69,6 +76,7 @@
 
 .navbar__sub-navigator {
   margin-left: -90px;
+  top: 78px;
   position: absolute;
   box-sizing: border-box;
   background-color: rgba($color: $black, $alpha: 0.9);
@@ -116,7 +124,7 @@
   }
 
   .navbar__sub-navigator {
-    top: 64px;
+    top: 52px;
   }
 }
 
@@ -125,7 +133,7 @@
     font-size: 25px;
   }
 
-  .navbar__navigator__selector {
+  .navbar__navigator__selector--Browser {
     display: none;
   }
 }

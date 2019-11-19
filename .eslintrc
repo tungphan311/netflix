@@ -1,15 +1,8 @@
 {
-  "extends": [
-    "react-app",
-    "prettier"
-  ],
-  "plugins": [
-    "prettier"
-  ],
+  "extends": ["react-app", "prettier"],
+  "plugins": ["prettier"],
   "rules": {
-    "prettier/prettier": [
-      "error"
-    ],
+    "prettier/prettier": ["error"],
     "import/order": [
       "error",
       {
@@ -25,10 +18,9 @@
     ],
     "no-console": "warn",
     "no-var": "warn",
-    "arrow-body-style": [
-      "error",
-      "as-needed"
-    ],
-    "quotes": "warn"
+    "arrow-body-style": ["error", "as-needed"],
+    "quotes": "warn",
+    "jsx-a11y/anchor-is-valid": "off",
+    "jsx-a11y/anchor-has-content": "off"
   }
 }

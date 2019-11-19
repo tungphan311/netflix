@@ -1,0 +1,51 @@
+$total: 30;
+
+@for $i from 0 through $total {
+  // margin
+  .m__t--#{$i} {
+    margin-top: #{$i}px !important;
+  }
+  .m__b--#{$i} {
+    margin-bottom: #{$i}px !important;
+  }
+  .m__l--#{$i} {
+    margin-left: #{$i}px !important;
+  }
+  .m__r--#{$i} {
+    margin-right: #{$i}px !important;
+  }
+  .m__ver--#{$i} {
+    margin-top: #{$i}px !important;
+    margin-bottom: #{$i}px !important;
+  }
+  .m__hor--#{$i} {
+    margin-left: #{$i}px !important;
+    margin-right: #{$i}px !important;
+  }
+
+  // padding
+  .p__t--#{$i} {
+    padding-top: #{$i}px !important;
+  }
+  .p__b--#{$i} {
+    padding-bottom: #{$i}px !important;
+  }
+  .p__l--#{$i} {
+    padding-left: #{$i}px !important;
+  }
+  .p__r--#{$i} {
+    padding-right: #{$i}px !important;
+  }
+  .p__ver--#{$i} {
+    padding-top: #{$i}px !important;
+    padding-bottom: #{$i}px !important;
+  }
+  .p__hor--#{$i} {
+    padding-left: #{$i}px !important;
+    padding-right: #{$i}px !important;
+  }
+
+  .line__height--#{$i} {
+    line-height: #{$i}px !important;
+  }
+}
