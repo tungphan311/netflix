@@ -4,6 +4,7 @@ import { getToken } from "../utils/utils";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import Filter from "../pages/Filter/Filter";
+import DefaultLayout from "../layouts/DefaultLayout/DefaultLayout";
 
 export const AuthorizedRoute = ({ component: Component, isUser, ...rest }) => (
   <Route
@@ -25,17 +26,22 @@ export const AuthorizedRoute = ({ component: Component, isUser, ...rest }) => (
 class Routes extends Component {
   render() {
     const isUser = getToken("token");
+    const { history } = this.props;
 
     return (
       <Switch>
-        <Route>
-          <AuthorizedRoute exact path="/" component={Home} isUser={isUser} />
-          <AuthorizedRoute
-            exact
-            path="/browse"
-            component={Filter}
-            isUser={isUser}
-          />
+        <Route exact path={["/", "/browse"]}>
+          <DefaultLayout history={history}>
+            <AuthorizedRoute exact path="/" component={Home} isUser={isUser} />
+            <AuthorizedRoute
+              exact
+              path="/browse"
+              component={Filter}
+              isUser={isUser}
+            />
+          </DefaultLayout>
+        </Route>
+        <Route exact path={["/login"]}>
           <Route exact path="/login" component={Login} />
         </Route>
       </Switch>

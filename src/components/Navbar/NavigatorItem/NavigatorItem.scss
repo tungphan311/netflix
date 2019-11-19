@@ -50,6 +50,10 @@ a {
   display: flex;
   flex-direction: column;
   padding: 0 15px;
+
+  & div:hover {
+    color: $primary;
+  }
 }
 
 @media (min-width: $normal-screen) {

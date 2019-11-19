@@ -3,7 +3,7 @@ import NavigatorItem from "../NavigatorItem/NavigatorItem";
 import OutsideClickWrapper from "../../OutsideClickWrapper/OutsideClickWrapper";
 import { NAV_ITEMS, FILTER_LIST } from "../../../constants";
 
-function NavigatorSelect({ route, title }) {
+function NavigatorSelect({ route, title, history }) {
   const [show, setShow] = useState(false);
   const display = show ? "navbar__sub-navigator__show" : "d-none";
 
@@ -41,7 +41,14 @@ function NavigatorSelect({ route, title }) {
                   />
                 ))
               : FILTER_LIST.map(({ title, sub }) => (
-                  <NavigatorItem subItem key={title} title={title} sub={sub} />
+                  <NavigatorItem
+                    subItem
+                    key={title}
+                    title={title}
+                    sub={sub}
+                    history={history}
+                    toggle={setShow}
+                  />
                 ))}
           </ul>
         </div>

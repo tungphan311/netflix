@@ -4,7 +4,8 @@ import { NAV_ITEMS } from "../../constants";
 import NavigatorItem from "./NavigatorItem/NavigatorItem";
 import NavigatorSelect from "./NavigatorSelect/NavigatorSelect";
 
-function NavBar({ route }) {
+function NavBar({ history }) {
+  const route = history.location.pathname;
   return (
     <div className="navbar__container">
       <a aria-label="Netflix" className="navbar_logo" href="/" />
@@ -19,7 +20,7 @@ function NavBar({ route }) {
             isActive={route === href}
           />
         ))}
-        <NavigatorSelect route={route} title="Filter" />
+        <NavigatorSelect route={route} title="Filter" history={history} />
       </ul>
     </div>
   );

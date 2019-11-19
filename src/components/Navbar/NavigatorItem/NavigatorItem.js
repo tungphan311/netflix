@@ -16,7 +16,15 @@ const divideArray = array => {
   return newArray;
 };
 
-function NavigatorItem({ title, isActive, href, subItem, sub }) {
+function NavigatorItem({
+  title,
+  isActive,
+  href,
+  subItem,
+  sub,
+  history,
+  toggle
+}) {
   const [show, toggleShow] = useState(false);
 
   const newSub = sub && divideArray(sub);
@@ -27,6 +35,12 @@ function NavigatorItem({ title, isActive, href, subItem, sub }) {
 
   let aClassName = subItem ? "sub-menu__item" : "menu__item";
   aClassName = isActive ? `${aClassName} active` : aClassName;
+
+  const onSubItemClick = sub => {
+    history.push(`/browse?${title.toLowerCase()}=${sub.toLowerCase()}`);
+    toggleShow(false);
+    toggle(false);
+  };
 
   return (
     <li
@@ -44,7 +58,7 @@ function NavigatorItem({ title, isActive, href, subItem, sub }) {
               {item.map(sub => (
                 <div
                   className="text--white m__ver--7 no-wrap line__height--16 no-select"
-                  onClick={}
+                  onClick={() => onSubItemClick(sub)}
                 >
                   {sub}
                 </div>
