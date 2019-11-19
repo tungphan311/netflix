@@ -1,4 +1,6 @@
-@import "./display.scss";
+@import "./display";
+@import "./text";
+@import "./spacing";
 
 @font-face {
   font-family: "Netflix Sans";
@@ -47,7 +49,6 @@ body {
     "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: white;
 }
 
 input:focus {

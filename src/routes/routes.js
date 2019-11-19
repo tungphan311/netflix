@@ -3,6 +3,7 @@ import { Route, Redirect, Switch } from "react-router-dom";
 import { getToken } from "../utils/utils";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
+import Filter from "../pages/Filter/Filter";
 
 export const AuthorizedRoute = ({ component: Component, isUser, ...rest }) => (
   <Route
@@ -29,6 +30,12 @@ class Routes extends Component {
       <Switch>
         <Route>
           <AuthorizedRoute exact path="/" component={Home} isUser={isUser} />
+          <AuthorizedRoute
+            exact
+            path="/browse"
+            component={Filter}
+            isUser={isUser}
+          />
           <Route exact path="/login" component={Login} />
         </Route>
       </Switch>
