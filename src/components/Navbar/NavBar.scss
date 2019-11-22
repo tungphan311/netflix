@@ -20,6 +20,7 @@
   position: fixed;
   top: 0;
   padding: 0 calc(25vw / 6);
+  box-shadow: 0 2px 8px 0 rgba($white, 0.1);
   @include align-center;
 }
 

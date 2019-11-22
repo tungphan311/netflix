@@ -1,0 +1,15 @@
+.filter-page__container {
+  display: flex;
+  color: $white;
+}
+
+.filter-page__left {
+  width: calc(125vw / 6);
+  min-width: 300px;
+}
+
+@media (max-width: $ipad-screen) {
+  .filter-page__left {
+    display: none;
+  }
+}

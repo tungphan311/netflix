@@ -1,9 +1,10 @@
 import React from "react";
 import Filter from "./Filter/Filter";
 import "./FilterBlock.scss";
+
 const FilterBlock = () => (
   <div className="filterblock__container">
-    <div className="filterblock__header">Filter by</div>
+    <div className="m__l--20 m__b--30 uppercase">Filter by</div>
     <div className="filterblock__line" />
     <Filter title="Genres" itemList={GenreList} />
     <div className="filterblock__line" />
