@@ -5,19 +5,22 @@ class Filter extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isDisplay: false
+      isDisplay: false,
+      init: true
     };
   }
 
   handleToggle = () => {
-    this.setState({ isDisplay: !this.state.isDisplay });
+    this.setState({ isDisplay: !this.state.isDisplay, init: false });
   };
 
   render() {
-    const { isDisplay } = this.state;
+    const { isDisplay, init } = this.state;
     const { title, itemList } = this.props;
 
-    const className = `filter__filteritem ${isDisplay ? "open" : "d-none"}`;
+    const className = `filter__filteritem ${
+      isDisplay ? "open" : "close h--0 m--0"
+    } ${init ? "d-none" : ""}`;
 
     return (
       <div className="filter__container">

@@ -25,6 +25,11 @@
     padding-right: 20px;
     color: $primary;
     font-size: $x-large;
+    cursor: pointer;
+
+    &:hover {
+      color: rgba($color: $primary, $alpha: 0.75);
+    }
   }
 
   &__filteritem {
@@ -56,11 +61,12 @@
 }
 
 @keyframes itemClose {
-  0% {
+  from {
     height: 250px;
   }
 
-  100% {
+  to {
     height: 0;
+    display: none;
   }
 }
