@@ -7,16 +7,18 @@ class Filter extends Component {
     this.state = {
       isDisplay: false
     };
-    this.handleToggle = this.handleToggle.bind(this);
   }
-  handleToggle() {
-    this.setState(state => ({
-      isDisplay: !state.isDisplay
-    }));
-  }
+
+  handleToggle = () => {
+    this.setState({ isDisplay: !this.state.isDisplay });
+  };
+
   render() {
-    const isDisplay = this.state.isDisplay;
+    const { isDisplay } = this.state;
     const { title, itemList } = this.props;
+
+    const className = `filter__filteritem ${isDisplay ? "open" : "d-none"}`;
+
     return (
       <div className="filter__container">
         <div className="filter__header">
@@ -25,15 +27,11 @@ class Filter extends Component {
             {isDisplay ? "-" : "+"}
           </div>
         </div>
-        {isDisplay ? (
-          <div className="filter__filteritem">
-            {itemList.map(item => (
-              <FilterItem filterName={item} />
-            ))}
-          </div>
-        ) : (
-          ""
-        )}
+        <div className={className}>
+          {itemList.map(item => (
+            <FilterItem filterName={item} />
+          ))}
+        </div>
       </div>
     );
   }
