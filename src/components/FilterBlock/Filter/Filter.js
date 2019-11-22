@@ -19,12 +19,16 @@ class Filter extends Component {
     const { title, itemList } = this.props;
 
     const className = `filter__filteritem ${
-      isDisplay ? "open" : "close h--0 m--0"
+      isDisplay ? "open" : "close h--0"
     } ${init ? "d-none" : ""}`;
 
     return (
       <div className="filter__container">
-        <div className="filter__header">
+        <div
+          className={`filter__header ${
+            isDisplay ? "m__b--24" : "header__close"
+          }`}
+        >
           <div className="filter__title">{title}</div>
           <div className="filter__toggle" onClick={this.handleToggle}>
             {isDisplay ? "-" : "+"}

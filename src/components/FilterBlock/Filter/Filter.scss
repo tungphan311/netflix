@@ -36,12 +36,21 @@
     max-height: 200px;
     padding-left: 30px;
     overflow-y: scroll;
-    margin-top: 16px;
   }
+}
+
+.header__close {
+  animation-name: headerClose;
+  animation-duration: 500ms;
 }
 
 .open {
   animation-name: itemOpen;
+  animation-duration: 500ms;
+}
+
+.close {
+  animation-name: itemClose;
   animation-duration: 500ms;
 }
 
@@ -55,11 +64,6 @@
   }
 }
 
-.close {
-  animation-name: itemClose;
-  animation-duration: 500ms;
-}
-
 @keyframes itemClose {
   from {
     height: 250px;
@@ -67,6 +71,15 @@
 
   to {
     height: 0;
-    display: none;
+  }
+}
+
+@keyframes headerClose {
+  from {
+    margin-bottom: 16px;
+  }
+
+  to {
+    margin-bottom: 0;
   }
 }
