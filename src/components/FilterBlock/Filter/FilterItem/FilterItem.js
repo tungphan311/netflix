@@ -14,5 +14,4 @@ const FilterItem = ({ filterName, handleSelect, title, isChecked }) => (
     </div>
   </div>
 );
-
 export default FilterItem;
