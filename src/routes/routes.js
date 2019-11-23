@@ -5,6 +5,7 @@ import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import Filter from "../pages/Filter/Filter";
 import DefaultLayout from "../layouts/DefaultLayout/DefaultLayout";
+import EmptyLayout from "../layouts/EmptyLayout/EmptyLayout";
 
 export const AuthorizedRoute = ({ component: Component, isUser, ...rest }) => (
   <Route
@@ -42,7 +43,9 @@ class Routes extends Component {
           </DefaultLayout>
         </Route>
         <Route exact path={["/login"]}>
-          <Route exact path="/login" component={Login} />
+          <EmptyLayout>
+            <Route exact path="/login" component={Login} />
+          </EmptyLayout>
         </Route>
       </Switch>
     );
