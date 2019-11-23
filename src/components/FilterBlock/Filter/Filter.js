@@ -16,7 +16,7 @@ class Filter extends Component {
 
   render() {
     const { isDisplay, init } = this.state;
-    const { title, itemList } = this.props;
+    const { title, itemList, handleSelect } = this.props;
 
     const className = `filter__filteritem ${
       isDisplay ? "open" : "close h--0"
@@ -36,7 +36,11 @@ class Filter extends Component {
         </div>
         <div className={className}>
           {itemList.map(item => (
-            <FilterItem filterName={item} />
+            <FilterItem
+              filterName={item}
+              handleSelect={handleSelect}
+              title={title}
+            />
           ))}
         </div>
       </div>

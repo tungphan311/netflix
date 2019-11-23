@@ -6,6 +6,18 @@
     color: $white;
     padding: 30px 20px;
     border-radius: 4px;
+    .button-container {
+      display: flex;
+      flex-direction: row;
+      .button-reset {
+        flex: 1;
+        background-color: $grey;
+      }
+      .button-apply {
+        flex: 1;
+        background-color: $primary;
+      }
+    }
   }
 
   &__line {

@@ -44,6 +44,9 @@ $total: 30;
     padding-left: #{$i}px !important;
     padding-right: #{$i}px !important;
   }
+  .p--#{$i} {
+    padding: #{$i}px !important;
+  }
 
   .line__height--#{$i} {
     line-height: #{$i}px !important;
