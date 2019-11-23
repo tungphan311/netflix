@@ -54,11 +54,11 @@ body {
 }
 
 input:focus {
-  outline: none;
+  outline: none !important;
 }
 
 button:focus {
-  outline: none;
+  outline: none !important;
 }
 
 a {
