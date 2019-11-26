@@ -6,17 +6,15 @@
     color: $white;
     padding: 30px 20px;
     border-radius: 4px;
-    .button-container {
+    width:300px;
+    .button__container {
       display: flex;
       flex-direction: row;
-      .button-reset {
-        flex: 1;
-        background-color: $grey;
-      }
-      .button-apply {
-        flex: 1;
-        background-color: $primary;
-      }
+      justify-content: space-between;
+      height: 40px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      font-size: 20px !important;
     }
   }
 
@@ -26,4 +24,18 @@
     background-color: $white;
     align-self: center;
   }
+}
+.button__reset {
+  background-color: $dark !important;
+  padding: 0 !important;
+  width: 45% !important;
+  border-color: $grey1 !important;
+  font-size: $small !important;
+}
+.button__apply {
+  background-color: $primary !important;
+  padding: 0 !important;
+  width: 45% !important;
+  border-color: $primary !important;
+  font-size: $small !important;
 }

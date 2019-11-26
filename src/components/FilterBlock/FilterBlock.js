@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import { Button } from "react-bootstrap";
 import { FILTER_LIST } from "../../constants";
 import Filter from "./Filter/Filter";
 import "./FilterBlock.scss";
 import FilmType from "./FilmType/FilmType";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 class FilterBlock extends Component {
   constructor(props) {
@@ -51,9 +53,26 @@ class FilterBlock extends Component {
     this.setState(state => ({ ...state, selectedType: type }));
   };
 
+  handleReset = () => {
+    let newState = { ...this.state };
+    FILTER_LIST.map(({ title }) => {
+      let { selectedList } = newState;
+      selectedList = { ...selectedList, [title.toLowerCase()]: [] };
+      newState = { ...newState, selectedList: selectedList };
+      return 0;
+    });
+    this.setState({
+      ...newState,
+      selectedType: { value: "Both", label: "Both" }
+    });
+  };
+
+  handleApply = () => {
+    // handle apply here
+  };
+
   render() {
-    console.log(this.state);
-    const { selectedType } = this.state;
+    const { selectedType, selectedList } = this.state;
     return (
       <div className="filterblock__container">
         <div className="m__l--20 m__b--30 uppercase">Filter by</div>
@@ -69,11 +88,19 @@ class FilterBlock extends Component {
               title={title}
               itemList={sub}
               handleSelect={this.handleSelect}
+              selectedList={selectedList[`${title.toLowerCase()}`]}
             />
             <div className="filterblock__line" />
           </>
         ))}
-        <div className="button-container">button here</div>
+        <div className="button__container">
+          <Button variant="primary button__reset" onClick={this.handleReset}>
+            Reset
+          </Button>
+          <Button variant="primary button__apply" onClick={this.handleApply}>
+            Apply
+          </Button>
+        </div>
       </div>
     );
   }

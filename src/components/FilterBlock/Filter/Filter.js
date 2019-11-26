@@ -16,12 +16,13 @@ class Filter extends Component {
 
   render() {
     const { isDisplay, init } = this.state;
-    const { title, itemList, handleSelect } = this.props;
-
+    const { title, itemList, handleSelect, selectedList } = this.props;
     const className = `filter__filteritem ${
       isDisplay ? "open" : "close h--0"
     } ${init ? "d-none" : ""}`;
-
+    const ToggleclassName = `filter__toggle filter__toggle__${
+      isDisplay ? "minus" : "plus"
+    }`;
     return (
       <div className="filter__container">
         <div
@@ -30,9 +31,7 @@ class Filter extends Component {
           }`}
         >
           <div className="filter__title">{title}</div>
-          <div className="filter__toggle" onClick={this.handleToggle}>
-            {isDisplay ? "-" : "+"}
-          </div>
+          <div className={ToggleclassName} onClick={this.handleToggle}></div>
         </div>
         <div className={className}>
           {itemList.map(item => (
@@ -40,6 +39,11 @@ class Filter extends Component {
               filterName={item}
               handleSelect={handleSelect}
               title={title}
+              isChecked={
+                selectedList !== undefined && selectedList !== null
+                  ? Array.from(selectedList).includes(item)
+                  : false
+              }
             />
           ))}
         </div>
