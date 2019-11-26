@@ -133,7 +133,7 @@ class FilterBlock extends Component {
         />
         <div className="filterblock__line" />
         {FILTER_LIST.map(({ title, sub }) => (
-          <>
+          <div key={title}>
             <Filter
               title={title}
               itemList={sub}
@@ -141,7 +141,7 @@ class FilterBlock extends Component {
               selectedList={selectedList[`${title.toLowerCase()}`]}
             />
             <div className="filterblock__line" />
-          </>
+          </div>
         ))}
         <div className="button__container">
           <Button variant="primary button__reset" onClick={this.handleReset}>

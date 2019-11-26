@@ -49,7 +49,7 @@
 }
 
 .menu-trigger {
-  font-size: 0.972vw;
+  font-size: $small;
   height: 100%;
   @include align-center;
 
@@ -126,6 +126,10 @@
 
   .navbar__sub-navigator {
     top: 52px;
+  }
+
+  .menu-trigger {
+    font-size: $x-small;
   }
 }
 

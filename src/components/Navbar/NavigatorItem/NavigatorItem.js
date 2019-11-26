@@ -5,6 +5,7 @@ const divideArray = array => {
   let subArray = [];
   let newArray = [];
 
+  // eslint-disable-next-line array-callback-return
   array.map((value, index) => {
     subArray = [...subArray, value];
     if (index % 4 === 3 || index === array.length - 1) {
@@ -53,18 +54,20 @@ function NavigatorItem({
       </a>
       {show && (
         <div className="filter__item__sub">
-          {newSub.map(item => (
-            <div className="sub-item__column">
-              {item.map(sub => (
-                <div
-                  className="text--white m__ver--7 no-wrap line__height--16 no-select"
-                  onClick={() => onSubItemClick(sub)}
-                >
-                  {sub}
-                </div>
-              ))}
-            </div>
-          ))}
+          {newSub &&
+            newSub.map(item => (
+              <div key={item[0]} className="sub-item__column">
+                {item.map(sub => (
+                  <div
+                    key={sub}
+                    className="text--white m__ver--7 no-wrap line__height--16 no-select"
+                    onClick={() => onSubItemClick(sub)}
+                  >
+                    {sub}
+                  </div>
+                ))}
+              </div>
+            ))}
         </div>
       )}
     </li>

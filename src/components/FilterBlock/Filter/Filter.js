@@ -40,6 +40,7 @@ class Filter extends Component {
         <div className={className}>
           {itemList.map(item => (
             <FilterItem
+              key={item}
               filterName={item}
               handleSelect={handleSelect}
               title={title}

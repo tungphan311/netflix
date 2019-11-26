@@ -5,11 +5,43 @@
 
 .filter-page__left {
   width: calc(125vw / 6);
-  min-width: 300px;
+  min-width: 200px;
+}
+
+.filter-page__right {
+  margin-left: calc(25vw / 9);
+  margin-right: calc(25vw / 6);
+  width: 100%;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+}
+
+.result__line {
+  border: 1px solid $white;
+  margin: 0;
+  margin-top: 6px;
+}
+
+.filter__result__container {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 @media (max-width: $ipad-screen) {
   .filter-page__left {
     display: none;
+  }
+
+  .filter-page__right {
+    margin-left: calc(25vw / 9);
+  }
+}
+
+@media (min-width: $normal-screen) {
+  .filter-page__right {
+    margin-right: 60px;
   }
 }
