@@ -4,11 +4,11 @@ import "./Filter.scss";
 
 class Filter extends Component {
   render() {
-    const { location } = this.props;
+    const { location, history } = this.props;
     return (
       <div className="filter-page__container">
         <div className="filter-page__left">
-          <FilterBlock />
+          <FilterBlock history={history} />
         </div>
         <div>asd</div>
       </div>

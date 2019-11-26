@@ -67,12 +67,54 @@ class FilterBlock extends Component {
     });
   };
 
-  handleApply = () => {
+  handleApply = history => () => {
     // handle apply here
+    const queryString = require("query-string");
+    let query = "";
+    const curState = this.state;
+    if (curState.selectedType.value !== "Both")
+      query = query + "type=" + curState.selectedType.value.toLowerCase() + "&";
+    Object.keys(curState.selectedList).forEach((key, index) => {
+      if (curState.selectedList[key].length > 0) {
+        const obj = {
+          [key]: curState.selectedList[key]
+        };
+        query =
+          query + queryString.stringify(obj, { arrayFormat: "comma" }) + "&";
+      }
+    });
+    query = query.slice(0, -1); //remove last &
+    history.push(`/browse?${query}`);
+  };
+
+  parseQueryString = search => {
+    const queryString = require("query-string");
+    const obj = queryString.parse(search, { arrayFormat: "comma" });
+    let newState = { ...this.state };
+    if (obj.type)
+      newState = {
+        ...newState,
+        selectedType: { value: obj.type, label: obj.type }
+      };
+    let selectedList = { ...newState.selectedList };
+    FILTER_LIST.map(({ title }) => {
+      if (obj[`${title.toLowerCase()}`]) {
+        if (!Array.isArray(obj[`${title.toLowerCase()}`]))
+          //convert obj to array if it's not
+          obj[`${title.toLowerCase()}`] = [obj[`${title.toLowerCase()}`]];
+        selectedList = {
+          ...selectedList,
+          [title.toLowerCase()]: obj[`${title.toLowerCase()}`]
+        };
+      }
+    });
+    newState = { ...newState, selectedList: selectedList };
+    this.setState({ ...newState });
   };
 
   render() {
     const { selectedType, selectedList } = this.state;
+    const { history } = this.props;
     return (
       <div className="filterblock__container">
         <div className="m__l--20 m__b--30 uppercase">Filter by</div>
@@ -97,7 +139,10 @@ class FilterBlock extends Component {
           <Button variant="primary button__reset" onClick={this.handleReset}>
             Reset
           </Button>
-          <Button variant="primary button__apply" onClick={this.handleApply}>
+          <Button
+            variant="primary button__apply"
+            onClick={this.handleApply(history)}
+          >
             Apply
           </Button>
         </div>
