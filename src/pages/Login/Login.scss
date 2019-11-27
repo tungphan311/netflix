@@ -4,6 +4,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
+  min-height: 100vh;
 }
 
 .Login form {
@@ -83,11 +84,11 @@
   line-height: 50px;
 }
 ::placeholder {
-  color: #8c8c8c;
+  color: $grey2;
 }
 h1 {
   font-size: $xx-large;
-  font-weight: bold;
+  font-weight: $fw-bold;
   margin-bottom: 28px;
   color: $white;
 }
