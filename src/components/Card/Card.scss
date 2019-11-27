@@ -1,10 +1,7 @@
 .card__container {
-  width: calc(25% - 15px);
-  height: 140px;
-  background-color: black;
   position: relative;
-  display: inline-block;
-  margin-right: 15px;
+  background-size: cover;
+  width: 100%;
 }
 
 @media (max-width: $ipad-screen) {

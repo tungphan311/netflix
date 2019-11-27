@@ -4,11 +4,18 @@ import "./Filter.scss";
 import Card from "../../components/Card/Card";
 import Search from "../../components/Search/Search";
 import { MOVIES } from "../../constants";
+import { divideArray } from "../../utils/utils";
 
 class Filter extends Component {
   constructor(props) {
     super(props);
-    this.state = { width: 0, height: 0 };
+
+    this.state = {
+      width: 0,
+      containerWidth: 0
+    };
+
+    this.container = React.createRef();
   }
 
   componentDidMount() {
@@ -21,31 +28,17 @@ class Filter extends Component {
   }
 
   updateWindowDimensions = () => {
-    this.setState({ width: window.innerWidth, height: window.innerHeight });
-  };
-
-  divideArray = array => {
-    const { width } = this.state;
-    const num = width > 950 ? 4 : width > 420 ? 3 : 2;
-
-    let subArray = [];
-    let newArray = [];
-
-    // eslint-disable-next-line array-callback-return
-    array.map((value, index) => {
-      subArray = [...subArray, value];
-      if (index % num === num - 1 || index === array.length - 1) {
-        newArray = [...newArray, subArray];
-        subArray = [];
-      }
+    this.setState({
+      width: window.innerWidth,
+      containerWidth: this.container.current.offsetWidth
     });
-
-    return newArray;
   };
 
   render() {
     const { history } = this.props;
-    const movies = this.divideArray(MOVIES);
+    const { width, containerWidth } = this.state;
+
+    const movies = divideArray(MOVIES, width);
 
     return (
       <div className="filter-page__container">
@@ -62,11 +55,19 @@ class Filter extends Component {
           </label>
           <hr className="result__line" />
 
-          <div className="filter__result__container">
+          <div className="filter__result__container" ref={this.container}>
             {movies.map((movie, index) => (
-              <div key={index} className="filter__slider">
+              <div key={index} className="filter__slider m__t--20">
                 {movie.map((item, index) => (
-                  <Card key={index} />
+                  <div
+                    className="p__r--15"
+                    style={{
+                      width: "calc(25% - 15px)",
+                      display: "inline-block"
+                    }}
+                  >
+                    <Card key={index} image={item} width={containerWidth} />
+                  </div>
                 ))}
               </div>
             ))}
