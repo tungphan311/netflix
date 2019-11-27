@@ -1,5 +1,6 @@
 import React from "react";
 import "./FilterItem.scss";
+
 const FilterItem = ({ filterName, handleSelect, title, isChecked }) => (
   <div className="filteritem__container">
     <div className="filteritem__name">{filterName}</div>

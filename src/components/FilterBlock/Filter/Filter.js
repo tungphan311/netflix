@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./Filter.scss";
 import FilterItem from "./FilterItem/FilterItem";
+
 class Filter extends Component {
   constructor(props) {
     super(props);
@@ -17,12 +18,15 @@ class Filter extends Component {
   render() {
     const { isDisplay, init } = this.state;
     const { title, itemList, handleSelect, selectedList } = this.props;
+
     const className = `filter__filteritem ${
       isDisplay ? "open" : "close h--0"
     } ${init ? "d-none" : ""}`;
-    const ToggleclassName = `filter__toggle filter__toggle__${
+
+    const toggleClassName = `filter__toggle filter__toggle__${
       isDisplay ? "minus" : "plus"
     }`;
+
     return (
       <div className="filter__container">
         <div
@@ -31,7 +35,7 @@ class Filter extends Component {
           }`}
         >
           <div className="filter__title">{title}</div>
-          <div className={ToggleclassName} onClick={this.handleToggle}></div>
+          <div className={toggleClassName} onClick={this.handleToggle}></div>
         </div>
         <div className={className}>
           {itemList.map(item => (

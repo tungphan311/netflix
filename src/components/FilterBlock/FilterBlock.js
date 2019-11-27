@@ -1,16 +1,16 @@
 import React, { Component } from "react";
 import { Button } from "react-bootstrap";
-import { FILTER_LIST } from "../../constants";
+import queryString from "query-string";
+import { FILTER_LIST, DEFAULT_FILMTYPE } from "../../constants";
 import Filter from "./Filter/Filter";
 import "./FilterBlock.scss";
 import FilmType from "./FilmType/FilmType";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 class FilterBlock extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedType: { value: "Both", label: "Both" },
+      selectedType: DEFAULT_FILMTYPE,
       selectedList: {}
     };
   }
@@ -58,22 +58,22 @@ class FilterBlock extends Component {
     FILTER_LIST.map(({ title }) => {
       let { selectedList } = newState;
       selectedList = { ...selectedList, [title.toLowerCase()]: [] };
-      newState = { ...newState, selectedList: selectedList };
+      newState = { ...newState, selectedList };
       return 0;
     });
     this.setState({
       ...newState,
-      selectedType: { value: "Both", label: "Both" }
+      selectedType: DEFAULT_FILMTYPE
     });
   };
 
-  handleApply = history => () => {
+  handleApply = () => {
     // handle apply here
-    const queryString = require("query-string");
+    const { history } = this.props;
     let query = "";
     const curState = this.state;
-    if (curState.selectedType.value !== "Both")
-      query = query + "type=" + curState.selectedType.value.toLowerCase() + "&";
+    if (curState.selectedType.value !== DEFAULT_FILMTYPE.value)
+      query = query + "type=" + curState.selectedType.value + "&";
     Object.keys(curState.selectedList).forEach((key, index) => {
       if (curState.selectedList[key].length > 0) {
         const obj = {
@@ -88,7 +88,6 @@ class FilterBlock extends Component {
   };
 
   parseQueryString = search => {
-    const queryString = require("query-string");
     const obj = queryString.parse(search, { arrayFormat: "comma" });
     let newState = { ...this.state };
     if (obj.type)
@@ -114,7 +113,6 @@ class FilterBlock extends Component {
 
   render() {
     const { selectedType, selectedList } = this.state;
-    const { history } = this.props;
     return (
       <div className="filterblock__container">
         <div className="m__l--20 m__b--30 uppercase">Filter by</div>
@@ -139,10 +137,7 @@ class FilterBlock extends Component {
           <Button variant="primary button__reset" onClick={this.handleReset}>
             Reset
           </Button>
-          <Button
-            variant="primary button__apply"
-            onClick={this.handleApply(history)}
-          >
+          <Button variant="primary button__apply" onClick={this.handleApply}>
             Apply
           </Button>
         </div>

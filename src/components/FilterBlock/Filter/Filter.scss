@@ -42,14 +42,17 @@
     font-size: $xx-large;
     cursor: pointer;
     font-family: "nf-icon";
+
     &:hover {
       color: rgba($color: $primary, $alpha: 0.75);
     }
+
     &__plus {
       &::before {
         content: "\e851";
       }
     }
+
     &__minus {
       &::before {
         content: "\e853";
@@ -63,6 +66,7 @@
     overflow-y: scroll;
   }
 }
+
 .header__close {
   animation-name: headerClose;
   animation-duration: 500ms;
@@ -77,6 +81,7 @@
   animation-name: itemClose;
   animation-duration: 500ms;
 }
+
 @keyframes itemOpen {
   0% {
     height: 0;

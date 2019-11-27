@@ -6,15 +6,15 @@
     color: $white;
     padding: 30px 20px;
     border-radius: 4px;
-    width:300px;
+    width: 300px;
+
     .button__container {
       display: flex;
-      flex-direction: row;
       justify-content: space-between;
       height: 40px;
       margin-top: 20px;
       margin-bottom: 20px;
-      font-size: 20px !important;
+      font-size: $large !important;
     }
   }
 
@@ -25,6 +25,7 @@
     align-self: center;
   }
 }
+
 .button__reset {
   background-color: $dark !important;
   padding: 0 !important;
@@ -32,6 +33,7 @@
   border-color: $grey1 !important;
   font-size: $small !important;
 }
+
 .button__apply {
   background-color: $primary !important;
   padding: 0 !important;
