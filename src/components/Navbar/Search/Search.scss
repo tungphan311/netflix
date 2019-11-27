@@ -1,0 +1,52 @@
+.search {
+  display: table;
+  margin-right: 10px;
+  background-color: transparent;
+
+  input {
+    width: $x-large;
+    z-index: 1;
+    min-width: 0;
+    position: relative;
+    margin: 7px 0;
+    font-size: $small;
+    -webkit-appearance: none;
+    transition: all 0.55s ease-in-out;
+    cursor: pointer;
+    flex-grow: 9;
+    background-color: transparent;
+    border: 0px;
+    color: $white;
+    & + div {
+      position: relative;
+      height: 28px;
+      width: 100%;
+      margin: -28px 0 0 0;
+    }
+    &:not(:placeholder-shown),
+    &:focus {
+      width: 160px;
+      padding: 0 35px;
+      cursor: text;
+      border: 1px ridge transparent;
+      outline: 1px solid $white;
+      outline-offset: 5px;
+    }
+  }
+}
+
+::selection {
+  background: transparent;
+}
+::-moz-selection {
+  background: transparent;
+}
+
+html {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+.search__button {
+  background-color: transparent;
+  border: none;
+}
