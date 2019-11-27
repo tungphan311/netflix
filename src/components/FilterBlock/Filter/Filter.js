@@ -20,7 +20,7 @@ class Filter extends Component {
     const { title, itemList, handleSelect, selectedList } = this.props;
 
     const className = `filter__filteritem ${
-      isDisplay ? "open" : "close h--0"
+      isDisplay ? "item__open" : "item__close h--0"
     } ${init ? "d-none" : ""}`;
 
     const toggleClassName = `filter__toggle filter__toggle__${
@@ -45,7 +45,7 @@ class Filter extends Component {
               title={title}
               isChecked={
                 selectedList !== undefined && selectedList !== null
-                  ? Array.from(selectedList).includes(item)
+                  ? Array.from(selectedList).includes(item.toLowerCase())
                   : false
               }
             />

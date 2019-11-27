@@ -8,10 +8,11 @@ const FilterItem = ({ filterName, handleSelect, title, isChecked }) => (
       <input
         type="checkbox"
         style={{ width: "16px", margin: 0, height: "16px" }}
-        onClick={() => handleSelect(title, filterName)}
+        onChange={() => handleSelect(title, filterName)}
         checked={isChecked}
       />
     </div>
   </div>
 );
+
 export default FilterItem;

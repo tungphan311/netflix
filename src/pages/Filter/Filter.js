@@ -4,7 +4,7 @@ import "./Filter.scss";
 
 class Filter extends Component {
   render() {
-    const { location, history } = this.props;
+    const { history } = this.props;
     return (
       <div className="filter-page__container">
         <div className="filter-page__left">
