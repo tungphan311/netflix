@@ -50,14 +50,15 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   user-select: none;
+  color: $white;
 }
 
 input:focus {
-  outline: none;
+  outline: none !important;
 }
 
 button:focus {
-  outline: none;
+  outline: none !important;
 }
 
 a {
