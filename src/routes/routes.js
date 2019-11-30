@@ -39,6 +39,7 @@ class Routes extends Component {
               path="/browse"
               component={Filter}
               isUser={isUser}
+              history={history}
             />
           </DefaultLayout>
         </Route>

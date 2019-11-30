@@ -1,0 +1,21 @@
+.filteritem {
+  &__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 8px 0px;
+  }
+
+  &__name {
+    line-height: 16px;
+    font-size: $small;
+  }
+
+  &__checkbox {
+    padding-right: 10px;
+  }
+}
+
+input {
+  cursor: pointer;
+}

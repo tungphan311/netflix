@@ -1,0 +1,114 @@
+@font-face {
+  font-family: "nf-icon";
+  src: url("https://assets.nflxext.com/ffe/siteui/fonts/nf-icon-v1-93.eot");
+  src: url("https://assets.nflxext.com/ffe/siteui/fonts/nf-icon-v1-93.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://assets.nflxext.com/ffe/siteui/fonts/nf-icon-v1-93.woff")
+      format("woff"),
+    url("https://assets.nflxext.com/ffe/siteui/fonts/nf-icon-v1-93.ttf")
+      format("truetype"),
+    url("https://assets.nflxext.com/ffe/siteui/fonts/nf-icon-v1-93.svg#nf-icon-v1-93")
+      format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.filter {
+  &__header {
+    position: static;
+    width: 100%;
+    height: 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__container {
+    width: 100%;
+    max-height: 250px;
+    padding: 20px 0;
+    overflow-y: hidden;
+  }
+
+  &__title {
+    font-size: $small;
+    padding-left: 20px;
+  }
+
+  &__toggle {
+    padding-right: 20px;
+    color: $primary;
+    font-size: $xx-large;
+    cursor: pointer;
+    font-family: "nf-icon";
+
+    &:hover {
+      color: rgba($color: $primary, $alpha: 0.75);
+    }
+
+    &__plus {
+      &::before {
+        content: "\e851";
+      }
+    }
+
+    &__minus {
+      &::before {
+        content: "\e853";
+      }
+    }
+  }
+
+  &__filteritem {
+    max-height: 200px;
+    padding-left: 30px;
+    overflow-y: scroll;
+  }
+}
+
+.header__close {
+  animation-name: headerClose;
+  animation-duration: 500ms;
+}
+
+.item__open {
+  animation-name: itemOpen;
+  animation-duration: 500ms;
+}
+
+.item__close {
+  animation-name: itemClose;
+  animation-duration: 500ms;
+  opacity: 0.5;
+}
+
+@keyframes itemOpen {
+  0% {
+    height: 0;
+  }
+
+  100% {
+    height: 250px;
+  }
+}
+
+@keyframes itemClose {
+  from {
+    height: 250px;
+  }
+
+  to {
+    height: 0;
+  }
+}
+
+@keyframes headerClose {
+  from {
+    margin-bottom: 16px;
+  }
+
+  to {
+    margin-bottom: 0;
+  }
+}

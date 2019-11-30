@@ -1,0 +1,43 @@
+.filterblock {
+  &__container {
+    background-color: $black2;
+    flex-direction: column;
+    display: flex;
+    color: $white;
+    padding: 30px 20px;
+    border-radius: 4px;
+    width: 300px;
+
+    .button__container {
+      display: flex;
+      justify-content: space-between;
+      height: 40px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      font-size: $large !important;
+    }
+  }
+
+  &__line {
+    width: 100%;
+    height: 1px;
+    background-color: $white;
+    align-self: center;
+  }
+}
+
+.button__reset {
+  background-color: $dark !important;
+  padding: 0 !important;
+  width: 45% !important;
+  border-color: $grey1 !important;
+  font-size: $small !important;
+}
+
+.button__apply {
+  background-color: $primary !important;
+  padding: 0 !important;
+  width: 45% !important;
+  border-color: $primary !important;
+  font-size: $small !important;
+}
