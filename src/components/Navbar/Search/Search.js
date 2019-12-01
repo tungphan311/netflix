@@ -11,7 +11,7 @@ function Search() {
     //   </button>
     //   <input type="text" className="search__input" />
     // </div>
-    <div class="navbar__search">
+    <div className="navbar__search">
       <input type="text" placeholder=" " />
       <div>
         <button className="navbar__search__button">
