@@ -40,6 +40,10 @@ $ipad-screen: 950px;
   display: flex;
   align-items: center;
 }
+@mixin align-right {
+  display: flex;
+  justify-content: flex-end;
+}
 
 @mixin size-0 {
   width: 0;
