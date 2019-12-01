@@ -1,4 +1,4 @@
-.search {
+.navbar__search {
   display: table;
   margin-right: 10px;
   background-color: transparent;
@@ -17,12 +17,14 @@
     background-color: transparent;
     border: 0px;
     color: $white;
+
     & + div {
       position: relative;
       height: 28px;
       width: 100%;
       margin: -28px 0 0 0;
     }
+
     &:not(:placeholder-shown),
     &:focus {
       width: 160px;
@@ -38,6 +40,7 @@
 ::selection {
   background: transparent;
 }
+
 ::-moz-selection {
   background: transparent;
 }
@@ -46,7 +49,8 @@ html {
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
 }
-.search__button {
+
+.navbar__search__button {
   background-color: transparent;
   border: none;
 }

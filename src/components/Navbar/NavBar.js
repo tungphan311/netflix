@@ -10,6 +10,7 @@ import { NAV_ITEMS } from "../../constants";
 import NavigatorItem from "./NavigatorItem/NavigatorItem";
 import NavigatorSelect from "./NavigatorSelect/NavigatorSelect";
 import Search from "./Search/Search";
+
 function NavBar({ history }) {
   const route = history.location.pathname;
   return (

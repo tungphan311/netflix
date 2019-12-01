@@ -11,10 +11,10 @@ function Search() {
     //   </button>
     //   <input type="text" className="search__input" />
     // </div>
-    <div class="search">
+    <div class="navbar__search">
       <input type="text" placeholder=" " />
       <div>
-        <button className="search__button">
+        <button className="navbar__search__button">
           <FontAwesomeIcon icon={faSearch} color="#fff" size="lg" />
         </button>
       </div>
