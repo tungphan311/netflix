@@ -9,7 +9,11 @@ function Search() {
       <button className="search__button">
         <FontAwesomeIcon icon={faSearch} color="#fff" size="lg" />
       </button>
-      <input type="text" className="search__input" />
+      <input
+        type="text"
+        className="search__input"
+        placeholder="What do you want to watch?"
+      />
     </div>
   );
 }
