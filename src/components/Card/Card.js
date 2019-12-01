@@ -3,13 +3,13 @@ import "./Card.scss";
 
 const RATIO = 341 / 192;
 
-function Card({ image, width }) {
+function Card({ image, containerwidth, screenWidth }) {
   const height =
-    width > 950
-      ? (width - 64) / (RATIO * 4)
-      : width > 420
-      ? (width - 48) / (RATIO * 3)
-      : (width - 32) / (RATIO * 2);
+    screenWidth > 950
+      ? (containerwidth - 64) / (RATIO * 4)
+      : screenWidth > 420
+      ? (containerwidth - 48) / (RATIO * 3)
+      : (containerwidth - 32) / (RATIO * 2);
   return (
     <div className="card__container p__hor--8" style={{ height }}>
       <div

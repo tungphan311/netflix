@@ -60,7 +60,11 @@ class Filter extends Component {
               <div key={index} className="filter__slider m__t--20">
                 {movie.map((item, index) => (
                   <div key={index} className="filter__slider__item">
-                    <Card image={item} width={containerWidth} />
+                    <Card
+                      image={item}
+                      containerwidth={containerWidth}
+                      screenWidth={width}
+                    />
                   </div>
                 ))}
               </div>

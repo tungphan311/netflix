@@ -30,6 +30,7 @@ $fw-extra-bold: 800;
 // define screen width:
 $normal-screen: 1440px;
 $ipad-screen: 950px;
+$phone-screen: 420px;
 
 @mixin navigator {
   list-style-type: none;
@@ -40,6 +41,7 @@ $ipad-screen: 950px;
   display: flex;
   align-items: center;
 }
+
 @mixin align-right {
   display: flex;
   justify-content: flex-end;

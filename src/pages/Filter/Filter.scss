@@ -44,6 +44,18 @@
   .filter-page__right {
     margin-left: calc(25vw / 9);
   }
+
+  .filter__slider__item {
+    width: 33%;
+    display: inline-block;
+  }
+}
+
+@media (max-width: $phone-screen) {
+  .filter__slider__item {
+    width: 50%;
+    display: inline-block;
+  }
 }
 
 @media (min-width: $normal-screen) {
