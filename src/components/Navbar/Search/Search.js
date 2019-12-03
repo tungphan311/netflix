@@ -5,19 +5,17 @@ import "./Search.scss";
 
 function Search() {
   return (
-    // <div className="search__container">
-    //   <button className="search__button" onClick>
-    //     <FontAwesomeIcon icon={faSearch} color="#fff" size="lg" />
-    //   </button>
-    //   <input type="text" className="search__input" />
-    // </div>
     <div className="navbar__search">
-      <input type="text" placeholder=" " />
-      <div>
+      <input
+        className="navbar__search__input"
+        type="text"
+        placeholder="Title ..."
+      />
+      {/* <div className="navbar__search__focus">
         <button className="navbar__search__button">
           <FontAwesomeIcon icon={faSearch} color="#fff" size="lg" />
         </button>
-      </div>
+      </div> */}
     </div>
   );
 }

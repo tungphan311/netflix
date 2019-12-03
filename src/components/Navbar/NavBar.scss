@@ -21,7 +21,6 @@
   top: 0;
   padding: 0 calc(25vw / 6);
   box-shadow: 0 2px 8px 0 rgba($white, 0.1);
-  display: flex;
   @include align-center;
 }
 
@@ -50,10 +49,6 @@
   &__selector {
     @include navigator;
   }
-}
-.navbar__right {
-  padding: 0 calc(25vw / 6);
-  @include align-center;
 }
 
 .menu-trigger {
@@ -127,6 +122,22 @@
   }
 }
 
+.navbar__right {
+  height: 100%;
+  @include align-center;
+}
+
+.notification__button,
+.user__button,
+.down__button {
+  border: none;
+  background-color: transparent;
+  text-align: right;
+  padding-right: 10px;
+  padding-left: 10px;
+  cursor: pointer;
+}
+
 @media (max-width: $ipad-screen) {
   .navbar__container {
     height: 41px;
@@ -155,15 +166,4 @@
   .navbar__container {
     padding: 0 60px;
   }
-}
-
-.notification__button,
-.user__button,
-.down__button {
-  border: none;
-  background-color: transparent;
-  text-align: right;
-  padding-right: 16px;
-  padding-left: 16px;
-  cursor: pointer;
 }
