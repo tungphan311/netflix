@@ -6,15 +6,8 @@
 
 .content {
   flex-grow: 1;
-  margin-top: 70px;
   background-color: $dark;
   padding: 30px calc(25vw / 18);
-}
-
-@media (max-width: $ipad-screen) {
-  .content {
-    margin-top: 41px;
-  }
 }
 
 @media (min-width: $normal-screen) {

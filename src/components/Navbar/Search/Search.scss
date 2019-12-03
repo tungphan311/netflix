@@ -30,3 +30,13 @@
   background-color: transparent;
   border: none;
 }
+
+@media (max-width: $ipad-screen) {
+  .navbar__search__input {
+    background-position: 5px 6px;
+    background-size: 12px;
+    padding: 4px 10px 4px 20px;
+    margin-right: -10px;
+    font-size: 10px;
+  }
+}

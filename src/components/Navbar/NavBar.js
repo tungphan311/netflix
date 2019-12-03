@@ -1,7 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./NavBar.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBell } from "@fortawesome/free-solid-svg-icons";
 import { NAV_ITEMS } from "../../constants";
 import NavigatorItem from "./NavigatorItem/NavigatorItem";
 import NavigatorSelect from "./NavigatorSelect/NavigatorSelect";
@@ -10,6 +8,37 @@ import UserSection from "./UserSection/UserSection";
 
 function NavBar({ history }) {
   const route = history.location.pathname;
+
+  const storeScroll = () => {
+    document.documentElement.dataset.scroll = window.scrollY;
+  };
+
+  const debounce = fn => {
+    // This holds the requestAnimationFrame reference, so we can cancel it if we wish
+    let frame;
+
+    // The debounce function returns a new function that can receive a variable number of arguments
+    return (...params) => {
+      // If the frame variable has been defined, clear it now, and queue for next frame
+      if (frame) {
+        cancelAnimationFrame(frame);
+      }
+
+      // Queue our function call for the next frame
+      frame = requestAnimationFrame(() => {
+        // Call our function and pass any params we received
+        fn(...params);
+      });
+    };
+  };
+
+  useEffect(() => {
+    document.addEventListener("scroll", debounce(storeScroll), {
+      passive: true
+    });
+    storeScroll();
+  }, []);
+
   return (
     <div className="navbar__container">
       <a aria-label="Netflix" className="navbar_logo" href="/" />
@@ -28,9 +57,7 @@ function NavBar({ history }) {
       </ul>
       <div className="navbar__right">
         <Search />
-        <button className="notification__button">
-          <FontAwesomeIcon icon={faBell} color="#fff" size="lg" />
-        </button>
+        <i className="fas fa-bell icon--large" />
         <UserSection />
       </div>
     </div>

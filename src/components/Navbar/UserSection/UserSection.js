@@ -1,6 +1,4 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import "./UserSection.scss";
 
 function UserSection() {
@@ -9,9 +7,7 @@ function UserSection() {
       <div className="avatar__wrapper">
         <img src="/assets/avatar.png" alt="user avatar" />
       </div>
-      <div className="down__button">
-        <FontAwesomeIcon icon={faChevronDown} color="#fff" size="sm" />
-      </div>
+      <i className="fas fa-chevron-down icon--small" />
     </div>
   );
 }

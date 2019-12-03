@@ -1,6 +1,5 @@
 .avatar__wrapper {
-  width: 32px;
-  height: 32px;
+  @include set-width-height(32px, 32px);
 
   img {
     width: 100%;
@@ -11,4 +10,10 @@
 .d-flex {
   cursor: pointer;
   align-items: center;
+}
+
+@media (max-width: $ipad-screen) {
+  .avatar__wrapper {
+    @include set-width-height(16px, 16px);
+  }
 }
