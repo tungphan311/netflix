@@ -16,11 +16,13 @@
   background-size: 23px;
   background-repeat: no-repeat;
   padding: 7px 20px 7px 40px;
+  float: right;
   transition: width 0.4s ease-in-out;
 }
 
 .navbar__search__input:focus {
   width: 100%;
+  margin-right: 0;
   border: 1px solid #ccc;
 }
 
