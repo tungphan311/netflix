@@ -1,15 +1,12 @@
 import React from "react";
 import "./NavBar.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faBell,
-  faUser,
-  faChevronDown
-} from "@fortawesome/free-solid-svg-icons";
+import { faBell } from "@fortawesome/free-solid-svg-icons";
 import { NAV_ITEMS } from "../../constants";
 import NavigatorItem from "./NavigatorItem/NavigatorItem";
 import NavigatorSelect from "./NavigatorSelect/NavigatorSelect";
 import Search from "./Search/Search";
+import UserSection from "./UserSection/UserSection";
 
 function NavBar({ history }) {
   const route = history.location.pathname;
@@ -34,12 +31,7 @@ function NavBar({ history }) {
         <button className="notification__button">
           <FontAwesomeIcon icon={faBell} color="#fff" size="lg" />
         </button>
-        <button className="user__button">
-          <FontAwesomeIcon icon={faUser} color="#fff" size="lg" />
-        </button>
-        <button className="down__button">
-          <FontAwesomeIcon icon={faChevronDown} color="#fff" size="lg" />
-        </button>
+        <UserSection />
       </div>
     </div>
   );
