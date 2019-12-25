@@ -1,0 +1,166 @@
+.video {
+  width: 100%;
+  height: 100%;
+}
+
+.c-video {
+  max-width: 100vw;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background: black;
+
+  &:hover {
+    .controls {
+      transform: translateY(0);
+    }
+  }
+}
+
+.controls {
+  display: flex;
+  position: absolute;
+  //   flex-direction: column;
+  bottom: 0;
+  width: 100%;
+  flex-wrap: wrap;
+  transform: translateY(100%) translateY(-5px);
+  transition: all 0.2s;
+}
+
+.controller__bar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-controller {
+  display: flex;
+}
+
+.right-controller {
+  display: flex;
+}
+
+.nf-btn {
+  background: none;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  color: white;
+
+  &:before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    display: inline-block;
+    font-size: 24px;
+    padding: 24px;
+  }
+}
+
+.nf-btn__hover {
+  transform: scale(1.2);
+  color: white;
+}
+
+.nf-btn__blur {
+  color: white;
+}
+
+.nf-btn__not-hover {
+  &:before {
+    color: rgba($color: white, $alpha: 0.5) !important;
+  }
+}
+
+.nf-btn {
+  &.play:before {
+    content: "\f04b";
+  }
+
+  &.pause:before {
+    content: "\f04c";
+  }
+
+  &.forward:before {
+    content: "\f04e";
+  }
+
+  &.backward:before {
+    content: "\f04a";
+  }
+
+  &.volume-up:before {
+    content: "\f028";
+  }
+
+  &.volume-down:before {
+    content: "\f027";
+  }
+
+  &.mute:before {
+    content: "\f6a9";
+  }
+
+  &.expand:before {
+    content: "\f065";
+  }
+
+  &.compress:before {
+    content: "\f066";
+  }
+}
+
+.progress__bar {
+  height: 4px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #5b5b5b;
+}
+
+.progress__now {
+  height: 100%;
+  width: 0;
+  background-color: $primary;
+}
+
+.volume-change {
+  position: absolute;
+  height: 150px;
+  bottom: 100%;
+  left: 24px;
+  padding-bottom: 10px;
+  padding-top: 20px;
+  background-color: #424242;
+  border-radius: 4px;
+
+  .MuiSlider-thumb {
+    width: 18px;
+    height: 18px;
+  }
+
+  .MuiSlider-rail {
+    background-color: #8f8c8c;
+  }
+
+  .MuiSlider-root {
+    color: $primary;
+
+    &.MuiSlider-vertical {
+      width: 8px;
+    }
+  }
+
+  .MuiSlider-vertical {
+    .MuiSlider-track,
+    .MuiSlider-rail {
+      width: 8px;
+    }
+  }
+}
+
+video::-webkit-media-controls {
+  display: none !important;
+}
