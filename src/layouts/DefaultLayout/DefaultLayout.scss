@@ -8,10 +8,12 @@
   flex-grow: 1;
   background-color: $dark;
   padding: 30px calc(25vw / 18);
+  padding-top: 100px;
 }
 
 @media (min-width: $normal-screen) {
   .content {
     padding: 30px 20px;
+    padding-top: 100px;
   }
 }

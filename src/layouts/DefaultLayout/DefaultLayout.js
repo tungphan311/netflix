@@ -6,7 +6,7 @@ function DefaultLayout({ children, history }) {
   return (
     <div className="wrapper">
       <NavBar history={history} />
-      <div className="content">{children}</div>
+      {children}
     </div>
   );
 }
