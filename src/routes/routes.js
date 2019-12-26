@@ -6,6 +6,8 @@ import Login from "../pages/Login/Login";
 import Filter from "../pages/Filter/Filter";
 import DefaultLayout from "../layouts/DefaultLayout/DefaultLayout";
 import EmptyLayout from "../layouts/EmptyLayout/EmptyLayout";
+import Details from "../pages/Details/Details";
+import Watch from "../pages/Watch/Watch";
 
 export const AuthorizedRoute = ({ component: Component, isUser, ...rest }) => (
   <Route
@@ -31,7 +33,7 @@ class Routes extends Component {
 
     return (
       <Switch>
-        <Route exact path={["/", "/browse"]}>
+        <Route exact path={["/", "/browse", "/title"]}>
           <DefaultLayout history={history}>
             <AuthorizedRoute exact path="/" component={Home} isUser={isUser} />
             <AuthorizedRoute
@@ -41,11 +43,18 @@ class Routes extends Component {
               isUser={isUser}
               history={history}
             />
+            <AuthorizedRoute
+              exact
+              path="/title"
+              component={Details}
+              isUser={isUser}
+            />
           </DefaultLayout>
         </Route>
-        <Route exact path={["/login"]}>
+        <Route exact path={["/login", "/watch/:id"]}>
           <EmptyLayout>
             <Route exact path="/login" component={Login} />
+            <Route exact path="/watch/:id" component={Watch} />
           </EmptyLayout>
         </Route>
       </Switch>
