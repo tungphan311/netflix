@@ -15,23 +15,61 @@ class Watch extends Component {
       volume: 100,
       mute: false,
       hover: "",
-      fullscreen: false
+      fullscreen: false,
+      time: 0
     };
   }
 
   componentDidMount = () => {
     const video = document.querySelector(".video");
+    const track = document.querySelector(".track");
+
+    video.addEventListener("timeupdate", this.updateProgressBar);
+    video.addEventListener("loadedmetadata", this.initializeVideo);
+
+    track.addEventListener("mousemove", this.updateTooltip);
+  };
+
+  updateProgressBar = () => {
+    const video = document.querySelector(".video");
     const progress = document.querySelector(".progress__now");
+    const loaded = document.querySelector(".progress__loaded");
 
-    video.addEventListener("timeupdate", () => {
-      let pos = video.currentTime / video.duration;
+    let pos = video.currentTime / video.duration;
+    let load = video.buffered / video.duration;
 
-      progress.style.width = pos * 100 + "%";
+    progress.style.width = pos * 100 + "%";
+    loaded.style.width = load * 100 + "%";
 
-      if (video.ended) {
-        this.setState({ play: false });
-      }
-    });
+    if (video.ended) {
+      this.setState({ play: false });
+    }
+  };
+
+  initializeVideo = () => {
+    const video = document.querySelector(".video");
+
+    const videoDuration = Math.round(video.duration);
+
+    this.setState({ time: videoDuration });
+  };
+
+  updateTooltip = event => {
+    const video = document.querySelector(".video");
+    const track = document.querySelector(".track");
+    const seekTooltip = document.querySelector(".progress__tooltip");
+
+    const skipTo = Math.round(
+      (event.offsetX / event.target.clientWidth) * parseInt(this.state.time, 10)
+    );
+
+    track.setAttribute("data-track", skipTo);
+
+    const t = this.formatTime(skipTo);
+
+    seekTooltip.textContent = t;
+    const rect = video.getBoundingClientRect();
+    seekTooltip.style.left = `${event.pageX - rect.left}px`;
   };
 
   handlePlayBtnClicked = () => {
@@ -90,6 +128,12 @@ class Watch extends Component {
     }
   };
 
+  formatTime = timeInSeconds => {
+    const result = new Date(timeInSeconds * 1000).toISOString().substr(11, 8);
+
+    return `${result.substr(3, 2)}:${result.substr(6, 2)}`;
+  };
+
   handleOnMute = () => {
     const { mute } = this.state;
     const video = document.querySelector(".video");
@@ -105,17 +149,38 @@ class Watch extends Component {
   };
 
   render() {
-    const { play, volume, mute, hover, fullscreen } = this.state;
+    const { play, volume, hover, fullscreen, time } = this.state;
     return (
       <div className="c-video">
+        <button
+          className={`nf-btn btn-back ${this.formatClasses("back")}`}
+          onMouseEnter={() => this.setState({ hover: "back" })}
+          onMouseLeave={() => this.setState({ hover: "" })}
+          data-tooltip="Back to Previous"
+          onClick={() => this.props.history.goBack()}
+        >
+          <i className="fas fa-arrow-left" style={{ fontSize: "30px" }} />
+        </button>
         <video
           className="video"
           src={src}
+          poster={poster}
           onClick={this.handlePlayBtnClicked}
         ></video>
         <div className="controls">
           <div className="progress__bar">
-            <div className="progress__now"></div>
+            <div className="progress__container">
+              <div
+                className={`track ${this.formatClasses("progress")}`}
+                onMouseEnter={() => this.setState({ hover: "progress" })}
+                onMouseLeave={() => this.setState({ hover: "" })}
+              >
+                <div className="progress__now"></div>
+                <div className="progress__loaded"></div>
+                <div className="progress__tooltip">00:00</div>
+              </div>
+              <div className="progress_change">{this.formatTime(time)}</div>
+            </div>
           </div>
           <div className="controller__bar">
             <div className="left-controller">
@@ -171,6 +236,36 @@ class Watch extends Component {
               </div>
             </div>
             <div className="right-controller">
+              <div
+                style={{ position: "relative" }}
+                onMouseEnter={() => this.setState({ hover: "subtitle" })}
+                onMouseLeave={() => this.setState({ hover: "" })}
+              >
+                <button
+                  id="subtitle"
+                  className={`nf-btn subtitle ${this.formatClasses(
+                    "subtitle"
+                  )}`}
+                />
+                <div
+                  className={`subtitle__selector ${
+                    hover === "subtitle" ? "" : "d-none"
+                  }`}
+                >
+                  <h3 className="list-header">Subtitles</h3>
+
+                  <ul>
+                    <li className="sub-item">
+                      <span></span>
+                      English
+                    </li>
+                    <li className="sub-item">
+                      <span></span>
+                      Vietnamese
+                    </li>
+                  </ul>
+                </div>
+              </div>
               <button
                 id="fullscrenn"
                 className={`nf-btn ${
