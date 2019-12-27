@@ -116,6 +116,7 @@ class FilterBlock extends Component {
           [title.toLowerCase()]: obj[`${title.toLowerCase()}`]
         };
       }
+      return null;
     });
     newState = { ...newState, selectedList: selectedList };
     this.setState({ ...newState });
