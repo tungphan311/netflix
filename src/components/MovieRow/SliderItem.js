@@ -3,41 +3,8 @@ import { Like, Dislike, AddToList, ChevronDown } from "../../constants";
 import { formatSlideItem } from "../../utils/utils";
 
 class SliderItem extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      width: 0,
-      item: 0
-    };
-  }
-
-  componentDidMount = () => {
-    this.updateWindowDimensions();
-    window.addEventListener("resize", this.updateWindowDimensions);
-  };
-
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.updateWindowDimensions);
-  }
-
-  updateWindowDimensions = () => {
-    const width = window.innerWidth;
-
-    const item =
-      width < 800
-        ? 4
-        : width >= 800 && width < 1100
-        ? 6
-        : width >= 1100 && width < 1400
-        ? 8
-        : 9;
-    this.setState({ width, item });
-    this.props.setItem(item);
-  };
-
   render() {
-    const { hover, setHover, details, page } = this.props;
+    const { hover, setHover, details, page, item } = this.props;
     const {
       id,
       avatar,
@@ -48,8 +15,6 @@ class SliderItem extends Component {
       limit,
       length
     } = details;
-
-    const { item } = this.state;
 
     return (
       <div

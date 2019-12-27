@@ -60,13 +60,22 @@
     background: rgba(20, 20, 20, 0.5);
 
     &.handlePrev {
-      left: 0;
+      left: -30px;
     }
 
     &.active {
       cursor: pointer;
     }
   }
+}
+
+.carousel-indicators {
+  bottom: -50px;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+  width: 30px;
 }
 
 .slider .handle {
@@ -94,7 +103,7 @@
 }
 
 .slider .handle.handleNext {
-  right: 0;
+  right: -30px;
 }
 
 .slider-hover-trigger-layer:hover .slider .handle.active:hover .indicator-icon {
@@ -653,12 +662,9 @@ svg:not(:root) {
   }
 }
 
-// .bob-chevron-wrapper:hover ~ .bob-jawbone-chevron svg {
-//   color: #e50914;
-//   stroke: #e50914;
-//   stroke-width: 2px;
-//   stroke-linejoin: miter;
-// }
+span:focus {
+  outline: none;
+}
 
 @keyframes chevronSlideDown {
   0% {
