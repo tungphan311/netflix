@@ -72,6 +72,7 @@ html:not([data-scroll="0"]) {
 
 .menu-trigger {
   font-size: $small;
+  color: $grey !important;
   height: 100%;
   @include align-center;
 
@@ -84,7 +85,7 @@ html:not([data-scroll="0"]) {
   }
 
   &:hover {
-    color: $white !important;
+    color: $primary !important;
   }
 
   &::after {

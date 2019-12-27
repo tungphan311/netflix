@@ -49,8 +49,12 @@ class NavBar extends Component {
         <div className="navbar__right">
           <Search />
           <i
-            className="fas fa-bell icon--large"
-            style={{ marginRight: "18px", marginLeft: "14px" }}
+            className="fas fa-bell"
+            style={{
+              marginRight: "18px",
+              marginLeft: "14px",
+              fontSize: "22px"
+            }}
           />
           <UserSection />
         </div>
