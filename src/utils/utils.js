@@ -208,4 +208,171 @@ export const formatSlideItem = (id, hover, item, page) => {
     } else {
       return {};
     }
+
+  if (item === 8)
+    if (hover > 0) {
+      if (hover % 8 === 1) {
+        return id === page * 8 + 1
+          ? {
+              zIndex: 4,
+              transform: "translate3d(162px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : {
+              transform: "translate3d(328px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            };
+      } else if (hover % 8 === 2) {
+        return id === page * 8 + 2
+          ? {
+              zIndex: 4,
+              transform: "translate3d(120px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : id < page * 8 + 2 && id > page * 8
+          ? {
+              transform: "translate3d(-48px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : id > page * 8 + 2 && id <= (page + 1) * 8 + 1
+          ? {
+              transform: "translate3d(288px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : {};
+      } else if (hover % 8 === 3) {
+        return id === page * 8 + 3
+          ? {
+              zIndex: 4,
+              transform: "translate3d(80px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : id < page * 8 + 3 && id > page * 8
+          ? {
+              transform: "translate3d(-90px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : id > page * 8 + 3 && id <= (page + 1) * 8 + 1
+          ? {
+              transform: "translate3d(248px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : {};
+      } else if (hover % 8 === 4) {
+        return id === page * 8 + 4
+          ? {
+              zIndex: 4,
+              transform: "translate3d(40px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : id < page * 8 + 4 && id > page * 8
+          ? {
+              transform: "translate3d(-128px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : id > page * 8 + 4 && id <= (page + 1) * 8 + 1
+          ? {
+              transform: "translate3d(208px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : {};
+      } else if (hover % 8 === 5) {
+        return id === page * 8 + 5
+          ? {
+              zIndex: 4,
+              transform: "translate3d(0px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : id < page * 8 + 5 && id > page * 8
+          ? {
+              transform: "translate3d(-168px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : id > page * 8 + 5 && id <= (page + 1) * 8 + 1
+          ? {
+              transform: "translate3d(168px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : {};
+      } else if (hover % 8 === 6) {
+        return id === page * 8 + 6
+          ? {
+              zIndex: 4,
+              transform: "translate3d(-41px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : id < page * 8 + 6 && id > page * 8
+          ? {
+              transform: "translate3d(-210px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : id > page * 8 + 6 && id <= (page + 1) * 8 + 1
+          ? {
+              transform: "translate3d(126px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : {};
+      } else if (hover % 8 === 7) {
+        return id === page * 8 + 7
+          ? {
+              zIndex: 4,
+              transform: "translate3d(-100px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : id < page * 8 + 7 && id > page * 8
+          ? {
+              transform: "translate3d(-268px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : id > page * 8 + 7 && id <= (page + 1) * 8 + 1
+          ? {
+              transform: "translate3d(68px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : {};
+      } else if (hover % 8 === 0) {
+        return id === page * 8 + 8
+          ? {
+              zIndex: 4,
+              transform: "translate3d(-168px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : id < page * 8 + 8 && id > page * 8
+          ? {
+              transform: "translate3d(-336px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : id === (page + 1) * 8 + 1
+          ? {
+              transform: "translate3d(0px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : {};
+      }
+    } else {
+      return {};
+    }
 };

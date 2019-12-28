@@ -30,6 +30,12 @@ class Watch extends Component {
     track.addEventListener("mousemove", this.updateTooltip);
   };
 
+  componentWillUnmount = () => {
+    const video = document.querySelector(".video");
+
+    video.removeEventListener("timeupdate", this.updateProgressBar);
+  };
+
   updateProgressBar = () => {
     const video = document.querySelector(".video");
     const progress = document.querySelector(".progress__now");

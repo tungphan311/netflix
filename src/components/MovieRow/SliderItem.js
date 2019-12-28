@@ -4,7 +4,7 @@ import { formatSlideItem } from "../../utils/utils";
 
 class SliderItem extends Component {
   render() {
-    const { hover, setHover, details, page, item } = this.props;
+    const { hover, setHover, details, page, item, history } = this.props;
     const {
       id,
       avatar,
@@ -22,6 +22,7 @@ class SliderItem extends Component {
         style={formatSlideItem(id, hover, item, page)}
         onMouseEnter={() => setHover(id)}
         onMouseLeave={() => setHover(0)}
+        onClick={() => history.push(`/watch/${id}`)}
       >
         <div className="title-card-container">
           <div
@@ -90,7 +91,12 @@ const BobOpen = ({ url, href, name, score, limit, length }) => (
       </div>
       <div className="bob-overlay">
         <div className="bob-play-hitzone"></div>
-        <a aria-label={name} className="bob-jaw-hitzone" href={href}></a>
+        <a
+          aria-label={name}
+          className="bob-jaw-hitzone"
+          href={href}
+          type="button"
+        ></a>
         <div className="bob-overview-wrapper">
           <div className="bob-overview">
             <a tabIndex="0" className="bob-play-button playLink" href={href}>

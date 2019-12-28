@@ -58,7 +58,7 @@ class MovieRow extends Component {
         ? 4
         : width >= 800 && width < 1100
         ? 6
-        : width >= 1100 && width < 1400
+        : width >= 1100 && width < 1441
         ? 8
         : 9;
     this.setState({ width, item });
@@ -100,7 +100,7 @@ class MovieRow extends Component {
   };
 
   render() {
-    const { title } = this.props;
+    const { title, history } = this.props;
     const { page, hover, item, movies } = this.state;
 
     return (
@@ -149,6 +149,7 @@ class MovieRow extends Component {
                                 details={sub}
                                 page={page}
                                 item={item}
+                                history={history}
                               />
                             ))}
                           </Carousel.Item>
