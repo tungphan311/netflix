@@ -9,3 +9,4 @@ export * from "./like";
 export * from "./dislike";
 export * from "./addToList";
 export * from "./chevronDown";
+export * from "./play";

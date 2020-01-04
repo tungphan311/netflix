@@ -326,7 +326,7 @@ a {
   left: 0;
   bottom: 0;
   right: 0;
-  background-size: cover;
+  background-size: contain;
   background-color: #000;
 }
 
@@ -350,7 +350,7 @@ a {
   align-items: flex-end;
   box-sizing: border-box;
   border: solid 2px #141414;
-  padding: 0 2% 2% 2.5%;
+  padding: 0 2% 4px 2.5%;
   background-color: rgba(0, 0, 0, 0);
   background-image: linear-gradient(
     to bottom,
@@ -360,6 +360,7 @@ a {
   );
   transition: 200ms linear;
   cursor: pointer;
+  z-index: 0;
 }
 
 .bob-card-adult-video-merch .bob-play-hitzone {
@@ -367,7 +368,7 @@ a {
   top: 0;
   left: 0;
   right: 0;
-  height: 80%;
+  height: 90%;
 }
 
 .verticalBoxArtRow .title-card .bob-card .bob-overlay .bob-overview-wrapper {
@@ -380,7 +381,7 @@ a {
 }
 
 .bob-overview {
-  text-align: left;
+  text-align: center;
   pointer-events: none;
 }
 
@@ -389,6 +390,14 @@ a {
   height: 3vw;
   position: relative;
   display: inline-block;
+  transform: translateX(50%);
+}
+
+.bob-card-adult-video-merch
+  .bob-play-hitzone:hover
+  ~ .bob-overview-wrapper
+  .svg-icon-play-with-ring {
+  color: #e50914;
 }
 
 .bob-overview .bob-play-button .play-button {
@@ -396,13 +405,6 @@ a {
   padding-bottom: 2vw;
   opacity: 1;
   transition: all 150ms ease;
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  font-size: 64px;
-
-  &:before {
-    content: "\f144";
-  }
 }
 
 .bob-overview .bob-title {
@@ -412,8 +414,9 @@ a {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  margin-bottom: 0.3em;
+  // margin-bottom: 0.3em;
   font-size: 1vw;
+  text-align: left;
 }
 
 .bob-card-adult-video-merch .bob-actions-wrapper {
@@ -549,7 +552,7 @@ svg:not(:root) {
 }
 
 .bob-overview .bob-metadata-wrapper {
-  margin-bottom: 0.2em;
+  // margin-bottom: 0.2em;
 }
 
 .video-meta--bob-overview {
@@ -566,7 +569,7 @@ svg:not(:root) {
 .video-meta > span,
 .video-meta > svg {
   margin-right: 0.5em;
-  margin-bottom: 0.3vw;
+  // margin-bottom: 0.3vw;
 }
 
 .match-score-wrapper .show-match-score .match-score {
@@ -590,7 +593,7 @@ svg:not(:root) {
 .video-meta > span,
 .video-meta > svg {
   margin-right: 0.5em;
-  margin-bottom: 0.3vw;
+  // margin-bottom: 0.3vw;
 }
 
 .maturity-rating .maturity-number {
@@ -643,6 +646,7 @@ svg:not(:root) {
   pointer-events: none;
   padding: 0.5vw 0 0 0;
   flex: 0 0 100%;
+  z-index: 1000;
 }
 
 .bob-jawbone-chevron {
@@ -653,13 +657,27 @@ svg:not(:root) {
 }
 
 .bob-jawbone-chevron svg {
-  width: 3vw;
+  width: 2vw;
   height: 1vw;
+}
 
-  &:hover {
-    color: #e50914 !important;
-    stroke: #e50914 !important;
-  }
+.bob-card-adult-video-merch .bob-jaw-hitzone {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 10%;
+}
+
+.bob-card-adult-video-merch .bob-overlay.bob-overlay-hidden a {
+  cursor: none;
+}
+
+.bob-card-adult-video-merch .bob-jaw-hitzone:hover ~ .bob-chevron-wrapper {
+  color: #e50914;
+  stroke: #e50914;
+  stroke-width: 2px;
+  stroke-linejoin: miter;
 }
 
 span:focus {
@@ -732,7 +750,6 @@ span:focus {
     padding-bottom: 2.4vw;
     opacity: 1;
     transition: all 150ms ease;
-    font-size: 64px;
   }
   .evidence-text {
     font-size: 1.28vw;
@@ -760,7 +777,6 @@ span:focus {
     padding-bottom: 2vw;
     opacity: 1;
     transition: all 150ms ease;
-    font-size: 64px;
   }
   .evidence-text {
     font-size: 1.12vw;
@@ -782,9 +798,6 @@ span:focus {
   .video-meta--bob-overview {
     font-size: 0.96vw;
   }
-  .evidence-text {
-    font-size: 0.96vw;
-  }
   .bob-overview .bob-title {
     font-size: 1.2vw;
   }
@@ -800,7 +813,6 @@ span:focus {
     padding-bottom: 1.8vw;
     opacity: 1;
     transition: all 150ms ease;
-    font-size: 48px;
   }
   .evidence-list .evidence-separator::before {
     font-size: 1.2vw;

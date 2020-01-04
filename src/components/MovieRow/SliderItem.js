@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Like, Dislike, AddToList, ChevronDown } from "../../constants";
+import { Like, Dislike, AddToList, ChevronDown, Play } from "../../constants";
 import { formatSlideItem } from "../../utils/utils";
 
 class SliderItem extends Component {
@@ -73,8 +73,8 @@ const BobOpen = ({ url, href, name, score, limit, length }) => (
       transform: "scale(0.99999)",
       visibility: "visible",
       width: "124%",
-      height: "124%",
-      top: "-12%",
+      height: "100%",
+      top: "0",
       left: "-12%",
       transitionDuration: "500ms"
     }}
@@ -90,11 +90,18 @@ const BobOpen = ({ url, href, name, score, limit, length }) => (
       </div>
       <div className="bob-overlay">
         <div className="bob-play-hitzone"></div>
-        <a aria-label={name} className="bob-jaw-hitzone" href={href}></a>
+        <a aria-label={name} className="bob-jaw-hitzone"></a>
         <div className="bob-overview-wrapper">
           <div className="bob-overview">
             <a tabIndex="0" className="bob-play-button playLink" href={href}>
-              <span className="play-button"></span>
+              <span className="play-button">
+                <svg
+                  className="svg-icon svg-icon-play-with-ring"
+                  focusable="true"
+                >
+                  {Play}
+                </svg>
+              </span>
             </a>
             <div className="bob-title">{name}</div>
             <div className="bob-overview-resume-title-wrapper"></div>

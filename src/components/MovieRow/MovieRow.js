@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./MovieRow.scss";
 import { Carousel } from "react-bootstrap";
 import SliderItem from "./SliderItem";
+import Detail from "./Detail";
 
 const splitList = (item, list) => {
   let temp = [];
@@ -158,6 +159,7 @@ class MovieRow extends Component {
                 </div>
               </div>
             </div>
+            <Detail />
           </div>
         </div>
       </div>
