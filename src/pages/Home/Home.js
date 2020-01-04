@@ -20,11 +20,12 @@ class Home extends Component {
 
   render() {
     const { recommend } = this.state;
+    const { history } = this.props;
 
     return (
       <div style={{ overflowX: "hidden" }}>
         <Panel film={recommend} />
-        <MovieRow title={SLIDERS.title} list={SLIDERS.list} />
+        <MovieRow title={SLIDERS.title} list={SLIDERS.list} history={history} />
       </div>
     );
   }

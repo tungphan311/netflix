@@ -4,7 +4,7 @@ import { formatSlideItem } from "../../utils/utils";
 
 class SliderItem extends Component {
   render() {
-    const { hover, setHover, details, page, item } = this.props;
+    const { hover, setHover, details, page, item, history } = this.props;
     const {
       id,
       avatar,
@@ -22,6 +22,7 @@ class SliderItem extends Component {
         style={formatSlideItem(id, hover, item, page)}
         onMouseEnter={() => setHover(id)}
         onMouseLeave={() => setHover(0)}
+        onClick={() => history.push(`/watch/${id}`)}
       >
         <div className="title-card-container">
           <div
