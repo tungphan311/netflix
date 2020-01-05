@@ -4,30 +4,6 @@ import { Carousel } from "react-bootstrap";
 import SliderItem from "./SliderItem";
 import Detail from "./Detail";
 
-const splitList = (item, list) => {
-  let temp = [];
-  let newList = [];
-
-  if (item > 0) {
-    list.map((sub, index) => {
-      temp = [...temp, sub];
-
-      if (index % item === item - 1) {
-        newList = [...newList, temp];
-        temp = [];
-      }
-
-      if (index === list.length - 1) {
-        newList = [...newList, temp];
-      }
-
-      return null;
-    });
-  }
-
-  return newList;
-};
-
 class MovieRow extends Component {
   constructor(props) {
     super(props);
@@ -38,7 +14,8 @@ class MovieRow extends Component {
       page: 0,
       hover: 0,
       numOfPages: 0,
-      movies: []
+      movies: [],
+      select: 0
     };
   }
 
@@ -100,9 +77,13 @@ class MovieRow extends Component {
     this.setState({ page: selectedIndex });
   };
 
+  selectDetail = id => {
+    this.setState({ select: id });
+  };
+
   render() {
     const { title, history } = this.props;
-    const { page, hover, item, movies } = this.state;
+    const { page, hover, item, movies, select } = this.state;
 
     return (
       <div className="mvRow mvRow_title_card">
@@ -151,6 +132,8 @@ class MovieRow extends Component {
                                 page={page}
                                 item={item}
                                 history={history}
+                                selectDetail={this.selectDetail}
+                                select={select}
                               />
                             ))}
                           </Carousel.Item>
@@ -160,7 +143,7 @@ class MovieRow extends Component {
                 </div>
               </div>
             </div>
-            <Detail />
+            <Detail select={select} selectDetail={this.selectDetail} />
           </div>
         </div>
       </div>
@@ -169,3 +152,27 @@ class MovieRow extends Component {
 }
 
 export default MovieRow;
+
+const splitList = (item, list) => {
+  let temp = [];
+  let newList = [];
+
+  if (item > 0) {
+    list.map((sub, index) => {
+      temp = [...temp, sub];
+
+      if (index % item === item - 1) {
+        newList = [...newList, temp];
+        temp = [];
+      }
+
+      if (index === list.length - 1) {
+        newList = [...newList, temp];
+      }
+
+      return null;
+    });
+  }
+
+  return newList;
+};

@@ -6,3 +6,490 @@
   margin-top: 2px;
   padding: 0;
 }
+
+.jawBoneContent.open .jawBoneOpenContainer {
+  opacity: 1;
+}
+
+.jawBoneContent .jawBoneOpenContainer {
+  transition: opacity 0.44s cubic-bezier(0.5, 0, 0.1, 1),
+    -webkit-transform 440ms cubic-bezier(0.5, 0, 0.1, 1) 0s;
+  transition: transform 440ms cubic-bezier(0.5, 0, 0.1, 1) 0s,
+    opacity 0.44s cubic-bezier(0.5, 0, 0.1, 1);
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.jawBoneContent .jawBoneOpenContainer .jawBoneFadeInPlaceContainer {
+  transition: opacity 440ms cubic-bezier(0.5, 0, 0.1, 1) 0s;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.jawBoneContainer {
+  background-color: #000;
+  position: relative;
+  overflow: hidden;
+  outline: none;
+  height: 37vw;
+  transition: height 0.54s cubic-bezier(0.5, 0, 0.1, 1) 0s,
+    opacity 0.44s cubic-bezier(0.5, 0, 0.1, 1) 0.1s;
+}
+
+.jawBoneContainer .background {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  overflow: hidden;
+  transition: opacity 0.3s cubic-bezier(0.5, 0, 0.1, 1) 0s;
+}
+
+.jawBoneContainer .jawBoneBackground {
+  right: 0;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  width: 70%;
+}
+
+.image-rotator {
+  position: relative;
+  overflow: hidden;
+}
+
+.jawBoneContainer .jawBoneBackground .image-rotator-image {
+  transform: translateZ(0);
+  background-position: center 10%;
+}
+
+.image-rotator .image-rotator-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-size: cover;
+  opacity: 0;
+}
+
+.jawBoneContainer .background .vignette {
+  background: #000;
+  z-index: 2;
+  width: 30%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+
+.jawBoneContainer .background .vignette::before {
+  content: "";
+  position: absolute;
+  z-index: 10;
+  background-image: linear-gradient(to right, #000, transparent);
+  top: 0;
+  bottom: 0;
+  left: 100%;
+  width: 275px;
+}
+
+.jawBoneContainer .background .nav-shadow {
+  height: 114px;
+  background: url(https://assets.nflxext.com/en_us/akira/jawBone/nav-shadow.png)
+    no-repeat center 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  background-size: 100% 114px;
+}
+
+.jawBoneContainer .jawBone {
+  padding: 18px 0 12px 4%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+.jawBoneContainer .title.original {
+  height: 7vw;
+}
+
+.jawBoneContainer .title {
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  line-height: 1.3;
+  margin: 0 0 0.2em 0;
+  font-weight: bold;
+  color: #fff;
+  font-size: 3vw;
+  width: 670px;
+}
+
+.jawBoneContainer .title .logo {
+  height: 7vw;
+  transform-origin: 0 0;
+  transition: transform 300ms;
+}
+
+.jawBoneContainer .jawBoneCommon {
+  display: inline-block;
+  margin-bottom: 20px;
+  width: 100%;
+  height: 33.3vw;
+}
+
+.jawBoneContainer .jawBonePanes {
+  position: relative;
+  opacity: 1;
+  z-index: 2;
+  transition: transform 300ms, -webkit-transform 300ms, -moz-transform 300ms,
+    -o-transform 300ms;
+}
+
+.jawBoneContainer .jawBonePanes .jawBonePane {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  color: #808080;
+  opacity: 0;
+}
+
+.jawBonePane .overview,
+.jawBonePane .content-warning {
+  min-width: 330px;
+  color: #999;
+  line-height: 1.3;
+  font-size: 1.5vw;
+}
+
+.jawBonePane .overview {
+  margin-top: 0.3em;
+}
+
+.jaw-play-hitzone {
+  position: absolute;
+  right: 5%;
+  top: -5vw;
+  bottom: -6vw;
+  width: 55%;
+  z-index: 11;
+  cursor: pointer;
+}
+
+.jawBoneContainer .jawBoneCommon .meta {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  font-size: 1.1vw;
+  height: 1.1vw;
+  min-height: 1.1vw;
+  line-height: 1.1vw;
+}
+
+.video-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.jawBoneContainer .jawBoneCommon .meta > span {
+  font-weight: bold;
+}
+
+.match-score-wrapper {
+  color: #fff;
+}
+
+.match-score-wrapper .rating-inner {
+  transition: margin-right 550ms cubic-bezier(0.86, 0, 0.07, 1) 1650ms;
+  display: flex;
+}
+
+.jawBonePane .overview .supplemental-message {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  color: #eee;
+  margin: 0.8em 0 0.6em 0;
+}
+
+.jawBonePane .synopsiss {
+  margin: 0.8em 0 0 0;
+  width: 40vw;
+}
+
+.jawBonePane .overview .jawbone-actions {
+  margin: 0.8em 0;
+  display: flex;
+  align-items: center;
+}
+
+.nf-flat-button-primary {
+  background-color: #e50914;
+  border-color: #ff0a16;
+}
+
+.jawbone-actions .nf-flat-button .nf-flat-button-text {
+  text-transform: uppercase;
+}
+
+.nf-flat-button .nf-flat-button-icon {
+  vertical-align: middle;
+  margin-right: 0.71em;
+  background-color: transparent;
+  font-size: inherit;
+}
+
+.jawbone-actions .nf-flat-button {
+  font-size: 1vw;
+  font-weight: bold;
+  margin-right: 0.75em;
+  padding: 0.57em 1.35em;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  background-image: none;
+  margin-bottom: 0;
+}
+
+.nf-flat-button .nf-flat-button-icon-mylist-add:before {
+  content: "\e641";
+}
+
+.jawBonePane .overview .jawbone-actions .thumbs-container {
+  margin: 0;
+  display: inline-block;
+}
+
+.nf-svg-button-wrapper .nf-svg-button.simpleround.clicked {
+  animation-duration: 400ms;
+  animation-name: buttonFlash;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+}
+
+@keyframes buttonFlash {
+  0% {
+    background: rgba(0, 0, 0, 0.5);
+  }
+  12% {
+    background: rgba(255, 255, 255, 0.7);
+  }
+  100% {
+    background: rgba(0, 0, 0, 0.5);
+  }
+}
+
+.jawBonePane .overview .meta-lists {
+  margin: 20px 0 0 0;
+  width: 40vw;
+}
+
+.jawBonePane .overview .inline-list {
+  font-size: 0.9em;
+  color: #828282;
+  margin: 2px 0 0 0;
+}
+
+.jawBonePane .overview .inline-list .list-label {
+  color: white;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.jawBonePane .overview .inline-list a {
+  color: #828282;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.jawBoneContainer .close-button {
+  border: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 1.3vw;
+  padding: 20px 20px 40px 40px;
+  z-index: 12;
+  cursor: pointer;
+  color: #fff;
+  transform-origin: 60% 35%;
+  background: radial-gradient(
+    ellipse at top right,
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(0, 0, 0, 0) 70%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  background-position: 50% -50%;
+}
+
+.icon-close:before {
+  content: "\e762";
+}
+
+.jawBoneContainer .menu {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  font-size: 1vw;
+  z-index: 100;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  pointer-events: none;
+}
+
+.jawBoneContainer .menu li:hover,
+.jawBoneContainer .menu li a:focus {
+  outline: none;
+  color: #fff;
+}
+
+.jawBoneContainer .menu li.current {
+  cursor: default;
+  color: #fff;
+}
+
+.jawBoneContainer .menu li {
+  padding: 1em 1.5em 0;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  color: #ccc;
+  min-width: 5%;
+  pointer-events: auto;
+}
+
+.jawBoneContainer .menu li.current span {
+  transform: translateY(0);
+  background-color: #e50914;
+}
+
+.jawBoneContainer .menu li span {
+  height: 0.33em;
+  display: block;
+  width: 100%;
+  margin-top: 0.66em;
+  transform: translateY(0.4em);
+  transition: transform 200ms linear, -webkit-transform 200ms linear,
+    -moz-transform 200ms linear, -o-transform 200ms linear;
+}
+
+.jawBoneContainer .menu a {
+  margin: 0;
+  padding: 0;
+  letter-spacing: 1px;
+  color: inherit;
+  font-weight: bold;
+  text-align: center;
+  pointer-events: auto;
+}
+
+.jawBoneContainer .title .logo.small-logo {
+  transform: scale(0.7);
+}
+
+.jawBoneContainer .jawBonePanes.offset-for-logo {
+  transform: translate(0, -2.3vw);
+}
+
+.jawBoneOpenContainer.jawBoneOpen-enter,
+.jawBoneOpenContainer.jawBoneOpen-leave.jawBoneOpen-leave-active {
+  transform: translateY(-80px);
+}
+.jawBoneOpenContainer.jawBoneOpen-enter .jawBoneContainer,
+.jawBoneOpenContainer.jawBoneOpen-leave.jawBoneOpen-leave-active
+  .jawBoneContainer {
+  opacity: 0;
+}
+.jawBoneOpenContainer.jawBoneOpen-enter.jawBoneOpen-enter-active,
+.jawBoneOpenContainer.jawBoneOpen-leave {
+  transform: translateY(0);
+
+  .jawBoneContainer {
+    height: 0;
+  }
+}
+
+@media screen and (max-width: 499px) {
+  .jawBoneContainer .title {
+    font-size: 14px;
+    width: 55vw;
+  }
+}
+
+@media screen and (min-width: 500px) and (max-width: 799px) {
+  .jawBoneContainer .title {
+    font-size: 14px;
+    width: 55vw;
+  }
+}
+
+@media screen and (min-width: 800px) and (max-width: 1099px) {
+  .jawBoneContainer {
+    height: 42vw;
+  }
+  .jawBoneContainer .title {
+    font-size: 3vw;
+    width: 55vw;
+  }
+  .jawBoneContainer .jawBoneCommon {
+    height: 37.8vw;
+  }
+}
+
+@media screen and (min-width: 1100px) and (max-width: 1399px) {
+  .jawBoneContainer {
+    height: 37vw;
+  }
+  .jawBoneContainer .title {
+    font-size: 3vw;
+    width: 50vw;
+  }
+  .jawBoneContainer .jawBoneCommon {
+    height: 33.3vw;
+  }
+  .jawBonePane .overview,
+  .jawBonePane .content-warning {
+    font-size: 1.275vw;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .jawBoneContainer {
+    height: 32vw;
+  }
+  .jawBoneContainer .title {
+    font-size: 2.4vw;
+    width: 40vw;
+  }
+  .jawBoneContainer .jawBoneCommon {
+    height: 28.8vw;
+  }
+  .jawBonePane .overview,
+  .jawBonePane .content-warning {
+    font-size: 1.125vw;
+  }
+}

@@ -20,7 +20,9 @@ export const divideArray = (array, width) => {
   return newArray;
 };
 
-export const formatSlideItem = (id, hover, item, page) => {
+export const formatSlideItem = (id, hover, item, page, select) => {
+  if (select > 0) return;
+
   if (item === 9)
     if (hover > 0) {
       if (hover % 9 === 1) {

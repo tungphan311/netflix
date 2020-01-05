@@ -23,7 +23,7 @@ class Home extends Component {
     const { history } = this.props;
 
     return (
-      <div style={{ overflowX: "hidden" }}>
+      <div>
         <Panel film={recommend} />
         <MovieRow title={SLIDERS.title} list={SLIDERS.list} history={history} />
       </div>

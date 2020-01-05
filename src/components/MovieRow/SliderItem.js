@@ -4,7 +4,17 @@ import { formatSlideItem } from "../../utils/utils";
 
 class SliderItem extends Component {
   render() {
-    const { hover, setHover, details, page, item, history } = this.props;
+    const {
+      hover,
+      setHover,
+      details,
+      page,
+      item,
+      history,
+      selectDetail,
+      select
+    } = this.props;
+
     const {
       id,
       avatar,
@@ -19,19 +29,22 @@ class SliderItem extends Component {
     return (
       <div
         className="slider-item"
-        style={formatSlideItem(id, hover, item, page)}
+        style={formatSlideItem(id, hover, item, page, select)}
         onMouseEnter={() => setHover(id)}
         onMouseLeave={() => setHover(0)}
-        onClick={() => history.push(`/watch/${id}`)}
       >
         <div className="title-card-container">
           <div
             className={`slider-refocus title-card ${
-              hover === id ? "is-bob-open" : ""
+              hover === id && !select ? "is-bob-open" : ""
             }`}
           >
             <div className="ptrack-content">
-              <a href={href} tabIndex="0" className="slider-refocus">
+              <a
+                tabIndex="0"
+                className="slider-refocus"
+                onClick={() => selectDetail(id)}
+              >
                 <div className="boxart-size-vertical boxart-container">
                   <img
                     className="boxart-image boxart-image-in-padded-container"
@@ -42,20 +55,41 @@ class SliderItem extends Component {
                     <p className="fallback-text">{name}</p>
                   </div>
                 </div>
+                {select !== id && (
+                  <div className="click-to-change-JAW-indicator is-another-JAW-open">
+                    <div className="bob-jawbone-chevron">{ChevronDown}</div>
+                  </div>
+                )}
               </a>
+              {select === id && (
+                <div
+                  className="title-card-jawbone-focus"
+                  style={{ opacity: 1, transitionDuration: "300ms" }}
+                >
+                  <div className="title-card-focus-ring"></div>
+                  <a className="title-card-play playLink" href={href}>
+                    <div className="playRing">
+                      <div className="play icon-play"></div>
+                    </div>
+                  </a>
+                </div>
+              )}
             </div>
             <div className="bob-container">
               <span>
-                {hover === id ? (
+                {hover === id && !select && (
                   <BobOpen
+                    id={id}
                     url={background}
                     href={href}
                     name={name}
                     score={score}
                     limit={limit}
                     length={length}
+                    selectDetail={selectDetail}
+                    history={history}
                   />
-                ) : null}
+                )}
               </span>
             </div>
           </div>
@@ -67,7 +101,17 @@ class SliderItem extends Component {
 
 export default SliderItem;
 
-const BobOpen = ({ url, href, name, score, limit, length }) => (
+const BobOpen = ({
+  id,
+  url,
+  href,
+  name,
+  score,
+  limit,
+  length,
+  selectDetail,
+  history
+}) => (
   <div
     className="bob-card bob-card-adult-video-merch"
     style={{
@@ -90,8 +134,15 @@ const BobOpen = ({ url, href, name, score, limit, length }) => (
         ></div>
       </div>
       <div className="bob-overlay">
-        <div className="bob-play-hitzone"></div>
-        <a aria-label={name} className="bob-jaw-hitzone"></a>
+        <div
+          className="bob-play-hitzone"
+          onClick={() => history.push(`/watch/${id}`)}
+        ></div>
+        <a
+          aria-label={name}
+          className="bob-jaw-hitzone"
+          onClick={() => selectDetail(id)}
+        ></a>
         <div className="bob-overview-wrapper">
           <div className="bob-overview">
             <a tabIndex="0" className="bob-play-button playLink" href={href}>
