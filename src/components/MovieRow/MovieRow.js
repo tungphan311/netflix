@@ -14,8 +14,7 @@ class MovieRow extends Component {
       page: 0,
       hover: 0,
       numOfPages: 0,
-      movies: [],
-      select: 0
+      movies: []
     };
   }
 
@@ -77,13 +76,9 @@ class MovieRow extends Component {
     this.setState({ page: selectedIndex });
   };
 
-  selectDetail = id => {
-    this.setState({ select: id });
-  };
-
   render() {
-    const { title, history } = this.props;
-    const { page, hover, item, movies, select } = this.state;
+    const { title, history, select } = this.props;
+    const { page, hover, item, movies, width } = this.state;
 
     return (
       <div className="mvRow mvRow_title_card">
@@ -95,55 +90,53 @@ class MovieRow extends Component {
         <div className="rowContainer verticalBoxArtRow rowContainer_title_card">
           <div className="ptrack-container">
             <div className="rowContent slider-hover-trigger-layer">
-              <div className="slider">
-                <div className="sliderMask showPeek">
-                  <div className="sliderContent row-with-x-columns" id="slider">
-                    <Carousel
-                      interval={null}
-                      onSelect={this.handleSelect}
-                      prevIcon={
-                        <span
-                          className="handle handlePrev active"
-                          tabIndex="0"
-                          role="button"
-                        >
-                          <b className="indicator-icon icon-leftCaret"></b>
-                        </span>
-                      }
-                      nextIcon={
-                        <span
-                          className="handle handleNext active"
-                          tabIndex="0"
-                          role="button"
-                        >
-                          <b className="indicator-icon icon-rightCaret"></b>
-                        </span>
-                      }
-                    >
-                      {movies &&
-                        movies.map((subList, index) => (
-                          <Carousel.Item key={index}>
-                            {subList.map(sub => (
-                              <SliderItem
-                                key={sub.id}
-                                hover={hover}
-                                setHover={this.setHover}
-                                details={sub}
-                                page={page}
-                                item={item}
-                                history={history}
-                                selectDetail={this.selectDetail}
-                                select={select}
-                              />
-                            ))}
-                          </Carousel.Item>
-                        ))}
-                    </Carousel>
-                  </div>
-                </div>
-              </div>
+              <Carousel
+                interval={null}
+                onSelect={this.handleSelect}
+                prevIcon={
+                  <span
+                    className="handle handlePrev active"
+                    tabIndex="0"
+                    role="button"
+                  >
+                    <b className="indicator-icon icon-leftCaret"></b>
+                  </span>
+                }
+                nextIcon={
+                  <span
+                    className="handle handleNext active"
+                    tabIndex="0"
+                    role="button"
+                  >
+                    <b className="indicator-icon icon-rightCaret"></b>
+                  </span>
+                }
+              >
+                {movies &&
+                  movies.map((subList, index) => (
+                    <Carousel.Item key={index}>
+                      {subList.map(sub => (
+                        <SliderItem
+                          key={sub.id}
+                          hover={hover}
+                          setHover={this.setHover}
+                          details={sub}
+                          page={page}
+                          item={item}
+                          history={history}
+                          selectDetail={this.props.selectDetail}
+                          select={select}
+                        />
+                      ))}
+                    </Carousel.Item>
+                  ))}
+              </Carousel>
             </div>
-            <Detail select={select} selectDetail={this.selectDetail} />
+            <Detail
+              select={select}
+              selectDetail={this.props.selectDetail}
+              width={width}
+            />
           </div>
         </div>
       </div>

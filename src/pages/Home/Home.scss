@@ -1,0 +1,29 @@
+.has-open-jaw {
+  padding: 0 0 39vw;
+}
+
+@media screen and (max-width: 499px) {
+  .has-open-jaw {
+    padding: 0 0 44vw;
+  }
+}
+@media screen and (min-width: 500px) and (max-width: 799px) {
+  .has-open-jaw {
+    padding: 0 0 42vw;
+  }
+}
+@media screen and (min-width: 800px) and (max-width: 1099px) {
+  .has-open-jaw {
+    padding: 0 0 44vw;
+  }
+}
+@media screen and (min-width: 1100px) and (max-width: 1399px) {
+  .has-open-jaw {
+    padding: 0 0 39vw;
+  }
+}
+@media screen and (min-width: 1400px) {
+  .has-open-jaw {
+    padding: 0 0 34vw;
+  }
+}

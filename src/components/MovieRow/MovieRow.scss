@@ -45,12 +45,12 @@
   padding: 0;
   box-sizing: border-box;
 
-  .slider {
+  .slide {
     z-index: 2;
   }
 }
 
-.slider {
+.slide {
   position: relative;
   margin: 0;
   padding: 0 4%;
@@ -60,7 +60,7 @@
     background: rgba(20, 20, 20, 0.5);
 
     &.handlePrev {
-      left: -30px;
+      left: 0;
     }
 
     &.active {
@@ -79,7 +79,8 @@
   width: 30px;
 }
 
-.slider .handle {
+.carousel-control-next,
+.carousel-control-prev {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -91,40 +92,40 @@
   color: #fff;
 }
 
-.slider .sliderMask .sliderContent .slider-item:hover {
+.slide .carousel-inner .carousel-item .slider-item:hover {
   z-index: 2;
 }
 
-.slider .handle.handlePrev .indicator-icon {
+.slide .handle.handlePrev .indicator-icon {
   transform-origin: 55% 50%;
 }
 
-.slider .handle.handleNext .indicator-icon {
+.slide .handle.handleNext .indicator-icon {
   transform-origin: 45% 50%;
 }
 
-.slider .handle.handleNext {
-  right: -30px;
+.slide .handle.handleNext {
+  right: 0;
 }
 
-.slider-hover-trigger-layer:hover .slider .handle.active:hover .indicator-icon {
+.slider-hover-trigger-layer:hover .slide .handle.active:hover .indicator-icon {
   font-weight: bold;
   transform: scale(1.25);
   color: #fff;
 }
 
-.slider-hover-trigger-layer:hover .slider .handle.active:focus .indicator-icon {
+.slider-hover-trigger-layer:hover .slide .handle.active:focus .indicator-icon {
   display: block;
   font-weight: bold;
   transform: scale(1.25);
   color: #fff;
 }
 
-.slider-hover-trigger-layer:hover .slider .handle.active .indicator-icon {
+.slider-hover-trigger-layer:hover .slide .handle.active .indicator-icon {
   display: block;
 }
 
-.slider .handle > .indicator-icon {
+.slide .handle > .indicator-icon {
   display: none;
   height: auto;
   align-self: center;
@@ -166,20 +167,26 @@
   display: block;
 }
 
-.slider .sliderMask {
-  overflow-x: hidden;
+.carousel-inner {
+  overflow-x: visible;
   padding-bottom: 1px;
 }
 
-.slider .sliderMask.showPeek {
+.carousel-inner {
+  position: relative;
+  width: 100%;
+  overflow: unset;
+}
+
+.slide .carousel-inner.showPeek {
   overflow-x: visible;
 }
 
-.slider .sliderMask .sliderContent {
+.slide .carousel-inner .carousel-item {
   white-space: nowrap;
 }
 
-.slider .sliderMask .sliderContent .slider-item {
+.slide .carousel-inner .carousel-item .slider-item {
   box-sizing: border-box;
   z-index: 1;
   display: inline-block;
@@ -206,7 +213,7 @@
   background: rgba(20, 20, 20, 0.7);
 }
 
-.rowContainer .rowContent .slider .handle {
+.rowContainer .rowContent .slide .handle {
   background: rgba(20, 20, 20, 0.5);
 }
 
@@ -351,7 +358,7 @@ a {
   align-items: flex-end;
   box-sizing: border-box;
   border: solid 2px #141414;
-  padding: 0 2% 4px 2.5%;
+  padding: 0 2% 2% 2.5%;
   background-color: rgba(0, 0, 0, 0);
   background-image: linear-gradient(
     to bottom,
@@ -369,7 +376,7 @@ a {
   top: 0;
   left: 0;
   right: 0;
-  height: 90%;
+  height: 80%;
 }
 
 .verticalBoxArtRow .title-card .bob-card .bob-overlay .bob-overview-wrapper {
@@ -392,6 +399,7 @@ a {
   position: relative;
   display: inline-block;
   transform: translateX(50%);
+  margin-bottom: 3%;
 }
 
 .bob-card-adult-video-merch
@@ -658,7 +666,7 @@ svg:not(:root) {
 }
 
 .bob-jawbone-chevron svg {
-  width: 2vw;
+  width: 3vw;
   height: 1vw;
 }
 
@@ -667,7 +675,7 @@ svg:not(:root) {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 10%;
+  height: 20%;
 }
 
 .bob-card-adult-video-merch .bob-overlay.bob-overlay-hidden a {
@@ -825,11 +833,7 @@ span:focus {
 }
 
 @media screen and (max-width: 499px) {
-  .rowContainer.verticalBoxArtRow
-    .rowContent
-    .slider
-    .row-with-x-columns
-    .slider-item {
+  .rowContainer.verticalBoxArtRow .rowContent .slide .slider-item {
     width: 25%;
   }
   .bob-overview .bob-title {
@@ -846,11 +850,7 @@ span:focus {
   }
 }
 @media screen and (min-width: 500px) and (max-width: 799px) {
-  .rowContainer.verticalBoxArtRow
-    .rowContent
-    .slider
-    .row-with-x-columns
-    .slider-item {
+  .rowContainer.verticalBoxArtRow .rowContent .slide .slider-item {
     width: 25%;
   }
   .evidence-text {
@@ -867,11 +867,7 @@ span:focus {
   }
 }
 @media screen and (min-width: 800px) and (max-width: 1099px) {
-  .rowContainer.verticalBoxArtRow
-    .rowContent
-    .slider
-    .row-with-x-columns
-    .slider-item {
+  .rowContainer.verticalBoxArtRow .rowContent .slide .slider-item {
     width: calc(100% / 6);
   }
   .bob-overview .bob-play-button .play-button {
@@ -894,11 +890,7 @@ span:focus {
   }
 }
 @media screen and (min-width: 1100px) and (max-width: 1440px) {
-  .rowContainer.verticalBoxArtRow
-    .rowContent
-    .slider
-    .row-with-x-columns
-    .slider-item {
+  .rowContainer.verticalBoxArtRow .rowContent .slide .slider-item {
     width: 12.5%;
   }
   .bob-overview .bob-play-button .play-button {
@@ -921,7 +913,7 @@ span:focus {
   }
 }
 @media screen and (min-width: 1441px) {
-  .slider .handle > .indicator-icon {
+  .slide .handle > .indicator-icon {
     font-size: 2em;
   }
   .video-meta--bob-overview {
@@ -930,11 +922,7 @@ span:focus {
   .bob-overview .bob-title {
     font-size: 1.2vw;
   }
-  .rowContainer.verticalBoxArtRow
-    .rowContent
-    .slider
-    .row-with-x-columns
-    .slider-item {
+  .rowContainer.verticalBoxArtRow .rowContent .slide .slider-item {
     width: calc(100% / 9);
   }
   .bob-overview .bob-play-button .play-button {
@@ -945,5 +933,12 @@ span:focus {
   }
   .evidence-list .evidence-separator::before {
     font-size: 1.2vw;
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .carousel-control-next,
+  .carousel-control-prev {
+    width: 60px;
   }
 }

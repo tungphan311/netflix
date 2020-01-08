@@ -26,16 +26,6 @@ function DetailMenu({ selected, handleSelect }) {
         <span></span>
       </li>
       <li
-        className={`MoreLikeThis ${className("MoreLikeThis")}`}
-        id="MoreLikeThis"
-        onClick={() => handleSelect("MoreLikeThis")}
-      >
-        <a role="link" tabIndex="0">
-          MORE LIKE THIS
-        </a>
-        <span></span>
-      </li>
-      <li
         className={`ShowDetails ${className("ShowDetails")}`}
         id="ShowDetails"
         onClick={() => handleSelect("ShowDetails")}

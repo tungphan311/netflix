@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Like, Dislike, AddToList, ChevronDown, Play } from "../../constants";
+import { AddToList, ChevronDown, Play } from "../../constants";
 import { formatSlideItem } from "../../utils/utils";
 
 class SliderItem extends Component {
@@ -118,8 +118,8 @@ const BobOpen = ({
       transform: "scale(0.99999)",
       visibility: "visible",
       width: "124%",
-      height: "100%",
-      top: "0",
+      height: "124%",
+      top: "-12%",
       left: "-12%",
       transitionDuration: "500ms"
     }}
@@ -191,48 +191,6 @@ const BobOpen = ({
         </div>
         <div className="bob-actions-wrapper">
           <span className="ActionButtons">
-            <div className="thumbs-component thumbs thumbs-vertical animated unrated">
-              <div
-                className="nf-svg-button-wrapper thumb-container thumb-up-container "
-                data-uia=""
-              >
-                <a
-                  role="link"
-                  data-rating="2"
-                  tabIndex="0"
-                  className="nf-svg-button simpleround"
-                  aria-label="Rate thumbs up"
-                >
-                  <svg
-                    data-rating="2"
-                    className="svg-icon svg-icon-thumb-up"
-                    focusable="true"
-                  >
-                    {Like}
-                  </svg>
-                </a>
-              </div>
-              <div
-                className="nf-svg-button-wrapper thumb-container thumb-down-container "
-                data-uia=""
-              >
-                <a
-                  role="link"
-                  data-rating="1"
-                  tabIndex="0"
-                  className="nf-svg-button simpleround"
-                  aria-label="Rate thumbs down"
-                >
-                  <svg
-                    data-rating="1"
-                    className="svg-icon svg-icon-thumb-down"
-                    focusable="true"
-                  >
-                    {Dislike}
-                  </svg>
-                </a>
-              </div>
-            </div>
             <div className="ptrack-content">
               <div
                 className="nf-svg-button-wrapper mylist-button"
