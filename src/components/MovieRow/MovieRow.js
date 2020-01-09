@@ -14,7 +14,8 @@ class MovieRow extends Component {
       page: 0,
       hover: 0,
       numOfPages: 0,
-      movies: []
+      movies: [],
+      show: false
     };
   }
 
@@ -70,19 +71,35 @@ class MovieRow extends Component {
   };
 
   render() {
-    const { title, history, select } = this.props;
+    const { title, history, select, list } = this.props;
     const { page, hover, item, movies, width } = this.state;
 
     return (
-      <div className="mvRow mvRow_title_card">
+      <div
+        className="mvRow mvRow_title_card"
+        onMouseEnter={() => this.setState({ show: true })}
+        onMouseLeave={() => this.setState({ show: false })}
+      >
         <h2 className="rowHeader">
           <span className="rowTitle" aria-label={title}>
             <div className="row-header-title">{title}</div>
+            <div className="aro-row-header">
+              <div className="see-all-link">Explore All</div>
+              <div
+                className={`aro-row-chevron icon-akiraCaretRight ${
+                  this.state.show ? "show-chevron" : ""
+                }`}
+              ></div>
+            </div>
           </span>
         </h2>
         <div className="rowContainer verticalBoxArtRow rowContainer_title_card">
           <div className="ptrack-container">
-            <div className="rowContent slider-hover-trigger-layer">
+            <div
+              className={`rowContent slider-hover-trigger-layer ${
+                list.length <= item ? "no-indicator" : ""
+              } `}
+            >
               <Carousel
                 interval={null}
                 onSelect={this.handleSelect}

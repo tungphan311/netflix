@@ -72,6 +72,11 @@
 .carousel-indicators {
   top: -30px;
   z-index: 0;
+  opacity: 0;
+}
+
+.slider-hover-trigger-layer:hover .carousel-indicators {
+  opacity: 1;
 }
 
 .carousel-control-next,
@@ -90,6 +95,57 @@
   justify-content: center;
   display: flex;
   color: #fff;
+}
+
+.rowTitle .aro-row-header {
+  display: table-cell;
+  vertical-align: bottom;
+}
+
+.rowTitle .aro-row-header .see-all-link {
+  display: inline-block;
+  font-size: 0.9vw;
+  margin-right: 4px;
+  max-width: 0;
+  line-height: 0.8vw;
+  transition: max-width 1s, opacity 1s, transform 750ms, -webkit-transform 750ms,
+    -moz-transform 750ms, -o-transform 750ms;
+  white-space: nowrap;
+  vertical-align: bottom;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.rowTitle .aro-row-chevron {
+  display: none;
+  transition: transform 750ms, -webkit-transform 750ms, -moz-transform 750ms,
+    -o-transform 750ms;
+  font-size: 0.9vw;
+  vertical-align: bottom;
+}
+
+.icon-akiraCaretRight:before {
+  content: "\e658";
+}
+
+span.rowTitle:hover .aro-row-header .aro-row-chevron,
+span.rowTitle:focus .aro-row-header .aro-row-chevron {
+  transform: translate(1vw, 0);
+  font-size: 0.65vw;
+  line-height: 0.8vw;
+}
+
+span.rowTitle:hover .aro-row-header .see-all-link,
+span.rowTitle:focus .aro-row-header .see-all-link {
+  max-width: 200px;
+  transform: translate(1vw, 0);
+  opacity: 1;
+}
+
+.show-chevron {
+  display: inline-block !important;
+  font-size: 0.9vw !important;
+  vertical-align: bottom !important;
 }
 
 .slide .carousel-inner .carousel-item .slider-item:hover {
@@ -386,6 +442,16 @@ a {
 .bob-card-adult-video-merch .bob-overview-wrapper {
   flex: 0 1 90%;
   max-width: 88%;
+}
+
+.no-indicator {
+  .carousel-control-next,
+  .carousel-control-prev {
+    display: none;
+  }
+  .carousel-indicators {
+    display: none;
+  }
 }
 
 .bob-overview {
