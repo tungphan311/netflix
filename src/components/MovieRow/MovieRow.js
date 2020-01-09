@@ -29,6 +29,7 @@ class MovieRow extends Component {
 
   updateWindowDimensions = () => {
     const width = window.innerWidth;
+    const { list } = this.props;
 
     const item =
       width < 800
@@ -38,17 +39,9 @@ class MovieRow extends Component {
         : width >= 1100 && width < 1441
         ? 8
         : 9;
-    this.setState({ width, item });
-  };
 
-  componentDidUpdate = () => {
-    const { item, movies } = this.state;
-    const { list } = this.props;
-
-    if (item && !movies.length) {
-      const newList = splitList(item, list);
-      this.setState({ movies: newList });
-    }
+    const newList = splitList(item, list);
+    this.setState({ width, item, movies: newList });
   };
 
   renderIndicator = () => {

@@ -4,6 +4,7 @@ import { FILM_DETAILS } from "../../constants";
 import DetailMenu from "./DetailMenu";
 import Overview from "./Overview";
 import EpisodeContainer from "./Episode";
+import ShowDetail from "./ShowDetail";
 
 function Detail({ select, selectDetail, width }) {
   const [selectedPane, setSelectedPane] = useState("Overview");
@@ -82,6 +83,7 @@ function Detail({ select, selectDetail, width }) {
                       {selectedPane === "Episodes" && (
                         <EpisodeContainer id={select} width={width} />
                       )}
+                      {selectedPane === "ShowDetails" && <ShowDetail />}
                     </div>
                   </div>
                 </div>

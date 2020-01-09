@@ -442,5 +442,131 @@ export const FILM_DETAILS = {
         actor: "Michael B. Jordan"
       }
     ]
+  },
+  3: {
+    id: 3,
+    title: "Vagabond",
+    releaseDate: "April 26, 2019",
+    isOut: true,
+    score: "97% Match",
+    year: "2019",
+    limit: "18+",
+    duration: "1 Season",
+    background:
+      "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABVpuQml4Ic_xGZsjzxgG2k87gUnOxe92Yfd-Z5G2GH-FXvj1Vs9sFZYqfGqml7Tqimm4iyOngtdNynD-hyJo2PV2iB-G.webp?r=f8c",
+    logo:
+      "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/jsgGe9NCko3c-j0wGZ7FSwVlHs0/AAAABc0GzjNWDRQRDDEYS5cWcYGKI4TLBclrgQcg5SThUIQiiq66AhV0yWhgS-g_lZyyeE2s5wHkF4OwI5gy0JjixCqHO2SGYi93xWBWHNh-eTZ-nEKtFM8zBVB9xg0Ca95cCOYcl6ic6mMy3qvetq1S_6kJ0kCxNOeg3Asumk5eJQ4.webp?r=d36",
+    description:
+      "While strange rumors about their ill king grip a kingdom, the crown prince becomes their only hope against a mysterious plague overtaking the land.",
+    backgroundPath:
+      "https://occ-0-58-64.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABR8CznPUUUuYW2qfB2l5fsuJbW2_jAUnoSSkS5uN14CRSAu3n2arG7nAsEdb_5U8YmSKetcfHh5wDYfKEIkpMHp1uYfL.jpg",
+    starring: [
+      { href: 30123033, name: "Ju Ji-hoon" },
+      { href: 30078617, name: "Ryu Seung-ryong" },
+      { href: 20036721, name: "Bae Doona" }
+    ],
+    genres: [
+      { href: "/browse?genre=historical", title: "Historical" },
+      { href: "/browse?genre=horror", title: "Horror" },
+      { href: "/browse?genre=netflix%20original", title: "Netflix original" }
+    ],
+    seasons: [{ id: 1, title: "Season 1" }],
+    episode: {
+      1: [
+        {
+          href: "/watch/2101",
+          title: "Episode 1",
+          ep: 1,
+          length: "56m",
+          description:
+            "Officials find notices in Hanyang alleging the king is dead. Crown Prince Lee Chang tries to check on his father, but the young queen stands in his way.",
+          background:
+            "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/9pS1daC2n6UGc3dUogvWIPMR_OU/AAAABaicZ43pSrQkXOnz16Ir4cUMoJkrSq9NA5lpeDEmD1Q4vvgaluPQXCkemfXZrgpHMVju6AoLe8oqUQ4s9Pu-Jj4wqCckk2bo_hl60utztOjhNp5O.webp?r=53e"
+        },
+        {
+          href: "/watch/2102",
+          title: "Episode 2",
+          ep: 2,
+          length: "53m",
+          description:
+            "Prince Chang and Mu-yeong arrive at Jiyulheon, where they make a horrific discovery. Seo-bi’s story of what she saw eerily resonates with Prince Chang.",
+          background:
+            "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/9pS1daC2n6UGc3dUogvWIPMR_OU/AAAABeOuHWpBCGi_POGRdKuJOI7b2p-QRjPus36zBgcwfMH04OJgYZ_oslLYVfcDNzLBWnan7NsS2fFjVH0gN32jrhXe95Vg6BEdRwp9NU5SxsPOOOdb.webp?r=e18"
+        },
+        {
+          href: "/watch/2103",
+          title: "Episode 3",
+          ep: 3,
+          length: "54m",
+          description:
+            "Night leads to chaos in Dongnae. Cho Hak-ju and the queen oversee the king’s care. Prince Chang reaches a disquieting conclusion and vows to fight back.",
+          background:
+            "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/9pS1daC2n6UGc3dUogvWIPMR_OU/AAAABZ_vYPt2C01HxCgqn7cBGkgoYPmmuy6uxsJhCtB7mWfjEA60HEzdmG831OoYVUxh8VFUGzH5aptZZ_kbY7vbfVClp9CRPlAtOU4C6KXybtM0waL4.webp?r=d21"
+        },
+        {
+          href: "/watch/2104",
+          title: "Episode 4",
+          ep: 4,
+          length: "52m",
+          description:
+            "On his way to seek Lord Ahn Hyeon’s help, Prince Chang encounters a group of stranded survivors and leads them to Jiyulheon, following Seo-bi’s advice.",
+          background:
+            "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/9pS1daC2n6UGc3dUogvWIPMR_OU/AAAABeKTgcU0KsX228tm3K4bKVHIQstVxqqvuJTlQ4PewPoR3X7XaBe8cTY7R69K1x7cBBDRAP3nU1PRNihEC5ypjPKzF9oy7o_pQQQ258qsPAjLz4Ns.webp?r=600"
+        },
+        {
+          href: "/watch/2105",
+          title: "Episode 5",
+          ep: 5,
+          length: "53m",
+          description:
+            "Prince Chang’s group comes across a village that oddly seems to be well-fed. While taking refuge at Lord Ahn Hyeon’s, Seo-bi notes something peculiar.",
+          background:
+            "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/9pS1daC2n6UGc3dUogvWIPMR_OU/AAAABXfIgNpLHwT_PFjBYE-N4CMqVIX2MyWXoqxY4V5XGJmsuU57f_JV4GVGWUoAV4SStiB0Ki8isK7OjC0TtiQGkNIuQrVf-QxV8K1yuM7ZmKJAKyGl.webp?r=6cb"
+        },
+        {
+          href: "/watch/2106",
+          title: "Episode 6",
+          ep: 6,
+          length: "55m",
+          description:
+            "Cho Hak-ju has chilling words for the queen, who’s hiding a sinister secret. Prince Chang orders Sangju’s defenses, but Seo-bi senses something awry.",
+          background:
+            "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/9pS1daC2n6UGc3dUogvWIPMR_OU/AAAABSSZ_xnfU0qgD6oHNJSO3g_XfSeS2NmBld3KjH58oNhnxIDFIiYcEvmDflq6qoBAMTjYYEK6aZGo0JQdTPXoLPxNZ5tVM_YixFpyIf2-3dcjMHIO.webp?r=69a"
+        }
+      ]
+    },
+    descriptionItems: [
+      {
+        title: "Director",
+        content: "Anthony Russo, Joe Russo"
+      },
+      {
+        title: "Producer",
+        content: "Kevin Feige"
+      },
+      {
+        title: "Screenplay writers",
+        content: "Christopher Markus, Stephen McFeely"
+      },
+      {
+        title: "Executive producers",
+        content: "Stan Lee, Trinh Tran"
+      }
+    ],
+    casts: [
+      {
+        imagePath: "https://i.redd.it/ok6isppohnk31.jpg",
+        character: "T'Challa",
+        alias: "Black Panther",
+        actor: "Chadwick Boseman"
+      },
+      {
+        imagePath:
+          "https://vignette.wikia.nocookie.net/dxwefed/images/9/9a/Erik_Kilmonger.jpg/revision/latest?cb=20190818222117",
+        character: "Erik Killmonger",
+        alias: "",
+        actor: "Michael B. Jordan"
+      }
+    ]
   }
 };

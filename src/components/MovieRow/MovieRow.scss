@@ -942,3 +942,9 @@ span:focus {
     width: 60px;
   }
 }
+
+@media screen and (max-width: 1399px) {
+  .slide .handle > .indicator-icon {
+    display: block;
+  }
+}

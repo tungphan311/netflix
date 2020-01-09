@@ -2,7 +2,8 @@
 import React, { Component } from "react";
 import { FILM_DETAILS } from "../../constants";
 import "./Details.scss";
-const getDetailsById = id => FILM_DETAILS.filter(x => x.id === id)[0];
+
+const getDetailsById = id => FILM_DETAILS[id];
 
 class Details extends Component {
   constructor(props) {
