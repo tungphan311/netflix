@@ -9,7 +9,7 @@ export const SLIDERS = {
         "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABSTZ2YfpmxdJZtYyEo0o3skHVEZUsxqi8zPntbrDwXMs5LKoH4sJAJkC0wsk_6m6lzYfBzDmOAFu7RLocW8p4t_NdgLY.webp?r=3dd",
       name: "Lucifer",
       href: "/watch/1",
-      score: "977% Match",
+      score: "97% Match",
       limit: "18+",
       length: "4 Seasons",
       genres: ["Comedy", "Action", "Exciting"]

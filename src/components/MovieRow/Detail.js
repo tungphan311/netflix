@@ -9,7 +9,7 @@ import ShowDetail from "./ShowDetail";
 function Detail({ select, selectDetail, width }) {
   const [selectedPane, setSelectedPane] = useState("Overview");
 
-  const { background, logo } = select && FILM_DETAILS[select];
+  const { background, logo, season } = select && FILM_DETAILS[select];
 
   return (
     <div className={`jawBoneContent ${select === 0 ? "" : "open"}`}>
@@ -83,7 +83,9 @@ function Detail({ select, selectDetail, width }) {
                       {selectedPane === "Episodes" && (
                         <EpisodeContainer id={select} width={width} />
                       )}
-                      {selectedPane === "ShowDetails" && <ShowDetail />}
+                      {selectedPane === "ShowDetails" && (
+                        <ShowDetail id={select} />
+                      )}
                     </div>
                   </div>
                 </div>
@@ -91,6 +93,7 @@ function Detail({ select, selectDetail, width }) {
               <DetailMenu
                 selected={selectedPane}
                 handleSelect={setSelectedPane}
+                season={season}
               />
             </div>
             <button

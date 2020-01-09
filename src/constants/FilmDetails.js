@@ -283,37 +283,55 @@ export const FILM_DETAILS = {
         }
       ]
     },
-    descriptionItems: [
-      {
-        title: "Director",
-        content: "Anthony Russo, Joe Russo"
-      },
-      {
-        title: "Producer",
-        content: "Kevin Feige"
-      },
-      {
-        title: "Screenplay writers",
-        content: "Christopher Markus, Stephen McFeely"
-      },
-      {
-        title: "Executive producers",
-        content: "Stan Lee, Trinh Tran"
-      }
-    ],
     casts: [
       {
-        imagePath: "https://i.redd.it/ok6isppohnk31.jpg",
-        character: "T'Challa",
-        alias: "Black Panther",
-        actor: "Chadwick Boseman"
+        id: 30071775,
+        avatar:
+          "https://i.pinimg.com/originals/f9/7a/b0/f97ab067937f00d4a7ea0f5d641a981e.jpg",
+        character: "Lucifer Moningstar",
+        actor: "Tom Ellis"
       },
       {
-        imagePath:
-          "https://vignette.wikia.nocookie.net/dxwefed/images/9/9a/Erik_Kilmonger.jpg/revision/latest?cb=20190818222117",
-        character: "Erik Killmonger",
-        alias: "",
-        actor: "Michael B. Jordan"
+        id: 30071775,
+        avatar:
+          "https://images-na.ssl-images-amazon.com/images/I/41OrxlDRHTL.jpg",
+        character: "Chloe Decker",
+        actor: "Lauren German"
+      },
+      {
+        id: 30071775,
+        avatar:
+          "https://images-na.ssl-images-amazon.com/images/I/91Vkfn0RnYL._SX385_.jpg",
+        character: "Amenadiel",
+        actor: "D.B. Woodside"
+      },
+      {
+        id: 30071775,
+        avatar:
+          "https://www.leathercult.com/images/jackets/kevinalejandroluciferleatherjacket.jpg",
+        character: "Dan",
+        actor: "Kevin Alejandro"
+      },
+      {
+        id: 30071775,
+        avatar:
+          "https://i.pinimg.com/originals/86/c8/13/86c813e448ce8c74a1e21dace939ddac.jpg",
+        character: "Maze",
+        actor: "Lesley-Ann Brandt"
+      },
+      {
+        id: 30071775,
+        avatar:
+          "https://i.pinimg.com/originals/d5/c6/7c/d5c67c33c85a19084eeef456e3d42805.png",
+        character: "Ella Lopez",
+        actor: "Aimee Garcia"
+      },
+      {
+        id: 30071775,
+        avatar:
+          "https://upload.wikimedia.org/wikipedia/commons/c/c1/Rachael_Harris_by_Gage_Skidmore.jpg",
+        character: "Dr. Linda Martin",
+        actor: "Rachael Harris"
       }
     ]
   },
@@ -535,6 +553,66 @@ export const FILM_DETAILS = {
         }
       ]
     },
+    descriptionItems: [
+      {
+        title: "Director",
+        content: "Anthony Russo, Joe Russo"
+      },
+      {
+        title: "Producer",
+        content: "Kevin Feige"
+      },
+      {
+        title: "Screenplay writers",
+        content: "Christopher Markus, Stephen McFeely"
+      },
+      {
+        title: "Executive producers",
+        content: "Stan Lee, Trinh Tran"
+      }
+    ],
+    casts: [
+      {
+        imagePath: "https://i.redd.it/ok6isppohnk31.jpg",
+        character: "T'Challa",
+        alias: "Black Panther",
+        actor: "Chadwick Boseman"
+      },
+      {
+        imagePath:
+          "https://vignette.wikia.nocookie.net/dxwefed/images/9/9a/Erik_Kilmonger.jpg/revision/latest?cb=20190818222117",
+        character: "Erik Killmonger",
+        alias: "",
+        actor: "Michael B. Jordan"
+      }
+    ]
+  },
+  4: {
+    id: 4,
+    title: "Vagabond",
+    releaseDate: "April 26, 2019",
+    isOut: true,
+    score: "95% Match",
+    year: "2017",
+    limit: "13+",
+    duration: "2h 13m",
+    background:
+      "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABZubfT7sJ6RdInNMIWAazT-xyYtHx1RPz2_Gm54AITreefQX0Q9gOxKh5gHvpV0ArOpytcAoXlea8GGag5-f7s6Gw1ls.webp?r=e23",
+    logo:
+      "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/jsgGe9NCko3c-j0wGZ7FSwVlHs0/AAAABaTWDR2mCU4Kklxov3Z8ZKYaH9aN2SB1Qm1f6-fIQV0uyX53U2_xZl2WJ-IqVc6DgyPmcQjy-BHNycoh5jvNysHazeUDac5yTg.webp?r=a90",
+    description:
+      "Peter Parker returns to routine life as a high schooler until the Vulture's arrival gives him the chance to prove himself as a web-slinging superhero.",
+    backgroundPath:
+      "https://occ-0-58-64.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABR8CznPUUUuYW2qfB2l5fsuJbW2_jAUnoSSkS5uN14CRSAu3n2arG7nAsEdb_5U8YmSKetcfHh5wDYfKEIkpMHp1uYfL.jpg",
+    starring: [
+      { href: 30204677, name: "Tom Holland" },
+      { href: 48453, name: "Michael Keaton" },
+      { href: 25583, name: "Robert Downey Jr." }
+    ],
+    genres: [
+      { href: "/browse?genre=action", title: "Action" },
+      { href: "/browse?genre=adventure", title: "Adventure" }
+    ],
     descriptionItems: [
       {
         title: "Director",
