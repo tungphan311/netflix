@@ -63,6 +63,11 @@
       }
     }
   }
+
+  .carousel-control-next,
+  .carousel-control-prev {
+    height: 75%;
+  }
 }
 
 .cast {
@@ -81,13 +86,11 @@
 
 .cast-name {
   color: white;
-  padding: 5px 0;
   font-weight: bold;
 }
 
 .character {
   color: #808080;
-  padding: 5px 0;
   font-size: 1vw;
 }
 

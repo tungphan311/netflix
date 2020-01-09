@@ -1,106 +1,269 @@
-.details-page {
-  &__container {
-    width: 100%;
-  }
-  &__hero-container {
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 70vh;
-    max-height: 700px;
+.header {
+  height: 70px;
+  background-color: #141414;
+  width: 100%;
+}
+
+.jawBoneContainer .background {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  overflow: hidden;
+  transition: opacity 0.3s cubic-bezier(0.5, 0, 0.1, 1) 0s;
+}
+
+.jawBoneContainer .jawBoneBackground {
+  right: 0;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  width: 70%;
+}
+
+.image-rotator {
+  position: relative;
+  overflow: hidden;
+}
+
+.jawBoneContainer .jawBoneBackground .image-rotator-image {
+  transform: translateZ(0);
+  background-position: center 10%;
+}
+
+.image-rotator .image-rotator-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-size: cover;
+  opacity: 0;
+}
+
+.jawBoneContainer .jawBone {
+  padding: 18px 0 12px 4%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+.jawBoneContainer h1,
+.jawBoneContainer h3 {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+}
+
+.jawBoneContainer .title {
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  margin: 0 0 0.2em 0;
+  font-weight: bold;
+  color: #fff;
+  font-size: 3vw;
+  width: 670px;
+}
+
+.jawBoneContainer .title.original {
+  height: 7vw;
+}
+
+.jawBoneContainer .title .logo {
+  height: 7vw;
+  transform-origin: 0 0;
+  transition: transform 300ms, -webkit-transform 300ms, -moz-transform 300ms,
+    -o-transform 300ms;
+}
+
+.jawBoneContainer .jawBonePanes {
+  position: relative;
+  opacity: 1;
+  z-index: 2;
+  transition: transform 300ms, -webkit-transform 300ms, -moz-transform 300ms,
+    -o-transform 300ms;
+}
+
+.jawBoneContainer .jawBonePanes .jawBonePane {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  color: #808080;
+  opacity: 1;
+}
+
+.nf-flat-button .nf-flat-button-icon-play,
+.nf-flat-button .nf-flat-button-icon-episodes,
+.nf-flat-button .nf-flat-button-icon-mylist-add,
+.nf-flat-button .nf-flat-button-icon-mylist-added,
+.nf-flat-button .nf-flat-button-icon-remindme-add,
+.nf-flat-button .nf-flat-button-icon-remindme-added,
+.nf-flat-button .nf-flat-button-icon-restart,
+.nf-flat-button .nf-flat-button-icon-info,
+.nf-flat-button .nf-flat-button-icon-close {
+  font-family: "nf-icon";
+}
+
+.nf-flat-button .nf-flat-button-icon-mylist-add:before {
+  content: "\e641";
+}
+
+.nf-flat-button .nf-flat-button-icon-mylist-added:before {
+  content: "\e804";
+}
+
+.jawBonePane .synopsis {
+  margin: 0.8em 0 0.8em 0;
+  width: 35vw;
+  color: #999;
+}
+
+.detail__container {
+  height: 24vw;
+  position: relative;
+  margin: 0;
+  padding: 1vw 4%;
+  background-color: rgba($color: #141414, $alpha: 0.2);
+}
+
+.details-page__container {
+  .jawBoneContainer {
+    background-color: #000;
     position: relative;
-    box-shadow: inset 0 -50px 50px -10px $black;
+    overflow: hidden;
+    outline: none;
+    height: 27vw;
+    transition: height 0.54s cubic-bezier(0.5, 0, 0.1, 1) 0s,
+      opacity 0.44s cubic-bezier(0.5, 0, 0.1, 1) 0.1s;
   }
-  &__info-container {
-    position: absolute;
-    left: 100px;
-    bottom: 100px;
+
+  .detailsItem {
+    box-sizing: border-box;
+    padding: 0 20px 0 0;
+    height: auto;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: top;
+    white-space: normal;
     width: 50%;
-    max-width: 500px;
   }
-  &__release-container {
-    position: absolute;
-    right: 2vw;
-    bottom: 15vh;
-    background-color: rgba($color: $primary, $alpha: 0.7);
-    border-radius: 20px;
+
+  .listLabel {
+    font-size: 15px;
+    margin: 0 0 5px;
+    display: block;
+    color: #808080;
+    font-weight: bold;
   }
-  &__description {
-    border-radius: 30px;
-    padding: 20px;
-    background-color: rgba($color: $grey1, $alpha: 0.3);
-    font-size: $large;
+
+  ul {
+    padding-left: 0;
+    margin: 0 0 14px 0;
   }
-  &__logo {
+
+  ul li {
+    list-style: none;
+
+    a {
+      font-size: 14px;
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+
+  .cast-wrapper {
+    height: 100%;
+  }
+
+  .cast-container {
     width: 100%;
+    height: 100%;
+
+    &:hover .carousel-indicators {
+      opacity: 1;
+    }
   }
-  &__cast {
-    display: flex;
-    flex: 1;
-    flex-direction: row;
-    width: 100%;
+
+  .maturityDescription {
+    font-size: 14px;
+    margin-bottom: 0;
   }
-  &__cast__item {
-    width: 23%;
-    margin-right: 10px;
-    min-width: 150px;
-    max-width: 180px;
-  }
-  &__cast__item__logo {
-    height: 200px;
-  }
-  &__cast__viewmore {
-    align-self: center;
-    background-color: rgba($color: $primary, $alpha: 0.8);
-    text-align: center;
-    border-radius: 30px;
-    padding: 5px;
-    width: 50%;
+
+  .episodes-container {
     margin-top: 20px;
   }
-  &__content {
-    display: flex;
-    flex-direction: row;
-    &__left {
-      flex: 1;
-      background-color: $black1;
+
+  .single-season-label {
+    font-size: 1.4vw;
+    color: #e5e5e5;
+    font-weight: bold;
+    margin: 0 4% 0.5em 4%;
+    text-decoration: none;
+    display: inline-block;
+    min-width: 6em;
+  }
+
+  .episodes-container:hover {
+    .carousel-indicators {
+      opacity: 1;
     }
-    &__right {
-      flex: 1.7;
-      display: flex;
-      flex-direction: column;
+    .indicator-icon {
+      display: block;
     }
   }
 }
-@media (max-width: $ipad-screen) {
-  .details-page__hero-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: auto;
-  }
-  .details-page__content {
-    flex-direction: column;
-  }
-  .details-page__info-container {
-    position: static;
-    width: 100%;
-  }
-  .details-page__release-container {
-    position: static;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-  .details-page__cast__item {
-    width: 150px;
+
+@media screen and (max-width: 499px) {
+  .jawBoneContainer .title {
+    font-size: 14px;
+    width: 55vw;
   }
 }
-@media (max-width: $phone-screen) {
-  .details-page__cast {
-    flex-direction: column;
-    align-items: center;
+@media screen and (min-width: 500px) and (max-width: 799px) {
+  .jawBoneContainer .title {
+    font-size: 14px;
+    width: 55vw;
   }
-  .details-page__cast__viewmore {
-    width: 100%;
+}
+@media screen and (min-width: 800px) and (max-width: 1099px) {
+  .jawBoneContainer .title {
+    font-size: 3vw;
+    width: 55vw;
+  }
+}
+@media screen and (min-width: 1100px) and (max-width: 1399px) {
+  .jawBoneContainer .title {
+    font-size: 3vw;
+    width: 50vw;
+  }
+  .details-page__container .detailsItem {
+    width: 20%;
+  }
+  .details-page__container .cast-wrapper {
+    width: 80%;
+  }
+}
+@media screen and (min-width: 1400px) {
+  .jawBoneContainer .title {
+    font-size: 2.4vw;
+    width: 40vw;
+  }
+  .details-page__container .detailsItem {
+    width: 16.66666667%;
+  }
+  .details-page__container .cast-wrapper {
+    width: calc(500% / 6);
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .header {
+    height: 40px;
   }
 }

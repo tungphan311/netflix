@@ -59,7 +59,7 @@ function Overview({ id }) {
               </div>
             </div>
             <div className="meta-lists">
-              <p className="cast inline-list">
+              <p className="inline-list">
                 <span className="list-label">Starring:</span>
                 <span className="list-items">
                   {starring &&

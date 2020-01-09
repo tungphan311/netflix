@@ -18,7 +18,7 @@
   height: 70px;
   position: relative;
   top: 0;
-  padding: 0 calc(25vw / 6);
+  padding: 0 4%;
   z-index: 100;
   box-shadow: 0 2px 8px 0 rgba($white, 0.1);
   @include align-center;
@@ -194,11 +194,5 @@ i {
 
   .navbar__navigator__selector--Browser {
     display: none;
-  }
-}
-
-@media (min-width: $normal-screen) {
-  .navbar__container {
-    padding: 0 60px;
   }
 }

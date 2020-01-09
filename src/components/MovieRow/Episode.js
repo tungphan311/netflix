@@ -2,7 +2,14 @@ import React, { useState } from "react";
 import { Carousel } from "react-bootstrap";
 import { FILM_DETAILS } from "../../constants";
 
-const Episode = ({ href, title, ep, length, description, background }) => (
+export const Episode = ({
+  href,
+  title,
+  ep,
+  length,
+  description,
+  background
+}) => (
   <div className="slider-item">
     <div className="episodeLockup">
       <div className="ptrack-content">
@@ -49,7 +56,7 @@ function EpisodeContainer({ id, width }) {
     <div className="episodesContainer">
       <div className="ptrack-content">
         {seasons.length === 1 ? (
-          <div class="single-season-label">Season 1</div>
+          <div className="single-season-label">Season 1</div>
         ) : (
           <div className="nfDropDown widthRestricted theme-lakira">
             <div className="label" tabIndex="0" onClick={() => setOpen(!open)}>

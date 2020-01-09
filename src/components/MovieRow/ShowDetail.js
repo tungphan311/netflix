@@ -82,7 +82,7 @@ function ShowDetail({ id }) {
 
 export default ShowDetail;
 
-const Cast = ({ avatar, character, actor }) => (
+export const Cast = ({ avatar, character, actor }) => (
   <div className="cast">
     <div
       className="background-image"
@@ -95,7 +95,7 @@ const Cast = ({ avatar, character, actor }) => (
   </div>
 );
 
-const splitList = list => {
+export const splitList = list => {
   const item = 5;
 
   let temp = [];
