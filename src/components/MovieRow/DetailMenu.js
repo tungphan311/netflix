@@ -1,6 +1,6 @@
 import React from "react";
 
-function DetailMenu({ selected, handleSelect, season }) {
+function DetailMenu({ selected, handleSelect, seasons }) {
   const className = id => (id === selected ? "current" : "");
 
   return (
@@ -15,7 +15,7 @@ function DetailMenu({ selected, handleSelect, season }) {
         </a>
         <span></span>
       </li>
-      {season && (
+      {seasons && (
         <li
           className={`Episodes ${className("Episodes")}`}
           id="Episodes"

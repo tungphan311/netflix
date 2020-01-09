@@ -12,7 +12,9 @@ class SliderItem extends Component {
       item,
       history,
       selectDetail,
-      select
+      select,
+      rowId,
+      changeRow
     } = this.props;
 
     const {
@@ -98,6 +100,8 @@ class SliderItem extends Component {
                     epName={epName}
                     epLength={epLength}
                     stop={stop}
+                    rowId={rowId}
+                    changeRow={changeRow}
                   />
                 )}
               </span>
@@ -136,7 +140,9 @@ const BobOpen = ({
   ep,
   epName,
   epLength,
-  stop
+  stop,
+  rowId,
+  changeRow
 }) => (
   <div
     className="bob-card bob-card-adult-video-merch"
@@ -167,7 +173,10 @@ const BobOpen = ({
         <a
           aria-label={name}
           className="bob-jaw-hitzone"
-          onClick={() => selectDetail(id)}
+          onClick={() => {
+            selectDetail(id);
+            changeRow(rowId);
+          }}
         ></a>
         <div className="bob-overview-wrapper">
           <div className="bob-overview">

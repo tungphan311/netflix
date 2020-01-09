@@ -1,5 +1,6 @@
 export const SLIDERS = [
   {
+    id: 1,
     title: "My Favorites",
     myList: true,
     list: [
@@ -108,6 +109,7 @@ export const SLIDERS = [
     ]
   },
   {
+    id: 2,
     title: "Popular on Netflix",
     myList: false,
     list: [

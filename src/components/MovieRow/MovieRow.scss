@@ -919,9 +919,9 @@ span:focus {
   background-color: transparent;
 }
 
-.is-bob-open .progress {
-  display: none;
-}
+// .is-bob-open .progress {
+//   display: none;
+// }
 
 .title-card-container > .progress {
   padding: 3% 20% 0;
@@ -1037,6 +1037,9 @@ span:focus {
   .progress--bob-overview {
     font-size: 1.28vw;
   }
+  .mvRow-open {
+    margin-bottom: 45vw !important;
+  }
 }
 @media screen and (min-width: 1100px) and (max-width: 1440px) {
   .rowContainer.verticalBoxArtRow .rowContent .slide .slider-item {
@@ -1107,5 +1110,17 @@ span:focus {
 @media screen and (max-width: 1399px) {
   .slide .handle > .indicator-icon {
     display: block;
+  }
+}
+
+@media screen and (min-width: 1100px) and (max-width: 1399px) {
+  .mvRow-open {
+    margin-bottom: 40vw !important;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .mvRow-open {
+    margin-bottom: 35vw !important;
   }
 }

@@ -15,7 +15,8 @@ class MovieRow extends Component {
       hover: 0,
       numOfPages: 0,
       movies: [],
-      show: false
+      show: false,
+      select: 0
     };
   }
 
@@ -45,6 +46,12 @@ class MovieRow extends Component {
     this.setState({ width, item, movies: newList });
   };
 
+  componentWillReceiveProps = nextProps => {
+    if (nextProps.rowSelect !== this.props.rowId) {
+      this.setState({ select: 0 });
+    }
+  };
+
   renderIndicator = () => {
     const { numOfPages, page } = this.state;
     let result = [];
@@ -70,13 +77,27 @@ class MovieRow extends Component {
     this.setState({ page: selectedIndex });
   };
 
+  selectDetail = id => {
+    this.setState({ select: id });
+  };
+
   render() {
-    const { title, history, select, list, myList } = this.props;
-    const { page, hover, item, movies, width } = this.state;
+    const {
+      title,
+      history,
+      list,
+      myList,
+      changeRow,
+      rowSelect,
+      rowId
+    } = this.props;
+    const { page, hover, item, movies, width, select } = this.state;
 
     return (
       <div
-        className="mvRow mvRow_title_card"
+        className={`mvRow mvRow_title_card ${
+          rowSelect === rowId ? "mvRow-open" : ""
+        }`}
         onMouseEnter={() => this.setState({ show: true })}
         onMouseLeave={() => this.setState({ show: false })}
       >
@@ -140,8 +161,10 @@ class MovieRow extends Component {
                           page={page}
                           item={item}
                           history={history}
-                          selectDetail={this.props.selectDetail}
+                          selectDetail={this.selectDetail}
                           select={select}
+                          rowId={rowId}
+                          changeRow={changeRow}
                         />
                       ))}
                     </Carousel.Item>
@@ -150,8 +173,9 @@ class MovieRow extends Component {
             </div>
             <Detail
               select={select}
-              selectDetail={this.props.selectDetail}
+              selectDetail={this.selectDetail}
               width={width}
+              changeRow={changeRow}
             />
           </div>
         </div>

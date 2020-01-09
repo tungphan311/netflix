@@ -6,10 +6,10 @@ import Overview from "./Overview";
 import EpisodeContainer from "./Episode";
 import ShowDetail from "./ShowDetail";
 
-function Detail({ select, selectDetail, width }) {
+function Detail({ select, selectDetail, width, changeRow }) {
   const [selectedPane, setSelectedPane] = useState("Overview");
 
-  const { background, logo, season } = select && FILM_DETAILS[select];
+  const { background, logo, seasons } = select && FILM_DETAILS[select];
 
   return (
     <div className={`jawBoneContent ${select === 0 ? "" : "open"}`}>
@@ -93,13 +93,16 @@ function Detail({ select, selectDetail, width }) {
               <DetailMenu
                 selected={selectedPane}
                 handleSelect={setSelectedPane}
-                season={season}
+                seasons={seasons}
               />
             </div>
             <button
               className="close-button icon-close"
               tabIndex="0"
-              onClick={() => selectDetail(0)}
+              onClick={() => {
+                selectDetail(0);
+                changeRow(0);
+              }}
             ></button>
           </div>
         </div>

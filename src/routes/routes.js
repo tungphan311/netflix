@@ -33,7 +33,7 @@ class Routes extends Component {
 
     return (
       <Switch>
-        <Route exact path={["/", "/browse", "/title"]}>
+        <Route exact path={["/", "/browse", "/title/:id"]}>
           <DefaultLayout history={history}>
             <AuthorizedRoute exact path="/" component={Home} isUser={isUser} />
             <AuthorizedRoute
@@ -45,7 +45,7 @@ class Routes extends Component {
             />
             <AuthorizedRoute
               exact
-              path="/title"
+              path="/title/:id"
               component={Details}
               isUser={isUser}
             />

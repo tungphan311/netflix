@@ -11,7 +11,7 @@ class Home extends Component {
 
     this.state = {
       recommend: {},
-      select: 0
+      rowSelect: 0
     };
   }
 
@@ -21,12 +21,12 @@ class Home extends Component {
     this.setState({ recommend: item });
   };
 
-  selectDetail = id => {
-    this.setState({ select: id });
+  changeRow = id => {
+    this.setState({ rowSelect: id });
   };
 
   render() {
-    const { recommend, select } = this.state;
+    const { recommend, select, rowSelect } = this.state;
     const { history } = this.props;
 
     return (
@@ -35,14 +35,16 @@ class Home extends Component {
         style={{ overflow: "hidden" }}
       >
         <Panel film={recommend} />
-        {SLIDERS.map(({ title, list, myList }) => (
+        {SLIDERS.map(({ title, list, myList, id }) => (
           <MovieRow
+            rowId={id}
+            rowSelect={rowSelect}
+            key={title}
             title={title}
             list={list}
             myList={myList}
             history={history}
-            select={select}
-            selectDetail={this.selectDetail}
+            changeRow={this.changeRow}
           />
         ))}
       </div>
