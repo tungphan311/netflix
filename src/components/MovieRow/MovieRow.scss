@@ -128,15 +128,15 @@
   content: "\e658";
 }
 
-span.rowTitle:hover .aro-row-header .aro-row-chevron,
-span.rowTitle:focus .aro-row-header .aro-row-chevron {
+a.rowTitle:hover .aro-row-header .aro-row-chevron,
+a.rowTitle:focus .aro-row-header .aro-row-chevron {
   transform: translate(1vw, 0);
   font-size: 0.65vw;
   line-height: 0.8vw;
 }
 
-span.rowTitle:hover .aro-row-header .see-all-link,
-span.rowTitle:focus .aro-row-header .see-all-link {
+a.rowTitle:hover .aro-row-header .see-all-link,
+a.rowTitle:focus .aro-row-header .see-all-link {
   max-width: 200px;
   transform: translate(1vw, 0);
   opacity: 1;

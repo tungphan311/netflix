@@ -109,6 +109,7 @@ export const SLIDERS = [
   },
   {
     title: "Popular on Netflix",
+    myList: false,
     list: [
       {
         id: 1,

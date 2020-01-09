@@ -71,7 +71,7 @@ class MovieRow extends Component {
   };
 
   render() {
-    const { title, history, select, list } = this.props;
+    const { title, history, select, list, myList } = this.props;
     const { page, hover, item, movies, width } = this.state;
 
     return (
@@ -81,17 +81,23 @@ class MovieRow extends Component {
         onMouseLeave={() => this.setState({ show: false })}
       >
         <h2 className="rowHeader">
-          <span className="rowTitle" aria-label={title}>
-            <div className="row-header-title">{title}</div>
-            <div className="aro-row-header">
-              <div className="see-all-link">Explore All</div>
-              <div
-                className={`aro-row-chevron icon-akiraCaretRight ${
-                  this.state.show ? "show-chevron" : ""
-                }`}
-              ></div>
-            </div>
-          </span>
+          {myList ? (
+            <a className="rowTitle" aria-label={title} href="/my-favorites">
+              <div className="row-header-title">{title}</div>
+              <div className="aro-row-header">
+                <div className="see-all-link">Explore All</div>
+                <div
+                  className={`aro-row-chevron icon-akiraCaretRight ${
+                    this.state.show ? "show-chevron" : ""
+                  }`}
+                ></div>
+              </div>
+            </a>
+          ) : (
+            <span className="rowTitle" aria-label={title}>
+              <div className="row-header-title">{title}</div>
+            </span>
+          )}
         </h2>
         <div className="rowContainer verticalBoxArtRow rowContainer_title_card">
           <div className="ptrack-container">

@@ -35,10 +35,11 @@ class Home extends Component {
         style={{ overflow: "hidden" }}
       >
         <Panel film={recommend} />
-        {SLIDERS.map(({ title, list }) => (
+        {SLIDERS.map(({ title, list, myList }) => (
           <MovieRow
             title={title}
             list={list}
+            myList={myList}
             history={history}
             select={select}
             selectDetail={this.selectDetail}
