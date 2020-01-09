@@ -60,7 +60,7 @@ function Panel({ film }) {
                     className="nf-icon-button nf-flat-button nf-flat-button-uppercase"
                   >
                     <svg
-                      class="svg-icon svg-icon-info nf-flat-button-icon"
+                      className="svg-icon svg-icon-info nf-flat-button-icon"
                       focusable="true"
                     >
                       <use filter="" xlinkHref="#info"></use>

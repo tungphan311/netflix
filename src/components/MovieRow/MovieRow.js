@@ -150,10 +150,11 @@ class MovieRow extends Component {
                 }
               >
                 {movies &&
-                  movies.map((subList, index) => (
-                    <Carousel.Item key={index}>
-                      {subList.map(sub => (
+                  movies.map((subList, i) => (
+                    <Carousel.Item key={i}>
+                      {subList.map((sub, index) => (
                         <SliderItem
+                          index={index + 1}
                           key={sub.id}
                           hover={hover}
                           setHover={this.setHover}

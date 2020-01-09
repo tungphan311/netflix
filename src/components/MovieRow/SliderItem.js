@@ -3,6 +3,31 @@ import { AddToList, ChevronDown, Play } from "../../constants";
 import { formatSlideItem } from "../../utils/utils";
 
 class SliderItem extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      width: 0
+    };
+
+    this.myDiv = React.createRef();
+  }
+
+  componentDidMount = () => {
+    this.updateWindowDimensions();
+    window.addEventListener("resize", this.updateWindowDimensions);
+  };
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updateWindowDimensions);
+  }
+
+  updateWindowDimensions = () => {
+    const width = this.myDiv.current.offsetWidth - 4;
+
+    this.setState({ width });
+  };
+
   render() {
     const {
       hover,
@@ -14,8 +39,11 @@ class SliderItem extends Component {
       selectDetail,
       select,
       rowId,
-      changeRow
+      changeRow,
+      index
     } = this.props;
+
+    const { width } = this.state;
 
     const {
       id,
@@ -36,14 +64,15 @@ class SliderItem extends Component {
     return (
       <div
         className="slider-item"
-        style={formatSlideItem(id, hover, item, page, select)}
-        onMouseEnter={() => setHover(id)}
+        style={formatSlideItem(index, hover, item, select, width)}
+        onMouseEnter={() => setHover(index)}
         onMouseLeave={() => setHover(0)}
+        ref={this.myDiv}
       >
         <div className="title-card-container">
           <div
             className={`slider-refocus title-card ${
-              hover === id && !select ? "is-bob-open" : ""
+              hover === index && !select ? "is-bob-open" : ""
             }`}
           >
             <div className="ptrack-content">
@@ -152,7 +181,7 @@ const BobOpen = ({
       width: "124%",
       height: "124%",
       top: "-12%",
-      left: "-12%",
+      left: "0",
       transitionDuration: "500ms"
     }}
   >
