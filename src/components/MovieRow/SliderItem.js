@@ -23,7 +23,12 @@ class SliderItem extends Component {
       name,
       score,
       limit,
-      length
+      length,
+      isWatching,
+      ep,
+      epName,
+      epLength,
+      stop
     } = details;
 
     return (
@@ -88,11 +93,27 @@ class SliderItem extends Component {
                     length={length}
                     selectDetail={selectDetail}
                     history={history}
+                    isWatching={isWatching}
+                    ep={ep}
+                    epName={epName}
+                    epLength={epLength}
+                    stop={stop}
                   />
                 )}
               </span>
             </div>
           </div>
+          {isWatching && !select && (
+            <div className="progress">
+              <span className="progress-bar">
+                <span
+                  role="presentation"
+                  className="progress-completed"
+                  style={{ width: `${(stop * 100) / epLength}%` }}
+                ></span>
+              </span>
+            </div>
+          )}
         </div>
       </div>
     );
@@ -110,7 +131,12 @@ const BobOpen = ({
   limit,
   length,
   selectDetail,
-  history
+  history,
+  isWatching,
+  ep,
+  epName,
+  epLength,
+  stop
 }) => (
   <div
     className="bob-card bob-card-adult-video-merch"
@@ -156,37 +182,64 @@ const BobOpen = ({
               </span>
             </a>
             <div className="bob-title">{name}</div>
-            <div className="bob-overview-resume-title-wrapper"></div>
-            <div className="bob-metadata-wrapper">
-              <div className="meta video-meta video-meta--bob-overview">
-                <span className="match-score-wrapper">
-                  <div className="show-match-score rating-inner"></div>
-                  <div className="meta-thumb-container thumb-up"></div>
-                  <span className="match-score">{score}</span>
-                </span>
-                <span className="maturity-rating ">
-                  <span className="maturity-number">{limit}</span>
-                </span>
-                <span className="duration">{length}</span>
-              </div>
-            </div>
-            <div className="bob-overview-evidence-wrapper">
-              <div className="evidence-tags">
-                <div className="evidence-list">
-                  <div className="evidence-item">
-                    <span className="evidence-text">Comedy</span>
-                  </div>
-                  <div className="evidence-item">
-                    <span className="evidence-separator"></span>
-                    <span className="evidence-text">Alien Sci-Fi</span>
-                  </div>
-                  <div className="evidence-item">
-                    <span className="evidence-separator"></span>
-                    <span className="evidence-text">Action </span>
+            {isWatching ? (
+              <>
+                <div className="bob-overview-resume-title-wrapper">
+                  <div className="watched-title watched-title--bob-overview watched-title--no-wrap">
+                    <span>
+                      <b>{ep}</b> {epName}
+                    </span>
                   </div>
                 </div>
-              </div>
-            </div>
+                <div className="bob-overview-progress-wrapper">
+                  <div className="progress progress--bob-overview">
+                    <span className="progress-bar">
+                      <span
+                        role="presentation"
+                        className="progress-completed"
+                        style={{ width: `${(stop * 100) / epLength}%` }}
+                      ></span>
+                    </span>
+                    <span className="summary">
+                      {stop} of {epLength}m
+                    </span>
+                  </div>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="bob-metadata-wrapper">
+                  <div className="meta video-meta video-meta--bob-overview">
+                    <span className="match-score-wrapper">
+                      <div className="show-match-score rating-inner"></div>
+                      <div className="meta-thumb-container thumb-up"></div>
+                      <span className="match-score">{score}</span>
+                    </span>
+                    <span className="maturity-rating ">
+                      <span className="maturity-number">{limit}</span>
+                    </span>
+                    <span className="duration">{length}</span>
+                  </div>
+                </div>
+                <div className="bob-overview-evidence-wrapper">
+                  <div className="evidence-tags">
+                    <div className="evidence-list">
+                      <div className="evidence-item">
+                        <span className="evidence-text">Comedy</span>
+                      </div>
+                      <div className="evidence-item">
+                        <span className="evidence-separator"></span>
+                        <span className="evidence-text">Alien Sci-Fi</span>
+                      </div>
+                      <div className="evidence-item">
+                        <span className="evidence-separator"></span>
+                        <span className="evidence-text">Action </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </>
+            )}
           </div>
         </div>
         <div className="bob-actions-wrapper">

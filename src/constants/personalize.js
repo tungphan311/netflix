@@ -10,6 +10,7 @@ export const SLIDERS = {
       name: "Lucifer",
       href: "/watch/1",
       score: "97% Match",
+      isWatching: false,
       limit: "18+",
       length: "4 Seasons",
       genres: ["Comedy", "Action", "Exciting"]
@@ -23,6 +24,7 @@ export const SLIDERS = {
       name: "Kingdom",
       href: "/watch/2",
       score: "97% Match",
+      isWatching: false,
       limit: "18+",
       length: "1 Season",
       genres: ["Historical", "Violen", "Exciting"]
@@ -36,6 +38,11 @@ export const SLIDERS = {
       name: "Vagabond",
       href: "/watch/3",
       score: "98% Match",
+      isWatching: true,
+      ep: "S1:E6",
+      epName: "Episode 6",
+      epLength: 62,
+      stop: 29,
       limit: "18+",
       length: "1 Season",
       genres: ["Thriller", "Action", "Exciting"]
@@ -49,6 +56,7 @@ export const SLIDERS = {
       name: "Spider-Man: Homecoming",
       href: "/watch/4",
       score: "95% Match",
+      isWatching: false,
       limit: "13+",
       length: "2h 13m",
       genres: ["Superhero", "Action", "Exciting"]
@@ -62,6 +70,7 @@ export const SLIDERS = {
       name: "6 Underground",
       href: "/watch/5",
       score: "98% Match",
+      isWatching: false,
       limit: "18+",
       length: "2h 8m",
       genres: ["Violen", "Action"]
@@ -75,6 +84,7 @@ export const SLIDERS = {
       name: "Men in Black: International",
       href: "/watch/6",
       score: "98% Match",
+      isWatching: false,
       limit: "16+",
       length: "1h 54m",
       genres: ["Comedy", "Action", "Sci-fi"]
@@ -88,6 +98,7 @@ export const SLIDERS = {
       name: "The Witcher",
       href: "/watch/7",
       score: "98% Match",
+      isWatching: false,
       limit: "18+",
       length: "1 Season",
       genres: ["Comedy", "Action", "Sci-fi"]
@@ -101,6 +112,7 @@ export const SLIDERS = {
       name: "Black Panther",
       href: "/watch/8",
       score: "93% Match",
+      isWatching: false,
       limit: "16+",
       length: "2h 15m",
       genres: ["Superhero", "Exciting", "Sci-fi"]
@@ -114,6 +126,7 @@ export const SLIDERS = {
       name: "Sherlock",
       href: "/watch/9",
       score: "96% Match",
+      isWatching: false,
       limit: "18+",
       length: "4 Seasons",
       genres: ["Slow Burn", "Witty", "Cerebral"]
@@ -127,6 +140,7 @@ export const SLIDERS = {
       name: "Busted!",
       href: "/watch/10",
       score: "95% Match",
+      isWatching: false,
       limit: "16+",
       length: "2 Seasons",
       genres: ["Comedy", "Exciting", "Talk Show"]

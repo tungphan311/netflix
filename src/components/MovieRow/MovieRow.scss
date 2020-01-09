@@ -832,6 +832,71 @@ span:focus {
   transform: translate(-50%, 0);
 }
 
+.watched-title--bob-overview {
+  margin-bottom: 0.6em;
+  font-size: 0.9vw;
+  text-align: left;
+}
+
+.watched-title--no-wrap {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.progress {
+  display: flex;
+  align-items: center;
+  height: auto;
+  overflow: hidden;
+  border-radius: 0;
+  background-color: transparent;
+}
+
+.is-bob-open .progress {
+  display: none;
+}
+
+.title-card-container > .progress {
+  padding: 3% 20% 0;
+  position: absolute;
+  left: 0;
+  right: 0;
+  transition: opacity 350ms;
+}
+
+.title-card-container > .progress .progress-bar,
+.title-card-container > .progress .progress-completed {
+  height: 3px;
+}
+
+.progress--bob-overview {
+  padding: 0 0 0.45em 0;
+  font-size: 0.8vw;
+}
+
+.progress-bar {
+  display: block;
+  position: relative;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.8);
+  flex-grow: 1;
+}
+
+.progress-completed {
+  position: absolute;
+  top: 0;
+  left: 0 /*rtl:ignore*/;
+  height: 2px;
+  background-color: #e50914;
+}
+
+.progress .summary {
+  margin: 0 0 0 8px;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.3);
+}
+
 @media screen and (max-width: 499px) {
   .rowContainer.verticalBoxArtRow .rowContent .slide .slider-item {
     width: 25%;
@@ -847,6 +912,12 @@ span:focus {
   }
   .evidence-list .evidence-separator::before {
     font-size: 2.5vw;
+  }
+  .watched-title--bob-overview {
+    font-size: 2.25vw;
+  }
+  .progress--bob-overview {
+    font-size: 1.6vw;
   }
 }
 @media screen and (min-width: 500px) and (max-width: 799px) {
@@ -864,6 +935,12 @@ span:focus {
   }
   .video-meta--bob-overview {
     font-size: 1.6vw;
+  }
+  .watched-title--bob-overview {
+    font-size: 1.8vw;
+  }
+  .progress--bob-overview {
+    font-size: 1.44vw;
   }
 }
 @media screen and (min-width: 800px) and (max-width: 1099px) {
@@ -886,6 +963,12 @@ span:focus {
     font-size: 1.6vw;
   }
   .video-meta--bob-overview {
+    font-size: 1.28vw;
+  }
+  .watched-title--bob-overview {
+    font-size: 1.44vw;
+  }
+  .progress--bob-overview {
     font-size: 1.28vw;
   }
 }
@@ -911,6 +994,12 @@ span:focus {
   .video-meta--bob-overview {
     font-size: 1.08vw;
   }
+  .watched-title--bob-overview {
+    font-size: 1.26vw;
+  }
+  .progress--bob-overview {
+    font-size: 1vw;
+  }
 }
 @media screen and (min-width: 1441px) {
   .slide .handle > .indicator-icon {
@@ -933,6 +1022,12 @@ span:focus {
   }
   .evidence-list .evidence-separator::before {
     font-size: 1.2vw;
+  }
+  .watched-title--bob-overview {
+    font-size: 1.08vw;
+  }
+  .progress--bob-overview {
+    font-size: 0.96vw;
   }
 }
 
