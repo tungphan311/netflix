@@ -37,10 +37,6 @@
 }
 
 @media (max-width: $ipad-screen) {
-  .filter-page__left {
-    display: none;
-  }
-
   .filter-page__right {
     margin-left: calc(25vw / 9);
   }
@@ -61,5 +57,11 @@
 @media (min-width: $normal-screen) {
   .filter-page__right {
     margin-right: 60px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .filter-page__left {
+    display: none;
   }
 }
