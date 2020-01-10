@@ -3,10 +3,12 @@ import "./ShowDetail.scss";
 import { Carousel } from "react-bootstrap";
 import { FILM_DETAILS } from "../../constants";
 
-function ShowDetail({ id }) {
+function ShowDetail({ id, width }) {
   const { genres, limit, casts } = id && FILM_DETAILS[id];
 
-  const list = casts && splitList(casts);
+  console.log(width);
+
+  const list = casts && splitList(casts, width);
 
   if (!genres || !limit) return null;
 
@@ -95,8 +97,10 @@ export const Cast = ({ avatar, character, actor }) => (
   </div>
 );
 
-export const splitList = list => {
-  const item = 5;
+export const splitList = (list, width) => {
+  const item = width < 800 ? 2 : width >= 800 && width < 1100 ? 4 : 5;
+
+  console.log(width);
 
   let temp = [];
   let newList = [];

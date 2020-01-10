@@ -6,7 +6,7 @@
   display: inline-block;
   vertical-align: top;
   white-space: normal;
-  width: 50%;
+  width: 20%;
 }
 
 .jawBoneContainer .jawBoneDetails li.listLabel:first-child {
@@ -46,6 +46,7 @@
   overflow: hidden;
   display: inline-block;
   white-space: normal;
+  width: 80%;
 }
 
 .cast-container {
@@ -108,5 +109,27 @@
   }
   .cast-wrapper {
     width: calc(500% / 6);
+  }
+}
+
+@media screen and (max-width: 1100px) and (min-width: 800px) {
+  .cast {
+    width: 25%;
+  }
+}
+@media screen and (max-width: 799px) and (min-width: 500px) {
+  .cast {
+    width: 50%;
+  }
+  .detail__container {
+    height: 46vw !important;
+  }
+}
+@media screen and (max-width: 499px) {
+  .cast {
+    width: 50%;
+  }
+  .detail__container {
+    height: 60vw !important;
   }
 }

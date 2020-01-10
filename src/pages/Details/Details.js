@@ -58,7 +58,7 @@ class Details extends Component {
       seasons
     } = film;
 
-    const list = casts && splitList(casts);
+    const list = casts && splitList(casts, width);
 
     return (
       <div className="details-page__container">
@@ -143,41 +143,47 @@ class Details extends Component {
           </div>
         </div>
         <div className="detail__container">
-          <div className="detailsItem detailsTags">
-            <div>
-              <h4 className="listLabel">Genres</h4>
-              <ul>
-                {genres &&
-                  genres.map(({ href, title }) => (
-                    <li key={href}>
-                      <a href={href}>{title}</a>
-                    </li>
-                  ))}
-              </ul>
-              <h4 className="listLabel">This show is</h4>
-              <ul>
-                <li>
-                  <a href="#">Irreverent</a>
-                </li>
-                <li>
-                  <a href="#">Exciting</a>
-                </li>
-              </ul>
-              <h4 className="listLabel">Maturity Ratings</h4>
-              <span className="maturity-rating ">
-                <a
-                  href="https://help.netflix.com/support/2064"
-                  className="maturity-number"
-                >
-                  {limit}
-                </a>
-                <p className="maturityDescription">
-                  {`Recommended for ages ${limit}`}
-                </p>
-              </span>
+          {width > 500 && (
+            <div className="detailsItem detailsTags">
+              <div>
+                <h4 className="listLabel">Genres</h4>
+                <ul>
+                  {genres &&
+                    genres.map(({ href, title }) => (
+                      <li key={href}>
+                        <a href={href}>{title}</a>
+                      </li>
+                    ))}
+                </ul>
+                <h4 className="listLabel">This show is</h4>
+                <ul>
+                  <li>
+                    <a href="#">Irreverent</a>
+                  </li>
+                  <li>
+                    <a href="#">Exciting</a>
+                  </li>
+                </ul>
+
+                <h4 className="listLabel">Maturity Ratings</h4>
+                <span className="maturity-rating ">
+                  <a
+                    href="https://help.netflix.com/support/2064"
+                    className="maturity-number"
+                  >
+                    {limit}
+                  </a>
+                  <p className="maturityDescription">
+                    {`Recommended for ages ${limit}`}
+                  </p>
+                </span>
+              </div>
             </div>
-          </div>
-          <div className="cast-wrapper">
+          )}
+          <div
+            className="cast-wrapper"
+            style={width < 500 ? { width: "100%" } : {}}
+          >
             <h4 className="listLabel" style={{ marginLeft: "4%" }}>
               Casts
             </h4>
@@ -192,6 +198,7 @@ class Details extends Component {
                           avatar={avatar}
                           character={character}
                           actor={actor}
+                          width={width}
                         />
                       ))}
                     </Carousel.Item>
@@ -259,6 +266,7 @@ class Details extends Component {
                                           length={length}
                                           description={description}
                                           background={background}
+                                          width={width}
                                         />
                                       )
                                     )}

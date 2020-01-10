@@ -9,7 +9,8 @@ export const Episode = ({
   length,
   description,
   background,
-  progress
+  progress,
+  width
 }) => (
   <div className="slider-item">
     <div className="episodeLockup">
@@ -36,7 +37,10 @@ export const Episode = ({
             </div>
           )}
           <a className="episodePlay slider-refocus playLink" href={href}>
-            <div className="playRing">
+            <div
+              className="playRing"
+              style={width < 1100 ? { left: "50%" } : {}}
+            >
               <div className="play icon-play"></div>
             </div>
           </a>

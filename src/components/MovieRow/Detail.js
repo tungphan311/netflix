@@ -84,7 +84,7 @@ function Detail({ select, selectDetail, width, changeRow }) {
                         <EpisodeContainer id={select} width={width} />
                       )}
                       {selectedPane === "ShowDetails" && (
-                        <ShowDetail id={select} />
+                        <ShowDetail id={select} width={width} />
                       )}
                     </div>
                   </div>

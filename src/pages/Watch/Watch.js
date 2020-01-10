@@ -181,8 +181,8 @@ class Watch extends Component {
     return (
       <div className="c-video">
         <div className={`loading ${loading ? "" : "d-none"}`}>
-          <div class="fa-3x">
-            <i class="fas fa-spinner fa-spin"></i>
+          <div className="fa-3x">
+            <i className="fas fa-spinner fa-spin"></i>
           </div>
         </div>
         <button
