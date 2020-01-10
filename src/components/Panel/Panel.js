@@ -2,7 +2,7 @@ import React from "react";
 import "./Panel.scss";
 
 function Panel({ film }) {
-  const { background, name, detail, limit } = film;
+  const { background, name, detail, limit, id } = film;
 
   return (
     <div className="panel">
@@ -36,7 +36,7 @@ function Panel({ film }) {
                 <div className="synopsis no-supplemental">{` ${detail} `}</div>
               </div>
               <div className="button__wrapper">
-                <a className="play-btn">
+                <a className="play-btn" href={`/watch/${id}`}>
                   <span
                     tabIndex="-1"
                     className="nf-icon-button nf-flat-button nf-flat-button-uppercase"
@@ -54,7 +54,7 @@ function Panel({ film }) {
                     <span className="nf-flat-button-text">My Favorites</span>
                   </span>
                 </a>
-                <a className="more-btn">
+                <a className="more-btn" href={`/title/${id}`}>
                   <span
                     tabIndex="-1"
                     className="nf-icon-button nf-flat-button nf-flat-button-uppercase"
