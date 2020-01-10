@@ -3,31 +3,13 @@ import { AddToList, ChevronDown, Play, AddedToList } from "../../constants";
 import { formatSlideItem } from "../../utils/utils";
 
 class SliderItem extends Component {
-  constructor(props) {
-    super(props);
+  onClick = () => {
+    const { width, history } = this.props;
 
-    this.state = {
-      width: 0
-    };
-
-    this.myDiv = React.createRef();
-  }
-
-  componentDidMount = () => {
-    this.updateWindowDimensions();
-    window.addEventListener("resize", this.updateWindowDimensions);
+    if (width < 1100) {
+      history.push("/title/1");
+    }
   };
-
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.updateWindowDimensions);
-  }
-
-  updateWindowDimensions = () => {
-    const width = this.myDiv.current.offsetWidth - 4;
-
-    this.setState({ width });
-  };
-
   render() {
     const {
       hover,
@@ -41,8 +23,6 @@ class SliderItem extends Component {
       changeRow,
       index
     } = this.props;
-
-    const { width } = this.state;
 
     const {
       id,
@@ -65,10 +45,10 @@ class SliderItem extends Component {
     return (
       <div
         className="slider-item"
-        style={formatSlideItem(index, hover, item, select, width)}
+        style={formatSlideItem(index, hover, item, select)}
         onMouseEnter={() => setHover(index)}
         onMouseLeave={() => setHover(0)}
-        ref={this.myDiv}
+        onClick={() => this.onClick()}
       >
         <div className="title-card-container">
           <div

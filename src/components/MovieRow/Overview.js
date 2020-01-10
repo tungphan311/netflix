@@ -47,23 +47,23 @@ function Overview({ id }) {
             {message && <div className="supplemental-message">{message}</div>}
             <div className="video-title"></div>
             {isWatching && (
-              <div class="watched">
-                <div class="episodeTitle">
+              <div className="watched">
+                <div className="episodeTitle">
                   <b>
                     <span>
                       <b>{ep}</b> {epName}
                     </span>
                   </b>
                 </div>
-                <div class="progress ">
-                  <span class="progress-bar">
+                <div className="progress ">
+                  <span className="progress-bar">
                     <span
                       role="presentation"
-                      class="progress-completed"
+                      className="progress-completed"
                       style={{ width: `${(stop * 100) / epLength}%` }}
                     ></span>
                   </span>
-                  <span class="summary">
+                  <span className="summary">
                     {stop} of {epLength}m
                   </span>
                 </div>
@@ -87,7 +87,7 @@ function Overview({ id }) {
                   {!love ? (
                     <span className="nf-flat-button-icon nf-flat-button-icon-mylist-add"></span>
                   ) : (
-                    <span class="nf-flat-button-icon nf-flat-button-icon-mylist-added"></span>
+                    <span className="nf-flat-button-icon nf-flat-button-icon-mylist-added"></span>
                   )}
                   <span className="nf-flat-button-text">My Favorites</span>
                 </a>

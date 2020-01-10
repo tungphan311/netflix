@@ -166,6 +166,7 @@ class MovieRow extends Component {
                           select={select}
                           rowId={rowId}
                           changeRow={changeRow}
+                          width={width}
                         />
                       ))}
                     </Carousel.Item>

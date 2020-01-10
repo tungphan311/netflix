@@ -40,7 +40,7 @@ class Row extends Component {
         <div className="rowContainer verticalBoxArtRow rowContainer_title_card">
           <div className="ptrack-container">
             <div className="rowContent slider-hover-trigger-layer">
-              <div className="slider">
+              <div className="slider" style={{ padding: 0 }}>
                 <div className="sliderMask showPeek">
                   <div className="sliderContent row-with-x-columns">
                     {list.map((detail, index) => (

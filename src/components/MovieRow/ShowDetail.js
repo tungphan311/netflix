@@ -14,7 +14,7 @@ function ShowDetail({ id }) {
     <div className="ptrack-content">
       <div className="simpleSlider slider jawBoneDetails">
         <div className="sliderMask">
-          <div className="sliderContent">
+          <div className="sliderContent" style={{ paddingLeft: "4%" }}>
             <div class="detailsItem detailsTags">
               <div>
                 <h4 class="listLabel">Genres</h4>
