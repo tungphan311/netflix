@@ -126,7 +126,7 @@ class Details extends Component {
                                 >
                                   <span className="nf-flat-button-icon nf-flat-button-icon-mylist-add"></span>
                                   <span className="nf-flat-button-text">
-                                    My List
+                                    My Favorites
                                   </span>
                                 </a>
                               </div>

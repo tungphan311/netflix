@@ -113,7 +113,7 @@ class SliderItem extends Component {
             </div>
             <div className="bob-container">
               <span>
-                {hover === id && !select && (
+                {hover === index && !select && (
                   <BobOpen
                     id={id}
                     movId={movId}
@@ -306,7 +306,7 @@ export const BobOpen = ({
                   role="status"
                   aria-live="assertive"
                 >
-                  Add To My List
+                  Add To My Favorites
                 </span>
               </div>
             </div>

@@ -54,7 +54,7 @@ function Overview({ id }) {
                   className="nf-icon-button nf-flat-button mylist-button nf-flat-button-uppercase"
                 >
                   <span className="nf-flat-button-icon nf-flat-button-icon-mylist-add"></span>
-                  <span className="nf-flat-button-text">My List</span>
+                  <span className="nf-flat-button-text">My Favorites</span>
                 </a>
               </div>
             </div>

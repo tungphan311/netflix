@@ -51,7 +51,7 @@ function Panel({ film }) {
                     className="nf-icon-button nf-flat-button nf-flat-button-uppercase"
                   >
                     <span className="nf-flat-button-icon icon-button-mylist-add"></span>
-                    <span className="nf-flat-button-text">My List</span>
+                    <span className="nf-flat-button-text">My Favorites</span>
                   </span>
                 </a>
                 <a className="more-btn">
