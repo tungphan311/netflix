@@ -62,7 +62,7 @@ function EpisodeContainer({ id, width }) {
     setOpen(false);
   };
 
-  const list = splitList(width, episode[season]);
+  const list = episode && splitList(width, episode[season]);
 
   return (
     <div className="episodesContainer">

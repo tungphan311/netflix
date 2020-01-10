@@ -122,6 +122,7 @@ export const SLIDERS = [
     list: [
       {
         id: 1,
+        movId: 1,
         avatar:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABaopZn98UKbCuqk9CVZeTl0P1XXCnqfwflJ8S1dPC6V0uuCXOq_3dwerLIFy3K3pV20sdldFjuGT1fL7J-xDGnSBxdvew6yhVUWmkJBtdaT3hy-93W5A8Dp60Rg.jpg?r=8cb",
         background:
@@ -136,6 +137,7 @@ export const SLIDERS = [
       },
       {
         id: 2,
+        movId: 2,
         avatar:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABYRulm2wnwUbfDCpD5SMnGarKftwZUmI2GfT1MS1u8WktzqViXBeGP0279CjiQeUX8H7L3ckMei_2azsSJTgEa3gLXBkRYsJsVHowzLo4bwWXInqtEH1MC-K3bA.jpg?r=a4a",
         background:
@@ -150,6 +152,7 @@ export const SLIDERS = [
       },
       {
         id: 3,
+        movId: 3,
         avatar:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABRTUzPlV76r8M0oDnWaOyFPwZhiN3_xIlXl_eEjoRwJYDW6VgmNa_VeR9e7JIQ0sE8gO1vGmzSddOzO5OVcmeYydFIQLfSUbvsCb4slnubgD7EmUaiyhB3zwD78.jpg?r=db8",
         background:
@@ -168,6 +171,7 @@ export const SLIDERS = [
       },
       {
         id: 4,
+        movId: 4,
         avatar:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABYTUbsVWspt7lnxIqkjOiVJKKBdMCLq1flWqjQFjBEcUFUnMpy8vOk9kLIWjY3CED_cblMlidlfL0jvCBrVi-L12uQ.webp?r=385",
         background:
@@ -182,6 +186,7 @@ export const SLIDERS = [
       },
       {
         id: 5,
+        movId: 5,
         avatar:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABd4yEjHLD8EDo7DEBnwL409RXzPoybpnRMzLW8ejNlMBXQeYad4ui9ss6uh2xZw9chVE95MiRlt-OAOoahYSuG04ICQF6XxzSzyuL-F0S0Zx7BePEYyG4t6xmHU.jpg?r=48b",
         background:
@@ -196,6 +201,7 @@ export const SLIDERS = [
       },
       {
         id: 6,
+        movId: 6,
         avatar:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABduGVL2VqRfX9JmTMIm_XoPQLMMZMiaaI_LEfzMtTy2DxbQGzkQfbpmSJeInb5EfPnz5PlQD0QZb7696Q89IWQM05A.webp?r=3e7",
         background:
@@ -210,6 +216,7 @@ export const SLIDERS = [
       },
       {
         id: 7,
+        movId: 7,
         avatar:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABWBHUqG--Tb9hSGdD9JZPe40blXcAkMzqPQ2sv5qeuxkFyW9YugaLe0Z3HTOyg1tZD62JuJYwZ9iUb2f4_-86jIgbuINFl-6tDog25gfrOAIGtz2nfV_TzZuWyo.jpg?r=791",
         background:
@@ -224,6 +231,7 @@ export const SLIDERS = [
       },
       {
         id: 8,
+        movId: 8,
         avatar:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABYlpI3j7dGBTHY2VBewvCAAeW5Jm0eCv8pogBjzLLJC2ovw8tjbWdAoDyztnO3U2iVb76-k5eDB4uY33apgOw2vI2Q.webp?r=7b1",
         background:
@@ -238,6 +246,7 @@ export const SLIDERS = [
       },
       {
         id: 9,
+        movId: 9,
         avatar:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABfJb9S-1wA4Rz6h0CIBh_ikRFtQTafl7V532mkNIMZzsewRWt-RnRjiDpNwhVBvdBc3-FCx4FliKCWakXB12HT2mEw.webp?r=31d",
         background:
@@ -252,6 +261,7 @@ export const SLIDERS = [
       },
       {
         id: 10,
+        movId: 10,
         avatar:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABduGVL2VqRfX9JmTMIm_XoPQLMMZMiaaI_LEfzMtTy2DxbQGzkQfbpmSJeInb5EfPnz5PlQD0QZb7696Q89IWQM05A.webp?r=3e7",
         background:
