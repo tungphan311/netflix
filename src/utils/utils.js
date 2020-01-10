@@ -20,55 +20,423 @@ export const divideArray = (array, width) => {
   return newArray;
 };
 
-export const formatSlideItem = (id, hover, item, select, width) => {
+export const formatSlideItem = (id, hover, item, select) => {
   if (select > 0) return;
-  if (!hover) return;
 
-  if (item === 9) {
+  if (item === 9)
     if (hover > 0) {
       if (hover === 1) {
-        const trans = 2.1 * width;
-        return id === hover
+        return id === 1
+          ? {
+              zIndex: 4,
+              transform: "translate3d(201px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : {
+              transform: "translate3d(402px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            };
+      } else if (hover === 2) {
+        return id === 2
+          ? {
+              zIndex: 4,
+              transform: "translate3d(120px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : id < 2 && id > 0
+          ? {
+              transform: "translate3d(-80px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : id > 2
+          ? {
+              transform: "translate3d(318px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : {
+              transform: "translate3d(0px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            };
+      } else if (hover === 3) {
+        return id === 3
+          ? {
+              zIndex: 4,
+              transform: "translate3d(80px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : id < 3 && id > 0
+          ? {
+              transform: "translate3d(-116px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : id > 3
+          ? {
+              transform: "translate3d(276px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : {
+              transform: "translate3d(0px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            };
+      } else if (hover === 4) {
+        return id === 4
+          ? {
+              zIndex: 4,
+              transform: "translate3d(40px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : id < 4 && id > 0
+          ? {
+              transform: "translate3d(-162px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : id > 4
+          ? {
+              transform: "translate3d(239px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : {
+              transform: "translate3d(0px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            };
+      } else if (hover === 5) {
+        return id === 5
           ? {
               zIndex: 4,
               transform: "translate3d(0px, 0px, 0px)",
               transitionDuration: "500ms",
               transitionDelay: "0ms"
             }
+          : id < 5 && id > 0
+          ? {
+              transform: "translate3d(-204px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : id > 5
+          ? {
+              transform: "translate3d(198px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
           : {
-              transform: `translate3d(${trans}px, 0px, 0px)`,
+              transform: "translate3d(0px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            };
+      } else if (hover === 6) {
+        return id === 6
+          ? {
+              zIndex: 4,
+              transform: "translate3d(-41px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : id < 6 && id > 0
+          ? {
+              transform: "translate3d(-245px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : id > 6
+          ? {
+              transform: "translate3d(158px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : {
+              transform: "translate3d(0px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            };
+      } else if (hover === 7) {
+        return id === 7
+          ? {
+              zIndex: 4,
+              transform: "translate3d(-82px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : id < 7 && id > 0
+          ? {
+              transform: "translate3d(-286px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : id > 7
+          ? {
+              transform: "translate3d(116px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : {
+              transform: "translate3d(0px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            };
+      } else if (hover === 8) {
+        return id === 8
+          ? {
+              zIndex: 4,
+              transform: "translate3d(-123px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : id < 8 && id > 0
+          ? {
+              transform: "translate3d(-327px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : id > 8
+          ? {
+              transform: "translate3d(76px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : {
+              transform: "translate3d(0px, 0px, 0px)",
               transitionDuration: "500ms",
               transitionDelay: "0ms"
             };
       } else if (hover === 9) {
-        const trans = -2.1 * width;
-        return {
-          zIndex: 4,
-          transform: `translate3d(${trans}px, 0px, 0px)`,
-          transitionDuration: "500ms",
-          transitionDelay: "0ms"
-        };
-      } else {
-        const trans = 1.1 * width;
-        return id === hover
+        return id === 9
           ? {
               zIndex: 4,
-              transform: `translate3d(-${width}px, 0px, 0px)`,
+              transform: "translate3d(-198px, 0px, 0px)",
               transitionDuration: "500ms",
               transitionDelay: "0ms"
             }
-          : id < hover
+          : id < 9 && id > 0
           ? {
-              transform: `translate3d(-${width}px, 0px, 0px)`,
+              transform: "translate3d(-402px, 0px, 0px)",
               transitionDuration: "500ms",
               transitionDelay: "0ms"
             }
           : {
-              transform: `translate3d(${trans}px, 0px, 0px)`,
+              transform: "translate3d(0px, 0px, 0px)",
               transitionDuration: "500ms",
               transitionDelay: "0ms"
             };
       }
+    } else {
+      return {
+        transform: "translate3d(0px, 0px, 0px)",
+        transitionDuration: "500ms",
+        transitionDelay: "0ms"
+      };
     }
-  }
+
+  if (item === 8)
+    if (hover > 0) {
+      if (hover % 8 === 1) {
+        return id === 1
+          ? {
+              zIndex: 4,
+              transform: "translate3d(162px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : {
+              transform: "translate3d(328px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            };
+      } else if (hover % 8 === 2) {
+        return id === +2
+          ? {
+              zIndex: 4,
+              transform: "translate3d(120px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : id < +2
+          ? {
+              transform: "translate3d(-48px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : id > +2 && id <= +1
+          ? {
+              transform: "translate3d(288px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : {
+              transform: "translate3d(0px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            };
+      } else if (hover % 8 === 3) {
+        return id === +3
+          ? {
+              zIndex: 4,
+              transform: "translate3d(80px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : id < +3
+          ? {
+              transform: "translate3d(-90px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : id > +3 && id <= +1
+          ? {
+              transform: "translate3d(248px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : {
+              transform: "translate3d(0px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            };
+      } else if (hover % 8 === 4) {
+        return id === +4
+          ? {
+              zIndex: 4,
+              transform: "translate3d(40px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : id < +4
+          ? {
+              transform: "translate3d(-128px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : id > +4 && id <= +1
+          ? {
+              transform: "translate3d(208px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : {
+              transform: "translate3d(0px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            };
+      } else if (hover % 8 === 5) {
+        return id === +5
+          ? {
+              zIndex: 4,
+              transform: "translate3d(0px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : id < +5
+          ? {
+              transform: "translate3d(-168px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : id > +5 && id <= +1
+          ? {
+              transform: "translate3d(168px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : {
+              transform: "translate3d(0px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            };
+      } else if (hover % 8 === 6) {
+        return id === +6
+          ? {
+              zIndex: 4,
+              transform: "translate3d(-41px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : id < +6
+          ? {
+              transform: "translate3d(-210px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : id > +6 && id <= +1
+          ? {
+              transform: "translate3d(126px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : {
+              transform: "translate3d(0px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            };
+      } else if (hover % 8 === 7) {
+        return id === +7
+          ? {
+              zIndex: 4,
+              transform: "translate3d(-100px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : id < +7
+          ? {
+              transform: "translate3d(-268px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : id > +7 && id <= +1
+          ? {
+              transform: "translate3d(68px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : {
+              transform: "translate3d(0px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            };
+      } else if (hover % 8 === 0) {
+        return id === +8
+          ? {
+              zIndex: 4,
+              transform: "translate3d(-168px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : id < +8
+          ? {
+              transform: "translate3d(-336px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : id === +1
+          ? {
+              transform: "translate3d(0px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            }
+          : {
+              transform: "translate3d(0px, 0px, 0px)",
+              transitionDuration: "500ms",
+              transitionDelay: "0ms"
+            };
+      }
+    } else {
+      return {
+        transform: "translate3d(0px, 0px, 0px)",
+        transitionDuration: "500ms",
+        transitionDelay: "0ms"
+      };
+    }
 };

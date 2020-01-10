@@ -155,7 +155,7 @@ class MovieRow extends Component {
                       {subList.map((sub, index) => (
                         <SliderItem
                           index={index + 1}
-                          key={sub.id}
+                          key={index}
                           hover={hover}
                           setHover={this.setHover}
                           details={sub}

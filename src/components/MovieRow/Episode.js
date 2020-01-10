@@ -8,7 +8,8 @@ export const Episode = ({
   ep,
   length,
   description,
-  background
+  background,
+  progress
 }) => (
   <div className="slider-item">
     <div className="episodeLockup">
@@ -20,9 +21,20 @@ export const Episode = ({
           }}
         >
           <div className="numberVignette"></div>
-          <div className="episodeNumber noProgress">
+          <div className={`episodeNumber ${progress ? "" : "noProgress"}`}>
             <span aria-hidden="true">{ep}</span>
           </div>
+          {progress && (
+            <div class="progress">
+              <span class="progress-bar">
+                <span
+                  role="presentation"
+                  class="progress-completed"
+                  style={{ width: "47%" }}
+                ></span>
+              </span>
+            </div>
+          )}
           <a className="episodePlay slider-refocus playLink" href={href}>
             <div className="playRing">
               <div className="play icon-play"></div>
@@ -121,7 +133,8 @@ function EpisodeContainer({ id, width }) {
                             ep,
                             length,
                             description,
-                            background
+                            background,
+                            progress
                           }) => (
                             <Episode
                               key={href}
@@ -131,6 +144,7 @@ function EpisodeContainer({ id, width }) {
                               length={length}
                               description={description}
                               background={background}
+                              progress={progress}
                             />
                           )
                         )}

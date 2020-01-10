@@ -33,7 +33,6 @@ class SliderItem extends Component {
       hover,
       setHover,
       details,
-      page,
       item,
       history,
       selectDetail,
@@ -47,6 +46,7 @@ class SliderItem extends Component {
 
     const {
       id,
+      movId,
       avatar,
       background,
       href,
@@ -79,7 +79,7 @@ class SliderItem extends Component {
               <a
                 tabIndex="0"
                 className="slider-refocus"
-                onClick={() => selectDetail(id)}
+                onClick={() => selectDetail(movId)}
               >
                 <div className="boxart-size-vertical boxart-container">
                   <img
@@ -91,13 +91,13 @@ class SliderItem extends Component {
                     <p className="fallback-text">{name}</p>
                   </div>
                 </div>
-                {select !== id && (
+                {select !== movId && (
                   <div className="click-to-change-JAW-indicator is-another-JAW-open">
                     <div className="bob-jawbone-chevron">{ChevronDown}</div>
                   </div>
                 )}
               </a>
-              {select === id && (
+              {select === movId && (
                 <div
                   className="title-card-jawbone-focus"
                   style={{ opacity: 1, transitionDuration: "300ms" }}
@@ -116,6 +116,7 @@ class SliderItem extends Component {
                 {hover === id && !select && (
                   <BobOpen
                     id={id}
+                    movId={movId}
                     url={background}
                     href={href}
                     name={name}
@@ -157,6 +158,7 @@ export default SliderItem;
 
 const BobOpen = ({
   id,
+  movId,
   url,
   href,
   name,
@@ -181,7 +183,7 @@ const BobOpen = ({
       width: "124%",
       height: "124%",
       top: "-12%",
-      left: "0",
+      left: "-12%",
       transitionDuration: "500ms"
     }}
   >
@@ -203,7 +205,7 @@ const BobOpen = ({
           aria-label={name}
           className="bob-jaw-hitzone"
           onClick={() => {
-            selectDetail(id);
+            selectDetail(movId);
             changeRow(rowId);
           }}
         ></a>

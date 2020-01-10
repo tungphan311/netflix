@@ -2,8 +2,6 @@ export const FILM_DETAILS = {
   1: {
     id: 1,
     title: "Lucifer",
-    releaseDate: "April 26, 2019",
-    isOut: true,
     score: "97% Match",
     year: "2019",
     limit: "18+",
@@ -15,8 +13,6 @@ export const FILM_DETAILS = {
       "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/jsgGe9NCko3c-j0wGZ7FSwVlHs0/AAAABaXk_ip61RVo_EFyT33jCROuxdRzjzmzK76SzYjy24h2oZzjsfXKi6lUjUJn7scGL8Zqn2OdeeUwdyrZ3fo7k0mgO4jrC4eboiKY0YnvzI0nf1DwqkXMd7dj70Kglyq_b4mY0VJHIcvdEMgjPOcaxad-Cqbgde9aTIPEo7784sA.webp?r=95c",
     description:
       "Bored with being the Lord of Hell, the devil relocates to Los Angeles, where he opens a nightclub and forms a connection with a homicide detective.",
-    backgroundPath:
-      "https://occ-0-58-64.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABR8CznPUUUuYW2qfB2l5fsuJbW2_jAUnoSSkS5uN14CRSAu3n2arG7nAsEdb_5U8YmSKetcfHh5wDYfKEIkpMHp1uYfL.jpg",
     starring: [
       { id: 30071775, name: "Tom Ellis" },
       { id: 20030510, name: "Lauren German" },
@@ -338,8 +334,6 @@ export const FILM_DETAILS = {
   2: {
     id: 2,
     title: "Kingdom",
-    releaseDate: "April 26, 2019",
-    isOut: true,
     score: "97% Match",
     year: "2019",
     limit: "18+",
@@ -350,8 +344,6 @@ export const FILM_DETAILS = {
       "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/jsgGe9NCko3c-j0wGZ7FSwVlHs0/AAAABc0GzjNWDRQRDDEYS5cWcYGKI4TLBclrgQcg5SThUIQiiq66AhV0yWhgS-g_lZyyeE2s5wHkF4OwI5gy0JjixCqHO2SGYi93xWBWHNh-eTZ-nEKtFM8zBVB9xg0Ca95cCOYcl6ic6mMy3qvetq1S_6kJ0kCxNOeg3Asumk5eJQ4.webp?r=d36",
     description:
       "While strange rumors about their ill king grip a kingdom, the crown prince becomes their only hope against a mysterious plague overtaking the land.",
-    backgroundPath:
-      "https://occ-0-58-64.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABR8CznPUUUuYW2qfB2l5fsuJbW2_jAUnoSSkS5uN14CRSAu3n2arG7nAsEdb_5U8YmSKetcfHh5wDYfKEIkpMHp1uYfL.jpg",
     starring: [
       { href: 30123033, name: "Ju Ji-hoon" },
       { href: 30078617, name: "Ryu Seung-ryong" },
@@ -427,24 +419,6 @@ export const FILM_DETAILS = {
         }
       ]
     },
-    descriptionItems: [
-      {
-        title: "Director",
-        content: "Anthony Russo, Joe Russo"
-      },
-      {
-        title: "Producer",
-        content: "Kevin Feige"
-      },
-      {
-        title: "Screenplay writers",
-        content: "Christopher Markus, Stephen McFeely"
-      },
-      {
-        title: "Executive producers",
-        content: "Stan Lee, Trinh Tran"
-      }
-    ],
     casts: [
       {
         imagePath: "https://i.redd.it/ok6isppohnk31.jpg",
@@ -464,113 +438,94 @@ export const FILM_DETAILS = {
   3: {
     id: 3,
     title: "Vagabond",
-    releaseDate: "April 26, 2019",
-    isOut: true,
     score: "97% Match",
     year: "2019",
     limit: "18+",
     duration: "1 Season",
     background:
-      "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABVpuQml4Ic_xGZsjzxgG2k87gUnOxe92Yfd-Z5G2GH-FXvj1Vs9sFZYqfGqml7Tqimm4iyOngtdNynD-hyJo2PV2iB-G.webp?r=f8c",
+      "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/9pS1daC2n6UGc3dUogvWIPMR_OU/AAAABXQ17XEn1Wn3aQNS5EkFDOG0FaRMlcGVq5jL0eyQ7h9mOaXGinbNR_IKv72OpBA5uZuE_IJe_agh-9_Ucgva8GlsG19UWsz_K7t3hYo-hnPKA5gf0g.webp?r=ee2",
     logo:
-      "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/jsgGe9NCko3c-j0wGZ7FSwVlHs0/AAAABc0GzjNWDRQRDDEYS5cWcYGKI4TLBclrgQcg5SThUIQiiq66AhV0yWhgS-g_lZyyeE2s5wHkF4OwI5gy0JjixCqHO2SGYi93xWBWHNh-eTZ-nEKtFM8zBVB9xg0Ca95cCOYcl6ic6mMy3qvetq1S_6kJ0kCxNOeg3Asumk5eJQ4.webp?r=d36",
+      "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/jsgGe9NCko3c-j0wGZ7FSwVlHs0/AAAABW1IRzjjDKbycWhO6yqZ4MH8-n4JEkzv5qqDA2TTTjGd_pEppVBKxjnyfnAAAEhbhgGDWXLdqxjxnMkDQ20MUZxvz7vN8ZexVICFbSWogSWgxdmvGtq5yNvjqEuS5Golasa6EPZg6Z98aFelGAHemzpQVBtn4PrsT8gPBYR7LZs.webp?r=562",
     description:
       "While strange rumors about their ill king grip a kingdom, the crown prince becomes their only hope against a mysterious plague overtaking the land.",
-    backgroundPath:
-      "https://occ-0-58-64.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABR8CznPUUUuYW2qfB2l5fsuJbW2_jAUnoSSkS5uN14CRSAu3n2arG7nAsEdb_5U8YmSKetcfHh5wDYfKEIkpMHp1uYfL.jpg",
     starring: [
-      { href: 30123033, name: "Ju Ji-hoon" },
-      { href: 30078617, name: "Ryu Seung-ryong" },
-      { href: 20036721, name: "Bae Doona" }
+      { href: 40009302, name: "Lee Seung-gi" },
+      { href: 30173422, name: "Bae Suzy" },
+      { href: 30163554, name: "Shin Sung-rok" }
     ],
     genres: [
-      { href: "/browse?genre=historical", title: "Historical" },
-      { href: "/browse?genre=horror", title: "Horror" },
+      { href: "/browse?genre=drama", title: "Drama" },
+      { href: "/browse?genre=action", title: "Action" },
       { href: "/browse?genre=netflix%20original", title: "Netflix original" }
     ],
     seasons: [{ id: 1, title: "Season 1" }],
     episode: {
       1: [
         {
-          href: "/watch/2101",
+          href: "/watch/3101",
           title: "Episode 1",
           ep: 1,
-          length: "56m",
+          length: "61m",
+          progress: 43,
           description:
-            "Officials find notices in Hanyang alleging the king is dead. Crown Prince Lee Chang tries to check on his father, but the young queen stands in his way.",
+            "Cha Dal-geon encourages his nephew to go to Morocco with the taekwondo demonstration group. Go Hae-ri walks in late to a meeting at the Korean embassy.",
           background:
-            "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/9pS1daC2n6UGc3dUogvWIPMR_OU/AAAABaicZ43pSrQkXOnz16Ir4cUMoJkrSq9NA5lpeDEmD1Q4vvgaluPQXCkemfXZrgpHMVju6AoLe8oqUQ4s9Pu-Jj4wqCckk2bo_hl60utztOjhNp5O.webp?r=53e"
+            "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/9pS1daC2n6UGc3dUogvWIPMR_OU/AAAABToPXY3Pnn1gwzBuzl4ytpMNUi7OvSbMTT06fG8Dutwk0QraSUd1UWSQvANLKpgBWdpZAbSeL2TOe6PYesOavzD-0CmaC9My69F3mzzlCQ9dbMDn.webp?r=ae1"
         },
         {
-          href: "/watch/2102",
+          href: "/watch/3102",
           title: "Episode 2",
           ep: 2,
-          length: "53m",
+          length: "61m",
           description:
-            "Prince Chang and Mu-yeong arrive at Jiyulheon, where they make a horrific discovery. Seo-bi’s story of what she saw eerily resonates with Prince Chang.",
+            "Cha Dal-geon makes a disquieting announcement to the other bereaving families and implores Go Hae-ri for help, but she seems to be hiding something.",
           background:
-            "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/9pS1daC2n6UGc3dUogvWIPMR_OU/AAAABeOuHWpBCGi_POGRdKuJOI7b2p-QRjPus36zBgcwfMH04OJgYZ_oslLYVfcDNzLBWnan7NsS2fFjVH0gN32jrhXe95Vg6BEdRwp9NU5SxsPOOOdb.webp?r=e18"
+            "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/9pS1daC2n6UGc3dUogvWIPMR_OU/AAAABUwJmCKFUcHmVvZYwA_mBR3Gi1rmkbsDDaeuNQmW_H0nx1XMOrq3qegWb0PvANi3BXSmQ3UdYKUo6N0_Kz9xLSE9AF8K-qj51Zbg8bqBrwkza0BB.webp?r=8d9"
         },
         {
-          href: "/watch/2103",
+          href: "/watch/3103",
           title: "Episode 3",
           ep: 3,
-          length: "54m",
+          length: "64m",
           description:
-            "Night leads to chaos in Dongnae. Cho Hak-ju and the queen oversee the king’s care. Prince Chang reaches a disquieting conclusion and vows to fight back.",
+            "Hae-ri remains skeptical about the flight-deck voice recording but is told that the evidence points to a faulty aircraft. Dal-geon is ambushed.",
           background:
-            "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/9pS1daC2n6UGc3dUogvWIPMR_OU/AAAABZ_vYPt2C01HxCgqn7cBGkgoYPmmuy6uxsJhCtB7mWfjEA60HEzdmG831OoYVUxh8VFUGzH5aptZZ_kbY7vbfVClp9CRPlAtOU4C6KXybtM0waL4.webp?r=d21"
+            "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/9pS1daC2n6UGc3dUogvWIPMR_OU/AAAABSiccKJUwbgqcoviTQR28Hewmo5ZGn4pku2bvOaQbD43WqEYKLAVe8_gPMPXzSHcMgr6TU1Y9r4mzibVMxS96dup6D57A4A9ZrO0ANoFkFMn9XUE.webp?r=b06"
         },
         {
-          href: "/watch/2104",
+          href: "/watch/3104",
           title: "Episode 4",
           ep: 4,
-          length: "52m",
+          length: "62m",
+          progress: 20,
           description:
-            "On his way to seek Lord Ahn Hyeon’s help, Prince Chang encounters a group of stranded survivors and leads them to Jiyulheon, following Seo-bi’s advice.",
+            "Dal-geon gets a call from someone out of the blue and is approached by a journalist, who claims to be pursuing a story about the plane crash.",
           background:
-            "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/9pS1daC2n6UGc3dUogvWIPMR_OU/AAAABeKTgcU0KsX228tm3K4bKVHIQstVxqqvuJTlQ4PewPoR3X7XaBe8cTY7R69K1x7cBBDRAP3nU1PRNihEC5ypjPKzF9oy7o_pQQQ258qsPAjLz4Ns.webp?r=600"
+            "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/9pS1daC2n6UGc3dUogvWIPMR_OU/AAAABaWSJivyHoKhJ8mdVpQwsBxR0UlrZVnOdTdO3FJJFPWhrD2JAZocuIv62XxNbCmBPHeg99XlVQ7CnpH0NoiGzlEYlPRXCTs__6biloJMzAT4WRd7.webp?r=f5a"
         },
         {
-          href: "/watch/2105",
+          href: "/watch/3105",
           title: "Episode 5",
           ep: 5,
-          length: "53m",
+          length: "63m",
           description:
-            "Prince Chang’s group comes across a village that oddly seems to be well-fed. While taking refuge at Lord Ahn Hyeon’s, Seo-bi notes something peculiar.",
+            "Dal-geon attempts to alert the press about what he knows -- but someone interferes. Hae-ri contacts Gi Tae-ung to get answers about the flash drive.",
           background:
-            "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/9pS1daC2n6UGc3dUogvWIPMR_OU/AAAABXfIgNpLHwT_PFjBYE-N4CMqVIX2MyWXoqxY4V5XGJmsuU57f_JV4GVGWUoAV4SStiB0Ki8isK7OjC0TtiQGkNIuQrVf-QxV8K1yuM7ZmKJAKyGl.webp?r=6cb"
+            "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/9pS1daC2n6UGc3dUogvWIPMR_OU/AAAABbNUYVx5F-vUHS4aB5FxBgFkJfS96GzoQpThyaRu8J2vNfsffFcGuT9UM7G7U3kZQE67IsMQJPMLpfMZTpBldkOOtuXZjFRNyd5Tg8p6dCkRxzQR.webp?r=ad3"
         },
         {
-          href: "/watch/2106",
+          href: "/watch/3106",
           title: "Episode 6",
           ep: 6,
-          length: "55m",
+          length: "65m",
+          progress: 47,
           description:
-            "Cho Hak-ju has chilling words for the queen, who’s hiding a sinister secret. Prince Chang orders Sangju’s defenses, but Seo-bi senses something awry.",
+            "The NIS takes Dal-geon to a safe house. Tae-ung questions O Sang-mi about her husband’s involvement in the plane crash but is ordered to release her.",
           background:
-            "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/9pS1daC2n6UGc3dUogvWIPMR_OU/AAAABSSZ_xnfU0qgD6oHNJSO3g_XfSeS2NmBld3KjH58oNhnxIDFIiYcEvmDflq6qoBAMTjYYEK6aZGo0JQdTPXoLPxNZ5tVM_YixFpyIf2-3dcjMHIO.webp?r=69a"
+            "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/9pS1daC2n6UGc3dUogvWIPMR_OU/AAAABZXLJKsY-gq20vE6Ch-lp32P8K3r2zMo_B81dpRRQ3B4HXZE8LaZlXJ4sQyNOq378BRraPwnroA7vu3Ehpv2c_INBXuljC_TyXkpivIWKMMQkulL.webp?r=ee2"
         }
       ]
     },
-    descriptionItems: [
-      {
-        title: "Director",
-        content: "Anthony Russo, Joe Russo"
-      },
-      {
-        title: "Producer",
-        content: "Kevin Feige"
-      },
-      {
-        title: "Screenplay writers",
-        content: "Christopher Markus, Stephen McFeely"
-      },
-      {
-        title: "Executive producers",
-        content: "Stan Lee, Trinh Tran"
-      }
-    ],
     casts: [
       {
         imagePath: "https://i.redd.it/ok6isppohnk31.jpg",
@@ -589,9 +544,7 @@ export const FILM_DETAILS = {
   },
   4: {
     id: 4,
-    title: "Vagabond",
-    releaseDate: "April 26, 2019",
-    isOut: true,
+    title: "Spider-Man: Homecoming",
     score: "95% Match",
     year: "2017",
     limit: "13+",
@@ -602,8 +555,6 @@ export const FILM_DETAILS = {
       "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/jsgGe9NCko3c-j0wGZ7FSwVlHs0/AAAABaTWDR2mCU4Kklxov3Z8ZKYaH9aN2SB1Qm1f6-fIQV0uyX53U2_xZl2WJ-IqVc6DgyPmcQjy-BHNycoh5jvNysHazeUDac5yTg.webp?r=a90",
     description:
       "Peter Parker returns to routine life as a high schooler until the Vulture's arrival gives him the chance to prove himself as a web-slinging superhero.",
-    backgroundPath:
-      "https://occ-0-58-64.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABR8CznPUUUuYW2qfB2l5fsuJbW2_jAUnoSSkS5uN14CRSAu3n2arG7nAsEdb_5U8YmSKetcfHh5wDYfKEIkpMHp1uYfL.jpg",
     starring: [
       { href: 30204677, name: "Tom Holland" },
       { href: 48453, name: "Michael Keaton" },
@@ -612,24 +563,6 @@ export const FILM_DETAILS = {
     genres: [
       { href: "/browse?genre=action", title: "Action" },
       { href: "/browse?genre=adventure", title: "Adventure" }
-    ],
-    descriptionItems: [
-      {
-        title: "Director",
-        content: "Anthony Russo, Joe Russo"
-      },
-      {
-        title: "Producer",
-        content: "Kevin Feige"
-      },
-      {
-        title: "Screenplay writers",
-        content: "Christopher Markus, Stephen McFeely"
-      },
-      {
-        title: "Executive producers",
-        content: "Stan Lee, Trinh Tran"
-      }
     ],
     casts: [
       {
