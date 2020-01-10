@@ -1,7 +1,7 @@
 export const SLIDERS = [
   {
     id: 1,
-    title: "My Favorites",
+    title: "Continue Watching",
     myList: true,
     list: [
       {

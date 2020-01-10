@@ -345,9 +345,9 @@ export const FILM_DETAILS = {
     description:
       "While strange rumors about their ill king grip a kingdom, the crown prince becomes their only hope against a mysterious plague overtaking the land.",
     starring: [
-      { href: 30123033, name: "Ju Ji-hoon" },
-      { href: 30078617, name: "Ryu Seung-ryong" },
-      { href: 20036721, name: "Bae Doona" }
+      { id: 30123033, name: "Ju Ji-hoon" },
+      { id: 30078617, name: "Ryu Seung-ryong" },
+      { id: 20036721, name: "Bae Doona" }
     ],
     genres: [
       { href: "/browse?genre=historical", title: "Historical" },
@@ -449,9 +449,9 @@ export const FILM_DETAILS = {
     description:
       "While strange rumors about their ill king grip a kingdom, the crown prince becomes their only hope against a mysterious plague overtaking the land.",
     starring: [
-      { href: 40009302, name: "Lee Seung-gi" },
-      { href: 30173422, name: "Bae Suzy" },
-      { href: 30163554, name: "Shin Sung-rok" }
+      { id: 40009302, name: "Lee Seung-gi" },
+      { id: 30173422, name: "Bae Suzy" },
+      { id: 30163554, name: "Shin Sung-rok" }
     ],
     genres: [
       { href: "/browse?genre=drama", title: "Drama" },
@@ -556,9 +556,9 @@ export const FILM_DETAILS = {
     description:
       "Peter Parker returns to routine life as a high schooler until the Vulture's arrival gives him the chance to prove himself as a web-slinging superhero.",
     starring: [
-      { href: 30204677, name: "Tom Holland" },
-      { href: 48453, name: "Michael Keaton" },
-      { href: 25583, name: "Robert Downey Jr." }
+      { id: 30204677, name: "Tom Holland" },
+      { id: 48453, name: "Michael Keaton" },
+      { id: 25583, name: "Robert Downey Jr." }
     ],
     genres: [
       { href: "/browse?genre=action", title: "Action" },
