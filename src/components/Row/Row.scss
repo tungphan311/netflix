@@ -1,0 +1,81 @@
+.gallery .rowContainer {
+  margin: 0;
+  margin-top: 3vw;
+}
+
+.gallery .slider {
+  padding: 0;
+}
+
+.slider .sliderMask {
+  overflow-x: hidden;
+  padding-bottom: 1px;
+}
+
+.slider .sliderMask.showPeek {
+  overflow-x: visible;
+}
+
+.slider .sliderMask .sliderContent {
+  white-space: nowrap;
+}
+
+.slider .sliderMask .sliderContent .slider-item {
+  box-sizing: border-box;
+  z-index: 1;
+  display: inline-block;
+  position: relative;
+  white-space: normal;
+  vertical-align: top;
+  padding: 0 2px;
+}
+
+.slider .sliderMask .sliderContent .slider-item:first-child {
+  padding-left: 0;
+}
+
+.verticalBoxArtRow .is-bob-open.title-card {
+  width: 250%;
+  transform: translate(-30%, 0);
+}
+
+.verticalBoxArtRow .title-card .bob-card {
+  background: rgba(0, 0, 0, 0);
+}
+
+.bob-card {
+  position: absolute;
+  z-index: 2;
+  background-color: #141414;
+  color: white;
+}
+
+.gallery-open .rowContainer {
+  margin-bottom: 37vw;
+}
+
+@media screen and (max-width: 499px) {
+  .rowContainer .rowContent .slider .row-with-x-columns .slider-item {
+    width: 33.333333%;
+  }
+}
+@media screen and (min-width: 500px) and (max-width: 799px) {
+  .rowContainer .rowContent .slider .row-with-x-columns .slider-item {
+    width: 25%;
+  }
+}
+@media screen and (min-width: 800px) and (max-width: 1099px) {
+  .rowContainer .rowContent .slider .row-with-x-columns .slider-item {
+    width: 20%;
+  }
+}
+@media screen and (min-width: 1100px) and (max-width: 1440px) {
+  .rowContainer .rowContent .slider .row-with-x-columns .slider-item {
+    width: calc(100% / 6);
+  }
+}
+@media screen and (min-width: 1441px) {
+  .rowContainer .rowContent .slider .row-with-x-columns .slider-item {
+    width: calc(100% / 7);
+  }
+}

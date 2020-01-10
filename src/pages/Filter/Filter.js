@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import FilterBlock from "../../components/FilterBlock/FilterBlock";
 import "./Filter.scss";
-import Card from "../../components/Card/Card";
 import Search from "../../components/Search/Search";
+import Row from "../../components/Row/Row";
 import { MOVIES } from "../../constants";
-import { divideArray } from "../../utils/utils";
 
 class Filter extends Component {
   constructor(props) {
@@ -12,33 +11,47 @@ class Filter extends Component {
 
     this.state = {
       width: 0,
-      containerWidth: 0
+      select: 0,
+      hover: 0,
+      movies: [],
+      rowSelect: 0
     };
-
-    this.container = React.createRef();
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     this.updateWindowDimensions();
     window.addEventListener("resize", this.updateWindowDimensions);
-  }
+  };
 
   componentWillUnmount() {
     window.removeEventListener("resize", this.updateWindowDimensions);
   }
 
   updateWindowDimensions = () => {
-    this.setState({
-      width: window.innerWidth,
-      containerWidth: this.container.current.offsetWidth
-    });
+    const width = window.innerWidth;
+
+    const item =
+      width < 500
+        ? 3
+        : width >= 500 && width < 800
+        ? 4
+        : width >= 800 && width < 1100
+        ? 5
+        : width >= 1100 && width < 1441
+        ? 6
+        : 7;
+
+    const newList = splitList(item, MOVIES);
+    this.setState({ width, movies: newList });
+  };
+
+  changeRow = id => {
+    this.setState({ rowSelect: id });
   };
 
   render() {
     const { history } = this.props;
-    const { width, containerWidth } = this.state;
-
-    const movies = divideArray(MOVIES, width);
+    const { movies, rowSelect, width } = this.state;
 
     return (
       <div className="content">
@@ -57,6 +70,19 @@ class Filter extends Component {
             <hr className="result__line" />
 
             <div className="filter__result__container" ref={this.container}>
+              {movies.map((list, index) => (
+                <Row
+                  rowId={index + 1}
+                  key={index}
+                  list={list}
+                  history={history}
+                  changeRow={this.changeRow}
+                  rowSelect={rowSelect}
+                  width={width}
+                />
+              ))}
+            </div>
+            {/* <div className="filter__result__container" ref={this.container}>
               {movies.map((movie, index) => (
                 <div key={index} className="filter__slider m__t--20">
                   {movie.map((item, index) => (
@@ -70,7 +96,7 @@ class Filter extends Component {
                   ))}
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
@@ -79,3 +105,27 @@ class Filter extends Component {
 }
 
 export default Filter;
+
+const splitList = (item, list) => {
+  let temp = [];
+  let newList = [];
+
+  if (item > 0) {
+    list.map((sub, index) => {
+      temp = [...temp, sub];
+
+      if (index % item === item - 1) {
+        newList = [...newList, temp];
+        temp = [];
+      }
+
+      if (index === list.length - 1) {
+        newList = [...newList, temp];
+      }
+
+      return null;
+    });
+  }
+
+  return newList;
+};

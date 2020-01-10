@@ -156,7 +156,7 @@ class SliderItem extends Component {
 
 export default SliderItem;
 
-const BobOpen = ({
+export const BobOpen = ({
   id,
   movId,
   url,
