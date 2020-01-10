@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-import FilterBlock from "../../components/FilterBlock/FilterBlock";
-import "./Filter.scss";
-import Search from "../../components/Search/Search";
+import "./Favorites.scss";
+import { splitList } from "../Filter/Filter";
+import { SLIDERS } from "../../constants";
 import Row from "../../components/Row/Row";
-import { MOVIES } from "../../constants";
 
-class Filter extends Component {
+class Favorites extends Component {
   constructor(props) {
     super(props);
 
@@ -41,7 +40,7 @@ class Filter extends Component {
         ? 6
         : 7;
 
-    const newList = splitList(item, MOVIES);
+    const newList = splitList(item, SLIDERS[1].list);
     this.setState({ width, movies: newList });
   };
 
@@ -54,67 +53,31 @@ class Filter extends Component {
     const { movies, rowSelect, width } = this.state;
 
     return (
-      <div className="content">
-        <div className="filter-page__container">
-          <div className="filter-page__left">
-            <FilterBlock history={history} />
-          </div>
-          <div className="filter-page__right">
-            <div className="w--100 h--44">
-              <Search />
-            </div>
-
-            <label className="m__t--40 font__weight--bold font__size--x-large">
-              {MOVIES.length} Results
-            </label>
-            <hr className="result__line" />
-
-            <div className="filter__result__container">
-              {movies.map((list, index) => (
-                <Row
-                  rowId={index + 1}
-                  key={index}
-                  list={list}
-                  history={history}
-                  changeRow={this.changeRow}
-                  rowSelect={rowSelect}
-                  width={width}
-                  formatSlideItem={formatSlideItem}
-                />
-              ))}
-            </div>
-          </div>
+      <div className="page-container">
+        <div className="header"></div>
+        <div className="page--title">
+          <div className="title">My Favorites</div>
+        </div>
+        <div>
+          {movies.map((list, index) => (
+            <Row
+              rowId={index + 1}
+              key={index}
+              list={list}
+              history={history}
+              changeRow={this.changeRow}
+              rowSelect={rowSelect}
+              width={width}
+              formatSlideItem={formatSlideItem}
+            />
+          ))}
         </div>
       </div>
     );
   }
 }
 
-export default Filter;
-
-export const splitList = (item, list) => {
-  let temp = [];
-  let newList = [];
-
-  if (item > 0) {
-    list.map((sub, index) => {
-      temp = [...temp, sub];
-
-      if (index % item === item - 1) {
-        newList = [...newList, temp];
-        temp = [];
-      }
-
-      if (index === list.length - 1) {
-        newList = [...newList, temp];
-      }
-
-      return null;
-    });
-  }
-
-  return newList;
-};
+export default Favorites;
 
 const formatSlideItem = (id, hover, width, select) => {
   if (select > 0) return;
@@ -136,13 +99,13 @@ const formatSlideItem = (id, hover, width, select) => {
         return id === 1
           ? {
               zIndex: 4,
-              transform: "translate3d(182px, 0px, 0px)",
+              transform: "translate3d(222px, 0px, 0px)",
               transitionDuration: "500ms",
               transitionDelay: "0ms"
             }
           : id > 1
           ? {
-              transform: "translate3d(358px, 0px, 0px)",
+              transform: "translate3d(448px, 0px, 0px)",
               transitionDuration: "500ms",
               transitionDelay: "0ms"
             }
@@ -161,13 +124,13 @@ const formatSlideItem = (id, hover, width, select) => {
             }
           : id < 2 && id > 0
           ? {
-              transform: "translate3d(-48px, 0px, 0px)",
+              transform: "translate3d(-88px, 0px, 0px)",
               transitionDuration: "500ms",
               transitionDelay: "0ms"
             }
           : id > 2 && id < 7
           ? {
-              transform: "translate3d(288px, 0px, 0px)",
+              transform: "translate3d(328px, 0px, 0px)",
               transitionDuration: "500ms",
               transitionDelay: "0ms"
             }
@@ -186,13 +149,13 @@ const formatSlideItem = (id, hover, width, select) => {
             }
           : id < 3 && id > 0
           ? {
-              transform: "translate3d(-90px, 0px, 0px)",
+              transform: "translate3d(-145px, 0px, 0px)",
               transitionDuration: "500ms",
               transitionDelay: "0ms"
             }
           : id > 3 && id < 7
           ? {
-              transform: "translate3d(248px, 0px, 0px)",
+              transform: "translate3d(303px, 0px, 0px)",
               transitionDuration: "500ms",
               transitionDelay: "0ms"
             }
@@ -211,13 +174,13 @@ const formatSlideItem = (id, hover, width, select) => {
             }
           : id < 4 && id > 0
           ? {
-              transform: "translate3d(-128px, 0px, 0px)",
+              transform: "translate3d(-185px, 0px, 0px)",
               transitionDuration: "500ms",
               transitionDelay: "0ms"
             }
           : id > 4 && id <= 6
           ? {
-              transform: "translate3d(208px, 0px, 0px)",
+              transform: "translate3d(256px, 0px, 0px)",
               transitionDuration: "500ms",
               transitionDelay: "0ms"
             }
@@ -236,13 +199,13 @@ const formatSlideItem = (id, hover, width, select) => {
             }
           : id < 5 && id > 0
           ? {
-              transform: "translate3d(-168px, 0px, 0px)",
+              transform: "translate3d(-225px, 0px, 0px)",
               transitionDuration: "500ms",
               transitionDelay: "0ms"
             }
           : id > 5 && id <= 6
           ? {
-              transform: "translate3d(168px, 0px, 0px)",
+              transform: "translate3d(218px, 0px, 0px)",
               transitionDuration: "500ms",
               transitionDelay: "0ms"
             }
@@ -255,13 +218,13 @@ const formatSlideItem = (id, hover, width, select) => {
         return id === 6
           ? {
               zIndex: 4,
-              transform: "translate3d(-181px, 0px, 0px)",
+              transform: "translate3d(-211px, 0px, 0px)",
               transitionDuration: "500ms",
               transitionDelay: "0ms"
             }
           : id < 6 && id > 0
           ? {
-              transform: "translate3d(-350px, 0px, 0px)",
+              transform: "translate3d(-437px, 0px, 0px)",
               transitionDuration: "500ms",
               transitionDelay: "0ms"
             }

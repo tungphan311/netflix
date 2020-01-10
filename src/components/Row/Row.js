@@ -24,7 +24,15 @@ class Row extends Component {
   };
 
   render() {
-    const { list, history, changeRow, rowId, rowSelect, width } = this.props;
+    const {
+      list,
+      history,
+      changeRow,
+      rowId,
+      rowSelect,
+      width,
+      formatSlideItem
+    } = this.props;
     const { select, hover } = this.state;
 
     return (
@@ -48,6 +56,7 @@ class Row extends Component {
                         select={select}
                         hover={hover}
                         setHover={this.setHover}
+                        formatSlideItem={formatSlideItem}
                       />
                     ))}
                   </div>
@@ -95,7 +104,8 @@ const Movie = ({
   hover,
   setHover,
   select,
-  index
+  index,
+  formatSlideItem
 }) => (
   <div
     className="slider-item"
@@ -147,167 +157,3 @@ const Movie = ({
     </div>
   </div>
 );
-
-const formatSlideItem = (id, hover, width, select) => {
-  if (select > 0) return;
-
-  const item =
-    width < 500
-      ? 3
-      : width >= 500 && width < 800
-      ? 4
-      : width >= 800 && width < 1100
-      ? 5
-      : width >= 1100 && width < 1441
-      ? 6
-      : 7;
-
-  if (item === 6)
-    if (hover > 0) {
-      if (hover === 1) {
-        return id === 1
-          ? {
-              zIndex: 4,
-              transform: "translate3d(182px, 0px, 0px)",
-              transitionDuration: "500ms",
-              transitionDelay: "0ms"
-            }
-          : id > 1
-          ? {
-              transform: "translate3d(358px, 0px, 0px)",
-              transitionDuration: "500ms",
-              transitionDelay: "0ms"
-            }
-          : {
-              transform: "translate3d(0px, 0px, 0px)",
-              transitionDuration: "500ms",
-              transitionDelay: "0ms"
-            };
-      } else if (hover === 2) {
-        return id === 2
-          ? {
-              zIndex: 4,
-              transform: "translate3d(120px, 0px, 0px)",
-              transitionDuration: "500ms",
-              transitionDelay: "0ms"
-            }
-          : id < 2 && id > 0
-          ? {
-              transform: "translate3d(-48px, 0px, 0px)",
-              transitionDuration: "500ms",
-              transitionDelay: "0ms"
-            }
-          : id > 2 && id < 7
-          ? {
-              transform: "translate3d(288px, 0px, 0px)",
-              transitionDuration: "500ms",
-              transitionDelay: "0ms"
-            }
-          : {
-              transform: "translate3d(0px, 0px, 0px)",
-              transitionDuration: "500ms",
-              transitionDelay: "0ms"
-            };
-      } else if (hover === 3) {
-        return id === 3
-          ? {
-              zIndex: 4,
-              transform: "translate3d(80px, 0px, 0px)",
-              transitionDuration: "500ms",
-              transitionDelay: "0ms"
-            }
-          : id < 3 && id > 0
-          ? {
-              transform: "translate3d(-90px, 0px, 0px)",
-              transitionDuration: "500ms",
-              transitionDelay: "0ms"
-            }
-          : id > 3 && id < 7
-          ? {
-              transform: "translate3d(248px, 0px, 0px)",
-              transitionDuration: "500ms",
-              transitionDelay: "0ms"
-            }
-          : {
-              transform: "translate3d(0px, 0px, 0px)",
-              transitionDuration: "500ms",
-              transitionDelay: "0ms"
-            };
-      } else if (hover === 4) {
-        return id === 4
-          ? {
-              zIndex: 4,
-              transform: "translate3d(40px, 0px, 0px)",
-              transitionDuration: "500ms",
-              transitionDelay: "0ms"
-            }
-          : id < 4 && id > 0
-          ? {
-              transform: "translate3d(-128px, 0px, 0px)",
-              transitionDuration: "500ms",
-              transitionDelay: "0ms"
-            }
-          : id > 4 && id <= 6
-          ? {
-              transform: "translate3d(208px, 0px, 0px)",
-              transitionDuration: "500ms",
-              transitionDelay: "0ms"
-            }
-          : {
-              transform: "translate3d(0px, 0px, 0px)",
-              transitionDuration: "500ms",
-              transitionDelay: "0ms"
-            };
-      } else if (hover === 5) {
-        return id === 5
-          ? {
-              zIndex: 4,
-              transform: "translate3d(0px, 0px, 0px)",
-              transitionDuration: "500ms",
-              transitionDelay: "0ms"
-            }
-          : id < 5 && id > 0
-          ? {
-              transform: "translate3d(-168px, 0px, 0px)",
-              transitionDuration: "500ms",
-              transitionDelay: "0ms"
-            }
-          : id > 5 && id <= 6
-          ? {
-              transform: "translate3d(168px, 0px, 0px)",
-              transitionDuration: "500ms",
-              transitionDelay: "0ms"
-            }
-          : {
-              transform: "translate3d(0px, 0px, 0px)",
-              transitionDuration: "500ms",
-              transitionDelay: "0ms"
-            };
-      } else if (hover === 6) {
-        return id === 6
-          ? {
-              zIndex: 4,
-              transform: "translate3d(-181px, 0px, 0px)",
-              transitionDuration: "500ms",
-              transitionDelay: "0ms"
-            }
-          : id < 6 && id > 0
-          ? {
-              transform: "translate3d(-350px, 0px, 0px)",
-              transitionDuration: "500ms",
-              transitionDelay: "0ms"
-            }
-          : {
-              transform: "translate3d(0px, 0px, 0px)",
-              transitionDuration: "500ms",
-              transitionDelay: "0ms"
-            };
-      }
-    } else {
-      return {
-        transform: "translate3d(0px, 0px, 0px)",
-        transitionDuration: "500ms",
-        transitionDelay: "0ms"
-      };
-    }
-};
