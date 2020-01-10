@@ -15,6 +15,9 @@
     .controls {
       transform: translateY(0);
     }
+    .btn-back {
+      display: flex;
+    }
   }
 }
 
@@ -25,7 +28,7 @@
   bottom: 0;
   width: 100%;
   flex-wrap: wrap;
-  // transform: translateY(100%) translateY(-5px);
+  transform: translateY(100%) translateY(-5px);
   transition: all 0.2s;
 }
 
@@ -55,7 +58,7 @@
     font-weight: 900;
     display: inline-block;
     font-size: 24px;
-    padding: 24px;
+    padding: 16px;
   }
 }
 
@@ -63,7 +66,7 @@
   position: absolute;
   top: 35px;
   left: 35px;
-  display: flex;
+  display: none;
   align-items: center;
   transition: transform 0.25s cubic-bezier(0.5, 0, 0.1, 1), opacity 0.25s,
     -webkit-transform 0.25s cubic-bezier(0.5, 0, 0.1, 1),
@@ -139,9 +142,27 @@
   &.compress:before {
     content: "\f066";
   }
-
   &.subtitle:before {
     content: "\f20a";
+  }
+
+  &.step-forward:before {
+    content: "\f051";
+  }
+}
+
+.loading {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://occ-0-58-64.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABR8CznPUUUuYW2qfB2l5fsuJbW2_jAUnoSSkS5uN14CRSAu3n2arG7nAsEdb_5U8YmSKetcfHh5wDYfKEIkpMHp1uYfL.jpg");
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  i {
+    color: $primary;
   }
 }
 
@@ -257,12 +278,24 @@ ul {
   list-style: none;
   cursor: pointer;
   color: $grey1;
+  position: relative;
 
   &:hover {
     background-color: rgba($color: white, $alpha: 0.1);
   }
 }
 
+.sub-item-selected {
+  color: white;
+}
+
 .list-header {
   padding: 0 50px;
+}
+
+.sub-check {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 10%;
 }

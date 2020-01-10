@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { AddToList, ChevronDown, Play } from "../../constants";
+import { AddToList, ChevronDown, Play, AddedToList } from "../../constants";
 import { formatSlideItem } from "../../utils/utils";
 
 class SliderItem extends Component {
@@ -51,6 +51,7 @@ class SliderItem extends Component {
       background,
       href,
       name,
+      love,
       score,
       limit,
       length,
@@ -132,6 +133,7 @@ class SliderItem extends Component {
                     stop={stop}
                     rowId={rowId}
                     changeRow={changeRow}
+                    love={love}
                   />
                 )}
               </span>
@@ -173,7 +175,8 @@ export const BobOpen = ({
   epLength,
   stop,
   rowId,
-  changeRow
+  changeRow,
+  love
 }) => (
   <div
     className="bob-card bob-card-adult-video-merch"
@@ -294,19 +297,28 @@ export const BobOpen = ({
                   tabIndex="0"
                   className="nf-svg-button simpleround"
                 >
-                  <svg
-                    className="svg-icon svg-icon-mylist-add"
-                    focusable="true"
-                  >
-                    {AddToList}
-                  </svg>
+                  {!love ? (
+                    <svg
+                      className="svg-icon svg-icon-mylist-add"
+                      focusable="true"
+                    >
+                      {AddToList}
+                    </svg>
+                  ) : (
+                    <svg
+                      className="svg-icon svg-icon-mylist-added"
+                      focusable="true"
+                    >
+                      {AddedToList}
+                    </svg>
+                  )}
                 </a>
                 <span
                   className="nf-svg-button-tooltip"
                   role="status"
                   aria-live="assertive"
                 >
-                  Add To My Favorites
+                  {love ? "Remove from My Favorites" : "Add To My Favorites"}
                 </span>
               </div>
             </div>

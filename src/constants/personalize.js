@@ -2,7 +2,7 @@ export const SLIDERS = [
   {
     id: 1,
     title: "Continue Watching",
-    myList: true,
+    myList: false,
     list: [
       {
         id: 1,
@@ -12,6 +12,7 @@ export const SLIDERS = [
         background:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABcGiRBec-J0xlBtvD3bNp5mLYJYI5OJzLhvHCpsP-NiIjctMLKXzI4H698R2lHGsVSpSVs1vpSGeulIqaY3_ntw3YNSJ.webp?r=a16",
         name: "Vagabond",
+        love: true,
         href: "/watch/3",
         score: "98% Match",
         isWatching: true,
@@ -48,6 +49,7 @@ export const SLIDERS = [
     id: 2,
     title: "My Favorites",
     myList: true,
+    href: "/my-favorites",
     list: [
       {
         id: 1,
@@ -57,6 +59,7 @@ export const SLIDERS = [
         background:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABSTZ2YfpmxdJZtYyEo0o3skHVEZUsxqi8zPntbrDwXMs5LKoH4sJAJkC0wsk_6m6lzYfBzDmOAFu7RLocW8p4t_NdgLY.webp?r=3dd",
         name: "Lucifer",
+        love: true,
         href: "/watch/1",
         score: "97% Match",
         isWatching: false,
@@ -72,6 +75,7 @@ export const SLIDERS = [
         background:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABcGiRBec-J0xlBtvD3bNp5mLYJYI5OJzLhvHCpsP-NiIjctMLKXzI4H698R2lHGsVSpSVs1vpSGeulIqaY3_ntw3YNSJ.webp?r=a16",
         name: "Vagabond",
+        love: true,
         href: "/watch/3",
         score: "98% Match",
         isWatching: true,
@@ -91,6 +95,7 @@ export const SLIDERS = [
         background:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABZY6rmJ_QiQ8SHxX0gCNmO87ycUm_BGHJC7QYYDYwo_HjzL502-GD2mTaVusfF5mXKC1s0a-oTDWr5qxENfkLOLqX3hq.webp?r=e23",
         name: "Spider-Man: Homecoming",
+        love: true,
         href: "/watch/4",
         score: "95% Match",
         isWatching: false,
@@ -106,6 +111,7 @@ export const SLIDERS = [
         background:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABdeMy1OD80MWASVmaN-YRfnbGJkNKFvPB3yFy3Yh1d8OIfRG2cEfwhP9n6Zt1IbIQsoyOyh5ZrJlhN9Z9hZaJZ_GLK3Y.webp?r=442",
         name: "6 Underground",
+        love: true,
         href: "/watch/5",
         score: "98% Match",
         isWatching: false,
@@ -121,6 +127,7 @@ export const SLIDERS = [
         background:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABX6OA40AlCrlLJ7FfOtJvtFXSfh_GC_XMF7gOoDfbOiD-wcu8FopmckRGxhuQ51Tc8rRUeKjmeilek2JRz_vXlC3caZ_.webp?r=e98",
         name: "The Witcher",
+        love: true,
         href: "/watch/7",
         score: "98% Match",
         isWatching: false,
@@ -136,27 +143,13 @@ export const SLIDERS = [
         background:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABa01saG9uxZ5Za_wlxsRiz9XLE4K2bW1cbLyd-GFtYKS2Rll9MPrcYsEVnX-eCGtMqKYUlxkV_YZsOb0Ire-287Joo5L.webp?r=ab0",
         name: "Sherlock",
+        love: true,
         href: "/watch/9",
         score: "96% Match",
         isWatching: false,
         limit: "18+",
         length: "4 Seasons",
         genres: ["Slow Burn", "Witty", "Cerebral"]
-      },
-      {
-        id: 7,
-        movId: 10,
-        avatar:
-          "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/XsrytRUxks8BtTRf9HNlZkW2tvY/AAAABduGVL2VqRfX9JmTMIm_XoPQLMMZMiaaI_LEfzMtTy2DxbQGzkQfbpmSJeInb5EfPnz5PlQD0QZb7696Q89IWQM05A.webp?r=3e7",
-        background:
-          "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABQ-3b2peveBVsFYxfVEWEsp4ez3BVMylx6U_RIWNsAeAWxDmvETIEs6hhfOtxuElW2NgYsGtf0B_y123meFMcu1rcLON.webp?r=ab5",
-        name: "Busted!",
-        href: "/watch/10",
-        score: "95% Match",
-        isWatching: false,
-        limit: "16+",
-        length: "2 Seasons",
-        genres: ["Comedy", "Exciting", "Talk Show"]
       }
     ]
   },
@@ -173,6 +166,7 @@ export const SLIDERS = [
         background:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABSTZ2YfpmxdJZtYyEo0o3skHVEZUsxqi8zPntbrDwXMs5LKoH4sJAJkC0wsk_6m6lzYfBzDmOAFu7RLocW8p4t_NdgLY.webp?r=3dd",
         name: "Lucifer",
+        love: true,
         href: "/watch/1",
         score: "97% Match",
         isWatching: false,
@@ -203,6 +197,7 @@ export const SLIDERS = [
         background:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABcGiRBec-J0xlBtvD3bNp5mLYJYI5OJzLhvHCpsP-NiIjctMLKXzI4H698R2lHGsVSpSVs1vpSGeulIqaY3_ntw3YNSJ.webp?r=a16",
         name: "Vagabond",
+        love: true,
         href: "/watch/3",
         score: "98% Match",
         isWatching: true,
@@ -222,6 +217,7 @@ export const SLIDERS = [
         background:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABZY6rmJ_QiQ8SHxX0gCNmO87ycUm_BGHJC7QYYDYwo_HjzL502-GD2mTaVusfF5mXKC1s0a-oTDWr5qxENfkLOLqX3hq.webp?r=e23",
         name: "Spider-Man: Homecoming",
+        love: true,
         href: "/watch/4",
         score: "95% Match",
         isWatching: false,
@@ -237,6 +233,7 @@ export const SLIDERS = [
         background:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABdeMy1OD80MWASVmaN-YRfnbGJkNKFvPB3yFy3Yh1d8OIfRG2cEfwhP9n6Zt1IbIQsoyOyh5ZrJlhN9Z9hZaJZ_GLK3Y.webp?r=442",
         name: "6 Underground",
+        love: true,
         href: "/watch/5",
         score: "98% Match",
         isWatching: false,
@@ -267,6 +264,7 @@ export const SLIDERS = [
         background:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABX6OA40AlCrlLJ7FfOtJvtFXSfh_GC_XMF7gOoDfbOiD-wcu8FopmckRGxhuQ51Tc8rRUeKjmeilek2JRz_vXlC3caZ_.webp?r=e98",
         name: "The Witcher",
+        love: true,
         href: "/watch/7",
         score: "98% Match",
         isWatching: false,
@@ -297,6 +295,7 @@ export const SLIDERS = [
         background:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABa01saG9uxZ5Za_wlxsRiz9XLE4K2bW1cbLyd-GFtYKS2Rll9MPrcYsEVnX-eCGtMqKYUlxkV_YZsOb0Ire-287Joo5L.webp?r=ab0",
         name: "Sherlock",
+        love: true,
         href: "/watch/9",
         score: "96% Match",
         isWatching: false,
@@ -334,6 +333,7 @@ export const SLIDERS = [
         background:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABSTZ2YfpmxdJZtYyEo0o3skHVEZUsxqi8zPntbrDwXMs5LKoH4sJAJkC0wsk_6m6lzYfBzDmOAFu7RLocW8p4t_NdgLY.webp?r=3dd",
         name: "Lucifer",
+        love: true,
         href: "/watch/1",
         score: "97% Match",
         isWatching: false,
@@ -349,6 +349,7 @@ export const SLIDERS = [
         background:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABcGiRBec-J0xlBtvD3bNp5mLYJYI5OJzLhvHCpsP-NiIjctMLKXzI4H698R2lHGsVSpSVs1vpSGeulIqaY3_ntw3YNSJ.webp?r=a16",
         name: "Vagabond",
+        love: true,
         href: "/watch/3",
         score: "98% Match",
         isWatching: true,
@@ -368,6 +369,7 @@ export const SLIDERS = [
         background:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABZY6rmJ_QiQ8SHxX0gCNmO87ycUm_BGHJC7QYYDYwo_HjzL502-GD2mTaVusfF5mXKC1s0a-oTDWr5qxENfkLOLqX3hq.webp?r=e23",
         name: "Spider-Man: Homecoming",
+        love: true,
         href: "/watch/4",
         score: "95% Match",
         isWatching: false,
@@ -383,6 +385,7 @@ export const SLIDERS = [
         background:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABdeMy1OD80MWASVmaN-YRfnbGJkNKFvPB3yFy3Yh1d8OIfRG2cEfwhP9n6Zt1IbIQsoyOyh5ZrJlhN9Z9hZaJZ_GLK3Y.webp?r=442",
         name: "6 Underground",
+        love: true,
         href: "/watch/5",
         score: "98% Match",
         isWatching: false,
@@ -398,6 +401,7 @@ export const SLIDERS = [
         background:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABX6OA40AlCrlLJ7FfOtJvtFXSfh_GC_XMF7gOoDfbOiD-wcu8FopmckRGxhuQ51Tc8rRUeKjmeilek2JRz_vXlC3caZ_.webp?r=e98",
         name: "The Witcher",
+        love: true,
         href: "/watch/7",
         score: "98% Match",
         isWatching: false,
@@ -413,6 +417,7 @@ export const SLIDERS = [
         background:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABa01saG9uxZ5Za_wlxsRiz9XLE4K2bW1cbLyd-GFtYKS2Rll9MPrcYsEVnX-eCGtMqKYUlxkV_YZsOb0Ire-287Joo5L.webp?r=ab0",
         name: "Sherlock",
+        love: true,
         href: "/watch/9",
         score: "96% Match",
         isWatching: false,
@@ -450,6 +455,7 @@ export const SLIDERS = [
         background:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABSTZ2YfpmxdJZtYyEo0o3skHVEZUsxqi8zPntbrDwXMs5LKoH4sJAJkC0wsk_6m6lzYfBzDmOAFu7RLocW8p4t_NdgLY.webp?r=3dd",
         name: "Lucifer",
+        love: true,
         href: "/watch/1",
         score: "97% Match",
         isWatching: false,
@@ -480,6 +486,7 @@ export const SLIDERS = [
         background:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABcGiRBec-J0xlBtvD3bNp5mLYJYI5OJzLhvHCpsP-NiIjctMLKXzI4H698R2lHGsVSpSVs1vpSGeulIqaY3_ntw3YNSJ.webp?r=a16",
         name: "Vagabond",
+        love: true,
         href: "/watch/3",
         score: "98% Match",
         isWatching: true,
@@ -499,6 +506,7 @@ export const SLIDERS = [
         background:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABZY6rmJ_QiQ8SHxX0gCNmO87ycUm_BGHJC7QYYDYwo_HjzL502-GD2mTaVusfF5mXKC1s0a-oTDWr5qxENfkLOLqX3hq.webp?r=e23",
         name: "Spider-Man: Homecoming",
+        love: true,
         href: "/watch/4",
         score: "95% Match",
         isWatching: false,
@@ -514,6 +522,7 @@ export const SLIDERS = [
         background:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABdeMy1OD80MWASVmaN-YRfnbGJkNKFvPB3yFy3Yh1d8OIfRG2cEfwhP9n6Zt1IbIQsoyOyh5ZrJlhN9Z9hZaJZ_GLK3Y.webp?r=442",
         name: "6 Underground",
+        love: true,
         href: "/watch/5",
         score: "98% Match",
         isWatching: false,
@@ -544,6 +553,7 @@ export const SLIDERS = [
         background:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABX6OA40AlCrlLJ7FfOtJvtFXSfh_GC_XMF7gOoDfbOiD-wcu8FopmckRGxhuQ51Tc8rRUeKjmeilek2JRz_vXlC3caZ_.webp?r=e98",
         name: "The Witcher",
+        love: true,
         href: "/watch/7",
         score: "98% Match",
         isWatching: false,
@@ -574,6 +584,7 @@ export const SLIDERS = [
         background:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABa01saG9uxZ5Za_wlxsRiz9XLE4K2bW1cbLyd-GFtYKS2Rll9MPrcYsEVnX-eCGtMqKYUlxkV_YZsOb0Ire-287Joo5L.webp?r=ab0",
         name: "Sherlock",
+        love: true,
         href: "/watch/9",
         score: "96% Match",
         isWatching: false,
@@ -601,7 +612,7 @@ export const SLIDERS = [
   {
     id: 6,
     title: "Top Picks for You",
-    myList: true,
+    myList: false,
     list: [
       {
         id: 1,
@@ -611,6 +622,7 @@ export const SLIDERS = [
         background:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABSTZ2YfpmxdJZtYyEo0o3skHVEZUsxqi8zPntbrDwXMs5LKoH4sJAJkC0wsk_6m6lzYfBzDmOAFu7RLocW8p4t_NdgLY.webp?r=3dd",
         name: "Lucifer",
+        love: true,
         href: "/watch/1",
         score: "97% Match",
         isWatching: false,
@@ -626,6 +638,7 @@ export const SLIDERS = [
         background:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABcGiRBec-J0xlBtvD3bNp5mLYJYI5OJzLhvHCpsP-NiIjctMLKXzI4H698R2lHGsVSpSVs1vpSGeulIqaY3_ntw3YNSJ.webp?r=a16",
         name: "Vagabond",
+        love: true,
         href: "/watch/3",
         score: "98% Match",
         isWatching: true,
@@ -645,6 +658,7 @@ export const SLIDERS = [
         background:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABZY6rmJ_QiQ8SHxX0gCNmO87ycUm_BGHJC7QYYDYwo_HjzL502-GD2mTaVusfF5mXKC1s0a-oTDWr5qxENfkLOLqX3hq.webp?r=e23",
         name: "Spider-Man: Homecoming",
+        love: true,
         href: "/watch/4",
         score: "95% Match",
         isWatching: false,
@@ -660,6 +674,7 @@ export const SLIDERS = [
         background:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABdeMy1OD80MWASVmaN-YRfnbGJkNKFvPB3yFy3Yh1d8OIfRG2cEfwhP9n6Zt1IbIQsoyOyh5ZrJlhN9Z9hZaJZ_GLK3Y.webp?r=442",
         name: "6 Underground",
+        love: true,
         href: "/watch/5",
         score: "98% Match",
         isWatching: false,
@@ -675,6 +690,7 @@ export const SLIDERS = [
         background:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABX6OA40AlCrlLJ7FfOtJvtFXSfh_GC_XMF7gOoDfbOiD-wcu8FopmckRGxhuQ51Tc8rRUeKjmeilek2JRz_vXlC3caZ_.webp?r=e98",
         name: "The Witcher",
+        love: true,
         href: "/watch/7",
         score: "98% Match",
         isWatching: false,
@@ -690,6 +706,7 @@ export const SLIDERS = [
         background:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABa01saG9uxZ5Za_wlxsRiz9XLE4K2bW1cbLyd-GFtYKS2Rll9MPrcYsEVnX-eCGtMqKYUlxkV_YZsOb0Ire-287Joo5L.webp?r=ab0",
         name: "Sherlock",
+        love: true,
         href: "/watch/9",
         score: "96% Match",
         isWatching: false,
@@ -727,6 +744,7 @@ export const SLIDERS = [
         background:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABSTZ2YfpmxdJZtYyEo0o3skHVEZUsxqi8zPntbrDwXMs5LKoH4sJAJkC0wsk_6m6lzYfBzDmOAFu7RLocW8p4t_NdgLY.webp?r=3dd",
         name: "Lucifer",
+        love: true,
         href: "/watch/1",
         score: "97% Match",
         isWatching: false,
@@ -757,6 +775,7 @@ export const SLIDERS = [
         background:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABcGiRBec-J0xlBtvD3bNp5mLYJYI5OJzLhvHCpsP-NiIjctMLKXzI4H698R2lHGsVSpSVs1vpSGeulIqaY3_ntw3YNSJ.webp?r=a16",
         name: "Vagabond",
+        love: true,
         href: "/watch/3",
         score: "98% Match",
         isWatching: true,
@@ -776,6 +795,7 @@ export const SLIDERS = [
         background:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABZY6rmJ_QiQ8SHxX0gCNmO87ycUm_BGHJC7QYYDYwo_HjzL502-GD2mTaVusfF5mXKC1s0a-oTDWr5qxENfkLOLqX3hq.webp?r=e23",
         name: "Spider-Man: Homecoming",
+        love: true,
         href: "/watch/4",
         score: "95% Match",
         isWatching: false,
@@ -791,6 +811,7 @@ export const SLIDERS = [
         background:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABdeMy1OD80MWASVmaN-YRfnbGJkNKFvPB3yFy3Yh1d8OIfRG2cEfwhP9n6Zt1IbIQsoyOyh5ZrJlhN9Z9hZaJZ_GLK3Y.webp?r=442",
         name: "6 Underground",
+        love: true,
         href: "/watch/5",
         score: "98% Match",
         isWatching: false,
@@ -821,6 +842,7 @@ export const SLIDERS = [
         background:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABX6OA40AlCrlLJ7FfOtJvtFXSfh_GC_XMF7gOoDfbOiD-wcu8FopmckRGxhuQ51Tc8rRUeKjmeilek2JRz_vXlC3caZ_.webp?r=e98",
         name: "The Witcher",
+        love: true,
         href: "/watch/7",
         score: "98% Match",
         isWatching: false,
@@ -851,6 +873,7 @@ export const SLIDERS = [
         background:
           "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABa01saG9uxZ5Za_wlxsRiz9XLE4K2bW1cbLyd-GFtYKS2Rll9MPrcYsEVnX-eCGtMqKYUlxkV_YZsOb0Ire-287Joo5L.webp?r=ab0",
         name: "Sherlock",
+        love: true,
         href: "/watch/9",
         score: "96% Match",
         isWatching: false,

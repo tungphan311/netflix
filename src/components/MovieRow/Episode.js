@@ -67,7 +67,7 @@ function EpisodeContainer({ id, width }) {
   return (
     <div className="episodesContainer">
       <div className="ptrack-content">
-        {seasons.length === 1 ? (
+        {seasons && seasons.length === 1 ? (
           <div className="single-season-label">Season 1</div>
         ) : (
           <div className="nfDropDown widthRestricted theme-lakira">

@@ -11,6 +11,10 @@
   opacity: 1;
 }
 
+.nf-flat-button .nf-flat-button-icon-mylist-added:before {
+  content: "\e804";
+}
+
 .jawBoneContent .jawBoneOpenContainer {
   transition: opacity 0.44s cubic-bezier(0.5, 0, 0.1, 1),
     -webkit-transform 440ms cubic-bezier(0.5, 0, 0.1, 1) 0s;

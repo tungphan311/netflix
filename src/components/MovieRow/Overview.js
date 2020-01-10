@@ -4,6 +4,7 @@ import { FILM_DETAILS } from "../../constants";
 function Overview({ id }) {
   const {
     score,
+    love,
     year,
     limit,
     duration,
@@ -83,7 +84,11 @@ function Overview({ id }) {
                   tabIndex="0"
                   className="nf-icon-button nf-flat-button mylist-button nf-flat-button-uppercase"
                 >
-                  <span className="nf-flat-button-icon nf-flat-button-icon-mylist-add"></span>
+                  {!love ? (
+                    <span className="nf-flat-button-icon nf-flat-button-icon-mylist-add"></span>
+                  ) : (
+                    <span class="nf-flat-button-icon nf-flat-button-icon-mylist-added"></span>
+                  )}
                   <span className="nf-flat-button-text">My Favorites</span>
                 </a>
               </div>

@@ -17,6 +17,29 @@
   flex-direction: column;
 }
 
+.filter__result__container {
+  .jawBoneContainer .jawBone {
+    padding: 18px 0 12px 0;
+  }
+
+  .jawbone-title-link,
+  .jawBoneContainer .jawBoneCommon .meta,
+  .supplemental-message,
+  .watched,
+  .jawBonePane .synopsiss,
+  .jawBonePane .overview .jawbone-actions,
+  .jawBonePane .overview .meta-lists,
+  .jawBonePane .single-season-label,
+  .episodeWrapper {
+    padding-left: 4%;
+  }
+
+  .nfDropDown,
+  .slider .sliderMask .sliderContent {
+    padding-left: 4%;
+  }
+}
+
 .result__line {
   border: 1px solid $white;
   margin: 0;

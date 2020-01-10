@@ -2,6 +2,7 @@ export const FILM_DETAILS = {
   1: {
     id: 1,
     title: "Lucifer",
+    love: true,
     score: "97% Match",
     year: "2019",
     limit: "18+",
@@ -438,6 +439,7 @@ export const FILM_DETAILS = {
   3: {
     id: 3,
     title: "Vagabond",
+    love: true,
     score: "97% Match",
     year: "2019",
     limit: "18+",
@@ -585,6 +587,7 @@ export const FILM_DETAILS = {
     id: 4,
     title: "Spider-Man: Homecoming",
     score: "95% Match",
+    love: true,
     year: "2017",
     limit: "13+",
     duration: "2h 13m",

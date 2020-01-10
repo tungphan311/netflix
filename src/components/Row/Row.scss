@@ -3,10 +3,6 @@
   margin-top: 3vw;
 }
 
-.gallery .slider {
-  padding: 0;
-}
-
 .slider .sliderMask {
   overflow-x: hidden;
   padding-bottom: 1px;
@@ -14,6 +10,14 @@
 
 .slider .sliderMask.showPeek {
   overflow-x: visible;
+}
+
+.slider {
+  position: relative;
+  margin: 0;
+  padding: 0 4%;
+  -ms-touch-action: pan-y;
+  touch-action: pan-y;
 }
 
 .slider .sliderMask .sliderContent {
