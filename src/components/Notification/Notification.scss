@@ -1,0 +1,132 @@
+.nav-element {
+  margin-right: 14px;
+  margin-left: 14px;
+}
+
+.notifications {
+  position: relative;
+  white-space: normal;
+}
+
+.notifications .notifications-menu {
+  background-color: transparent;
+  border: none;
+  font-size: 1.5em;
+  line-height: 1;
+  margin-top: 0.2em;
+  padding: 2px 6px 3px;
+  position: relative;
+}
+
+button {
+  cursor: pointer;
+  overflow: visible;
+  text-transform: none;
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.icon-button-notification:before {
+  content: "\e663";
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+  font-family: "nf-icon";
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.notifications .callout-arrow {
+  border: solid 7px;
+  border-color: transparent transparent #e5e5e5;
+  height: 0;
+  left: 50%;
+  margin-left: -7px;
+  width: 0;
+  position: absolute;
+  z-index: 100;
+}
+
+.notifications .sub-menu .sub-menu-list {
+  padding: 0;
+}
+
+.notifications .notifications-container {
+  display: block;
+  max-height: 80vh;
+  min-height: 100px;
+  overflow: auto;
+  padding: 0;
+  list-style: none;
+  width: 408px;
+}
+
+.notifications .notification {
+  color: #fff;
+  line-height: 1;
+  position: relative;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.image-text-notification {
+  display: flex;
+  flex-direction: row;
+}
+
+.image-text-notification .image {
+  position: relative;
+  display: flex;
+  flex-grow: 0;
+  align-items: center;
+}
+
+.image-text-notification .element {
+  padding: 16px;
+}
+
+.image-text-notification .image .title-card {
+  width: 112px;
+}
+
+.sub-menu.theme-lakira {
+  box-sizing: border-box;
+  top: 71px;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
+  font-size: 13px;
+  line-height: 21px;
+  border: solid 1px rgba(255, 255, 255, 0.15);
+  cursor: default;
+  opacity: 0;
+  display: block;
+}
+
+.notifications .sub-menu {
+  font-size: 16px;
+  right: 0;
+  padding: 0;
+  top: 54px;
+  background-color: inherit;
+}
+
+.notifications .sub-menu {
+  top: 34px;
+}
+
+.image-text-notification .noti-age {
+  font-size: 12px;
+  line-height: 1.3;
+  color: #808080;
+  margin-top: 3px;
+}

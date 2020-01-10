@@ -442,6 +442,11 @@ export const FILM_DETAILS = {
     year: "2019",
     limit: "18+",
     duration: "1 Season",
+    isWatching: true,
+    ep: "S1:E6",
+    epName: "Episode 6",
+    epLength: 62,
+    stop: 29,
     background:
       "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/9pS1daC2n6UGc3dUogvWIPMR_OU/AAAABXQ17XEn1Wn3aQNS5EkFDOG0FaRMlcGVq5jL0eyQ7h9mOaXGinbNR_IKv72OpBA5uZuE_IJe_agh-9_Ucgva8GlsG19UWsz_K7t3hYo-hnPKA5gf0g.webp?r=ee2",
     logo:
@@ -528,17 +533,51 @@ export const FILM_DETAILS = {
     },
     casts: [
       {
-        imagePath: "https://i.redd.it/ok6isppohnk31.jpg",
-        character: "T'Challa",
-        alias: "Black Panther",
-        actor: "Chadwick Boseman"
+        id: 30173422,
+        avatar:
+          "https://i.pinimg.com/originals/00/88/aa/0088aa908ebf8320cfc5777525ed3c77.jpg",
+        character: "Go Hae-ri",
+        actor: "Bae Suzy"
       },
       {
-        imagePath:
-          "https://vignette.wikia.nocookie.net/dxwefed/images/9/9a/Erik_Kilmonger.jpg/revision/latest?cb=20190818222117",
-        character: "Erik Killmonger",
-        alias: "",
-        actor: "Michael B. Jordan"
+        id: 40009302,
+        avatar: "http://bimatbatmi.net/wp-content/uploads/2019/09/phim-2-2.jpg",
+        character: "Cha Dal-gun",
+        actor: "Lee Seung-gi"
+      },
+      {
+        id: 30163554,
+        avatar:
+          "http://file.osen.co.kr/article/2019/10/03/201910031527778658_5d9595ce245f0.jpg",
+        character: "Ki Tae Woong",
+        actor: "Shin Sung Rok"
+      },
+      {
+        id: 30071775,
+        avatar: "https://pbs.twimg.com/media/De92fPLUwAEBorE.jpg",
+        character: "Jessica Lee",
+        actor: "Moon Jung-hee"
+      },
+      {
+        id: 30071775,
+        avatar:
+          "https://media.gettyimages.com/photos/south-korean-actor-baek-yoonsik-attends-during-the-the-face-reader-picture-id176438315",
+        character: "Jung Kook-Pyo",
+        actor: "Baek Yoon-sik"
+      },
+      {
+        id: 30071775,
+        avatar:
+          "https://upload.wikimedia.org/wikipedia/commons/7/7a/Moon_Seung_Guen.jpg",
+        character: "Hong Soon-Jo",
+        actor: "Moon Sung-keun"
+      },
+      {
+        id: 30071775,
+        avatar:
+          "http://asianwiki.com/images/f/fb/Lee_Kyung_Young-The_Long_Way_Home-GV.jpg",
+        character: "Edward Park",
+        actor: "Lee Gyoung-young"
       }
     ]
   },
@@ -563,6 +602,50 @@ export const FILM_DETAILS = {
     genres: [
       { href: "/browse?genre=action", title: "Action" },
       { href: "/browse?genre=adventure", title: "Adventure" }
+    ],
+    casts: [
+      {
+        imagePath: "https://i.redd.it/ok6isppohnk31.jpg",
+        character: "T'Challa",
+        alias: "Black Panther",
+        actor: "Chadwick Boseman"
+      },
+      {
+        imagePath:
+          "https://vignette.wikia.nocookie.net/dxwefed/images/9/9a/Erik_Kilmonger.jpg/revision/latest?cb=20190818222117",
+        character: "Erik Killmonger",
+        alias: "",
+        actor: "Michael B. Jordan"
+      }
+    ]
+  },
+  30: {
+    id: 30,
+    title: "Spider-Man: Into the Spider-Verse",
+    score: "92% Match",
+    year: "2018",
+    limit: "13+",
+    duration: "1h 56m",
+    isWatching: true,
+    ep: "",
+    epName: "Spider-Man: Into the Spider-Verse",
+    epLength: 112,
+    stop: 40,
+    background:
+      "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABbmoBvtlYkhe70G042voVhehInWPCJh94bs54CcIn-BI951QXLXPZg8ycjVhqJ9oN3zc_RxA-KR8JR7Ii0bE4lbPEL2M.webp?r=c22",
+    logo:
+      "https://occ-0-64-58.1.nflxso.net/dnm/api/v6/jsgGe9NCko3c-j0wGZ7FSwVlHs0/AAAABakTl3LxouWtZUGEpyXu-dBXzuEdykihMU6W1zM9v2w0H3LdD2C7CFndOKoI3lbZIUa_-K2U7pJhRYLnShErUiX9pazOcLk8sw.webp?r=71a",
+    description:
+      "While strange rumors about their ill king grip a kingdom, the crown prince becomes their only hope against a mysterious plague overtaking the land.",
+    starring: [
+      { id: 40009302, name: "Lee Seung-gi" },
+      { id: 30173422, name: "Bae Suzy" },
+      { id: 30163554, name: "Shin Sung-rok" }
+    ],
+    genres: [
+      { href: "/browse?genre=drama", title: "Drama" },
+      { href: "/browse?genre=action", title: "Action" },
+      { href: "/browse?genre=netflix%20original", title: "Netflix original" }
     ],
     casts: [
       {

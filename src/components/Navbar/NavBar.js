@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./NavBar.scss";
 import { NAV_ITEMS } from "../../constants";
+import Notification from "../Notification/Notification";
 import NavigatorItem from "./NavigatorItem/NavigatorItem";
 import NavigatorSelect from "./NavigatorSelect/NavigatorSelect";
 import Search from "./Search/Search";
@@ -48,14 +49,7 @@ class NavBar extends Component {
         </ul>
         <div className="navbar__right">
           <Search />
-          <i
-            className="fas fa-bell"
-            style={{
-              marginRight: "18px",
-              marginLeft: "14px",
-              fontSize: "22px"
-            }}
-          />
+          <Notification />
           <UserSection />
         </div>
       </div>

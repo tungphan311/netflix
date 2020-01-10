@@ -838,6 +838,25 @@
   margin: 1px 0 0 0;
 }
 
+.watched {
+  margin-top: 0.8em;
+  width: 40vw;
+
+  .progress {
+    font-size: 0.8em;
+    width: 88%;
+    min-height: 0.8em;
+  }
+}
+
+.watched .episodeTitle {
+  font-size: 1.125vw;
+
+  b {
+    color: white;
+  }
+}
+
 @media screen and (max-width: 499px) {
   .jawBoneContainer .title {
     font-size: 14px;

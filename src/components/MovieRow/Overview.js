@@ -10,7 +10,12 @@ function Overview({ id }) {
     message,
     description,
     starring,
-    genres
+    genres,
+    isWatching,
+    ep,
+    epName,
+    epLength,
+    stop
   } = id && FILM_DETAILS[id];
 
   return (
@@ -40,12 +45,37 @@ function Overview({ id }) {
             </div>
             {message && <div className="supplemental-message">{message}</div>}
             <div className="video-title"></div>
+            {isWatching && (
+              <div class="watched">
+                <div class="episodeTitle">
+                  <b>
+                    <span>
+                      <b>{ep}</b> {epName}
+                    </span>
+                  </b>
+                </div>
+                <div class="progress ">
+                  <span class="progress-bar">
+                    <span
+                      role="presentation"
+                      class="progress-completed"
+                      style={{ width: `${(stop * 100) / epLength}%` }}
+                    ></span>
+                  </span>
+                  <span class="summary">
+                    {stop} of {epLength}m
+                  </span>
+                </div>
+              </div>
+            )}
             <div className="synopsiss">{description}</div>
             <div className="jawbone-actions">
               <a className="playLink" href={`/watch/${id}`}>
                 <span className="nf-icon-button nf-flat-button nf-flat-button-primary nf-flat-button-uppercase">
                   <span className="nf-flat-button-icon nf-flat-button-icon-play"></span>
-                  <span className="nf-flat-button-text">Play</span>
+                  <span className="nf-flat-button-text">
+                    {isWatching ? "Resume" : "Play"}
+                  </span>
                 </span>
               </a>
               <div className="ptrack-content">

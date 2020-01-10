@@ -45,7 +45,7 @@ function Detail({ select, selectDetail, width, changeRow }) {
             </div>
             <div className="jawBone">
               <h3>
-                <a className="jawbone-title-link" href="#">
+                <a className="jawbone-title-link" href={`/title/${select}`}>
                   <div
                     className="title has-jawbone-nav-transition original"
                     style={{
