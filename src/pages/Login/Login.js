@@ -41,7 +41,6 @@ function Login(props) {
                 Login
               </Button>
               <Form.Group controlId="formBasicCheckbox" bsPrefix="helper">
-                {/* <Form.Check type="checkbox" label="Keep me logged in" /> */}
                 <Form.Check
                   type="switch"
                   id="custom-switch"
