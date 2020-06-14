@@ -14,7 +14,7 @@ export const AuthorizedRoute = ({ component: Component, isUser, ...rest }) => (
   <Route
     {...rest}
     render={props =>
-      !isUser ? (
+      isUser ? (
         <Component {...props} {...rest} />
       ) : (
         <Redirect
