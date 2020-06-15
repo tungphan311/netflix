@@ -2,6 +2,7 @@ import React from "react";
 import "./Input.scss";
 
 const Input = ({
+  children,
   placeholder = "",
   className = "",
   label = "",
@@ -17,7 +18,7 @@ const Input = ({
   return (
     <div className="input__container">
       <label className={`${!label ? "d-none" : "input__label"}`}>{label}</label>
-      <div style={{ position: "relative" }}>
+      <div style={{ position: "relative" }} className="align-center">
         <input
           {...input}
           placeholder={placeholder}
@@ -25,6 +26,7 @@ const Input = ({
           type={type}
         />
         {showError && <div className="error-line"></div>}
+        {children}
       </div>
       {showError && <span className="error">{errCode}</span>}
     </div>

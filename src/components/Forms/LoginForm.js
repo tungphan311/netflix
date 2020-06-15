@@ -4,6 +4,7 @@ import { FORM_KEY_LOGIN } from "../../state/reducers/formReducer";
 import Input from "../Input/Input";
 import "./LoginForm.scss";
 import { require, email, password } from "../../utils/formValidate";
+import PasswordInput from "../Input/PasswordInput";
 
 function LoginForm({ handleSubmit }) {
   return (
@@ -20,7 +21,7 @@ function LoginForm({ handleSubmit }) {
           name="password"
           type="password"
           placeholder="Mật khẩu..."
-          component={Input}
+          component={PasswordInput}
           validate={[require, password]}
         />
         <button type="submit" className="btn-primary">

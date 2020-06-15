@@ -1,9 +1,15 @@
 import React from "react";
 import "./Login.scss";
+import { useDispatch } from "react-redux";
 import LoginForm from "../../components/Forms/LoginForm";
+import { LOGIN } from "../../state/reducers/authReducer";
 
-function Login(props) {
-  const handleSubmit = event => {};
+function Login() {
+  const dispatch = useDispatch();
+
+  const handleSubmit = () => {
+    dispatch({ type: LOGIN });
+  };
 
   return (
     <div className="Login">

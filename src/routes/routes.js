@@ -3,6 +3,7 @@ import { Route, Redirect, Switch } from "react-router-dom";
 import { getToken } from "../utils/utils";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
+import Register from "../pages/Register/Register";
 import Filter from "../pages/Filter/Filter";
 import DefaultLayout from "../layouts/DefaultLayout/DefaultLayout";
 import EmptyLayout from "../layouts/EmptyLayout/EmptyLayout";
@@ -59,9 +60,10 @@ class Routes extends Component {
             />
           </DefaultLayout>
         </Route>
-        <Route exact path={["/login", "/watch/:id"]}>
+        <Route exact path={["/login", "/watch/:id", "/register"]}>
           <EmptyLayout>
             <Route exact path="/login" component={Login} />
+            <Route exact path="/register" component={Register} />
             <Route exact path="/watch/:id" component={Watch} />
           </EmptyLayout>
         </Route>
