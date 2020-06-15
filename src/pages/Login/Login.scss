@@ -15,10 +15,9 @@
 }
 
 .form__container {
-  padding: 60px 0;
   margin: auto;
   width: 450px;
-  height: 660px;
+  position: relative;
 }
 
 .form__overlay {
@@ -30,15 +29,17 @@
 }
 
 .btn-primary {
-  align-self: center;
   background-color: $primary !important;
-  margin-top: 40px;
+  margin-top: 20px;
   font-weight: $fw-bold;
   height: 50px;
+  width: 100%;
+  border-radius: 4px;
   border: none;
 
   &:focus {
     box-shadow: none;
+    border: none;
   }
 
   &:active {
@@ -59,18 +60,6 @@
   opacity: 0.85;
 }
 
-.jumbotron {
-  background: transparent;
-  padding: 60px 68px;
-  border-radius: 4px !important;
-}
-
-.helper {
-  display: flex;
-  justify-content: space-between;
-  padding-top: 15px;
-  color: $grey1;
-}
 .register {
   padding-top: 40px;
   padding-bottom: -20px;
@@ -88,6 +77,7 @@
 ::placeholder {
   color: $grey2;
 }
+
 h1 {
   font-size: $xx-large;
   font-weight: $fw-bold;
@@ -97,11 +87,6 @@ h1 {
 
 a:hover {
   color: $primary;
-}
-
-.custom-control-input:checked ~ .custom-control-label::before {
-  border-color: $primary;
-  background-color: $primary;
 }
 
 .form-control:focus {
