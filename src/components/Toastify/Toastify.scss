@@ -1,0 +1,61 @@
+.nf__toast {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  padding: 16px 30px 16px 86px;
+  border-radius: 4px;
+  display: inline-flex;
+
+  &--success {
+    border: 1px solid $green;
+  }
+
+  &--info {
+    border: 1px solid $yellow;
+  }
+
+  &--error {
+    border: 1px solid $red;
+  }
+
+  &--message {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #221e1f;
+  }
+
+  .icon {
+    width: 40px;
+    height: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 30px;
+    bottom: 20px;
+    position: absolute;
+
+    &--success {
+      background: url("/images/Success.svg") no-repeat;
+    }
+
+    &--info {
+      background: url("/images/Info.svg") no-repeat;
+    }
+
+    &--error {
+      background: url("/images/Error.svg") no-repeat;
+    }
+  }
+}
+
+.Toastify__toast {
+  padding: 0 !important;
+
+  &-body {
+    margin: 0 !important;
+  }
+}
+
+.Toastify__toast-container {
+  width: 360px;
+}

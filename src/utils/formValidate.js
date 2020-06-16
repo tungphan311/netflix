@@ -22,3 +22,8 @@ export const password = value => {
     return buildErr("Mật khẩu của bạn phải từ 6 đến 15 ký tự");
   }
 };
+
+export const matchPassword = (value, allValues) =>
+  value !== allValues.password
+    ? buildErr("Mật khẩu không trùng khớp. Vui lòng nhập lại")
+    : undefined;

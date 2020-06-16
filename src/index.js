@@ -7,8 +7,9 @@ import App from "./App";
 import "./styles/index.scss";
 import * as serviceWorker from "./serviceWorker";
 import Routes from "./routes/routes";
-import "bootstrap/dist/css/bootstrap.min.css";
 import store from "./state/store";
+// import "bootstrap/dist/css/bootstrap.min.css";
+import "react-toastify/dist/ReactToastify.css";
 
 ReactDOM.render(
   <Provider store={store}>

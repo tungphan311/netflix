@@ -1,8 +1,13 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+import Toastify from "./components/Toastify/Toastify";
 
 function App(props) {
-  return <div className="App">{props.children}</div>;
+  return (
+    <div className="App">
+      <Toastify />
+      {props.children}
+    </div>
+  );
 }
 
 export default App;

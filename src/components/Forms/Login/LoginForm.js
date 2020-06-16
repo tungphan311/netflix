@@ -1,10 +1,11 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
-import { FORM_KEY_LOGIN } from "../../state/reducers/formReducer";
-import Input from "../Input/Input";
+import { Link } from "react-router-dom";
+import { FORM_KEY_LOGIN } from "../../../state/reducers/formReducer";
+import Input from "../../Input/Input";
 import "./LoginForm.scss";
-import { require, email, password } from "../../utils/formValidate";
-import PasswordInput from "../Input/PasswordInput";
+import { require, email, password } from "../../../utils/formValidate";
+import PasswordInput from "../../Input/PasswordInput";
 
 function LoginForm({ handleSubmit }) {
   return (
@@ -12,7 +13,7 @@ function LoginForm({ handleSubmit }) {
       <div className="login--wrapper">
         <h1>Đăng nhập </h1>
         <Field
-          name="username"
+          name="email"
           placeholder="Email..."
           component={Input}
           validate={[require, email]}
@@ -39,7 +40,7 @@ function LoginForm({ handleSubmit }) {
         <div className="register">
           Bạn mới tham gia?{" "}
           <span className="registerLink">
-            <a href="/register">Đăng ký ngay</a>
+            <Link to="/register">Đăng ký ngay</Link>
           </span>
         </div>
       </div>
