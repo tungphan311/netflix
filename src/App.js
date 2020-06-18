@@ -1,13 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
 import Toastify from "./components/Toastify/Toastify";
+import { INIT_DATA } from "./state/reducers/initReducer";
 
-function App(props) {
+const mapDispatchToProps = dispatch => ({
+  initData: () => dispatch({ type: INIT_DATA })
+});
+
+function App({ initData, children }) {
+  useEffect(() => {
+    initData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <div className="App">
       <Toastify />
-      {props.children}
+      {children}
     </div>
   );
 }
 
-export default App;
+export default connect(null, mapDispatchToProps)(App);
