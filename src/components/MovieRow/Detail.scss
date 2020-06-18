@@ -86,9 +86,10 @@
 .jawBoneContainer .background .vignette {
   background: #000;
   z-index: 2;
-  width: 30%;
+  width: 26%;
   position: absolute;
   top: 0;
+  left: 4%;
   bottom: 0;
 }
 
@@ -248,6 +249,21 @@
   border-color: #ff0a16;
 }
 
+.btn-add-wrapper {
+  display: inline-block;
+  position: relative;
+
+  .nf-icon-button {
+    text-align: left;
+    margin: 0 20px 18px;
+    min-height: 3rem;
+    min-width: 360px;
+    font-weight: bold;
+    padding: 0 1rem;
+    border-radius: 4px;
+  }
+}
+
 .jawbone-actions .nf-flat-button .nf-flat-button-text {
   text-transform: uppercase;
 }
@@ -269,7 +285,7 @@
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   background-image: none;
   margin-bottom: 0;
-  // border-radius: 4px;
+  border-radius: 4px;
 }
 
 .nf-flat-button .nf-flat-button-icon-mylist-add:before {
@@ -392,109 +408,8 @@
   background-color: #e50914;
 }
 
-.jawBoneContainer .menu li span {
-  height: 0.33em;
-  display: block;
-  width: 100%;
-  margin-top: 0.66em;
-  transform: translateY(0.4em);
-  transition: transform 200ms linear, -webkit-transform 200ms linear,
-    -moz-transform 200ms linear, -o-transform 200ms linear;
-}
-
-.jawBoneContainer .menu a {
-  margin: 0;
-  padding: 0;
-  letter-spacing: 1px;
-  color: inherit;
-  font-weight: bold;
-  text-align: center;
-  pointer-events: auto;
-}
-
-.jawBoneContainer .title .logo.small-logo {
-  transform: scale(0.7);
-}
-
-.jawBoneContainer .jawBonePanes.offset-for-logo {
-  transform: translate(0, -2.3vw);
-}
-
-.jawBoneOpenContainer.jawBoneOpen-enter,
-.jawBoneOpenContainer.jawBoneOpen-leave.jawBoneOpen-leave-active {
-  transform: translateY(-80px);
-}
-.jawBoneOpenContainer.jawBoneOpen-enter .jawBoneContainer,
-.jawBoneOpenContainer.jawBoneOpen-leave.jawBoneOpen-leave-active
-  .jawBoneContainer {
-  opacity: 0;
-}
-.jawBoneOpenContainer.jawBoneOpen-enter.jawBoneOpen-enter-active,
-.jawBoneOpenContainer.jawBoneOpen-leave {
-  transform: translateY(0);
-
-  .jawBoneContainer {
-    height: 0;
-  }
-}
-
-.nf-flat-button:focus,
-.nf-flat-button:hover {
-  background-color: rgba(51, 51, 51, 0.4);
-  outline: none;
-  -webkit-transform: scale(1.05);
-  -moz-transform: scale(1.05);
-  -ms-transform: scale(1.05);
-  -o-transform: scale(1.05);
-  transform: scale(1.05);
-  -webkit-transition: -webkit-transform 350ms cubic-bezier(0.86, 0, 0.07, 1);
-  transition: -webkit-transform 350ms cubic-bezier(0.86, 0, 0.07, 1);
-  -o-transition: -o-transform 350ms cubic-bezier(0.86, 0, 0.07, 1);
-  -moz-transition: transform 350ms cubic-bezier(0.86, 0, 0.07, 1),
-    -moz-transform 350ms cubic-bezier(0.86, 0, 0.07, 1);
-  transition: transform 350ms cubic-bezier(0.86, 0, 0.07, 1);
-  transition: transform 350ms cubic-bezier(0.86, 0, 0.07, 1),
-    -webkit-transform 350ms cubic-bezier(0.86, 0, 0.07, 1),
-    -moz-transform 350ms cubic-bezier(0.86, 0, 0.07, 1),
-    -o-transform 350ms cubic-bezier(0.86, 0, 0.07, 1);
-}
-
 .nf-flat-button-primary:hover {
   background-color: #ff0a16 !important;
-}
-
-.btn-flat:hover {
-  background-color: rgba(51, 51, 51, 0.4);
-}
-
-.jawBoneContainer .background.dim {
-  opacity: 0.2;
-}
-
-.jawBoneContainer .jawBonePanes .jawBonePane .nfDropDown.theme-lakira {
-  min-width: 160px;
-  top: 0;
-  text-transform: none;
-  z-index: 3;
-  margin: 12px 0;
-}
-
-.nfDropDown.theme-lakira.widthRestricted {
-  display: inline-block;
-  position: relative;
-}
-
-.nfDropDown.theme-lakira {
-  position: relative;
-  text-align: left;
-}
-
-.jawBonePane .nfDropDown.theme-lakira .label {
-  text-transform: none;
-}
-
-.nfDropDown.theme-lakira.widthRestricted .label {
-  width: 100%;
 }
 
 .nfDropDown.theme-lakira .label {

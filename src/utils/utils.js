@@ -2,6 +2,13 @@ export function getToken(key) {
   return localStorage.getItem(key);
 }
 
+export const formatRuntime = runtime => {
+  const hour = parseInt(runtime / 60);
+  const min = runtime % 60;
+
+  return `${hour}h ${min}min`;
+};
+
 export const divideArray = (array, width) => {
   const num = width > 950 ? 4 : width > 420 ? 3 : 2;
 

@@ -15,12 +15,155 @@
   transition: opacity 0.3s cubic-bezier(0.5, 0, 0.1, 1) 0s;
 }
 
+.background-blur {
+  background-color: rgba($color: #141414, $alpha: 0.8);
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  position: absolute;
+}
+
+.background-poster {
+  z-index: 2;
+  opacity: 1;
+  transition-duration: 750ms;
+  width: 100%;
+  background-size: contain;
+  height: 100%;
+  background-repeat: no-repeat;
+}
+
+.title-block {
+  padding: 20px 0 14px 0;
+
+  &:before {
+    content: " ";
+    display: table;
+  }
+}
+
+.title-block .title-bar-wrapper .title-bar {
+  position: relative;
+  padding: 0 20px;
+}
+
+.primary-ribbon {
+  position: absolute;
+  height: 58px;
+  width: 40px;
+  padding-right: 5px;
+}
+
+.wl-ribbon {
+  background: url("https://m.media-amazon.com/images/G/01/imdb/images/title/title_overview_sprite-1705639977._V_.png")
+    no-repeat;
+  width: 40px;
+  height: 58px;
+  cursor: pointer;
+}
+
+.not-inWL {
+  background-position: -8px -62px;
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+.inWL {
+  background-position: -8px -4px;
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+.ribbon-dropdown {
+  background: #f6f1e3;
+  position: absolute;
+  min-width: 300px;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 2;
+
+  .drop-item {
+    border-top: 1px solid #ccc;
+    display: table;
+    width: 100%;
+
+    a {
+      cursor: pointer;
+      display: table-cell;
+      font-size: $small;
+      color: rgb(233, 231, 228);
+      background: #2b2b2b;
+      height: 40px;
+      position: relative;
+
+      &:hover {
+        background-color: rgb(18, 104, 171);
+      }
+    }
+  }
+
+  .drop-item-text {
+    padding: 0 20px;
+    position: absolute;
+    top: 20px;
+    transform: translateY(-50%);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 210px;
+  }
+}
+
+.title-wrapper {
+  min-height: 58px;
+  margin-left: 52px;
+
+  h1 {
+    font-size: $huge !important;
+    font-weight: normal;
+    line-height: 110%;
+    margin: 0px;
+    color: #fff;
+    padding-bottom: 3px !important;
+  }
+
+  #titleYear {
+    color: silver;
+    font-size: $x-large;
+    line-height: 100%;
+  }
+
+  .originalTitle {
+    color: rgba($white, 0.8);
+    // font-size: 13px;
+    line-height: 120%;
+    position: relative;
+    padding-bottom: 2px;
+
+    .description {
+      font-style: italic;
+      white-space: nowrap;
+    }
+  }
+
+  .ghost {
+    margin: 0 0.5em;
+    color: #6b6b6b;
+  }
+
+  .video-meta {
+    font-size: 1.3rem;
+  }
+}
+
 .jawBoneContainer .jawBoneBackground {
-  right: 0;
+  right: 4%;
   top: 0;
   bottom: 0;
   position: absolute;
-  width: 70%;
+  width: 68%;
 }
 
 .image-rotator {
@@ -28,28 +171,41 @@
   overflow: hidden;
 }
 
-.jawBoneContainer .jawBoneBackground .image-rotator-image {
-  transform: translateZ(0);
-  background-position: center 10%;
+.overview {
+  padding: 18px 20px;
+
+  .credit-summary-item {
+    padding-bottom: 5px;
+
+    h4.inline {
+      display: inline;
+      padding: 0 0.5em 0 0;
+      font-size: $small;
+    }
+
+    a {
+      white-space: nowrap;
+    }
+  }
 }
 
-.image-rotator .image-rotator-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background-size: cover;
-  opacity: 0;
+.summary-text {
+  padding-bottom: 16px;
+  line-height: 18px;
+  font-size: $small;
+  text-align: justify;
+  width: 92%;
+  color: $grey2;
 }
 
-.jawBoneContainer .jawBone {
-  padding: 18px 0 12px 4%;
+.details-page__container .jawBoneContainer .jawBone {
+  padding: 18px 0 12px 0;
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 0;
+  left: auto;
   right: 0;
+  width: 70%;
   z-index: 10;
 }
 
@@ -58,44 +214,6 @@
   margin: 0;
   padding: 0;
   font-size: inherit;
-}
-
-.jawBoneContainer .title {
-  display: inline-block;
-  position: relative;
-  z-index: 1;
-  margin: 0 0 0.2em 0;
-  font-weight: bold;
-  color: #fff;
-  font-size: 3vw;
-  width: 670px;
-}
-
-.jawBoneContainer .title.original {
-  height: 7vw;
-}
-
-.jawBoneContainer .title .logo {
-  height: 7vw;
-  transform-origin: 0 0;
-  transition: transform 300ms, -webkit-transform 300ms, -moz-transform 300ms,
-    -o-transform 300ms;
-}
-
-.jawBoneContainer .jawBonePanes {
-  position: relative;
-  opacity: 1;
-  z-index: 2;
-  transition: transform 300ms, -webkit-transform 300ms, -moz-transform 300ms,
-    -o-transform 300ms;
-}
-
-.jawBoneContainer .jawBonePanes .jawBonePane {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  color: #808080;
-  opacity: 1;
 }
 
 .nf-flat-button .nf-flat-button-icon-play,
@@ -124,99 +242,20 @@
   color: #999;
 }
 
-.detail__container {
-  height: 24vw;
-  position: relative;
-  margin: 0;
-  padding: 1vw 4%;
-  background-color: rgba($color: #141414, $alpha: 0.2);
-}
-
 .details-page__container {
   .jawBoneContainer {
     background-color: #000;
     position: relative;
     overflow: hidden;
     outline: none;
-    height: 27vw;
+    height: 35vw;
     transition: height 0.54s cubic-bezier(0.5, 0, 0.1, 1) 0s,
       opacity 0.44s cubic-bezier(0.5, 0, 0.1, 1) 0.1s;
-  }
-
-  .detailsItem {
-    box-sizing: border-box;
-    padding: 0 20px 0 0;
-    height: auto;
-    overflow: hidden;
-    display: inline-block;
-    vertical-align: top;
-    white-space: normal;
-    width: 20%;
-  }
-
-  .listLabel {
-    font-size: 15px;
-    margin: 0 0 5px;
-    display: block;
-    color: #808080;
-    font-weight: bold;
-  }
-
-  ul {
-    padding-left: 0;
-    margin: 0 0 14px 0;
-  }
-
-  ul li {
-    list-style: none;
-
-    a {
-      font-size: 14px;
-      color: #fff;
-      text-decoration: none;
-    }
-  }
-
-  .cast-wrapper {
-    height: 100%;
-    width: 80%;
-  }
-
-  .cast-container {
-    width: 100%;
-    height: 100%;
-
-    &:hover .carousel-indicators {
-      opacity: 1;
-    }
   }
 
   .maturityDescription {
     font-size: 14px;
     margin-bottom: 0;
-  }
-
-  .episodes-container {
-    margin-top: 20px;
-  }
-
-  .single-season-label {
-    font-size: 1.4vw;
-    color: #e5e5e5;
-    font-weight: bold;
-    margin: 0 4% 0.5em 4%;
-    text-decoration: none;
-    display: inline-block;
-    min-width: 6em;
-  }
-
-  .episodes-container:hover {
-    .carousel-indicators {
-      opacity: 1;
-    }
-    .indicator-icon {
-      display: block;
-    }
   }
 }
 

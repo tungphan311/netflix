@@ -1,323 +1,217 @@
-/* eslint-disable prettier/prettier */
-import React, { Component } from "react";
-import { Carousel } from "react-bootstrap";
-import { FILM_DETAILS } from "../../constants";
+import React, { useState, useEffect } from "react";
 import "./Details.scss";
-import { Cast, splitList } from "../../components/MovieRow/ShowDetail";
-import { Episode } from "../../components/MovieRow/Episode";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { toastErr } from "../../utils/toast";
+import { api_key, base_url, image_url } from "../../utils/fetch";
+import Rating from "../../components/Rating/Rating";
+import { actionGetMovieById } from "../../state/action/movies";
+import { formatRuntime } from "../../utils/utils";
 
-const getDetailsById = id => FILM_DETAILS[id];
+function Details(props) {
+  // state
+  const [film, setFilm] = useState({});
+  const [rating, setRating] = useState({});
+  const [isFetch, setFetch] = useState(false);
+  const [credits, setCredits] = useState({});
+  const [hover, setHover] = useState(false);
 
-class Details extends Component {
-  constructor(props) {
-    super(props);
+  const {
+    match: {
+      params: { id }
+    }
+  } = props;
 
-    this.state = {
-      film: {},
-      width: 0
-    };
+  // lifecycle
+  const dispatch = useDispatch();
+  if (!isFetch) {
+    dispatch(actionGetMovieById({ id })).then(res => {
+      setRating(res);
+      setFetch(true);
+    });
   }
 
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.updateWindowDimensions);
-  }
+  useEffect(() => {
+    fetch(`${base_url}/movie/${id}?api_key=${api_key}`)
+      .then(res => res.json())
+      .then(data => setFilm(data))
+      .catch(err => toastErr(err));
 
-  updateWindowDimensions = () => {
-    const width = window.innerWidth;
-    this.setState({ width });
-  };
+    fetch(`${base_url}/movie/${id}/credits?api_key=${api_key}`)
+      .then(res => res.json())
+      .then(data => setCredits(data))
+      .catch(err => toastErr(err));
+  }, [id]);
 
-  componentDidMount() {
-    this.updateWindowDimensions();
-    window.addEventListener("resize", this.updateWindowDimensions);
-    this.setState({ film: getDetailsById(1) });
-    const {
-      match: {
-        params: { id }
-      }
-    } = this.props;
+  console.log(film);
 
-    const film = FILM_DETAILS[id];
-    this.setState({ film });
-  }
+  const {
+    backdrop_path,
+    poster_path,
+    popularity,
+    title,
+    release_date,
+    original_title,
+    runtime,
+    overview: description,
+    genres
+  } = film;
 
-  render() {
-    const { film, width } = this.state;
+  const year = release_date ? release_date.substring(0, 4) : "";
+  const score = popularity ? popularity.toFixed(1) : 0;
+  const duration = runtime ? formatRuntime(runtime) : 0;
 
-    const {
-      background,
-      logo,
-      score,
-      year,
-      limit,
-      duration,
-      description,
-      genres,
-      casts,
-      episode,
-      seasons
-    } = film;
+  const director = credits.crew
+    ? credits.crew.find(x => x.department === "Directing")
+    : {};
 
-    const list = casts && splitList(casts, width);
+  const writers = credits.crew
+    ? credits.crew.filter(x => x.department === "Writing")
+    : [];
 
-    return (
-      <div className="details-page__container">
-        <div className="header"></div>
-        <div className="jawBoneContainer slider-hover-trigger-layer">
-          <div className="background">
-            <div className="jawBoneBackground image-rotator">
-              <span>
-                <div className="ptrack-content">
+  const casts = credits.cast ? credits.cast.slice(0, 3) : [];
+
+  return (
+    <div className="details-page__container">
+      <div className="header"></div>
+      <div className="jawBoneContainer slider-hover-trigger-layer">
+        <div className="background">
+          <div className="jawBoneBackground image-rotator">
+            <span>
+              <div className="ptrack-content">
+                {backdrop_path && (
                   <div
                     className="image-rotator-image "
                     style={{
-                      backgroundImage: `url('${background}')`,
+                      backgroundImage: `url('${image_url + backdrop_path}')`,
                       zIndex: 2,
                       opacity: 1,
                       transitionDuration: "750ms"
                     }}
                   ></div>
-                </div>
-              </span>
-            </div>
-            <div className="vignette"></div>
-          </div>
-          <div className="jawBone">
-            <h1>
-              <a className="jawbone-title-link active" href="/title/80180171">
-                <div className="title has-jawbone-nav-transition original">
-                  <img alt="Logo" className="logo" src={logo} />
-                </div>
-              </a>
-            </h1>
-            <div className="jawBoneCommon">
-              <div className="jawBonePanes">
-                <div className="jawBonePane">
-                  <div className="ptrack-container">
-                    <div>
-                      <div className="overview">
-                        <div className="ptrack-container">
-                          <div className="jawbone-overview-info has-jawbone-nav-transition">
-                            <div className="meta video-meta ">
-                              <span className="match-score-wrapper">
-                                <div className="show-match-score rating-inner">
-                                  <span className="match-score">{score}</span>
-                                </div>
-                              </span>
-                              <span className="year">{year}</span>
-                              <span className="duration">{duration}</span>
-                            </div>
-                            <div className="jawbone-actions">
-                              <a className="playLink">
-                                <span
-                                  tabIndex="-1"
-                                  className="nf-icon-button nf-flat-button nf-flat-button-primary nf-flat-button-uppercase"
-                                >
-                                  <span className="nf-flat-button-icon nf-flat-button-icon-play"></span>
-                                  <span className="nf-flat-button-text">
-                                    Play
-                                  </span>
-                                </span>
-                              </a>
-                              <div className="ptrack-content">
-                                <a
-                                  tabIndex="0"
-                                  className="nf-icon-button nf-flat-button mylist-button nf-flat-button-uppercase"
-                                >
-                                  <span className="nf-flat-button-icon nf-flat-button-icon-mylist-add"></span>
-                                  <span className="nf-flat-button-text">
-                                    My Favorites
-                                  </span>
-                                </a>
-                              </div>
-                            </div>
-                            <div className="synopsis">{description}</div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                )}
               </div>
-            </div>
+            </span>
+            <div className="background-blur"></div>
+          </div>
+          <div className="vignette">
+            {poster_path && (
+              <div
+                className="background-poster"
+                style={{
+                  backgroundImage: `url('${image_url + poster_path}')`
+                }}
+              ></div>
+            )}
           </div>
         </div>
-        <div className="detail__container">
-          {width > 500 && (
-            <div className="detailsItem detailsTags">
-              <div>
-                <h4 className="listLabel">Genres</h4>
-                <ul>
-                  {genres &&
-                    genres.map(({ href, title }) => (
-                      <li key={href}>
-                        <a href={href}>{title}</a>
-                      </li>
-                    ))}
-                </ul>
-                <h4 className="listLabel">This show is</h4>
-                <ul>
-                  <li>
-                    <a href="#">Irreverent</a>
-                  </li>
-                  <li>
-                    <a href="#">Exciting</a>
-                  </li>
-                </ul>
-
-                <h4 className="listLabel">Maturity Ratings</h4>
-                <span className="maturity-rating ">
-                  <a
-                    href="https://help.netflix.com/support/2064"
-                    className="maturity-number"
+        <div className="jawBone">
+          <div className="title-block">
+            <div className="title-bar-wrapper">
+              <Rating movie_rate={rating} />
+              <div className="title-bar">
+                <div
+                  className="primary-ribbon"
+                  onMouseEnter={() => setHover(true)}
+                  onMouseLeave={() => setHover(false)}
+                >
+                  <div style={{ position: "relative" }}>
+                    <div
+                      className="wl-ribbon not-inWL"
+                      title="Click to add to my favorite"
+                    ></div>
+                  </div>
+                  <div
+                    className="ribbon-dropdown"
+                    style={{ display: hover ? "block" : "none" }}
                   >
-                    {limit}
-                  </a>
-                  <p className="maturityDescription">
-                    {`Recommended for ages ${limit}`}
-                  </p>
-                </span>
-              </div>
-            </div>
-          )}
-          <div
-            className="cast-wrapper"
-            style={width < 500 ? { width: "100%" } : {}}
-          >
-            <h4 className="listLabel" style={{ marginLeft: "4%" }}>
-              Casts
-            </h4>
-            <div className="cast-container">
-              <Carousel interval={null}>
-                {list &&
-                  list.map((sub, index) => (
-                    <Carousel.Item key={index}>
-                      {sub.map(({ avatar, character, actor }) => (
-                        <Cast
-                          key={actor}
-                          avatar={avatar}
-                          character={character}
-                          actor={actor}
-                          width={width}
-                        />
-                      ))}
-                    </Carousel.Item>
-                  ))}
-              </Carousel>
-            </div>
-          </div>
-        </div>
-
-        {seasons &&
-          seasons.map(({ id, title }) => {
-            const lists = episode && splitLists(width, episode[id]);
-
-            return (
-              <div className="episodes-container" key={id}>
-                <div className="ptrack-content">
-                  <div className="single-season-label">{title}</div>
-                  <div className="episodeWrapper">
-                    <div className="ptrack-container">
-                      <div className="slider">
-                        <div
-                          className="sliderMask"
-                          style={{ marginRight: "-30px", overflow: "hidden" }}
-                        >
-                          <div className="sliderContent row-with-x-columns">
-                            <Carousel
-                              interval={null}
-                              // onSelect={this.handleSelect}
-                              prevIcon={
-                                <span
-                                  className="handle handlePrev active"
-                                  tabIndex="0"
-                                  role="button"
-                                >
-                                  <b className="indicator-icon icon-leftCaret"></b>
-                                </span>
-                              }
-                              nextIcon={
-                                <span
-                                  className="handle handleNext active"
-                                  tabIndex="0"
-                                  role="button"
-                                >
-                                  <b className="indicator-icon icon-rightCaret"></b>
-                                </span>
-                              }
-                            >
-                              {lists &&
-                                lists.map((sub, index) => (
-                                  <Carousel.Item key={index}>
-                                    {sub.map(
-                                      ({
-                                        href,
-                                        title,
-                                        ep,
-                                        length,
-                                        description,
-                                        background
-                                      }) => (
-                                        <Episode
-                                          key={href}
-                                          href={href}
-                                          title={title}
-                                          ep={ep}
-                                          length={length}
-                                          description={description}
-                                          background={background}
-                                          width={width}
-                                        />
-                                      )
-                                    )}
-                                  </Carousel.Item>
-                                ))}
-                            </Carousel>
-                          </div>
-                        </div>
-                      </div>
+                    <div className="drop-item">
+                      <Link to="/my-favorites">
+                        <span className="drop-item-text">
+                          View my favorites »
+                        </span>
+                      </Link>
                     </div>
                   </div>
                 </div>
+                <div className="title-wrapper">
+                  <h1>
+                    {title}&nbsp;
+                    <span id="titleYear">
+                      (<a href="/year/2014/?ref_=tt_ov_inf">{year}</a>)
+                    </span>
+                  </h1>
+                  <div className="originalTitle">
+                    {original_title}
+                    <span className="description"> (original title)</span>
+                  </div>
+                  <div className="meta video-meta ">
+                    <span className="match-score-wrapper">
+                      <div className="show-match-score rating-inner">
+                        <span className="match-score">{score} IMDB</span>
+                      </div>
+                    </span>
+                    <span className="ghost">|</span>
+                    <span className="year">{year}</span>
+                    <span className="ghost">|</span>
+                    <span className="duration">{duration}</span>
+                    <span className="ghost">|</span>
+                    <span className="maturity-rating ">
+                      <span className="maturity-number">18+</span>
+                    </span>
+                  </div>
+                </div>
               </div>
-            );
-          })}
+            </div>
+          </div>
+          <div className="overview">
+            <div className="summary-text">{description}</div>
+            <div className="credit-summary-item">
+              <h4 className="inline">Director: </h4>
+              <Link to={`/person/${director.id}`}>{director.name}</Link>
+            </div>
+            <div className="credit-summary-item">
+              <h4 className="inline">Writers: </h4>
+              {writers.map(({ id, name }, index) => (
+                <React.Fragment key={index}>
+                  <Link to={`/person/${id}`}>{name}</Link>
+                  {index < writers.length - 1 && ", "}
+                </React.Fragment>
+              ))}
+            </div>
+            <div className="credit-summary-item">
+              <h4 className="inline">Stars: </h4>
+              {casts.map(({ id, name }, index) => (
+                <React.Fragment key={index}>
+                  <Link to={`/person/${id}`}>{name}</Link>
+                  {index < casts.length - 1 && ", "}
+                </React.Fragment>
+              ))}
+            </div>
+            <div className="credit-summary-item">
+              <h4 className="inline">Genres: </h4>
+              {genres &&
+                genres.map(({ id, name }, index) => (
+                  <React.Fragment key={index}>
+                    <Link to={`/genres/${id}`}>{name}</Link>
+                    {index < genres.length - 1 && ", "}
+                  </React.Fragment>
+                ))}
+            </div>
+          </div>
+          <div className="btn-add-wrapper">
+            <button
+              tabIndex="0"
+              className="nf-icon-button nf-flat-button nf-flat-button-primary nf-flat-button-uppercase"
+            >
+              <span className="nf-flat-button-icon nf-flat-button-icon-mylist-add"></span>
+              <span className="nf-flat-button-text">Add to My Favorites</span>
+            </button>
+          </div>
+        </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default Details;
-
-const splitLists = (width, list) => {
-  const item =
-    width < 500
-      ? 1
-      : width >= 500 && width < 800
-      ? 2
-      : width >= 800 && width < 1100
-      ? 3
-      : width >= 1100 && width < 1400
-      ? 4
-      : 5;
-
-  let temp = [];
-  let newList = [];
-
-  list.map((sub, index) => {
-    temp = [...temp, sub];
-
-    if (index % item === item - 1) {
-      newList = [...newList, temp];
-      temp = [];
-    }
-
-    if (index === list.length - 1) {
-      newList = [...newList, temp];
-    }
-
-    return null;
-  });
-
-  return newList;
-};

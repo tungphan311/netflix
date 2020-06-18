@@ -1,0 +1,172 @@
+.rating-wrapper {
+  float: right;
+  position: relative;
+  margin-left: 5px;
+  width: 200px;
+  z-index: 2;
+  right: 4%;
+}
+
+.rating {
+  background: url("https://m.media-amazon.com/images/G/01/imdb/images/title/title_overview_sprite-1705639977._V_.png")
+    no-repeat;
+  background-position: -15px -118px;
+  float: left;
+  font-size: 11px;
+  height: 40px;
+  line-height: 13px;
+  padding: 2px 0 0 34px;
+  width: 58px;
+}
+
+.rating-value {
+  margin-bottom: -2px;
+  white-space: nowrap;
+
+  strong {
+    font-size: 24px;
+    font-weight: normal;
+    font-family: Arial;
+    line-height: 24px;
+  }
+
+  .grey {
+    font-size: $x-small;
+  }
+}
+
+.rating-widget {
+  float: right;
+  height: 42px;
+  width: 92px;
+}
+
+.rating-button {
+  position: relative;
+
+  button {
+    border: 0;
+    border-left: 1px solid #6b6b6b;
+    text-align: left;
+    white-space: normal;
+    padding: 1px 0 1px 1px;
+    height: 42px;
+    width: 91px;
+    border-radius: 0;
+    display: inline-block;
+    background-color: transparent;
+    box-shadow: none;
+
+    &:hover {
+      background-color: #136cb2;
+    }
+
+    .rating-text {
+      display: block;
+      font-size: 13px;
+    }
+
+    .star-rating-value {
+      font: normal 24px/24px Arial;
+      display: block;
+      padding-top: 1px;
+    }
+
+    .star-rating-subtext {
+      display: block;
+      color: silver;
+      font-size: 10px;
+      line-height: 10px;
+    }
+  }
+}
+
+.no-rating {
+  background-position: -8px -196px;
+  width: 40px;
+  height: 40px;
+  margin-right: 1px;
+  display: inline-block;
+  vertical-align: text-bottom;
+}
+
+.rated {
+  background-position: -8px -158px;
+  width: 40px;
+  height: 40px;
+  margin-right: 1px;
+  display: inline-block;
+  vertical-align: text-bottom;
+}
+
+.star-rating {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  white-space: nowrap;
+  padding: 5px;
+}
+
+.rating-button .star-rating {
+  display: none;
+  background: #fff;
+  position: absolute;
+  top: 0px;
+  right: 100%;
+  z-index: 10;
+}
+
+.rating-widget .star-rating {
+  background-color: #484a48;
+  border-color: #aaa;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.rating-button.open .star-rating {
+  display: block;
+}
+
+.star-rating .star-rating-delete {
+  background: url("https://m.media-amazon.com/images/G/01/imdb/images/sitewide/imdb_global_sprite-1835832765._V_.png") -120px
+    0 no-repeat;
+  margin-right: 5px;
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+
+  &:hover {
+    background-position: -140px 0;
+  }
+}
+
+.star-rating .star-rating-stars {
+  display: inline-block;
+  // vertical-align: middle;
+  padding: 1px 5px;
+  border-left: 1px solid #ddd;
+
+  & > a.on {
+    background-position: -227px -61px;
+  }
+}
+
+.star-rating .star-rating-stars > a {
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+}
+
+.rating-widget .star-rating-stars > a {
+  background: url("https://m.media-amazon.com/images/G/01/imdb/images/sitewide/imdb_global_sprite-1835832765._V_.png")
+    no-repeat;
+  background-position: -227px -1px;
+}
+
+.star-rating .star-rating-stars a span {
+  display: none;
+}
