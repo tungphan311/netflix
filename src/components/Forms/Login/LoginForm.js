@@ -11,7 +11,7 @@ function LoginForm({ handleSubmit }) {
   return (
     <form onSubmit={handleSubmit} noValidate>
       <div className="login--wrapper">
-        <h1>Đăng nhập </h1>
+        <h1>Welcome back! </h1>
         <Field
           name="email"
           placeholder="Email..."
@@ -21,26 +21,26 @@ function LoginForm({ handleSubmit }) {
         <Field
           name="password"
           type="password"
-          placeholder="Mật khẩu..."
+          placeholder="Password ..."
           component={PasswordInput}
           validate={[require, password]}
         />
         <button type="submit" className="btn-primary">
-          Đăng nhập
+          Sign in
         </button>
         <div className="space-between m__t--6 font__size--x-small">
           <div>
             <input type="checkbox" id="remember" defaultChecked />
             <label htmlFor="remember" className="m__l--5">
-              Ghi nhớ tôi
+              Remember me
             </label>
           </div>
-          <div>Quên mật khẩu?</div>
+          <div>Forgot password?</div>
         </div>
         <div className="register">
-          Bạn mới tham gia?{" "}
+          New to Netflix?{" "}
           <span className="registerLink">
-            <Link to="/register">Đăng ký ngay</Link>
+            <Link to="/register">Sig up now</Link>
           </span>
         </div>
       </div>

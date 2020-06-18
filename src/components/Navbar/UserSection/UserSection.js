@@ -3,7 +3,7 @@ import "./UserSection.scss";
 
 function UserSection() {
   return (
-    <div className="d-flex">
+    <div className="align-center cursor">
       <div className="avatar__wrapper">
         <img src="/assets/avatar.png" alt="user avatar" />
       </div>

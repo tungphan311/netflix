@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import NavigatorItem from "../NavigatorItem/NavigatorItem";
 import OutsideClickWrapper from "../../OutsideClickWrapper/OutsideClickWrapper";
 import { NAV_ITEMS, FILTER_LIST } from "../../../constants";
+import "./NavigatorSelect.scss";
 
 function NavigatorSelect({ route, title, history }) {
   const [show, setShow] = useState(false);

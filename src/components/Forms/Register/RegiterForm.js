@@ -15,7 +15,7 @@ function RegiterForm({ handleSubmit }) {
   return (
     <form onSubmit={handleSubmit} noValidate>
       <div className="login--wrapper">
-        <h1>Đăng ký </h1>
+        <h1>Sign me up</h1>
         <Field
           name="email"
           placeholder="Email..."
@@ -25,25 +25,25 @@ function RegiterForm({ handleSubmit }) {
         <Field
           name="password"
           type="password"
-          placeholder="Mật khẩu..."
+          placeholder="Password..."
           component={PasswordInput}
           validate={[require, password]}
         />
         <Field
           name="repassword"
           type="password"
-          placeholder="Nhập lại mật khẩu..."
+          placeholder="Re-enter password..."
           component={PasswordInput}
           validate={[require, password, matchPassword]}
         />
         <button type="submit" className="btn-primary">
-          Đăng ký
+          Sign up
         </button>
 
         <div className="register">
-          Đã có tài khoản?{" "}
+          Already have an account?{" "}
           <span className="registerLink">
-            <Link to="/login">Đăng nhập ngay</Link>
+            <Link to="/login">Sign in now</Link>
           </span>
         </div>
       </div>

@@ -45,10 +45,10 @@ class NavBar extends Component {
               isActive={route === href}
             />
           ))}
-          <NavigatorSelect route={route} title="Filter" history={history} />
+          {/* <NavigatorSelect route={route} title="Filter" history={history} /> */}
+          <Search />
         </ul>
         <div className="navbar__right">
-          <Search />
           <Notification />
           <UserSection />
         </div>
