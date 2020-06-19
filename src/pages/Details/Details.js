@@ -9,11 +9,14 @@ import { actionGetMovieById } from "../../state/action/movies";
 import { formatRuntime } from "../../utils/utils";
 import { actionAddToFavorite } from "../../state/action/user";
 import { Done } from "../../utils/svg";
+import { CERTIFICATES } from "../../constants";
 
 function Details(props) {
   // state
   const [film, setFilm] = useState({});
   const [rating, setRating] = useState({});
+  const [release, setRelease] = useState({});
+
   const [isFetch, setFetch] = useState(false);
   const [credits, setCredits] = useState({});
   const [hover, setHover] = useState(false);
@@ -28,25 +31,35 @@ function Details(props) {
 
   // lifecycle
   const dispatch = useDispatch();
+  const url = param =>
+    `${base_url}/movie/${id}${param ? param : ""}?api_key=${api_key}`;
+
   if (!isFetch) {
-    dispatch(actionGetMovieById({ id })).then(res => {
-      setRating(res);
-      setFavorite(res.is_favorite);
-      setFetch(true);
+    dispatch(actionGetMovieById({ id })).then(result => {
+      fetch(url())
+        .then(res => res.json())
+        .then(filmData => {
+          fetch(url("/credits"))
+            .then(res => res.json())
+            .then(creditData => {
+              fetch(url("/release_dates"))
+                .then(res => res.json())
+                .then(releaseData => {
+                  setFetch(true);
+                  setFilm(filmData);
+                  setCredits(creditData);
+                  setRelease(releaseData.results[0].release_dates[0]);
+
+                  setRating(result);
+                  setFavorite(result.is_favorite);
+                })
+                .catch(err => toastErr(err));
+            })
+            .catch(err => toastErr(err));
+        })
+        .catch(err => toastErr(err));
     });
   }
-
-  useEffect(() => {
-    fetch(`${base_url}/movie/${id}?api_key=${api_key}`)
-      .then(res => res.json())
-      .then(data => setFilm(data))
-      .catch(err => toastErr(err));
-
-    fetch(`${base_url}/movie/${id}/credits?api_key=${api_key}`)
-      .then(res => res.json())
-      .then(data => setCredits(data))
-      .catch(err => toastErr(err));
-  }, [id]);
 
   const {
     backdrop_path,
@@ -58,8 +71,16 @@ function Details(props) {
     runtime,
     overview: description,
     genres,
-    adult
+    tagline
   } = film;
+
+  const { certification } = release;
+  const cer = certification
+    ? CERTIFICATES.find(c => c.certification === certification)
+    : {
+        certification: "G",
+        meaning: ""
+      };
 
   const year = release_date ? release_date.substring(0, 4) : "";
   const score = popularity ? popularity.toFixed(1) : 0;
@@ -159,7 +180,7 @@ function Details(props) {
                   <h1>
                     {title}&nbsp;
                     <span id="titleYear">
-                      (<a href="/year/2014/?ref_=tt_ov_inf">{year}</a>)
+                      (<Link to={`/year/${year}`}>{year}</Link>)
                     </span>
                   </h1>
                   <div className="originalTitle">
@@ -173,14 +194,14 @@ function Details(props) {
                       </div>
                     </span>
                     <span className="ghost">|</span>
-                    <span className="year">{year}</span>
+                    <span className="year">{release_date}</span>
                     <span className="ghost">|</span>
                     <span className="duration">{duration}</span>
                     <span className="ghost">|</span>
                     <span className="maturity-rating ">
-                      <span className="maturity-number">
-                        {adult ? "18+" : "13+"}
-                      </span>
+                      <a className="maturity-number" title={cer.meaning}>
+                        {cer.certification}
+                      </a>
                     </span>
                   </div>
                 </div>
@@ -220,6 +241,10 @@ function Details(props) {
                     {index < genres.length - 1 && ", "}
                   </React.Fragment>
                 ))}
+            </div>
+            <div className="credit-summary-item">
+              <h4 className="inline">Tagline: </h4>
+              <h4 className="inline">{tagline}</h4>
             </div>
           </div>
           <div className="btn-add-wrapper">

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./NavBar.scss";
+import { Link } from "react-router-dom";
 import { NAV_ITEMS } from "../../constants";
 import Notification from "../Notification/Notification";
 import NavigatorItem from "./NavigatorItem/NavigatorItem";
@@ -33,7 +34,7 @@ class NavBar extends Component {
 
     return (
       <div className={`navbar__container ${top ? "top" : "scroll"}`}>
-        <a aria-label="Netflix" className="navbar_logo" href="/" />
+        <Link aria-label="Netflix" className="navbar_logo" to="/" />
         <ul className="navbar__navigator">
           <NavigatorSelect route={route} title="Browser" />
           {NAV_ITEMS.map(({ title, href }) => (

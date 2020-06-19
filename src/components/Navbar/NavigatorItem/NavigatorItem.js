@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./NavigatorItem.scss";
+import { Link } from "react-router-dom";
 
 const divideArray = array => {
   let subArray = [];
@@ -49,9 +50,9 @@ function NavigatorItem({
       onMouseEnter={() => subItem && toggleShow(true)}
       onMouseLeave={() => subItem && toggleShow(false)}
     >
-      <a className={aClassName} href={href}>
+      <Link className={aClassName} to={href}>
         {title}
-      </a>
+      </Link>
       {show && (
         <div className="filter__item__sub">
           {newSub &&
