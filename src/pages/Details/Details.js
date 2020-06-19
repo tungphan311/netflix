@@ -7,6 +7,8 @@ import { api_key, base_url, image_url } from "../../utils/fetch";
 import Rating from "../../components/Rating/Rating";
 import { actionGetMovieById } from "../../state/action/movies";
 import { formatRuntime } from "../../utils/utils";
+import { actionAddToFavorite } from "../../state/action/user";
+import { Done } from "../../utils/svg";
 
 function Details(props) {
   // state
@@ -15,6 +17,8 @@ function Details(props) {
   const [isFetch, setFetch] = useState(false);
   const [credits, setCredits] = useState({});
   const [hover, setHover] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [isFavorite, setFavorite] = useState(false);
 
   const {
     match: {
@@ -27,6 +31,7 @@ function Details(props) {
   if (!isFetch) {
     dispatch(actionGetMovieById({ id })).then(res => {
       setRating(res);
+      setFavorite(res.is_favorite);
       setFetch(true);
     });
   }
@@ -52,7 +57,8 @@ function Details(props) {
     original_title,
     runtime,
     overview: description,
-    genres
+    genres,
+    adult
   } = film;
 
   const year = release_date ? release_date.substring(0, 4) : "";
@@ -68,6 +74,14 @@ function Details(props) {
     : [];
 
   const casts = credits.cast ? credits.cast.slice(0, 3) : [];
+
+  const handleAddToFavorite = () => {
+    setLoading(true);
+    dispatch(actionAddToFavorite({ id })).then(() => {
+      setLoading(false);
+      setFavorite(!isFavorite);
+    });
+  };
 
   return (
     <div className="details-page__container">
@@ -115,9 +129,18 @@ function Details(props) {
                 >
                   <div style={{ position: "relative" }}>
                     <div
-                      className="wl-ribbon not-inWL"
-                      title="Click to add to my favorite"
-                    ></div>
+                      className={`wl-ribbon ${
+                        isFavorite ? "inWL" : "not-inWL"
+                      } ${loading ? "spinner" : ""}`}
+                      title={
+                        isFavorite
+                          ? "Already in my favorite"
+                          : "Not in my favorite yet"
+                      }
+                      onClick={handleAddToFavorite}
+                    >
+                      {loading && <div className="loader"></div>}
+                    </div>
                   </div>
                   <div
                     className="ribbon-dropdown"
@@ -155,7 +178,9 @@ function Details(props) {
                     <span className="duration">{duration}</span>
                     <span className="ghost">|</span>
                     <span className="maturity-rating ">
-                      <span className="maturity-number">18+</span>
+                      <span className="maturity-number">
+                        {adult ? "18+" : "13+"}
+                      </span>
                     </span>
                   </div>
                 </div>
@@ -201,9 +226,25 @@ function Details(props) {
             <button
               tabIndex="0"
               className="nf-icon-button nf-flat-button nf-flat-button-primary nf-flat-button-uppercase"
+              onClick={handleAddToFavorite}
             >
-              <span className="nf-flat-button-icon nf-flat-button-icon-mylist-add"></span>
-              <span className="nf-flat-button-text">Add to My Favorites</span>
+              {isFavorite ? (
+                <>
+                  <div className="medium-icon">
+                    <Done />
+                  </div>
+                  <span className="nf-flat-button-text">
+                    {loading ? "Removing ..." : "Remove from My Favorites"}
+                  </span>
+                </>
+              ) : (
+                <>
+                  <span className="nf-flat-button-icon nf-flat-button-icon-mylist-add"></span>
+                  <span className="nf-flat-button-text">
+                    {loading ? "Adding ..." : "Add to My Favorites"}
+                  </span>
+                </>
+              )}
             </button>
           </div>
         </div>
