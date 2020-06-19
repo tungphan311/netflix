@@ -1,20 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Rating.scss";
+import { useDispatch } from "react-redux";
 import OutsideClickWrapper from "../OutsideClickWrapper/OutsideClickWrapper";
+import { actionRateMovie, deleteMovieRating } from "../../state/action/movies";
 
-function Rating({ movie_rate }) {
+function Rating({ movie_rate, id }) {
+  // state
   const { rating, total_rating, user_rate } = movie_rate;
   const [show, setShow] = useState(false);
   const [rate, setRating] = useState(user_rate);
+  const [tempRating, setTempRating] = useState(rate);
+
+  useEffect(() => {
+    setRating(user_rate);
+    setTempRating(user_rate);
+  }, [user_rate]);
+
+  // redux
+  const dispatch = useDispatch();
 
   const handleSetRating = e => {
-    const rate = e.target.name;
-
-    setRating(rate);
+    setRating(e.target.name);
   };
 
   const handleDeleteRating = () => {
+    dispatch(deleteMovieRating({ id }));
     setRating(0);
+    setShow(false);
+  };
+
+  const handleRatedMove = rated => {
+    dispatch(actionRateMovie({ id, rated }));
+    setRating(rated);
+    setTempRating(rated);
     setShow(false);
   };
 
@@ -34,7 +52,10 @@ function Rating({ movie_rate }) {
       </div>
       <div className="rating-widget">
         <OutsideClickWrapper
-          onClickOutside={() => setShow(false)}
+          onClickOutside={() => {
+            setRating(tempRating);
+            setShow(false);
+          }}
           isShowing={show}
         >
           <div className={`rating-button ${show ? "open" : ""}`}>
@@ -64,6 +85,8 @@ function Rating({ movie_rate }) {
                       id={id}
                       handleSetRating={handleSetRating}
                       setRating={setRating}
+                      handleRatedMove={handleRatedMove}
+                      tempRating={tempRating}
                     />
                   ))}
                 </span>
@@ -78,13 +101,21 @@ function Rating({ movie_rate }) {
 
 export default Rating;
 
-const Star = ({ rating, id, handleSetRating, setRating }) => (
+const Star = ({
+  rating,
+  id,
+  handleSetRating,
+  setRating,
+  handleRatedMove,
+  tempRating
+}) => (
   <a
     className={rating >= id ? "on" : ""}
     title={`Click to rate: ${id}`}
     name={id}
     onMouseEnter={e => handleSetRating(e)}
-    onMouseLeave={() => setRating(0)}
+    // onMouseLeave={() => setRating(tempRating)}
+    onClick={() => handleRatedMove(id)}
   >
     <span>{id}</span>
   </a>

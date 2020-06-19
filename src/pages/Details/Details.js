@@ -43,8 +43,6 @@ function Details(props) {
       .catch(err => toastErr(err));
   }, [id]);
 
-  console.log(film);
-
   const {
     backdrop_path,
     poster_path,
@@ -108,7 +106,7 @@ function Details(props) {
         <div className="jawBone">
           <div className="title-block">
             <div className="title-bar-wrapper">
-              <Rating movie_rate={rating} />
+              <Rating movie_rate={rating} id={id} />
               <div className="title-bar">
                 <div
                   className="primary-ribbon"
