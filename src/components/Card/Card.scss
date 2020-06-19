@@ -1,6 +1,13 @@
 .card__container {
   position: relative;
-  background-size: cover;
-  width: 100%;
-  box-sizing: border-box;
+  background: none;
+  border: none;
+  border-top: 1px solid #ccc;
+  padding: 24px 60px;
+  margin: 0;
+
+  a:hover {
+    color: $primary;
+    text-decoration: underline;
+  }
 }

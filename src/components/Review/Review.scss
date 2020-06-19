@@ -1,0 +1,51 @@
+.user-review {
+  margin-top: 0.75em;
+  background: #1b1d1e;
+  margin-bottom: 5px;
+  padding: 15px 15px 10px;
+  border-radius: 4px;
+
+  p {
+    margin: 0.5em 0 0.75em;
+    line-height: 140%;
+    color: $grey;
+  }
+
+  hr {
+    margin: 12px 0 12px 0;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid $grey2;
+    box-sizing: content-box;
+    overflow: visible;
+  }
+}
+
+.review-meta {
+  margin-bottom: 16px;
+  font-size: $x-small;
+  line-height: 110%;
+  color: $grey;
+}
+
+.point-scale {
+  color: #666666;
+  font-size: $x-small;
+}
+
+.ipl-star-icon {
+  fill: #c39400;
+}
+
+.review-rating {
+  margin-bottom: 15px;
+}
+
+.reaction {
+  font-size: $x-small;
+  margin-bottom: 12px;
+}
+
+.btn-small {
+  border-radius: 4px;
+}

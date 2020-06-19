@@ -1,15 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Details.scss";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { toastErr } from "../../utils/toast";
 import { api_key, base_url, image_url } from "../../utils/fetch";
 import Rating from "../../components/Rating/Rating";
-import { actionGetMovieById } from "../../state/action/movies";
+import {
+  actionGetMovieById,
+  actionReviewMovie
+} from "../../state/action/movies";
 import { formatRuntime } from "../../utils/utils";
 import { actionAddToFavorite } from "../../state/action/user";
 import { Done } from "../../utils/svg";
 import { CERTIFICATES } from "../../constants";
+import Card from "../../components/Card/Card";
+import Review from "../../components/Review/Review";
+import ReviewModal from "../../components/Modals/Review";
 
 function Details(props) {
   // state
@@ -22,6 +28,8 @@ function Details(props) {
   const [hover, setHover] = useState(false);
   const [loading, setLoading] = useState(false);
   const [isFavorite, setFavorite] = useState(false);
+
+  const [review, setReview] = useState(false);
 
   const {
     match: {
@@ -102,6 +110,12 @@ function Details(props) {
       setLoading(false);
       setFavorite(!isFavorite);
     });
+  };
+
+  const handleClose = () => setReview(false);
+
+  const handleSubmit = () => {
+    dispatch(actionReviewMovie({ id })).then(() => handleClose());
   };
 
   return (
@@ -274,6 +288,25 @@ function Details(props) {
           </div>
         </div>
       </div>
+      <div className="details-more__wrapper">
+        <Card title="User Reviews">
+          <Review></Review>
+          <a onClick={() => setReview(true)}>Review this title</a>
+          <span> | </span>
+          <a>See all 3.950 reviews</a>
+        </Card>
+      </div>
+
+      <ReviewModal
+        show={review}
+        handleClose={handleClose}
+        poster={image_url + poster_path}
+        title={title}
+        year={year}
+        duration={duration}
+        certification={cer}
+        handleSubmit={handleSubmit}
+      />
     </div>
   );
 }

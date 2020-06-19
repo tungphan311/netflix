@@ -248,6 +248,15 @@
   font-size: inherit;
 }
 
+.details-more__wrapper {
+  margin: 0 4%;
+  background-color: #0e0e0e;
+
+  h2 {
+    font-size: $x-large;
+  }
+}
+
 .nf-flat-button .nf-flat-button-icon-play,
 .nf-flat-button .nf-flat-button-icon-episodes,
 .nf-flat-button .nf-flat-button-icon-mylist-add,

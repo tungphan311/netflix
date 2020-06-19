@@ -1,23 +1,27 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
+import React, { Component } from "react";
+import { connect, useDispatch } from "react-redux";
 import Toastify from "./components/Toastify/Toastify";
 import { INIT_DATA } from "./state/reducers/initReducer";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const mapDispatchToProps = dispatch => ({
   initData: () => dispatch({ type: INIT_DATA })
 });
 
-function App({ initData, children }) {
-  useEffect(() => {
-    initData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  return (
-    <div className="App">
-      <Toastify />
-      {children}
-    </div>
-  );
+class App extends Component {
+  componentWillMount = () => {
+    this.props.initData();
+  };
+
+  render() {
+    const { children } = this.props;
+    return (
+      <div className="App">
+        <Toastify />
+        {children}
+      </div>
+    );
+  }
 }
 
 export default connect(null, mapDispatchToProps)(App);
