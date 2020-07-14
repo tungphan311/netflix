@@ -26,8 +26,6 @@ export function* getMovieByIdSaga(action) {
     const { id } = action.payload;
     const user_id = yield select(state => state.auth.identity.id);
 
-    console.log(user_id);
-
     const result = yield call(getMovieById, { id, user_id });
     const response = result.data.data;
 

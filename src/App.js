@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { connect, useDispatch } from "react-redux";
+import { connect } from "react-redux";
 import Toastify from "./components/Toastify/Toastify";
 import { INIT_DATA } from "./state/reducers/initReducer";
 import "bootstrap/dist/css/bootstrap.min.css";
