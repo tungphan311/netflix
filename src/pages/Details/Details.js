@@ -121,38 +121,8 @@ function Details(props) {
   return (
     <div className="details-page__container">
       <div className="header"></div>
-      <div className="jawBoneContainer slider-hover-trigger-layer">
-        <div className="background">
-          <div className="jawBoneBackground image-rotator">
-            <span>
-              <div className="ptrack-content">
-                {backdrop_path && (
-                  <div
-                    className="image-rotator-image "
-                    style={{
-                      backgroundImage: `url('${image_url + backdrop_path}')`,
-                      zIndex: 2,
-                      opacity: 1,
-                      transitionDuration: "750ms"
-                    }}
-                  ></div>
-                )}
-              </div>
-            </span>
-            <div className="background-blur"></div>
-          </div>
-          <div className="vignette">
-            {poster_path && (
-              <div
-                className="background-poster"
-                style={{
-                  backgroundImage: `url('${image_url + poster_path}')`
-                }}
-              ></div>
-            )}
-          </div>
-        </div>
-        <div className="jawBone">
+      <div id="content-2-wide">
+        <div className="jawBoneContainer slider-hover-trigger-layer left-side">
           <div className="title-block">
             <div className="title-bar-wrapper">
               <Rating movie_rate={rating} id={id} />
@@ -222,91 +192,124 @@ function Details(props) {
               </div>
             </div>
           </div>
-          <div className="overview">
-            <div className="summary-text">{description}</div>
-            <div className="credit-summary-item">
-              <h4 className="inline">Director: </h4>
-              <Link to={`/person/${director.id}`}>{director.name}</Link>
+          <div className="background">
+            <div className="jawBoneBackground image-rotator">
+              <span>
+                <div className="ptrack-content">
+                  {backdrop_path && (
+                    <div
+                      className="image-rotator-image "
+                      style={{
+                        backgroundImage: `url('${image_url + backdrop_path}')`,
+                        zIndex: 2,
+                        opacity: 1,
+                        transitionDuration: "750ms"
+                      }}
+                    ></div>
+                  )}
+                </div>
+              </span>
+              <div className="background-blur"></div>
             </div>
-            <div className="credit-summary-item">
-              <h4 className="inline">Writers: </h4>
-              {writers.map(({ id, name }, index) => (
-                <React.Fragment key={index}>
-                  <Link to={`/person/${id}`}>{name}</Link>
-                  {index < writers.length - 1 && ", "}
-                </React.Fragment>
-              ))}
+            <div className="vignette">
+              {poster_path && (
+                <div
+                  className="background-poster"
+                  style={{
+                    backgroundImage: `url('${image_url + poster_path}')`
+                  }}
+                ></div>
+              )}
             </div>
-            <div className="credit-summary-item">
-              <h4 className="inline">Stars: </h4>
-              {casts.map(({ id, name }, index) => (
-                <React.Fragment key={index}>
-                  <Link to={`/person/${id}`}>{name}</Link>
-                  {index < casts.length - 1 && ", "}
-                </React.Fragment>
-              ))}
-            </div>
-            <div className="credit-summary-item">
-              <h4 className="inline">Genres: </h4>
-              {genres &&
-                genres.map(({ id, name }, index) => (
+          </div>
+          <div className="jawBone">
+            <div className="overview">
+              <div className="summary-text">{description}</div>
+              <div className="credit-summary-item">
+                <h4 className="inline">Director: </h4>
+                <Link to={`/person/${director.id}`}>{director.name}</Link>
+              </div>
+              <div className="credit-summary-item">
+                <h4 className="inline">Writers: </h4>
+                {writers.map(({ id, name }, index) => (
                   <React.Fragment key={index}>
-                    <Link to={`/genres/${id}`}>{name}</Link>
-                    {index < genres.length - 1 && ", "}
+                    <Link to={`/person/${id}`}>{name}</Link>
+                    {index < writers.length - 1 && ", "}
                   </React.Fragment>
                 ))}
+              </div>
+              <div className="credit-summary-item">
+                <h4 className="inline">Stars: </h4>
+                {casts.map(({ id, name }, index) => (
+                  <React.Fragment key={index}>
+                    <Link to={`/person/${id}`}>{name}</Link>
+                    {index < casts.length - 1 && ", "}
+                  </React.Fragment>
+                ))}
+              </div>
+              <div className="credit-summary-item">
+                <h4 className="inline">Genres: </h4>
+                {genres &&
+                  genres.map(({ id, name }, index) => (
+                    <React.Fragment key={index}>
+                      <Link to={`/genres/${id}`}>{name}</Link>
+                      {index < genres.length - 1 && ", "}
+                    </React.Fragment>
+                  ))}
+              </div>
+              <div className="credit-summary-item">
+                <h4 className="inline">Tagline: </h4>
+                <h4 className="inline">{tagline}</h4>
+              </div>
             </div>
-            <div className="credit-summary-item">
-              <h4 className="inline">Tagline: </h4>
-              <h4 className="inline">{tagline}</h4>
+            <div className="btn-add-wrapper">
+              <button
+                tabIndex="0"
+                className="nf-icon-button nf-flat-button nf-flat-button-primary nf-flat-button-uppercase"
+                onClick={handleAddToFavorite}
+              >
+                {isFavorite ? (
+                  <>
+                    <div className="medium-icon">
+                      <Done />
+                    </div>
+                    <span className="nf-flat-button-text">
+                      {loading ? "Removing ..." : "Remove from My Favorites"}
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    <span className="nf-flat-button-icon nf-flat-button-icon-mylist-add"></span>
+                    <span className="nf-flat-button-text">
+                      {loading ? "Adding ..." : "Add to My Favorites"}
+                    </span>
+                  </>
+                )}
+              </button>
             </div>
-          </div>
-          <div className="btn-add-wrapper">
-            <button
-              tabIndex="0"
-              className="nf-icon-button nf-flat-button nf-flat-button-primary nf-flat-button-uppercase"
-              onClick={handleAddToFavorite}
-            >
-              {isFavorite ? (
-                <>
-                  <div className="medium-icon">
-                    <Done />
-                  </div>
-                  <span className="nf-flat-button-text">
-                    {loading ? "Removing ..." : "Remove from My Favorites"}
-                  </span>
-                </>
-              ) : (
-                <>
-                  <span className="nf-flat-button-icon nf-flat-button-icon-mylist-add"></span>
-                  <span className="nf-flat-button-text">
-                    {loading ? "Adding ..." : "Add to My Favorites"}
-                  </span>
-                </>
-              )}
-            </button>
           </div>
         </div>
-      </div>
-      <div className="details-more__wrapper">
-        <Card title="User Reviews">
-          <Review></Review>
-          <a onClick={() => setReview(true)}>Review this title</a>
-          <span> | </span>
-          <a>See all 3.950 reviews</a>
-        </Card>
-      </div>
+        <div className="right-side"></div>
+        <div className="details-more__wrapper left-side">
+          <Card title="User Reviews">
+            <Review></Review>
+            <a onClick={() => setReview(true)}>Review this title</a>
+            <span> | </span>
+            <a>See all 3.950 reviews</a>
+          </Card>
+        </div>
 
-      <ReviewModal
-        show={review}
-        handleClose={handleClose}
-        poster={image_url + poster_path}
-        title={title}
-        year={year}
-        duration={duration}
-        certification={cer}
-        handleSubmit={handleSubmit}
-      />
+        <ReviewModal
+          show={review}
+          handleClose={handleClose}
+          poster={image_url + poster_path}
+          title={title}
+          year={year}
+          duration={duration}
+          certification={cer}
+          handleSubmit={handleSubmit}
+        />
+      </div>
     </div>
   );
 }

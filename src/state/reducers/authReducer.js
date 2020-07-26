@@ -6,6 +6,10 @@ export const LOGIN_SUCCESS = "auth/LOGIN_SUCCESS";
 export const REGISTER = "auth/REGISTER";
 export const REGISTER_SUCCESS = "auth/REGISTER_SUCCESS";
 
+export const CHECK_TOKEN = "auth/CHECK_TOKEN";
+export const CHECK_TOKEN_SUCCESS = "auth/CHECK_TOKEN_SUCCESS";
+export const CHECK_TOKEN_FAIL = "auth/CHECK_TOKEN_FAIL";
+
 const initState = {
   token: null,
   identity: {}
@@ -18,7 +22,7 @@ export function authReducer(state = initState, action = {}) {
     case LOGIN_SUCCESS: {
       const { token } = action;
 
-      localStorage.setItem("token", token);
+      localStorage.setItem("authen", token);
 
       const decoded = jwt_decode(token);
       const { identity } = decoded;
@@ -32,7 +36,7 @@ export function authReducer(state = initState, action = {}) {
     case REGISTER_SUCCESS:
       const { token } = action;
 
-      localStorage.setItem("token", token);
+      localStorage.setItem("authen", token);
 
       const decoded = jwt_decode(token);
       const { identity } = decoded;
@@ -42,7 +46,21 @@ export function authReducer(state = initState, action = {}) {
       newState.identity = decodeIdentity;
       return newState;
 
+    case CHECK_TOKEN_SUCCESS: {
+      const { token } = action;
+
+      const decoded = jwt_decode(token);
+      const { identity } = decoded;
+      const decodeIdentity = JSON.parse(identity);
+
+      newState.token = token;
+      newState.identity = decodeIdentity;
+
+      return newState;
+    }
+
     // case LOGOUT_SUCCESS:
+    case CHECK_TOKEN_FAIL:
     default:
       return newState;
   }

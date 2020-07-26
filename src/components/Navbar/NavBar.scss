@@ -13,12 +13,21 @@
   font-style: normal;
 }
 
+.nf--navbar {
+  width: 100%;
+  max-width: 1280px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+}
+
 .navbar__container {
   width: 100%;
   height: 70px;
   position: relative;
   top: 0;
-  padding: 0 4%;
+
   z-index: 100;
   box-shadow: 0 2px 8px 0 rgba($white, 0.1);
   @include align-center;

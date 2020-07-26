@@ -1,13 +1,15 @@
 import { takeEvery, put } from "redux-saga/effects";
 import { INIT_DATA } from "../reducers/initReducer";
 import { toastErr } from "../../utils/toast";
-import { LOGIN_SUCCESS } from "../reducers/authReducer";
+import { CHECK_TOKEN } from "../reducers/authReducer";
 
 export function* initDataSaga() {
   try {
-    const token = yield localStorage.getItem("token");
+    const token = yield localStorage.getItem("authen");
 
-    yield put({ type: LOGIN_SUCCESS, token });
+    if (token) {
+      yield put({ type: CHECK_TOKEN, token });
+    }
   } catch (error) {
     toastErr(error);
   }

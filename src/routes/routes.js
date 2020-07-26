@@ -30,7 +30,7 @@ export const AuthorizedRoute = ({ component: Component, isUser, ...rest }) => (
 
 class Routes extends Component {
   render() {
-    const isUser = getToken("token");
+    const isUser = getToken("authen");
     const { history } = this.props;
 
     return (

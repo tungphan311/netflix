@@ -4,6 +4,50 @@
   width: 100%;
 }
 
+.details-page__container {
+  width: 1280px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+
+  .left-side {
+    background-color: transparent;
+    float: left;
+    margin: 0;
+    padding: 0;
+    width: 939px;
+    box-sizing: content-box;
+  }
+
+  .right-side {
+    background-color: transparent;
+    float: right;
+    margin: 0;
+    padding: 0 19px;
+    width: 300px;
+    position: relative;
+    box-sizing: content-box;
+  }
+}
+
+#content-2-wide {
+  background-color: rgba(185, 185, 185, 0.1);
+  margin-top: 0;
+  position: relative;
+
+  &:before {
+    content: "";
+    background-color: rgba(168, 168, 168, 0.1);
+    border-left: solid 3px #999;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 338px;
+    box-sizing: content-box;
+  }
+}
+
 .jawBoneContainer .background {
   position: absolute;
   top: 0;
@@ -285,7 +329,7 @@
 
 .details-page__container {
   .jawBoneContainer {
-    background-color: #000;
+    background-color: #333;
     position: relative;
     overflow: hidden;
     outline: none;
