@@ -24,9 +24,9 @@ import { FORM_KEY_REVIEW } from "../reducers/formReducer";
 export function* getMovieByIdSaga(action) {
   try {
     const { id } = action.payload;
-    const user_id = yield select(state => state.auth.identity.id);
+    const token = yield localStorage.getItem("authen");
 
-    const result = yield call(getMovieById, { id, user_id });
+    const result = yield call(getMovieById, { id, token });
     const response = result.data.data;
 
     yield call(resolvePromiseAction, action, response);

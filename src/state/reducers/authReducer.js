@@ -57,6 +57,7 @@ export function authReducer(state = initState, action = {}) {
     case CHECK_TOKEN_SUCCESS:
     case REFRESH_TOKEN_SUCCESS: {
       const { token } = action;
+      localStorage.setItem("authen", token);
 
       const decoded = jwt_decode(token);
       const { identity } = decoded;
@@ -69,11 +70,13 @@ export function authReducer(state = initState, action = {}) {
     }
 
     // case LOGOUT_SUCCESS:
-    case CHECK_TOKEN_FAIL:
-    case REFRESH_TOKEN_FAIL: {
+    case CHECK_TOKEN_FAIL: {
       localStorage.removeItem("authen");
-      localStorage.removeItem("refresh");
+      return newState;
+    }
 
+    case REFRESH_TOKEN_FAIL: {
+      localStorage.removeItem("refresh");
       return newState;
     }
 

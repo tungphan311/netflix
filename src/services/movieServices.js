@@ -1,7 +1,7 @@
 import API from "../utils/axios";
 
 export async function getMovieById({ id, token }) {
-  return await API.post(`/movies/${id}`, {
+  return await API.get(`/movies/${id}`, {
     headers: { Authorization: `Bearer ${token}` }
   });
 }

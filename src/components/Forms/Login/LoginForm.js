@@ -1,6 +1,7 @@
 import React from "react";
-import { Field, reduxForm } from "redux-form";
+import { Field, reduxForm, isDirty } from "redux-form";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import { FORM_KEY_LOGIN } from "../../../state/reducers/formReducer";
 import Input from "../../Input/Input";
 import "./LoginForm.scss";
@@ -48,7 +49,13 @@ function LoginForm({ handleSubmit }) {
   );
 }
 
-export default reduxForm({
+LoginForm = reduxForm({
   form: FORM_KEY_LOGIN,
   touchOnBlur: false
 })(LoginForm);
+
+LoginForm = connect(state => ({
+  shouldError: () => isDirty(FORM_KEY_LOGIN)(state)
+}))(LoginForm);
+
+export default LoginForm;

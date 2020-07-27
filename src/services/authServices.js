@@ -15,7 +15,11 @@ export async function checkToken({ token }) {
 }
 
 export async function refreshToken({ token }) {
-  return await API.post("/auth/refresh-token", {
-    headers: { Authorization: `Bearer ${token}` }
-  });
+  return await API.post(
+    "/auth/refresh-token",
+    {},
+    {
+      headers: { Authorization: `Bearer ${token}` }
+    }
+  );
 }

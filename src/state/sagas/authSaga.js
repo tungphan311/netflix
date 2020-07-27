@@ -78,7 +78,6 @@ export function* checkTokenSaga({ token }) {
 
     yield put({ type: CHECK_TOKEN_SUCCESS, token });
   } catch (err) {
-    yield toastErr(err);
     const {
       response: {
         status,
@@ -89,10 +88,12 @@ export function* checkTokenSaga({ token }) {
     if (status === 401) {
       if (sub_status === TOKEN_EXPIRED) {
         yield put({ type: REFRESH_TOKEN });
-      }
+      } else {
+        yield toastErr(err);
 
-      yield put({ type: CHECK_TOKEN_FAIL });
-      history.push("/login");
+        yield put({ type: CHECK_TOKEN_FAIL });
+        history.push("/login");
+      }
     }
   } finally {
     // yield put({ type: SET_LOADING, status: false });
