@@ -48,25 +48,6 @@
   }
 }
 
-.jawBoneContainer .background {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 1;
-  overflow: hidden;
-  transition: opacity 0.3s cubic-bezier(0.5, 0, 0.1, 1) 0s;
-}
-
-.background-blur {
-  background-color: rgba($color: #141414, $alpha: 0.8);
-  width: 100%;
-  height: 100%;
-  z-index: 9999;
-  position: absolute;
-}
-
 .background-poster {
   z-index: 2;
   opacity: 1;
@@ -75,6 +56,20 @@
   background-size: contain;
   height: 100%;
   background-repeat: no-repeat;
+}
+
+.title-overview {
+  float: left;
+  margin: 0;
+  max-width: 938px;
+  width: 938px;
+  padding: 0;
+  box-sizing: content-box;
+
+  .vital {
+    background-color: #333;
+    color: #fff;
+  }
 }
 
 .title-block {
@@ -272,17 +267,6 @@
   text-align: justify;
   width: 92%;
   color: $grey2;
-}
-
-.details-page__container .jawBoneContainer .jawBone {
-  padding: 18px 0 12px 0;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: auto;
-  right: 0;
-  width: 70%;
-  z-index: 10;
 }
 
 .jawBoneContainer h1,

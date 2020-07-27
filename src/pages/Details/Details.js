@@ -75,6 +75,7 @@ function Details(props) {
     popularity,
     title,
     release_date,
+    // eslint-disable-next-line no-unused-vars
     original_title,
     runtime,
     overview: description,
@@ -122,107 +123,106 @@ function Details(props) {
     <div className="details-page__container">
       <div className="header"></div>
       <div id="content-2-wide">
-        <div className="jawBoneContainer slider-hover-trigger-layer left-side">
-          <div className="title-block">
-            <div className="title-bar-wrapper">
-              <Rating movie_rate={rating} id={id} />
-              <div className="title-bar">
-                <div
-                  className="primary-ribbon"
-                  onMouseEnter={() => setHover(true)}
-                  onMouseLeave={() => setHover(false)}
-                >
-                  <div style={{ position: "relative" }}>
-                    <div
-                      className={`wl-ribbon ${
-                        isFavorite ? "inWL" : "not-inWL"
-                      } ${loading ? "spinner" : ""}`}
-                      title={
-                        isFavorite
-                          ? "Already in my favorite"
-                          : "Not in my favorite yet"
-                      }
-                      onClick={handleAddToFavorite}
-                    >
-                      {loading && <div className="loader"></div>}
-                    </div>
-                  </div>
+        <div className="title-overview">
+          <div className="vital">
+            <div className="title-block">
+              <div className="title-bar-wrapper">
+                <Rating movie_rate={rating} id={id} />
+                <div className="title-bar">
                   <div
-                    className="ribbon-dropdown"
-                    style={{ display: hover ? "block" : "none" }}
+                    className="primary-ribbon"
+                    onMouseEnter={() => setHover(true)}
+                    onMouseLeave={() => setHover(false)}
                   >
-                    <div className="drop-item">
-                      <Link to="/my-favorites">
-                        <span className="drop-item-text">
-                          View my favorites »
-                        </span>
-                      </Link>
+                    <div style={{ position: "relative" }}>
+                      <div
+                        className={`wl-ribbon ${
+                          isFavorite ? "inWL" : "not-inWL"
+                        } ${loading ? "spinner" : ""}`}
+                        title={
+                          isFavorite
+                            ? "Already in my favorite"
+                            : "Not in my favorite yet"
+                        }
+                        onClick={handleAddToFavorite}
+                      >
+                        {loading && <div className="loader"></div>}
+                      </div>
+                    </div>
+                    <div
+                      className="ribbon-dropdown"
+                      style={{ display: hover ? "block" : "none" }}
+                    >
+                      <div className="drop-item">
+                        <Link to="/my-favorites">
+                          <span className="drop-item-text">
+                            View my favorites »
+                          </span>
+                        </Link>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="title-wrapper">
-                  <h1>
-                    {title}&nbsp;
-                    <span id="titleYear">
-                      (<Link to={`/year/${year}`}>{year}</Link>)
-                    </span>
-                  </h1>
-                  <div className="originalTitle">
-                    {original_title}
-                    <span className="description"> (original title)</span>
-                  </div>
-                  <div className="meta video-meta ">
-                    <span className="match-score-wrapper">
-                      <div className="show-match-score rating-inner">
-                        <span className="match-score">{score} IMDB</span>
-                      </div>
-                    </span>
-                    <span className="ghost">|</span>
-                    <span className="year">{release_date}</span>
-                    <span className="ghost">|</span>
-                    <span className="duration">{duration}</span>
-                    <span className="ghost">|</span>
-                    <span className="maturity-rating ">
-                      <a className="maturity-number" title={cer.meaning}>
-                        {cer.certification}
-                      </a>
-                    </span>
+                  <div className="title-wrapper">
+                    <h1>
+                      {title}&nbsp;
+                      <span id="titleYear">
+                        (<Link to={`/year/${year}`}>{year}</Link>)
+                      </span>
+                    </h1>
+                    <div className="meta video-meta ">
+                      <span className="match-score-wrapper">
+                        <div className="show-match-score rating-inner">
+                          <span className="match-score">{score} IMDB</span>
+                        </div>
+                      </span>
+                      <span className="ghost">|</span>
+                      <span className="year">{release_date}</span>
+                      <span className="ghost">|</span>
+                      <span className="duration">{duration}</span>
+                      <span className="ghost">|</span>
+                      <span className="maturity-rating ">
+                        <a className="maturity-number" title={cer.meaning}>
+                          {cer.certification}
+                        </a>
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="background">
-            <div className="jawBoneBackground image-rotator">
-              <span>
-                <div className="ptrack-content">
-                  {backdrop_path && (
-                    <div
-                      className="image-rotator-image "
-                      style={{
-                        backgroundImage: `url('${image_url + backdrop_path}')`,
-                        zIndex: 2,
-                        opacity: 1,
-                        transitionDuration: "750ms"
-                      }}
-                    ></div>
-                  )}
-                </div>
-              </span>
-              <div className="background-blur"></div>
+            <div className="background">
+              <div className="jawBoneBackground image-rotator">
+                <span>
+                  <div className="ptrack-content">
+                    {backdrop_path && (
+                      <div
+                        className="image-rotator-image "
+                        style={{
+                          backgroundImage: `url('${image_url +
+                            backdrop_path}')`,
+                          zIndex: 2,
+                          opacity: 1,
+                          transitionDuration: "750ms"
+                        }}
+                      ></div>
+                    )}
+                  </div>
+                </span>
+                <div className="background-blur"></div>
+              </div>
+              <div className="vignette">
+                {poster_path && (
+                  <div
+                    className="background-poster"
+                    style={{
+                      backgroundImage: `url('${image_url + poster_path}')`
+                    }}
+                  ></div>
+                )}
+              </div>
             </div>
-            <div className="vignette">
-              {poster_path && (
-                <div
-                  className="background-poster"
-                  style={{
-                    backgroundImage: `url('${image_url + poster_path}')`
-                  }}
-                ></div>
-              )}
-            </div>
           </div>
-          <div className="jawBone">
+          <div className="summary-wrapper">
             <div className="overview">
               <div className="summary-text">{description}</div>
               <div className="credit-summary-item">
