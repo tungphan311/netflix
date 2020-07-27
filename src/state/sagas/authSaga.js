@@ -7,12 +7,21 @@ import {
   REGISTER_SUCCESS,
   CHECK_TOKEN,
   CHECK_TOKEN_SUCCESS,
-  CHECK_TOKEN_FAIL
+  CHECK_TOKEN_FAIL,
+  REFRESH_TOKEN,
+  REFRESH_TOKEN_SUCCESS,
+  REFRESH_TOKEN_FAIL
 } from "../reducers/authReducer";
-import { login, register, checkToken } from "../../services/authServices";
+import {
+  login,
+  register,
+  checkToken,
+  refreshToken
+} from "../../services/authServices";
 import { FORM_KEY_LOGIN, FORM_KEY_REGISTER } from "../reducers/formReducer";
 import { toastErr, toast } from "../../utils/toast";
 import history from "../../state/history";
+import { TOKEN_EXPIRED } from "../../constants";
 
 export function* loginSaga() {
   try {
@@ -24,9 +33,9 @@ export function* loginSaga() {
     const result = yield call(login, { email, password });
     const response = result.data;
 
-    const token = response.data;
+    const { token, refresh_token: refreshToken } = response.data;
 
-    yield put({ type: LOGIN_SUCCESS, token });
+    yield put({ type: LOGIN_SUCCESS, token, refreshToken });
 
     yield toast({ message: response.msg });
 
@@ -48,9 +57,9 @@ export function* registerSaga() {
     const result = yield call(register, { email, password });
     const response = result.data;
 
-    const token = response.data;
+    const { token, refresh_token: refreshToken } = response.data;
 
-    yield put({ type: REGISTER_SUCCESS, token });
+    yield put({ type: REGISTER_SUCCESS, token, refreshToken });
 
     yield toast({ message: response.msg });
 
@@ -71,13 +80,46 @@ export function* checkTokenSaga({ token }) {
   } catch (err) {
     yield toastErr(err);
     const {
-      response: { status }
+      response: {
+        status,
+        data: { sub_status }
+      }
     } = err;
 
     if (status === 401) {
+      if (sub_status === TOKEN_EXPIRED) {
+        yield put({ type: REFRESH_TOKEN });
+      }
+
       yield put({ type: CHECK_TOKEN_FAIL });
       history.push("/login");
     }
+  } finally {
+    // yield put({ type: SET_LOADING, status: false });
+  }
+}
+
+export function* refreshTokenSaga() {
+  try {
+    // yield put({ type: SET_LOADING });
+    const refresh = yield localStorage.getItem("refresh");
+    if (refresh) {
+      const result = yield call(refreshToken, { token: refresh });
+
+      const response = result.data;
+
+      const { token } = response.data;
+
+      yield put({ type: REFRESH_TOKEN_SUCCESS, token });
+    } else {
+      yield put({ type: REFRESH_TOKEN_FAIL });
+      history.push("/login");
+    }
+  } catch (err) {
+    yield toastErr(err);
+
+    yield put({ type: REFRESH_TOKEN_FAIL });
+    history.push("/login");
   } finally {
     // yield put({ type: SET_LOADING, status: false });
   }
@@ -87,4 +129,5 @@ export default function* authSaga() {
   yield takeEvery(LOGIN, loginSaga);
   yield takeEvery(REGISTER, registerSaga);
   yield takeEvery(CHECK_TOKEN, checkTokenSaga);
+  yield takeEvery(REFRESH_TOKEN, refreshTokenSaga);
 }

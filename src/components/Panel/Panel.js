@@ -46,7 +46,7 @@ function Panel({ film }) {
                     <span className="nf-flat-button-text">Play</span>
                   </span>
                 </Link>
-                <Link className="love-btn">
+                <a className="love-btn">
                   <span
                     tabIndex="-1"
                     className="nf-icon-button nf-flat-button nf-flat-button-uppercase"
@@ -54,7 +54,7 @@ function Panel({ film }) {
                     <span className="nf-flat-button-icon icon-button-mylist-add"></span>
                     <span className="nf-flat-button-text">My Favorites</span>
                   </span>
-                </Link>
+                </a>
                 <Link className="more-btn" to={`/title/${id}`}>
                   <span
                     tabIndex="-1"
