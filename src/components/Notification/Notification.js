@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Notification.scss";
+import { Link } from "react-router-dom";
 
 function Notification() {
   const [hover, setHover] = useState(false);
@@ -52,16 +53,16 @@ const Row = ({ noti: { img, href, header, body, age } }) => (
   <div className="ptrack-content">
     <li className="notification">
       <div className="image-text-notification">
-        <a className="element image notification-link" href={href}>
+        <Link className="element image notification-link" to={href}>
           <img className="title-card" src={img} alt="logo" />
-        </a>
-        <a className="element text notification-link" href={href}>
+        </Link>
+        <Link className="element text notification-link" to={href}>
           <div className="noti-header">{header}</div>
           <div className="noti-body">{body}</div>
           <div className="noti-age">
             <span className="relative-time">{age}</span>
           </div>
-        </a>
+        </Link>
       </div>
     </li>
   </div>

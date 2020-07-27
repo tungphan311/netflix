@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { FILM_DETAILS } from "../../constants";
 
 function Overview({ id }) {
@@ -71,14 +72,14 @@ function Overview({ id }) {
             )}
             <div className="synopsiss">{description}</div>
             <div className="jawbone-actions">
-              <a className="playLink" href={`/watch/${id}`}>
+              <Link className="playLink" to={`/watch/${id}`}>
                 <span className="nf-icon-button nf-flat-button nf-flat-button-primary nf-flat-button-uppercase">
                   <span className="nf-flat-button-icon nf-flat-button-icon-play"></span>
                   <span className="nf-flat-button-text">
                     {isWatching ? "Resume" : "Play"}
                   </span>
                 </span>
-              </a>
+              </Link>
               <div className="ptrack-content">
                 <a
                   tabIndex="0"
@@ -100,7 +101,7 @@ function Overview({ id }) {
                   {starring &&
                     starring.map(({ id, name }) => (
                       <React.Fragment key={id}>
-                        <a href={`/person/${id}`}>{name}</a>,{" "}
+                        <Link href={`/person/${id}`}>{name}</Link>,{" "}
                       </React.Fragment>
                     ))}
                 </span>
@@ -111,7 +112,7 @@ function Overview({ id }) {
                   {genres &&
                     genres.map(({ href, title }, index) => (
                       <React.Fragment key={index}>
-                        <a href={href}>{title}</a>,{" "}
+                        <Link to={href}>{title}</Link>,{" "}
                       </React.Fragment>
                     ))}
                 </span>
@@ -119,7 +120,7 @@ function Overview({ id }) {
               <p className="tags inline-list">
                 <span className="list-label">This show is:</span>
                 <span className="list-items">
-                  <a href="#">Irreverent</a>, <a href="#">Exciting</a>
+                  <Link to="#">Irreverent</Link>, <Link to="#">Exciting</Link>
                 </span>
               </p>
             </div>

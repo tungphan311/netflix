@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Carousel } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { FILM_DETAILS } from "../../constants";
 
 export const Episode = ({
@@ -36,14 +37,14 @@ export const Episode = ({
               </span>
             </div>
           )}
-          <a className="episodePlay slider-refocus playLink" href={href}>
+          <Link className="episodePlay slider-refocus playLink" to={href}>
             <div
               className="playRing"
               style={width < 1100 ? { left: "50%" } : {}}
             >
               <div className="play icon-play"></div>
             </div>
-          </a>
+          </Link>
         </div>
         <div className="episodeTitle">
           <p className="ellipsized">{title}</p>

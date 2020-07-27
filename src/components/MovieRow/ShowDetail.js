@@ -1,6 +1,7 @@
 import React from "react";
 import "./ShowDetail.scss";
 import { Carousel } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { FILM_DETAILS } from "../../constants";
 
 function ShowDetail({ id, width }) {
@@ -15,45 +16,45 @@ function ShowDetail({ id, width }) {
       <div className="simpleSlider slider jawBoneDetails">
         <div className="sliderMask">
           <div className="sliderContent" style={{ paddingLeft: "4%" }}>
-            <div class="detailsItem detailsTags">
+            <div className="detailsItem detailsTags">
               <div>
-                <h4 class="listLabel">Genres</h4>
+                <h4 className="listLabel">Genres</h4>
                 <ul>
                   {genres.map(({ href, title }) => (
                     <li key={href}>
-                      <a href={href}>{title}</a>
+                      <Link to={href}>{title}</Link>
                     </li>
                   ))}
                 </ul>
-                <h4 class="listLabel">This show is</h4>
+                <h4 className="listLabel">This show is</h4>
                 <ul>
                   <li>
-                    <a href="#" onClick={() => false}>
+                    <Link to="#" onClick={() => false}>
                       Irreverent
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="#" onClick={() => false}>
+                    <Link to="#" onClick={() => false}>
                       Exciting
-                    </a>
+                    </Link>
                   </li>
                 </ul>
-                <h4 class="listLabel">Maturity Ratings</h4>
-                <span class="maturity-rating ">
-                  <a
-                    href="https://help.netflix.com/support/2064"
-                    class="maturity-number"
+                <h4 className="listLabel">Maturity Ratings</h4>
+                <span className="maturity-rating ">
+                  <Link
+                    to="https://help.netflix.com/support/2064"
+                    className="maturity-number"
                   >
                     {limit}
-                  </a>
-                  <p class="maturityDescription">
+                  </Link>
+                  <p className="maturityDescription">
                     {`Recommended for ages ${limit}`}
                   </p>
                 </span>
               </div>
             </div>
             <div className="cast-wrapper">
-              <h4 class="listLabel" style={{ marginLeft: "4%" }}>
+              <h4 className="listLabel" style={{ marginLeft: "4%" }}>
                 Casts
               </h4>
               <div className="cast-container">

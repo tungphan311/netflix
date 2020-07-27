@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { AddToList, ChevronDown, Play, AddedToList } from "../../constants";
 import { formatSlideItem } from "../../utils/utils";
 
@@ -84,11 +85,11 @@ class SliderItem extends Component {
                   style={{ opacity: 1, transitionDuration: "300ms" }}
                 >
                   <div className="title-card-focus-ring"></div>
-                  <a className="title-card-play playLink" href={href}>
+                  <Link className="title-card-play playLink" to={href}>
                     <div className="playRing">
                       <div className="play icon-play"></div>
                     </div>
-                  </a>
+                  </Link>
                 </div>
               )}
             </div>
@@ -194,7 +195,7 @@ export const BobOpen = ({
         ></a>
         <div className="bob-overview-wrapper">
           <div className="bob-overview">
-            <a tabIndex="0" className="bob-play-button playLink" href={href}>
+            <Link tabIndex="0" className="bob-play-button playLink" to={href}>
               <span className="play-button">
                 <svg
                   className="svg-icon svg-icon-play-with-ring"
@@ -203,7 +204,7 @@ export const BobOpen = ({
                   {Play}
                 </svg>
               </span>
-            </a>
+            </Link>
             <div className="bob-title">{name}</div>
             {isWatching ? (
               <>

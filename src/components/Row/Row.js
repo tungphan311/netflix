@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./Row.scss";
+import { Link } from "react-router-dom";
 import { BobOpen } from "../MovieRow/SliderItem";
 import Detail from "../MovieRow/Detail";
 
@@ -120,7 +121,7 @@ const Movie = ({
         }`}
       >
         <div className="ptrack-content">
-          <a className="slider-refocus" href="#">
+          <Link className="slider-refocus" to="#">
             <div className="boxart-size-vertical boxart-container">
               <img
                 className="boxart-image boxart-image-in-padded-container"
@@ -128,7 +129,7 @@ const Movie = ({
                 alt="logo"
               />
             </div>
-          </a>
+          </Link>
         </div>
         <div className="bob-container">
           {hover === index && !select && (

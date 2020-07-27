@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./MovieRow.scss";
 import { Carousel } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import SliderItem from "./SliderItem";
 import Detail from "./Detail";
 
@@ -103,7 +104,7 @@ class MovieRow extends Component {
       >
         <h2 className="rowHeader">
           {myList ? (
-            <a className="rowTitle" aria-label={title} href="/my-favorites">
+            <Link className="rowTitle" aria-label={title} to="/my-favorites">
               <div className="row-header-title">{title}</div>
               <div className="aro-row-header">
                 <div className="see-all-link">Explore All</div>
@@ -113,7 +114,7 @@ class MovieRow extends Component {
                   }`}
                 ></div>
               </div>
-            </a>
+            </Link>
           ) : (
             <span className="rowTitle" aria-label={title}>
               <div className="row-header-title">{title}</div>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Detail.scss";
+import { Link } from "react-router-dom";
 import { FILM_DETAILS } from "../../constants";
 import DetailMenu from "./DetailMenu";
 import Overview from "./Overview";
@@ -45,7 +46,7 @@ function Detail({ select, selectDetail, width, changeRow }) {
             </div>
             <div className="jawBone">
               <h3>
-                <a className="jawbone-title-link" href={`/title/${select}`}>
+                <Link className="jawbone-title-link" to={`/title/${select}`}>
                   <div
                     className="title has-jawbone-nav-transition original"
                     style={{
@@ -63,7 +64,7 @@ function Detail({ select, selectDetail, width, changeRow }) {
                       src={logo}
                     />
                   </div>
-                </a>
+                </Link>
               </h3>
               <div className="jawBoneCommon">
                 <div

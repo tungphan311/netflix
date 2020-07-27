@@ -1,5 +1,6 @@
 import React from "react";
 import "./Panel.scss";
+import { Link } from "react-router-dom";
 
 function Panel({ film }) {
   const { background, name, detail, limit, id } = film;
@@ -36,7 +37,7 @@ function Panel({ film }) {
                 <div className="synopsis no-supplemental">{` ${detail} `}</div>
               </div>
               <div className="button__wrapper">
-                <a className="play-btn" href={`/watch/${id}`}>
+                <Link className="play-btn" to={`/watch/${id}`}>
                   <span
                     tabIndex="-1"
                     className="nf-icon-button nf-flat-button nf-flat-button-uppercase"
@@ -44,8 +45,8 @@ function Panel({ film }) {
                     <span className="nf-flat-button-icon nf-flat-button-icon-play"></span>
                     <span className="nf-flat-button-text">Play</span>
                   </span>
-                </a>
-                <a className="love-btn">
+                </Link>
+                <Link className="love-btn">
                   <span
                     tabIndex="-1"
                     className="nf-icon-button nf-flat-button nf-flat-button-uppercase"
@@ -53,8 +54,8 @@ function Panel({ film }) {
                     <span className="nf-flat-button-icon icon-button-mylist-add"></span>
                     <span className="nf-flat-button-text">My Favorites</span>
                   </span>
-                </a>
-                <a className="more-btn" href={`/title/${id}`}>
+                </Link>
+                <Link className="more-btn" to={`/title/${id}`}>
                   <span
                     tabIndex="-1"
                     className="nf-icon-button nf-flat-button nf-flat-button-uppercase"
@@ -75,7 +76,7 @@ function Panel({ film }) {
                     </svg>
                     <span className="nf-flat-button-text">More Info</span>
                   </span>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
