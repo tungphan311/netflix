@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Details.scss";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
@@ -20,10 +20,8 @@ import ReviewModal from "../../components/Modals/Review";
 function Details(props) {
   // state
   const [film, setFilm] = useState({});
-  const [rating, setRating] = useState({});
   const [release, setRelease] = useState({});
 
-  const [isFetch, setFetch] = useState(false);
   const [credits, setCredits] = useState({});
   const [hover, setHover] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -39,51 +37,35 @@ function Details(props) {
 
   // lifecycle
   const dispatch = useDispatch();
-  const url = param =>
-    `${base_url}/movie/${id}${param ? param : ""}?api_key=${api_key}`;
 
-  if (!isFetch) {
+  useEffect(() => {
     dispatch(actionGetMovieById({ id })).then(result => {
-      fetch(url())
-        .then(res => res.json())
-        .then(filmData => {
-          fetch(url("/credits"))
-            .then(res => res.json())
-            .then(creditData => {
-              fetch(url("/release_dates"))
-                .then(res => res.json())
-                .then(releaseData => {
-                  setFetch(true);
-                  setFilm(filmData);
-                  setCredits(creditData);
-                  setRelease(releaseData.results[0].release_dates[0]);
-
-                  setRating(result);
-                  setFavorite(result.is_favorite);
-                })
-                .catch(err => toastErr(err));
-            })
-            .catch(err => toastErr(err));
-        })
-        .catch(err => toastErr(err));
+      setFilm(result);
+      setFavorite(result.is_favorite);
     });
-  }
+  }, [dispatch, id]);
 
   const {
     backdrop_path,
     poster_path,
-    popularity,
-    title,
+    score,
+    name: title,
     release_date,
-    // eslint-disable-next-line no-unused-vars
-    original_title,
-    runtime,
+    length: runtime,
     overview: description,
     genres,
-    tagline
+    tagline,
+    certification,
+    rating,
+    total_rating,
+    user_rate,
+    director = {},
+    writers = [],
+    casts: cast_list
   } = film;
 
-  const { certification } = release;
+  const movie_rate = { rating, total_rating, user_rate };
+
   const cer = certification
     ? CERTIFICATES.find(c => c.certification === certification)
     : {
@@ -92,18 +74,8 @@ function Details(props) {
       };
 
   const year = release_date ? release_date.substring(0, 4) : "";
-  const score = popularity ? popularity.toFixed(1) : 0;
-  const duration = runtime ? formatRuntime(runtime) : 0;
 
-  const director = credits.crew
-    ? credits.crew.find(x => x.department === "Directing")
-    : {};
-
-  const writers = credits.crew
-    ? credits.crew.filter(x => x.department === "Writing")
-    : [];
-
-  const casts = credits.cast ? credits.cast.slice(0, 3) : [];
+  const casts = cast_list ? cast_list.slice(0, 3) : [];
 
   const handleAddToFavorite = () => {
     setLoading(true);
@@ -127,7 +99,7 @@ function Details(props) {
           <div className="vital">
             <div className="title-block">
               <div className="title-bar-wrapper">
-                <Rating movie_rate={rating} id={id} />
+                <Rating movie_rate={movie_rate} id={id} />
                 <div className="title-bar">
                   <div
                     className="primary-ribbon"
@@ -178,7 +150,7 @@ function Details(props) {
                       <span className="ghost">|</span>
                       <span className="year">{release_date}</span>
                       <span className="ghost">|</span>
-                      <span className="duration">{duration}</span>
+                      <span className="duration">{runtime}</span>
                       <span className="ghost">|</span>
                       <span className="maturity-rating ">
                         <a className="maturity-number" title={cer.meaning}>
@@ -305,7 +277,7 @@ function Details(props) {
           poster={image_url + poster_path}
           title={title}
           year={year}
-          duration={duration}
+          duration={runtime}
           certification={cer}
           handleSubmit={handleSubmit}
         />

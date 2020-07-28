@@ -77,6 +77,7 @@ export function authReducer(state = initState, action = {}) {
 
     case REFRESH_TOKEN_FAIL: {
       localStorage.removeItem("refresh");
+      localStorage.removeItem("authen");
       return newState;
     }
 
