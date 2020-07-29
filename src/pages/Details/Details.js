@@ -20,14 +20,12 @@ import ReviewModal from "../../components/Modals/Review";
 function Details(props) {
   // state
   const [film, setFilm] = useState({});
-  const [release, setRelease] = useState({});
-
-  const [credits, setCredits] = useState({});
   const [hover, setHover] = useState(false);
   const [loading, setLoading] = useState(false);
   const [isFavorite, setFavorite] = useState(false);
 
   const [review, setReview] = useState(false);
+  const [playing, setPlaying] = useState(false);
 
   const {
     match: {
@@ -46,8 +44,8 @@ function Details(props) {
   }, [dispatch, id]);
 
   const {
-    backdrop_path,
-    poster_path,
+    background,
+    avatar,
     score,
     name: title,
     release_date,
@@ -61,8 +59,11 @@ function Details(props) {
     user_rate,
     director = {},
     writers = [],
-    casts: cast_list
+    casts: cast_list,
+    videos = []
   } = film;
+
+  const video = videos[0] || {};
 
   const movie_rate = { rating, total_rating, user_rate };
 
@@ -162,34 +163,59 @@ function Details(props) {
                 </div>
               </div>
             </div>
-            <div className="background">
-              <div className="jawBoneBackground image-rotator">
-                <span>
-                  <div className="ptrack-content">
-                    {backdrop_path && (
-                      <div
-                        className="image-rotator-image "
-                        style={{
-                          backgroundImage: `url('${image_url +
-                            backdrop_path}')`,
-                          zIndex: 2,
-                          opacity: 1,
-                          transitionDuration: "750ms"
-                        }}
-                      ></div>
-                    )}
-                  </div>
-                </span>
-                <div className="background-blur"></div>
+            <div className="slate_wrapper">
+              <div className="poster">
+                <img src={avatar} alt="poster" />
+                <div className="slate_fade_bottom"></div>
               </div>
-              <div className="vignette">
-                {poster_path && (
-                  <div
-                    className="background-poster"
-                    style={{
-                      backgroundImage: `url('${image_url + poster_path}')`
-                    }}
-                  ></div>
+              <div
+                className={`videoPreview videoPreview--autoPlaybackOnce ${
+                  playing ? "videoPreview--playing" : ""
+                }`}
+                onClick={() => setPlaying(true)}
+              >
+                {videos.length ? (
+                  <>
+                    <div className="slate">
+                      <div className="slate_button">
+                        <img src={background} alt="Trailer" />
+                        <div className="slate_fade_top"></div>
+                        <div className="slate_fade_bottom"></div>
+                      </div>
+                      <div className="caption">
+                        <div style={{ float: "left" }}>Trailer</div>
+                        <div style={{ float: "right" }}>
+                          <span>{`${videos.length} VIDEOS`}</span>
+                          <span
+                            style={{
+                              margin: "0 5px",
+                              color: "rgb(164, 157, 145)"
+                            }}
+                          >
+                            |
+                          </span>
+                          <Link to={`/title/${id}/videos`}>{"SEE ALL >>"}</Link>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="videoPreview__videoContainer">
+                      <a href={`/video/${video.id}`} className="slate_button">
+                        <iframe
+                          id="videoPreviewEmbedIframe"
+                          name="videoPreviewEmbedIframe"
+                          src={`${video.key}?controls=0&autoplay=1`}
+                          scrolling="no"
+                          title="video"
+                        ></iframe>
+                      </a>
+                    </div>
+                  </>
+                ) : (
+                  <img
+                    src={background}
+                    alt="Trailer"
+                    style={{ height: "100%", width: "100%" }}
+                  />
                 )}
               </div>
             </div>
@@ -274,7 +300,7 @@ function Details(props) {
         <ReviewModal
           show={review}
           handleClose={handleClose}
-          poster={image_url + poster_path}
+          poster={image_url + avatar}
           title={title}
           year={year}
           duration={runtime}

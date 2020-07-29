@@ -38,9 +38,9 @@ export function* getMovieByIdSaga(action) {
 export function* rateMovieSaga(action) {
   try {
     const { id, rated } = action.payload;
-    const user_id = yield select(state => state.auth.identity.id);
+    const token = yield localStorage.getItem("authen");
 
-    yield call(rateMovieService, { id, user_id, rated });
+    yield call(rateMovieService, { id, rated, token });
 
     toast({ message: "Rated film successfully" });
   } catch (err) {

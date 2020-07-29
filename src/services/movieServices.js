@@ -6,8 +6,14 @@ export async function getMovieById({ id, token }) {
   });
 }
 
-export async function rateMovieService({ id, user_id, rated }) {
-  return await API.post(`/movies/${id}/rate`, { user_id, rated });
+export async function rateMovieService({ id, rated, token }) {
+  return await API.post(
+    `/movies/${id}/rate`,
+    { rated },
+    {
+      headers: { Authorization: `Bearer ${token}` }
+    }
+  );
 }
 
 export async function deleteRatingService({ id, user_id }) {
