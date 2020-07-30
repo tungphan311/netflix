@@ -22,10 +22,11 @@ import { FORM_KEY_LOGIN, FORM_KEY_REGISTER } from "../reducers/formReducer";
 import { toastErr, toast } from "../../utils/toast";
 import history from "../../state/history";
 import { TOKEN_EXPIRED } from "../../constants";
+import { SET_LOADING } from "../reducers/loadingReducer";
 
 export function* loginSaga() {
   try {
-    // yield put({ type: SET_LOADING });
+    yield put({ type: SET_LOADING });
     const { email, password } = yield select(state =>
       getFormValues(FORM_KEY_LOGIN)(state)
     );
@@ -43,7 +44,7 @@ export function* loginSaga() {
   } catch (err) {
     yield toastErr(err);
   } finally {
-    // yield put({ type: SET_LOADING, status: false });
+    yield put({ type: SET_LOADING, status: false });
   }
 }
 

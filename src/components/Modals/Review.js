@@ -49,8 +49,6 @@ function ReviewModal({
     handleSubmit(rating);
   };
 
-  console.log(review);
-
   return (
     <Modal show={show} onHide={onHide} onEntering={onShow} backdrop="static">
       <Modal.Header closeButton></Modal.Header>

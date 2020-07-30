@@ -1,4 +1,4 @@
-import { takeEvery, call, select } from "redux-saga/effects";
+import { takeEvery, call, select, put } from "redux-saga/effects";
 import {
   resolvePromiseAction,
   rejectPromiseAction
@@ -20,9 +20,12 @@ import {
 } from "../../services/movieServices";
 import { toast, toastErr } from "../../utils/toast";
 import { FORM_KEY_REVIEW } from "../reducers/formReducer";
+import { SET_LOADING } from "../reducers/loadingReducer";
 
 export function* getMovieByIdSaga(action) {
   try {
+    yield put({ type: SET_LOADING });
+
     const { id } = action.payload;
     const token = yield localStorage.getItem("authen");
 
@@ -32,6 +35,10 @@ export function* getMovieByIdSaga(action) {
     yield call(resolvePromiseAction, action, response);
   } catch (err) {
     yield call(rejectPromiseAction, action, err);
+
+    yield put({ type: SET_LOADING, status: false });
+  } finally {
+    yield put({ type: SET_LOADING, status: false });
   }
 }
 

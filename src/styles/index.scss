@@ -86,3 +86,28 @@ a {
 .cursor {
   cursor: pointer;
 }
+
+.loading--wrapper {
+  position: fixed;
+  opacity: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  background-color: rgba($color: #000000, $alpha: 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.5s, z-index 0.5s;
+  transition-timing-function: ease-out;
+
+  &.overlay {
+    opacity: 1;
+    z-index: 10000;
+  }
+}
+
+.no-scroll {
+  overflow: hidden;
+}
