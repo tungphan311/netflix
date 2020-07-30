@@ -36,6 +36,8 @@ export async function reviewMovieService({ id, token, headline, body, rated }) {
   );
 }
 
-export async function getUserReviewService({ id, user_id }) {
-  return await API.get(`/movies/${id}/review/${user_id}`);
+export async function getUserReviewService({ id, token }) {
+  return await API.get(`/movies/${id}/review`, {
+    headers: { Authorization: `Bearer ${token}` }
+  });
 }

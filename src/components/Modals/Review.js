@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Modal } from "react-bootstrap";
 import "./Review.scss";
+import { useDispatch } from "react-redux";
 import ReviewForm from "../Forms/Review/Review";
+import { actionGetUserReview } from "../../state/action/movies";
 
 function ReviewModal({
   show,
@@ -13,18 +15,27 @@ function ReviewModal({
   year,
   certification,
   duration,
-  handleSubmit
+  handleSubmit,
+  id
 }) {
   const [rating, setRating] = useState(userRate);
   const [temp, setTemp] = useState(userRate);
 
+  const [review, setReview] = useState({});
+
+  const dispatch = useDispatch();
+
   useEffect(() => {
     setRating(userRate);
     setTemp(userRate);
-  }, [userRate]);
+  }, [dispatch, userRate]);
 
   const resetRating = () => {
     setRating(temp);
+  };
+
+  const onShow = () => {
+    dispatch(actionGetUserReview({ id })).then(res => setReview(res));
   };
 
   const onHide = () => {
@@ -38,8 +49,10 @@ function ReviewModal({
     handleSubmit(rating);
   };
 
+  console.log(review);
+
   return (
-    <Modal show={show} onHide={onHide} backdrop="static">
+    <Modal show={show} onHide={onHide} onEntering={onShow} backdrop="static">
       <Modal.Header closeButton></Modal.Header>
       <Modal.Body>
         <div className="film-meta--wrapper">
@@ -85,7 +98,7 @@ function ReviewModal({
           </div>
         </div>
         <Title title="YOUR REVIEW" />
-        <ReviewForm onSubmit={onSubmit} />
+        <ReviewForm onSubmit={onSubmit} {...review} />
       </Modal.Body>
     </Modal>
   );

@@ -312,7 +312,11 @@ function Details(props) {
             </div>
           </Card>
           <Card title="User Reviews">
-            <Review {...first_review}></Review>
+            {first_review ? (
+              <Review {...first_review}></Review>
+            ) : (
+              <div className="user-review"></div>
+            )}
             <a onClick={() => setReview(true)}>Review this title</a>
             <span> | </span>
             <Link to={`/title/${id}/reviews`}>
@@ -332,6 +336,7 @@ function Details(props) {
           duration={runtime}
           certification={cer}
           handleSubmit={handleSubmit}
+          id={id}
         />
       </div>
     </div>

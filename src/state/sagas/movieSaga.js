@@ -83,9 +83,9 @@ export function* deleteMovieRatingSaga(action) {
 export function* getUserReviewSaga(action) {
   try {
     const { id } = action.payload;
-    const user_id = yield select(state => state.auth.identity.id);
+    const token = yield localStorage.getItem("authen");
 
-    const result = yield call(getUserReviewService, { id, user_id });
+    const result = yield call(getUserReviewService, { id, token });
     const response = result.data.data;
 
     yield call(resolvePromiseAction, action, response);
