@@ -50,13 +50,14 @@ export function* rateMovieSaga(action) {
 
 export function* reviewMovieSaga(action) {
   try {
-    const { id } = action.payload;
-    const user_id = yield select(state => state.auth.identity.id);
+    const { id, rated } = action.payload;
+    const token = yield localStorage.getItem("authen");
+
     const { headline, body } = yield select(state =>
       getFormValues(FORM_KEY_REVIEW)(state)
     );
 
-    yield call(reviewMovieService, { id, user_id, headline, body });
+    yield call(reviewMovieService, { id, token, headline, body, rated });
 
     yield call(resolvePromiseAction, action);
 
@@ -69,9 +70,9 @@ export function* reviewMovieSaga(action) {
 export function* deleteMovieRatingSaga(action) {
   try {
     const { id } = action.payload;
-    const user_id = yield select(state => state.auth.identity.id);
+    const token = yield localStorage.getItem("authen");
 
-    yield call(deleteRatingService, { id, user_id });
+    yield call(deleteRatingService, { id, token });
 
     toast({ message: "Delete film's rating successfully" });
   } catch (err) {

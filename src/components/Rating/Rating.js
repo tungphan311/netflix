@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import OutsideClickWrapper from "../OutsideClickWrapper/OutsideClickWrapper";
 import { actionRateMovie, deleteMovieRating } from "../../state/action/movies";
 
-function Rating({ movie_rate, id }) {
+function Rating({ movie_rate, id, setUserRate }) {
   // state
   const { rating, total_rating, user_rate } = movie_rate;
   const [show, setShow] = useState(false);
@@ -26,12 +26,14 @@ function Rating({ movie_rate, id }) {
   const handleDeleteRating = () => {
     dispatch(deleteMovieRating({ id }));
     setRating(0);
+    setUserRate(0);
     setShow(false);
   };
 
   const handleRatedMove = rated => {
     dispatch(actionRateMovie({ id, rated }));
     setRating(rated);
+    setUserRate(rated);
     setTempRating(rated);
     setShow(false);
   };
@@ -101,14 +103,7 @@ function Rating({ movie_rate, id }) {
 
 export default Rating;
 
-const Star = ({
-  rating,
-  id,
-  handleSetRating,
-  setRating,
-  handleRatedMove,
-  tempRating
-}) => (
+export const Star = ({ rating, id, handleSetRating, handleRatedMove }) => (
   <a
     className={rating >= id ? "on" : ""}
     title={`Click to rate: ${id}`}

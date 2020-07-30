@@ -2,14 +2,11 @@ import React, { useState, useEffect } from "react";
 import "./Details.scss";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { toastErr } from "../../utils/toast";
-import { api_key, base_url, image_url } from "../../utils/fetch";
 import Rating from "../../components/Rating/Rating";
 import {
   actionGetMovieById,
   actionReviewMovie
 } from "../../state/action/movies";
-import { formatRuntime } from "../../utils/utils";
 import { actionAddToFavorite } from "../../state/action/user";
 import { Done } from "../../utils/svg";
 import { CERTIFICATES } from "../../constants";
@@ -20,6 +17,7 @@ import ReviewModal from "../../components/Modals/Review";
 function Details(props) {
   // state
   const [film, setFilm] = useState({});
+  const [userRate, setUserRate] = useState(0);
   const [hover, setHover] = useState(false);
   const [loading, setLoading] = useState(false);
   const [isFavorite, setFavorite] = useState(false);
@@ -39,6 +37,7 @@ function Details(props) {
   useEffect(() => {
     dispatch(actionGetMovieById({ id })).then(result => {
       setFilm(result);
+      setUserRate(result.user_rate);
       setFavorite(result.is_favorite);
     });
   }, [dispatch, id]);
@@ -60,7 +59,8 @@ function Details(props) {
     director = {},
     writers = [],
     casts: cast_list,
-    videos = []
+    videos = [],
+    review: first_review
   } = film;
 
   const video = videos[0] || {};
@@ -88,8 +88,8 @@ function Details(props) {
 
   const handleClose = () => setReview(false);
 
-  const handleSubmit = () => {
-    dispatch(actionReviewMovie({ id })).then(() => handleClose());
+  const handleSubmit = rated => {
+    dispatch(actionReviewMovie({ id, rated })).then(() => handleClose());
   };
 
   return (
@@ -100,7 +100,11 @@ function Details(props) {
           <div className="vital">
             <div className="title-block">
               <div className="title-bar-wrapper">
-                <Rating movie_rate={movie_rate} id={id} />
+                <Rating
+                  movie_rate={movie_rate}
+                  id={id}
+                  setUserRate={setUserRate}
+                />
                 <div className="title-bar">
                   <div
                     className="primary-ribbon"
@@ -194,7 +198,7 @@ function Details(props) {
                           >
                             |
                           </span>
-                          <Link to={`/title/${id}/videos`}>{"SEE ALL >>"}</Link>
+                          <Link to={`/title/${id}/videos`}>{"SEE ALL »"}</Link>
                         </div>
                       </div>
                     </div>
@@ -289,18 +293,40 @@ function Details(props) {
         </div>
         <div className="right-side"></div>
         <div className="details-more__wrapper left-side">
+          <Card title="Cast">
+            <table className="cast_list">
+              <tbody>
+                <tr>
+                  <td colSpan="4" className="castlist_label">
+                    Cast overview, first billed only:
+                  </td>
+                </tr>
+                {cast_list &&
+                  cast_list.map((cast, index) => (
+                    <Cast key={cast.id} index={index} {...cast} />
+                  ))}
+              </tbody>
+            </table>
+            <div className="see-more">
+              <a href={`/title/${id}/casts`}>See full cast »</a>
+            </div>
+          </Card>
           <Card title="User Reviews">
-            <Review></Review>
+            <Review {...first_review}></Review>
             <a onClick={() => setReview(true)}>Review this title</a>
             <span> | </span>
-            <a>See all 3.950 reviews</a>
+            <Link to={`/title/${id}/reviews`}>
+              See all {first_review && first_review.total} reviews
+            </Link>
           </Card>
         </div>
 
         <ReviewModal
           show={review}
+          userRate={userRate}
+          setUserRate={setUserRate}
           handleClose={handleClose}
-          poster={image_url + avatar}
+          poster={avatar}
           title={title}
           year={year}
           duration={runtime}
@@ -313,3 +339,18 @@ function Details(props) {
 }
 
 export default Details;
+
+const Cast = ({ index, img, name, character, id }) => (
+  <tr className={index % 2 === 0 ? "odd" : "even"}>
+    <td className="primary_photo">
+      <img height="64" width="48" alt={name} src={img} />
+    </td>
+    <td>
+      <Link to={`/cast/${id}`}>{name}</Link>
+    </td>
+    <td className="ellipsis">...</td>
+    <td className="cast_character">
+      <span>{character}</span>
+    </td>
+  </tr>
+);

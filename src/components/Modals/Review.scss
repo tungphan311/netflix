@@ -71,3 +71,24 @@
     line-height: 19px;
   }
 }
+
+.star-rating-wrapper {
+  margin: 10px;
+}
+
+.star-bar {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  display: inline-block;
+  padding: 6px;
+}
+
+.star-bar-flex {
+  align-items: center;
+  display: flex;
+}
+
+.ice-star-bar-rating {
+  font-size: 14px;
+  padding-left: 6px;
+}
