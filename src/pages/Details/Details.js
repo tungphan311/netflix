@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Details.scss";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import LazyLoad from "react-lazyload";
 import Rating from "../../components/Rating/Rating";
 import {
   actionGetMovieById,
@@ -169,7 +170,9 @@ function Details(props) {
             </div>
             <div className="slate_wrapper">
               <div className="poster">
-                <img src={avatar} alt="poster" />
+                <LazyLoad once>
+                  <img src={avatar} alt="poster" />
+                </LazyLoad>
                 <div className="slate_fade_bottom"></div>
               </div>
               <div
@@ -181,11 +184,13 @@ function Details(props) {
                 {videos.length ? (
                   <>
                     <div className="slate">
-                      <div className="slate_button">
-                        <img src={background} alt="Trailer" />
-                        <div className="slate_fade_top"></div>
-                        <div className="slate_fade_bottom"></div>
-                      </div>
+                      <LazyLoad>
+                        <div className="slate_button">
+                          <img src={background} alt="Trailer" />
+                          <div className="slate_fade_top"></div>
+                          <div className="slate_fade_bottom"></div>
+                        </div>
+                      </LazyLoad>
                       <div className="caption">
                         <div style={{ float: "left" }}>Trailer</div>
                         <div style={{ float: "right" }}>
@@ -313,7 +318,9 @@ function Details(props) {
           </Card>
           <Card title="User Reviews">
             {first_review ? (
-              <Review {...first_review}></Review>
+              <LazyLoad>
+                <Review {...first_review}></Review>
+              </LazyLoad>
             ) : (
               <div className="user-review"></div>
             )}
@@ -348,7 +355,9 @@ export default Details;
 const Cast = ({ index, img, name, character, id }) => (
   <tr className={index % 2 === 0 ? "odd" : "even"}>
     <td className="primary_photo">
-      <img height="64" width="48" alt={name} src={img} />
+      <LazyLoad once>
+        <img height="64" width="48" alt={name} src={img} />
+      </LazyLoad>
     </td>
     <td>
       <Link to={`/cast/${id}`}>{name}</Link>

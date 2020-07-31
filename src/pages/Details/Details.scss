@@ -77,6 +77,10 @@
     height: 300px;
     overflow: hidden;
     display: flex;
+
+    .lazyload-wrapper {
+      height: 100%;
+    }
   }
 
   .poster {
