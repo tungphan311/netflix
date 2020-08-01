@@ -14,6 +14,7 @@ import { CERTIFICATES } from "../../constants";
 import Card from "../../components/Card/Card";
 import Review from "../../components/Review/Review";
 import ReviewModal from "../../components/Modals/Review";
+import SimilarMovie from "./Similar/SimilarMovie";
 
 function Details(props) {
   // state
@@ -296,7 +297,9 @@ function Details(props) {
             </div>
           </div>
         </div>
-        <div className="right-side"></div>
+        <div className="right-side">
+          <SimilarMovie id={id} />
+        </div>
         <div className="details-more__wrapper left-side">
           <Card title="Cast">
             <table className="cast_list">

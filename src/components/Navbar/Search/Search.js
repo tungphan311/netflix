@@ -77,6 +77,7 @@ function Search() {
                   <ul className="ipc-list">
                     {SELECTORS.map(({ svg, label }) => (
                       <Selector
+                        key={label}
                         svg={svg}
                         label={label}
                         title={title}

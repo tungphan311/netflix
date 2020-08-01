@@ -41,3 +41,7 @@ export async function getUserReviewService({ id, token }) {
     headers: { Authorization: `Bearer ${token}` }
   });
 }
+
+export async function getSimilarMoviesService({ id }) {
+  return await API.get(`/movies/${id}/similar`);
+}

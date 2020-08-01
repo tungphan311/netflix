@@ -9,14 +9,16 @@ import {
   actionRateMovie,
   deleteMovieRating,
   actionReviewMovie,
-  actionGetUserReview
+  actionGetUserReview,
+  actionGetSimilarMovies
 } from "../action/movies";
 import {
   getMovieById,
   rateMovieService,
   deleteRatingService,
   reviewMovieService,
-  getUserReviewService
+  getUserReviewService,
+  getSimilarMoviesService
 } from "../../services/movieServices";
 import { toast, toastErr } from "../../utils/toast";
 import { FORM_KEY_REVIEW } from "../reducers/formReducer";
@@ -101,10 +103,24 @@ export function* getUserReviewSaga(action) {
   }
 }
 
+export function* getSimilarMoviesSaga(action) {
+  try {
+    const { id } = action.payload;
+
+    const result = yield call(getSimilarMoviesService, { id });
+    const response = result.data.data;
+
+    yield call(resolvePromiseAction, action, response);
+  } catch (err) {
+    yield toastErr(err);
+  }
+}
+
 export default function* movieSaga() {
   yield takeEvery(actionGetMovieById, getMovieByIdSaga);
   yield takeEvery(actionRateMovie, rateMovieSaga);
   yield takeEvery(deleteMovieRating, deleteMovieRatingSaga);
   yield takeEvery(actionReviewMovie, reviewMovieSaga);
   yield takeEvery(actionGetUserReview, getUserReviewSaga);
+  yield takeEvery(actionGetSimilarMovies, getSimilarMoviesSaga);
 }

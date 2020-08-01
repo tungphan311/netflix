@@ -1,6 +1,5 @@
 import React from "react";
 import "./Review.scss";
-import { Link } from "react-router-dom";
 import { Star } from "../../utils/svg";
 import { formatDate } from "../../utils/datetime";
 

@@ -16,7 +16,7 @@
     float: left;
     margin: 0;
     padding: 0;
-    width: 939px;
+    width: 899px;
     box-sizing: content-box;
   }
 
@@ -25,7 +25,7 @@
     float: right;
     margin: 0;
     padding: 0 19px;
-    width: 300px;
+    width: 340px;
     position: relative;
     box-sizing: content-box;
   }
@@ -39,13 +39,13 @@
 
   &:before {
     content: "";
-    background-color: rgba(168, 168, 168, 0.1);
+    // background-color: rgba(168, 168, 168, 0.1);
     border-left: solid 3px #999;
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
-    width: 338px;
+    width: 378px;
     box-sizing: content-box;
   }
 }
@@ -63,8 +63,8 @@
 .title-overview {
   float: left;
   margin: 0;
-  max-width: 938px;
-  width: 938px;
+  max-width: 898px;
+  width: 898px;
   padding: 0;
   box-sizing: content-box;
 
