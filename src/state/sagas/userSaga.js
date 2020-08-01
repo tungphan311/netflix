@@ -15,7 +15,6 @@ export function* addToFavoriteSaga(action) {
 
     yield call(addToFavoriteService, { token, movie_id: id });
 
-    toast({ message: "Success" });
     yield call(resolvePromiseAction, action);
   } catch (err) {
     yield toastErr(err);

@@ -216,17 +216,6 @@ export const BobOpen = ({
                         <span className="evidence-text">{name}</span>
                       </div>
                     ))}
-                  {/* <div className="evidence-item">
-                    <span className="evidence-text">Comedy</span>
-                  </div>
-                  <div className="evidence-item">
-                    <span className="evidence-separator"></span>
-                    <span className="evidence-text">Alien Sci-Fi</span>
-                  </div>
-                  <div className="evidence-item">
-                    <span className="evidence-separator"></span>
-                    <span className="evidence-text">Action </span>
-                  </div> */}
                 </div>
               </div>
             </div>

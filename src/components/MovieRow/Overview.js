@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { CERTIFICATES } from "../../constants";
+import { actionAddToFavorite } from "../../state/action/user";
+import { ADD_TO_FAVORITE } from "../../state/reducers/movieReducer";
 
 function Overview({ id }) {
+  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
   const movies = useSelector(state => state.movie.movies);
   const {
     score,
@@ -24,6 +28,14 @@ function Overview({ id }) {
         certification: "G",
         meaning: ""
       };
+
+  const handleAddToFavorite = () => {
+    setLoading(true);
+    dispatch(actionAddToFavorite({ id })).then(() => {
+      dispatch({ type: ADD_TO_FAVORITE, id });
+      setLoading(false);
+    });
+  };
 
   return (
     <div>
@@ -66,13 +78,20 @@ function Overview({ id }) {
                 <a
                   tabIndex="0"
                   className="nf-icon-button nf-flat-button mylist-button nf-flat-button-uppercase"
+                  onClick={handleAddToFavorite}
                 >
                   {!is_favorite ? (
                     <span className="nf-flat-button-icon nf-flat-button-icon-mylist-add"></span>
                   ) : (
                     <span className="nf-flat-button-icon nf-flat-button-icon-mylist-added"></span>
                   )}
-                  <span className="nf-flat-button-text">My Favorites</span>
+                  <span className="nf-flat-button-text">
+                    {!loading
+                      ? "My Favorites"
+                      : is_favorite
+                      ? "Removing ..."
+                      : "Adding ..."}
+                  </span>
                 </a>
               </div>
             </div>
@@ -83,7 +102,7 @@ function Overview({ id }) {
                   {casts &&
                     casts.map(({ id, name }) => (
                       <React.Fragment key={id}>
-                        <Link href={`/person/${id}`}>{name}</Link>,{" "}
+                        <Link to={`/person/${id}`}>{name}</Link>,{" "}
                       </React.Fragment>
                     ))}
                 </span>
