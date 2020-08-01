@@ -10,7 +10,9 @@ import ShowDetail from "./ShowDetail";
 function Detail({ select, selectDetail, width, changeRow }) {
   const [selectedPane, setSelectedPane] = useState("Overview");
 
-  const { background, logo, seasons } = select && FILM_DETAILS[select];
+  if (!select) return null;
+
+  const { background, logo, seasons } = FILM_DETAILS[select];
 
   return (
     <div className={`jawBoneContent ${select === 0 ? "" : "open"}`}>

@@ -1,8 +1,11 @@
 import { takeEvery, call } from "redux-saga/effects";
 import { resolvePromiseAction } from "@adobe/redux-saga-promise";
-import { actionAddToFavorite } from "../action/user";
+import { actionAddToFavorite, actionGetRecommend } from "../action/user";
 import { toastErr, toast } from "../../utils/toast";
-import { addToFavoriteService } from "../../services/userServices";
+import {
+  addToFavoriteService,
+  getRecommendService
+} from "../../services/userServices";
 
 export function* addToFavoriteSaga(action) {
   try {
@@ -18,6 +21,20 @@ export function* addToFavoriteSaga(action) {
   }
 }
 
+export function* getRecommendSaga(action) {
+  try {
+    const token = yield localStorage.getItem("authen");
+
+    const result = yield call(getRecommendService, { token });
+    const response = result.data.data;
+
+    yield call(resolvePromiseAction, action, response);
+  } catch (err) {
+    yield toastErr(err);
+  }
+}
+
 export default function* userSaga() {
   yield takeEvery(actionAddToFavorite, addToFavoriteSaga);
+  yield takeEvery(actionGetRecommend, getRecommendSaga);
 }

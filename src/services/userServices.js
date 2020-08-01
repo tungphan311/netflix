@@ -9,3 +9,9 @@ export async function addToFavoriteService({ token, movie_id }) {
     }
   );
 }
+
+export async function getRecommendService({ token }) {
+  return await API.get("/user/recommend", {
+    headers: { Authorization: `Bearer ${token}` }
+  });
+}

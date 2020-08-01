@@ -4,6 +4,7 @@ import Panel from "../../components/Panel/Panel";
 import { RECOMMENDS, SLIDERS } from "../../constants";
 import MovieRow from "../../components/MovieRow/MovieRow";
 import "./Home.scss";
+import Recommend from "./Recommend/Recommend";
 
 class Home extends Component {
   constructor(props) {
@@ -27,7 +28,6 @@ class Home extends Component {
 
   render() {
     const { recommend, select, rowSelect } = this.state;
-    const { history } = this.props;
 
     return (
       <div
@@ -35,18 +35,17 @@ class Home extends Component {
         style={{ overflow: "hidden" }}
       >
         <Panel film={recommend} />
-        {SLIDERS.map(({ title, list, myList, id }) => (
+        <Recommend changeRow={this.changeRow} rowSelect={rowSelect} />
+        {/* {SLIDERS.map(({ title, list, id }) => (
           <MovieRow
             rowId={id}
             rowSelect={rowSelect}
             key={title}
             title={title}
             list={list}
-            myList={myList}
-            history={history}
             changeRow={this.changeRow}
           />
-        ))}
+        ))} */}
       </div>
     );
   }

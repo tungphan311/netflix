@@ -1,23 +1,22 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { AddToList, ChevronDown, Play, AddedToList } from "../../constants";
+import {
+  AddToList,
+  ChevronDown,
+  Play,
+  AddedToList,
+  CERTIFICATES
+} from "../../constants";
 import { formatSlideItem } from "../../utils/utils";
+import history from "../../state/history";
 
 class SliderItem extends Component {
-  onClick = () => {
-    const { width, history } = this.props;
-
-    if (width < 1100) {
-      history.push("/title/1");
-    }
-  };
   render() {
     const {
       hover,
       setHover,
       details,
       item,
-      history,
       selectDetail,
       select,
       rowId,
@@ -28,13 +27,11 @@ class SliderItem extends Component {
     const {
       id,
       movId,
-      avatar,
       background,
-      href,
       name,
       love,
       score,
-      limit,
+      certification,
       length,
       isWatching,
       ep,
@@ -43,13 +40,19 @@ class SliderItem extends Component {
       stop
     } = details;
 
+    const cer = certification
+      ? CERTIFICATES.find(c => c.certification === certification)
+      : {
+          certification: "G",
+          meaning: ""
+        };
+
     return (
       <div
         className="slider-item"
         style={formatSlideItem(index, hover, item, select)}
         onMouseEnter={() => setHover(index)}
         onMouseLeave={() => setHover(0)}
-        onClick={() => this.onClick()}
       >
         <div className="title-card-container">
           <div
@@ -63,15 +66,12 @@ class SliderItem extends Component {
                 className="slider-refocus"
                 onClick={() => selectDetail(movId)}
               >
-                <div className="boxart-size-vertical boxart-container">
+                <div className="boxart-size-16x9 boxart-container">
                   <img
                     className="boxart-image boxart-image-in-padded-container"
-                    src={avatar}
+                    src={background}
                     alt=""
                   />
-                  <div className="fallback-text-container" aria-hidden="true">
-                    <p className="fallback-text">{name}</p>
-                  </div>
                 </div>
                 {select !== movId && (
                   <div className="click-to-change-JAW-indicator is-another-JAW-open">
@@ -85,7 +85,10 @@ class SliderItem extends Component {
                   style={{ opacity: 1, transitionDuration: "300ms" }}
                 >
                   <div className="title-card-focus-ring"></div>
-                  <Link className="title-card-play playLink" to={href}>
+                  <Link
+                    className="title-card-play playLink"
+                    to={`/title/${id}`}
+                  >
                     <div className="playRing">
                       <div className="play icon-play"></div>
                     </div>
@@ -100,13 +103,11 @@ class SliderItem extends Component {
                     id={id}
                     movId={movId}
                     url={background}
-                    href={href}
                     name={name}
                     score={score}
-                    limit={limit}
+                    cer={cer}
                     length={length}
                     selectDetail={selectDetail}
-                    history={history}
                     isWatching={isWatching}
                     ep={ep}
                     epName={epName}
@@ -120,17 +121,6 @@ class SliderItem extends Component {
               </span>
             </div>
           </div>
-          {isWatching && !select && (
-            <div className="progress">
-              <span className="progress-bar">
-                <span
-                  role="presentation"
-                  className="progress-completed"
-                  style={{ width: `${(stop * 100) / epLength}%` }}
-                ></span>
-              </span>
-            </div>
-          )}
         </div>
       </div>
     );
@@ -143,13 +133,11 @@ export const BobOpen = ({
   id,
   movId,
   url,
-  href,
   name,
   score,
-  limit,
+  cer,
   length,
   selectDetail,
-  history,
   isWatching,
   ep,
   epName,
@@ -164,10 +152,10 @@ export const BobOpen = ({
     style={{
       transform: "scale(0.99999)",
       visibility: "visible",
-      width: "124%",
-      height: "124%",
-      top: "-12%",
-      left: "-12%",
+      width: "195%",
+      height: "195%",
+      top: "-47.5%",
+      left: "-47.5%",
       transitionDuration: "500ms"
     }}
   >
@@ -195,7 +183,11 @@ export const BobOpen = ({
         ></a>
         <div className="bob-overview-wrapper">
           <div className="bob-overview">
-            <Link tabIndex="0" className="bob-play-button playLink" to={href}>
+            <Link
+              tabIndex="0"
+              className="bob-play-button playLink"
+              to={`/title/${id}`}
+            >
               <span className="play-button">
                 <svg
                   className="svg-icon svg-icon-play-with-ring"
@@ -239,8 +231,10 @@ export const BobOpen = ({
                       <div className="meta-thumb-container thumb-up"></div>
                       <span className="match-score">{score}</span>
                     </span>
-                    <span className="maturity-rating ">
-                      <span className="maturity-number">{limit}</span>
+                    <span className="maturity-rating">
+                      <span className="maturity-number" title={cer.meaning}>
+                        {cer.certification}
+                      </span>
                     </span>
                     <span className="duration">{length}</span>
                   </div>

@@ -21,35 +21,30 @@ class MovieRow extends Component {
     };
   }
 
-  componentDidMount = () => {
-    this.updateWindowDimensions();
-    window.addEventListener("resize", this.updateWindowDimensions);
-  };
+  // componentDidMount = () => {
+  //   window.addEventListener("resize", this.updateWindowDimensions);
+  // };
 
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.updateWindowDimensions);
-  }
+  // componentWillUnmount() {
+  //   window.removeEventListener("resize", this.updateWindowDimensions);
+  // }
 
-  updateWindowDimensions = () => {
-    const width = window.innerWidth;
-    const { list } = this.props;
+  // updateWindowDimensions = () => {
+  //   const width = window.innerWidth;
+  //   const { list } = this.props;
 
-    const item =
-      width < 800
-        ? 4
-        : width >= 800 && width < 1100
-        ? 6
-        : width >= 1100 && width < 1441
-        ? 8
-        : 9;
+  //   const item = width < 800 ? 4 : 6;
 
-    const newList = splitList(item, list);
-    this.setState({ width, item, movies: newList });
-  };
+  // };
 
   componentWillReceiveProps = nextProps => {
     if (nextProps.rowSelect !== this.props.rowId) {
       this.setState({ select: 0 });
+    }
+
+    if (nextProps.list !== this.props.list) {
+      const newList = splitList(6, nextProps.list);
+      this.setState({ item: 6, movies: newList });
     }
   };
 
@@ -83,16 +78,10 @@ class MovieRow extends Component {
   };
 
   render() {
-    const {
-      title,
-      history,
-      list,
-      myList,
-      changeRow,
-      rowSelect,
-      rowId
-    } = this.props;
+    const { title, list, href, changeRow, rowSelect, rowId } = this.props;
     const { page, hover, item, movies, width, select } = this.state;
+
+    // console.log(list);
 
     return (
       <div
@@ -103,8 +92,8 @@ class MovieRow extends Component {
         onMouseLeave={() => this.setState({ show: false })}
       >
         <h2 className="rowHeader">
-          {myList ? (
-            <Link className="rowTitle" aria-label={title} to="/my-favorites">
+          {href ? (
+            <Link className="rowTitle" aria-label={title} to={href}>
               <div className="row-header-title">{title}</div>
               <div className="aro-row-header">
                 <div className="see-all-link">Explore All</div>
@@ -162,7 +151,6 @@ class MovieRow extends Component {
                           details={sub}
                           page={page}
                           item={item}
-                          history={history}
                           selectDetail={this.selectDetail}
                           select={select}
                           rowId={rowId}
