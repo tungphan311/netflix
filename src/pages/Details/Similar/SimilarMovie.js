@@ -67,11 +67,14 @@ const Movie = ({
               <span className="maturity-rating ">
                 <a className="maturity-number">{certification || "PG"}</a>
               </span>
-              <span>Action</span>
-              <span className="ghost">|</span>
-              <span>Adventure</span>
-              <span className="ghost">|</span>
-              <span>Scifi</span>
+              {genres.map((genre, index) => (
+                <>
+                  <span>{genre}</span>
+                  {index < genres.length - 1 && (
+                    <span className="ghost">|</span>
+                  )}
+                </>
+              ))}
             </>
           ) : (
             <Skeleton duration={2} />
