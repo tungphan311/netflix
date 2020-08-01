@@ -87,8 +87,8 @@ function Detail({ select, selectDetail, width, changeRow }) {
                   >
                     <div className="ptrack-container">
                       {selectedPane === "Overview" && <Overview id={select} />}
-                      {selectedPane === "Episodes" && (
-                        <EpisodeContainer id={select} width={width} />
+                      {selectedPane === "More" && (
+                        <EpisodeContainer id={select} />
                       )}
                       {selectedPane === "ShowDetails" && (
                         <ShowDetail id={select} width={width} />

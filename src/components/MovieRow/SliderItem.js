@@ -164,7 +164,7 @@ export const BobOpen = ({
       <div className="bob-overlay">
         <div
           className="bob-play-hitzone"
-          onClick={() => history.push(`/watch/${id}`)}
+          onClick={() => history.push(`/title/${id}`)}
         ></div>
         <a
           aria-label={name}
