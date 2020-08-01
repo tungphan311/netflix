@@ -62,7 +62,7 @@ const Movie = ({
           </strong>
         </div>
         <div className="list_meta">
-          {certification && genres.length ? (
+          {genres ? (
             <>
               <span className="maturity-rating ">
                 <a className="maturity-number">{certification || "PG"}</a>
