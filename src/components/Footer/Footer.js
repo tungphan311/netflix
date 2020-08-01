@@ -42,7 +42,7 @@ function Footer() {
       </div>
       <ul className="member-footer-links">
         {LINKS.map(label => (
-          <FooterLink label={label} />
+          <FooterLink label={label} key={label} />
         ))}
       </ul>
     </div>

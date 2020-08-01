@@ -1,4 +1,4 @@
-import { takeEvery, call } from "redux-saga/effects";
+import { takeEvery, call, put } from "redux-saga/effects";
 import { resolvePromiseAction } from "@adobe/redux-saga-promise";
 import { actionAddToFavorite, actionGetRecommend } from "../action/user";
 import { toastErr, toast } from "../../utils/toast";
@@ -6,6 +6,7 @@ import {
   addToFavoriteService,
   getRecommendService
 } from "../../services/userServices";
+import { ADD_MOVIE } from "../reducers/movieReducer";
 
 export function* addToFavoriteSaga(action) {
   try {
@@ -27,6 +28,8 @@ export function* getRecommendSaga(action) {
 
     const result = yield call(getRecommendService, { token });
     const response = result.data.data;
+
+    yield put({ type: ADD_MOVIE, response });
 
     yield call(resolvePromiseAction, action, response);
   } catch (err) {

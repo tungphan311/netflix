@@ -4,7 +4,7 @@ import MovieRow from "../../../components/MovieRow/MovieRow";
 import { actionGetRecommend } from "../../../state/action/user";
 
 function Recommend({ changeRow, rowSelect }) {
-  const [list, setList] = useState([]);
+  const [list, setList] = useState(new Array(6).fill({}));
   const dispatch = useDispatch();
 
   useEffect(() => {

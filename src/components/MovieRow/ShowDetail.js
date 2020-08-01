@@ -2,14 +2,28 @@ import React from "react";
 import "./ShowDetail.scss";
 import { Carousel } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { FILM_DETAILS } from "../../constants";
+import { useSelector } from "react-redux";
+import { CERTIFICATES } from "../../constants";
 
-function ShowDetail({ id, width }) {
-  const { genres, limit, casts } = id && FILM_DETAILS[id];
+function ShowDetail({ id }) {
+  const movies = useSelector(state => state.movie.movies);
+  const {
+    score,
+    certification,
+    length,
+    is_favorite,
+    genres,
+    overview,
+    release_date,
+    casts
+  } = movies.find(m => m.id === id);
 
-  const list = casts && splitList(casts, width);
-
-  if (!genres || !limit) return null;
+  const cer = certification
+    ? CERTIFICATES.find(c => c.certification === certification)
+    : {
+        certification: "G",
+        meaning: ""
+      };
 
   return (
     <div className="ptrack-content">
@@ -41,15 +55,9 @@ function ShowDetail({ id, width }) {
                 </ul>
                 <h4 className="listLabel">Maturity Ratings</h4>
                 <span className="maturity-rating ">
-                  <Link
-                    to="https://help.netflix.com/support/2064"
-                    className="maturity-number"
-                  >
-                    {limit}
-                  </Link>
-                  <p className="maturityDescription">
-                    {`Recommended for ages ${limit}`}
-                  </p>
+                  <span className="maturity-number" title={cer.meaning}>
+                    {cer.certification}
+                  </span>
                 </span>
               </div>
             </div>
@@ -57,22 +65,7 @@ function ShowDetail({ id, width }) {
               <h4 className="listLabel" style={{ marginLeft: "4%" }}>
                 Casts
               </h4>
-              <div className="cast-container">
-                <Carousel interval={null}>
-                  {list.map((sub, index) => (
-                    <Carousel.Item key={index}>
-                      {sub.map(({ avatar, character, actor }) => (
-                        <Cast
-                          key={actor}
-                          avatar={avatar}
-                          character={character}
-                          actor={actor}
-                        />
-                      ))}
-                    </Carousel.Item>
-                  ))}
-                </Carousel>
-              </div>
+              <div className="cast-container"></div>
             </div>
           </div>
         </div>

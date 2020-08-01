@@ -124,10 +124,10 @@
   left: 0;
   right: 0;
   z-index: 10;
-}
 
-.jawBoneContainer .title.original {
-  height: 7vw;
+  h3 {
+    padding-left: 20px;
+  }
 }
 
 .jawBoneContainer .title {
@@ -143,9 +143,13 @@
 }
 
 .jawBoneContainer .title .logo {
-  height: 7vw;
+  font-size: 42px;
   transform-origin: 0 0;
-  transition: transform 300ms;
+  transition: font-size 300ms;
+
+  &.small-logo {
+    font-size: 28px;
+  }
 }
 
 .jawBoneContainer .jawBoneCommon {
@@ -401,6 +405,15 @@
   color: #ccc;
   min-width: 5%;
   pointer-events: auto;
+
+  span {
+    height: 0.33em;
+    display: block;
+    width: 100%;
+    margin-top: 0.66em;
+    transition: transform 0.2s linear, -webkit-transform 0.2s linear,
+      -moz-transform 0.2s linear, -o-transform 0.2s linear;
+  }
 }
 
 .jawBoneContainer .menu li.current span {

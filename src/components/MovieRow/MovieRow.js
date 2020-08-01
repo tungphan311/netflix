@@ -21,31 +21,13 @@ class MovieRow extends Component {
     };
   }
 
-  // componentDidMount = () => {
-  //   window.addEventListener("resize", this.updateWindowDimensions);
-  // };
-
-  // componentWillUnmount() {
-  //   window.removeEventListener("resize", this.updateWindowDimensions);
-  // }
-
-  // updateWindowDimensions = () => {
-  //   const width = window.innerWidth;
-  //   const { list } = this.props;
-
-  //   const item = width < 800 ? 4 : 6;
-
-  // };
-
   componentWillReceiveProps = nextProps => {
     if (nextProps.rowSelect !== this.props.rowId) {
       this.setState({ select: 0 });
     }
 
-    if (nextProps.list !== this.props.list) {
-      const newList = splitList(6, nextProps.list);
-      this.setState({ item: 6, movies: newList });
-    }
+    const newList = splitList(6, nextProps.list);
+    this.setState({ item: 6, movies: newList });
   };
 
   renderIndicator = () => {
@@ -80,8 +62,6 @@ class MovieRow extends Component {
   render() {
     const { title, list, href, changeRow, rowSelect, rowId } = this.props;
     const { page, hover, item, movies, width, select } = this.state;
-
-    // console.log(list);
 
     return (
       <div

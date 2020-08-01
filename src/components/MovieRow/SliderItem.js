@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import LazyLoad from "react-lazyload";
 import {
   AddToList,
   ChevronDown,
@@ -26,18 +28,13 @@ class SliderItem extends Component {
 
     const {
       id,
-      movId,
       background,
       name,
-      love,
+      is_favorite: favorite,
       score,
       certification,
       length,
-      isWatching,
-      ep,
-      epName,
-      epLength,
-      stop
+      genres
     } = details;
 
     const cer = certification
@@ -47,12 +44,26 @@ class SliderItem extends Component {
           meaning: ""
         };
 
+    const bob = {
+      id,
+      url: background,
+      name,
+      score,
+      cer,
+      length,
+      selectDetail,
+      rowId,
+      changeRow,
+      favorite,
+      genres
+    };
+
     return (
       <div
         className="slider-item"
         style={formatSlideItem(index, hover, item, select)}
-        onMouseEnter={() => setHover(index)}
-        onMouseLeave={() => setHover(0)}
+        onMouseEnter={() => background && setHover(index)}
+        onMouseLeave={() => background && setHover(0)}
       >
         <div className="title-card-container">
           <div
@@ -64,22 +75,30 @@ class SliderItem extends Component {
               <a
                 tabIndex="0"
                 className="slider-refocus"
-                onClick={() => selectDetail(movId)}
+                onClick={() => background && selectDetail(id)}
               >
-                <div className="boxart-size-16x9 boxart-container">
-                  <img
-                    className="boxart-image boxart-image-in-padded-container"
-                    src={background}
-                    alt=""
-                  />
-                </div>
-                {select !== movId && (
+                <SkeletonTheme highlightColor="#444">
+                  {background ? (
+                    <div className="boxart-size-16x9 boxart-container">
+                      <LazyLoad once>
+                        <img
+                          className="boxart-image boxart-image-in-padded-container"
+                          src={background}
+                          alt=""
+                        />
+                      </LazyLoad>
+                    </div>
+                  ) : (
+                    <Skeleton duration={2} height={121} />
+                  )}
+                </SkeletonTheme>
+                {select !== id && (
                   <div className="click-to-change-JAW-indicator is-another-JAW-open">
                     <div className="bob-jawbone-chevron">{ChevronDown}</div>
                   </div>
                 )}
               </a>
-              {select === movId && (
+              {select === id && (
                 <div
                   className="title-card-jawbone-focus"
                   style={{ opacity: 1, transitionDuration: "300ms" }}
@@ -97,28 +116,7 @@ class SliderItem extends Component {
               )}
             </div>
             <div className="bob-container">
-              <span>
-                {hover === index && !select && (
-                  <BobOpen
-                    id={id}
-                    movId={movId}
-                    url={background}
-                    name={name}
-                    score={score}
-                    cer={cer}
-                    length={length}
-                    selectDetail={selectDetail}
-                    isWatching={isWatching}
-                    ep={ep}
-                    epName={epName}
-                    epLength={epLength}
-                    stop={stop}
-                    rowId={rowId}
-                    changeRow={changeRow}
-                    love={love}
-                  />
-                )}
-              </span>
+              <span>{hover === index && !select && <BobOpen {...bob} />}</span>
             </div>
           </div>
         </div>
@@ -131,21 +129,16 @@ export default SliderItem;
 
 export const BobOpen = ({
   id,
-  movId,
   url,
   name,
   score,
   cer,
   length,
   selectDetail,
-  isWatching,
-  ep,
-  epName,
-  epLength,
-  stop,
   rowId,
   changeRow,
-  love
+  favorite,
+  genres
 }) => (
   <div
     className="bob-card bob-card-adult-video-merch"
@@ -177,7 +170,7 @@ export const BobOpen = ({
           aria-label={name}
           className="bob-jaw-hitzone"
           onClick={() => {
-            selectDetail(movId);
+            selectDetail(id);
             changeRow(rowId);
           }}
         ></a>
@@ -198,66 +191,45 @@ export const BobOpen = ({
               </span>
             </Link>
             <div className="bob-title">{name}</div>
-            {isWatching ? (
-              <>
-                <div className="bob-overview-resume-title-wrapper">
-                  <div className="watched-title watched-title--bob-overview watched-title--no-wrap">
-                    <span>
-                      <b>{ep}</b> {epName}
-                    </span>
-                  </div>
-                </div>
-                <div className="bob-overview-progress-wrapper">
-                  <div className="progress progress--bob-overview">
-                    <span className="progress-bar">
-                      <span
-                        role="presentation"
-                        className="progress-completed"
-                        style={{ width: `${(stop * 100) / epLength}%` }}
-                      ></span>
-                    </span>
-                    <span className="summary">
-                      {stop} of {epLength}m
-                    </span>
-                  </div>
-                </div>
-              </>
-            ) : (
-              <>
-                <div className="bob-metadata-wrapper">
-                  <div className="meta video-meta video-meta--bob-overview">
-                    <span className="match-score-wrapper">
-                      <div className="show-match-score rating-inner"></div>
-                      <div className="meta-thumb-container thumb-up"></div>
-                      <span className="match-score">{score}</span>
-                    </span>
-                    <span className="maturity-rating">
-                      <span className="maturity-number" title={cer.meaning}>
-                        {cer.certification}
-                      </span>
-                    </span>
-                    <span className="duration">{length}</span>
-                  </div>
-                </div>
-                <div className="bob-overview-evidence-wrapper">
-                  <div className="evidence-tags">
-                    <div className="evidence-list">
-                      <div className="evidence-item">
-                        <span className="evidence-text">Comedy</span>
+            <div className="bob-metadata-wrapper">
+              <div className="meta video-meta video-meta--bob-overview">
+                <span className="match-score-wrapper">
+                  <div className="show-match-score rating-inner"></div>
+                  <div className="meta-thumb-container thumb-up"></div>
+                  <span className="match-score">{score}</span>
+                </span>
+                <span className="maturity-rating">
+                  <span className="maturity-number" title={cer.meaning}>
+                    {cer.certification}
+                  </span>
+                </span>
+                <span className="duration">{length}</span>
+              </div>
+            </div>
+            <div className="bob-overview-evidence-wrapper">
+              <div className="evidence-tags">
+                <div className="evidence-list">
+                  {genres &&
+                    genres.map(({ id, name }, i) => (
+                      <div className="evidence-item" key={id}>
+                        {i > 0 && <span className="evidence-separator"></span>}
+                        <span className="evidence-text">{name}</span>
                       </div>
-                      <div className="evidence-item">
-                        <span className="evidence-separator"></span>
-                        <span className="evidence-text">Alien Sci-Fi</span>
-                      </div>
-                      <div className="evidence-item">
-                        <span className="evidence-separator"></span>
-                        <span className="evidence-text">Action </span>
-                      </div>
-                    </div>
+                    ))}
+                  {/* <div className="evidence-item">
+                    <span className="evidence-text">Comedy</span>
                   </div>
+                  <div className="evidence-item">
+                    <span className="evidence-separator"></span>
+                    <span className="evidence-text">Alien Sci-Fi</span>
+                  </div>
+                  <div className="evidence-item">
+                    <span className="evidence-separator"></span>
+                    <span className="evidence-text">Action </span>
+                  </div> */}
                 </div>
-              </>
-            )}
+              </div>
+            </div>
           </div>
         </div>
         <div className="bob-actions-wrapper">
@@ -272,7 +244,7 @@ export const BobOpen = ({
                   tabIndex="0"
                   className="nf-svg-button simpleround"
                 >
-                  {!love ? (
+                  {!favorite ? (
                     <svg
                       className="svg-icon svg-icon-mylist-add"
                       focusable="true"
@@ -293,7 +265,9 @@ export const BobOpen = ({
                   role="status"
                   aria-live="assertive"
                 >
-                  {love ? "Remove from My Favorites" : "Add To My Favorites"}
+                  {favorite
+                    ? "Remove from My Favorites"
+                    : "Add To My Favorites"}
                 </span>
               </div>
             </div>
