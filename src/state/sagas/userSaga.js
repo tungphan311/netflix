@@ -4,9 +4,15 @@ import { actionAddToFavorite, actionGetRecommend } from "../action/user";
 import { toastErr, toast } from "../../utils/toast";
 import {
   addToFavoriteService,
-  getRecommendService
+  getRecommendService,
+  getFavoritesService
 } from "../../services/userServices";
-import { ADD_MOVIE, GET_RECOMMEND } from "../reducers/movieReducer";
+import {
+  ADD_MOVIE,
+  GET_RECOMMEND,
+  GET_FAVORITES,
+  GET_FAVORITES_SUCCESS
+} from "../reducers/movieReducer";
 
 export function* addToFavoriteSaga(action) {
   try {
@@ -37,7 +43,22 @@ export function* getRecommendSaga(action) {
   }
 }
 
+export function* getFavoritesSaga() {
+  try {
+    const token = yield localStorage.getItem("authen");
+
+    const result = yield call(getFavoritesService, { token });
+    const response = result.data.data;
+
+    yield put({ type: ADD_MOVIE, response: response.list });
+    yield put({ type: GET_FAVORITES_SUCCESS, response });
+  } catch (err) {
+    yield toastErr(err);
+  }
+}
+
 export default function* userSaga() {
   yield takeEvery(actionAddToFavorite, addToFavoriteSaga);
   yield takeEvery(actionGetRecommend, getRecommendSaga);
+  yield takeEvery(GET_FAVORITES, getFavoritesSaga);
 }

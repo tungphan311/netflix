@@ -15,3 +15,9 @@ export async function getRecommendService({ token }) {
     headers: { Authorization: `Bearer ${token}` }
   });
 }
+
+export async function getFavoritesService({ token }) {
+  return await API.get("/user/favorites", {
+    headers: { Authorization: `Bearer ${token}` }
+  });
+}

@@ -1,9 +1,12 @@
 .page--title {
-  position: relative;
-  height: 4rem;
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 68px;
   display: flex;
   align-items: center;
-  margin-left: 4%;
+  margin: 0 auto;
+  max-width: 1280px;
 }
 
 .title {
@@ -12,6 +15,6 @@
   font-size: 35px;
 }
 
-.page-container .slider {
-  padding: 0 4% !important;
+.page-container {
+  flex: 1;
 }

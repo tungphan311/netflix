@@ -22,11 +22,9 @@ class Home extends Component {
   }
 
   componentWillReceiveProps = nextProps => {
-    if (nextProps.recommends.length && !this.props.recommends.length) {
-      const length = nextProps.recommends.length;
-      const random = Math.floor(Math.random() * length);
-      this.setState({ film: nextProps.recommends[random] });
-    }
+    const length = nextProps.recommends.length;
+    const random = Math.floor(Math.random() * length);
+    this.setState({ film: nextProps.recommends[random] });
   };
 
   changeRow = id => {

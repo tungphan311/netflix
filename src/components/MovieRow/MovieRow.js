@@ -165,7 +165,7 @@ class MovieRow extends Component {
 
 export default MovieRow;
 
-const splitList = (item, list) => {
+export const splitList = (item, list) => {
   let temp = [];
   let newList = [];
 

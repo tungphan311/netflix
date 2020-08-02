@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import "./Row.scss";
 import { Link } from "react-router-dom";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { BobOpen } from "../MovieRow/SliderItem";
 import Detail from "../MovieRow/Detail";
+import { formatSlideItem } from "../../utils/utils";
 
 class Row extends Component {
   constructor(props) {
@@ -25,52 +27,43 @@ class Row extends Component {
   };
 
   render() {
-    const {
-      list,
-      history,
-      changeRow,
-      rowId,
-      rowSelect,
-      width,
-      formatSlideItem
-    } = this.props;
+    const { list, history, changeRow, rowId, rowSelect } = this.props;
     const { select, hover } = this.state;
 
     return (
-      <div className={`gallery ${rowSelect === rowId ? "gallery-open" : ""}`}>
-        <div className="rowContainer verticalBoxArtRow rowContainer_title_card">
-          <div className="ptrack-container">
-            <div className="rowContent slider-hover-trigger-layer">
-              <div className="slider" style={{ padding: 0 }}>
-                <div className="sliderMask showPeek">
-                  <div className="sliderContent row-with-x-columns">
-                    {list.map((detail, index) => (
-                      <Movie
-                        key={index}
-                        index={index + 1}
-                        detail={detail}
-                        history={history}
-                        selectDetail={this.selectDetail}
-                        rowId={rowId}
-                        changeRow={changeRow}
-                        width={width}
-                        select={select}
-                        hover={hover}
-                        setHover={this.setHover}
-                        formatSlideItem={formatSlideItem}
-                      />
-                    ))}
-                  </div>
+      <div
+        className={`rowContainer rowContainer_title_card ${
+          rowSelect === rowId ? "jawBoneOpen" : ""
+        }`}
+      >
+        <div className="ptrack-container">
+          <div className="rowContent slider-hover-trigger-layer">
+            <div className="slider" style={{ padding: 0 }}>
+              <div className="sliderMask showPeek">
+                <div className="sliderContent row-with-x-columns">
+                  {list.map((detail, index) => (
+                    <Movie
+                      key={index}
+                      index={index + 1}
+                      detail={detail}
+                      history={history}
+                      selectDetail={this.selectDetail}
+                      rowId={rowId}
+                      changeRow={changeRow}
+                      select={select}
+                      hover={hover}
+                      setHover={this.setHover}
+                    />
+                  ))}
                 </div>
               </div>
             </div>
-            <Detail
-              select={select}
-              selectDetail={this.selectDetail}
-              width={width}
-              changeRow={changeRow}
-            />
           </div>
+          <Detail
+            select={select}
+            selectDetail={this.selectDetail}
+            changeRow={changeRow}
+          />
         </div>
       </div>
     );
@@ -80,37 +73,18 @@ class Row extends Component {
 export default Row;
 
 const Movie = ({
-  detail: {
-    id,
-    movId,
-    avatar,
-    background,
-    name,
-    href,
-    score,
-    isWatching,
-    ep,
-    epName,
-    epLength,
-    stop,
-    limit,
-    length,
-    genres
-  },
-  history,
+  detail: { id, background, name, href, score, length },
   selectDetail,
   rowId,
   changeRow,
-  width,
   hover,
   setHover,
   select,
-  index,
-  formatSlideItem
+  index
 }) => (
   <div
     className="slider-item"
-    style={formatSlideItem(index, hover, width, select)}
+    style={formatSlideItem(index, hover, select)}
     onMouseEnter={() => setHover(index)}
     onMouseLeave={() => setHover(0)}
   >
@@ -122,33 +96,27 @@ const Movie = ({
       >
         <div className="ptrack-content">
           <Link className="slider-refocus" to="#">
-            <div className="boxart-size-vertical boxart-container">
-              <img
-                className="boxart-image boxart-image-in-padded-container"
-                src={avatar}
-                alt="logo"
-              />
-            </div>
+            <SkeletonTheme highlightColor="#444">
+              <div className="boxart-size-16x9 boxart-container">
+                <img
+                  className="boxart-image boxart-image-in-padded-container"
+                  src={background}
+                  alt="logo"
+                />
+              </div>
+            </SkeletonTheme>
           </Link>
         </div>
         <div className="bob-container">
           {hover === index && !select && (
             <BobOpen
               id={id}
-              movId={movId}
               url={background}
               href={href}
               name={name}
               score={score}
-              limit={limit}
               length={length}
               selectDetail={selectDetail}
-              history={history}
-              isWatching={isWatching}
-              ep={ep}
-              epName={epName}
-              epLength={epLength}
-              stop={stop}
               rowId={rowId}
               changeRow={changeRow}
             />

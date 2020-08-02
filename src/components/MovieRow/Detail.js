@@ -7,7 +7,7 @@ import Overview from "./Overview";
 import EpisodeContainer from "./Episode";
 import ShowDetail from "./ShowDetail";
 
-function Detail({ select, selectDetail, width, changeRow }) {
+function Detail({ select, selectDetail, changeRow }) {
   const [selectedPane, setSelectedPane] = useState("Overview");
 
   const movies = useSelector(state => state.movie.movies);
@@ -91,7 +91,7 @@ function Detail({ select, selectDetail, width, changeRow }) {
                         <EpisodeContainer id={select} />
                       )}
                       {selectedPane === "ShowDetails" && (
-                        <ShowDetail id={select} width={width} />
+                        <ShowDetail id={select} />
                       )}
                     </div>
                   </div>

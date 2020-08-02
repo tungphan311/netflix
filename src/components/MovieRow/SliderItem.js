@@ -84,10 +84,10 @@ class SliderItem extends Component {
                   <div className="boxart-size-16x9 boxart-container">
                     {background ? (
                       <LazyLoad
-                        placeholder={
-                          <Skeleton duration={2} className="img-skeleton" />
-                        }
-                        once
+                      // placeholder={
+                      //   <Skeleton duration={2} className="img-skeleton" />
+                      // }
+                      // once
                       >
                         <img
                           className="boxart-image boxart-image-in-padded-container"
@@ -219,11 +219,11 @@ export const BobOpen = ({
                     <div className="meta-thumb-container thumb-up"></div>
                     <span className="match-score">{score}</span>
                   </span>
-                  <span className="maturity-rating">
+                  {/* <span className="maturity-rating">
                     <span className="maturity-number" title={cer.meaning}>
                       {cer.certification}
                     </span>
-                  </span>
+                  </span> */}
                   <span className="duration">{length}</span>
                 </div>
               </div>

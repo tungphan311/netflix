@@ -27,7 +27,7 @@ export const divideArray = (array, width) => {
   return newArray;
 };
 
-export const formatSlideItem = (id, hover, item, select) => {
+export const formatSlideItem = (id, hover, select) => {
   if (select > 0) return;
 
   if (hover > 0) {
