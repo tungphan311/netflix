@@ -345,7 +345,6 @@ function Details(props) {
         <ReviewModal
           show={review}
           userRate={userRate}
-          setUserRate={setUserRate}
           handleClose={handleClose}
           poster={avatar}
           title={title}

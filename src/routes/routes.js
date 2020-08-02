@@ -10,6 +10,7 @@ import EmptyLayout from "../layouts/EmptyLayout/EmptyLayout";
 import Details from "../pages/Details/Details";
 import Watch from "../pages/Watch/Watch";
 import Favorites from "../pages/Favorites/Favorites";
+import ReviewPage from "../pages/Reviews/Review";
 
 export const AuthorizedRoute = ({ component: Component, isUser, ...rest }) => (
   <Route
@@ -35,7 +36,16 @@ class Routes extends Component {
 
     return (
       <Switch>
-        <Route exact path={["/", "/browse", "/title/:id", "/my-favorites"]}>
+        <Route
+          exact
+          path={[
+            "/",
+            "/browse",
+            "/title/:id",
+            "/my-favorites",
+            "/title/:id/reviews"
+          ]}
+        >
           <DefaultLayout history={history}>
             <AuthorizedRoute exact path="/" component={Home} isUser={isUser} />
             <AuthorizedRoute
@@ -56,6 +66,12 @@ class Routes extends Component {
               exact
               path="/title/:id"
               component={Details}
+              isUser={isUser}
+            />
+            <AuthorizedRoute
+              exact
+              path="/title/:id/reviews"
+              component={ReviewPage}
               isUser={isUser}
             />
           </DefaultLayout>

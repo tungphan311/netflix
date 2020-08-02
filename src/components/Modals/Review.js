@@ -9,7 +9,6 @@ function ReviewModal({
   show,
   handleClose,
   userRate,
-  setUserRate,
   poster,
   title,
   year,

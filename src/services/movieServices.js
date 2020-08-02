@@ -6,6 +6,12 @@ export async function getMovieById({ id, token }) {
   });
 }
 
+export async function getMovieReview({ id, token, page }) {
+  return await API.get(`/movies/${id}/reviews?page=${page}`, {
+    headers: { Authorization: `Bearer ${token}` }
+  });
+}
+
 export async function rateMovieService({ id, rated, token }) {
   return await API.post(
     `/movies/${id}/rate`,
