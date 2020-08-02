@@ -1,6 +1,6 @@
 import React from "react";
 
-function DetailMenu({ selected, handleSelect, seasons }) {
+function DetailMenu({ selected, handleSelect }) {
   const className = id => (id === selected ? "current" : "");
 
   return (
@@ -15,18 +15,16 @@ function DetailMenu({ selected, handleSelect, seasons }) {
         </a>
         <span></span>
       </li>
-      {seasons && (
-        <li
-          className={`Episodes ${className("Episodes")}`}
-          id="Episodes"
-          onClick={() => handleSelect("Episodes")}
-        >
-          <a role="link" tabIndex="0">
-            EPISODES
-          </a>
-          <span></span>
-        </li>
-      )}
+      <li
+        className={`Episodes ${className("More")}`}
+        id="More"
+        onClick={() => handleSelect("More")}
+      >
+        <a role="link" tabIndex="0">
+          MORE LIKE THIS
+        </a>
+        <span></span>
+      </li>
       <li
         className={`ShowDetails ${className("ShowDetails")}`}
         id="ShowDetails"

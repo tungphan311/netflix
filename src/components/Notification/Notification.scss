@@ -13,9 +13,14 @@
   border: none;
   font-size: 32px;
   line-height: 1;
-  margin-top: 0.2em;
   padding: 2px 6px 3px;
   position: relative;
+}
+
+.icon-button-notification {
+  font-size: 22px;
+  margin: 0;
+  color: $grey;
 }
 
 button {

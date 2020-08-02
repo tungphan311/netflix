@@ -1,24 +1,38 @@
 /* eslint-disable react/style-prop-object */
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import Panel from "../../components/Panel/Panel";
-import { RECOMMENDS, SLIDERS } from "../../constants";
-import MovieRow from "../../components/MovieRow/MovieRow";
 import "./Home.scss";
+import Recommend from "./Recommend/Recommend";
+import Popular from "./Recommend/Popular";
+import TopRated from "./Recommend/TopRated";
+
+const mapStateToProps = state => ({
+  recommends: state.movie.recommends
+});
 
 class Home extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      recommend: {},
-      rowSelect: 0
+      rowSelect: 0,
+      film: {}
     };
   }
 
-  componentDidMount = () => {
-    let item = RECOMMENDS[Math.floor(Math.random() * RECOMMENDS.length)];
+  componentWillReceiveProps = nextProps => {
+    const length = nextProps.recommends.length;
+    const random = Math.floor(Math.random() * length);
+    this.setState({ film: nextProps.recommends[random] });
+  };
 
-    this.setState({ recommend: item });
+  componentDidMount = () => {
+    if (this.props.recommends.length) {
+      const length = this.props.recommends.length;
+      const random = Math.floor(Math.random() * length);
+      this.setState({ film: this.props.recommends[random] });
+    }
   };
 
   changeRow = id => {
@@ -26,30 +40,19 @@ class Home extends Component {
   };
 
   render() {
-    const { recommend, select, rowSelect } = this.state;
-    const { history } = this.props;
-
+    const { select, rowSelect, film } = this.state;
     return (
       <div
         className={select ? "has-open-jaw" : ""}
         style={{ overflow: "hidden" }}
       >
-        <Panel film={recommend} />
-        {SLIDERS.map(({ title, list, myList, id }) => (
-          <MovieRow
-            rowId={id}
-            rowSelect={rowSelect}
-            key={title}
-            title={title}
-            list={list}
-            myList={myList}
-            history={history}
-            changeRow={this.changeRow}
-          />
-        ))}
+        <Panel film={film} />
+        <Recommend changeRow={this.changeRow} rowSelect={rowSelect} />
+        <Popular changeRow={this.changeRow} rowSelect={rowSelect} />
+        <TopRated changeRow={this.changeRow} rowSelect={rowSelect} />
       </div>
     );
   }
 }
 
-export default Home;
+export default connect(mapStateToProps, null)(Home);

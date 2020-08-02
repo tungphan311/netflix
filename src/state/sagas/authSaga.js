@@ -10,7 +10,9 @@ import {
   CHECK_TOKEN_FAIL,
   REFRESH_TOKEN,
   REFRESH_TOKEN_SUCCESS,
-  REFRESH_TOKEN_FAIL
+  REFRESH_TOKEN_FAIL,
+  LOGOUT,
+  LOGOUT_SUCCESS
 } from "../reducers/authReducer";
 import {
   login,
@@ -23,6 +25,7 @@ import { toastErr, toast } from "../../utils/toast";
 import history from "../../state/history";
 import { TOKEN_EXPIRED } from "../../constants";
 import { SET_LOADING } from "../reducers/loadingReducer";
+import { MOVIE_DEFAULT } from "../reducers/movieReducer";
 
 export function* loginSaga() {
   try {
@@ -39,6 +42,22 @@ export function* loginSaga() {
     yield put({ type: LOGIN_SUCCESS, token, refreshToken });
 
     yield toast({ message: response.msg });
+
+    yield history.push("/");
+  } catch (err) {
+    yield toastErr(err);
+  } finally {
+    yield put({ type: SET_LOADING, status: false });
+  }
+}
+
+export function* logoutSaga() {
+  try {
+    yield put({ type: SET_LOADING });
+
+    yield put({ type: LOGOUT_SUCCESS });
+
+    yield put({ type: MOVIE_DEFAULT });
 
     yield history.push("/");
   } catch (err) {
@@ -132,4 +151,5 @@ export default function* authSaga() {
   yield takeEvery(REGISTER, registerSaga);
   yield takeEvery(CHECK_TOKEN, checkTokenSaga);
   yield takeEvery(REFRESH_TOKEN, refreshTokenSaga);
+  yield takeEvery(LOGOUT, logoutSaga);
 }

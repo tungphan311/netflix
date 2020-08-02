@@ -1,23 +1,27 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { Link } from "react-router-dom";
-import { AddToList, ChevronDown, Play, AddedToList } from "../../constants";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import LazyLoad from "react-lazyload";
+import { useDispatch } from "react-redux";
+import {
+  AddToList,
+  ChevronDown,
+  Play,
+  AddedToList,
+  CERTIFICATES
+} from "../../constants";
 import { formatSlideItem } from "../../utils/utils";
+import history from "../../state/history";
+import { actionAddToFavorite } from "../../state/action/user";
+import { ADD_TO_FAVORITE } from "../../state/reducers/movieReducer";
 
 class SliderItem extends Component {
-  onClick = () => {
-    const { width, history } = this.props;
-
-    if (width < 1100) {
-      history.push("/title/1");
-    }
-  };
   render() {
     const {
       hover,
       setHover,
       details,
       item,
-      history,
       selectDetail,
       select,
       rowId,
@@ -27,29 +31,42 @@ class SliderItem extends Component {
 
     const {
       id,
-      movId,
-      avatar,
       background,
-      href,
       name,
-      love,
+      is_favorite: favorite,
       score,
-      limit,
+      certification,
       length,
-      isWatching,
-      ep,
-      epName,
-      epLength,
-      stop
+      genres
     } = details;
+
+    const cer = CERTIFICATES.find(c => c.certification === certification)
+      ? CERTIFICATES.find(c => c.certification === certification)
+      : {
+          certification: "G",
+          meaning: ""
+        };
+
+    const bob = {
+      id,
+      url: background,
+      name,
+      score,
+      cer,
+      length,
+      selectDetail,
+      rowId,
+      changeRow,
+      favorite,
+      genres
+    };
 
     return (
       <div
         className="slider-item"
         style={formatSlideItem(index, hover, item, select)}
-        onMouseEnter={() => setHover(index)}
-        onMouseLeave={() => setHover(0)}
-        onClick={() => this.onClick()}
+        onMouseEnter={() => background && setHover(index)}
+        onMouseLeave={() => background && setHover(0)}
       >
         <div className="title-card-container">
           <div
@@ -61,31 +78,44 @@ class SliderItem extends Component {
               <a
                 tabIndex="0"
                 className="slider-refocus"
-                onClick={() => selectDetail(movId)}
+                onClick={() => background && selectDetail(id)}
               >
-                <div className="boxart-size-vertical boxart-container">
-                  <img
-                    className="boxart-image boxart-image-in-padded-container"
-                    src={avatar}
-                    alt=""
-                  />
-                  <div className="fallback-text-container" aria-hidden="true">
-                    <p className="fallback-text">{name}</p>
+                <SkeletonTheme highlightColor="#444">
+                  <div className="boxart-size-16x9 boxart-container">
+                    {background ? (
+                      <LazyLoad
+                      // placeholder={
+                      //   <Skeleton duration={2} className="img-skeleton" />
+                      // }
+                      // once
+                      >
+                        <img
+                          className="boxart-image boxart-image-in-padded-container"
+                          src={background}
+                          alt=""
+                        />
+                      </LazyLoad>
+                    ) : (
+                      <Skeleton duration={2} className="img-skeleton" />
+                    )}
                   </div>
-                </div>
-                {select !== movId && (
+                </SkeletonTheme>
+                {select !== id && (
                   <div className="click-to-change-JAW-indicator is-another-JAW-open">
                     <div className="bob-jawbone-chevron">{ChevronDown}</div>
                   </div>
                 )}
               </a>
-              {select === movId && (
+              {select === id && (
                 <div
                   className="title-card-jawbone-focus"
                   style={{ opacity: 1, transitionDuration: "300ms" }}
                 >
                   <div className="title-card-focus-ring"></div>
-                  <Link className="title-card-play playLink" to={href}>
+                  <Link
+                    className="title-card-play playLink"
+                    to={`/title/${id}`}
+                  >
                     <div className="playRing">
                       <div className="play icon-play"></div>
                     </div>
@@ -94,43 +124,9 @@ class SliderItem extends Component {
               )}
             </div>
             <div className="bob-container">
-              <span>
-                {hover === index && !select && (
-                  <BobOpen
-                    id={id}
-                    movId={movId}
-                    url={background}
-                    href={href}
-                    name={name}
-                    score={score}
-                    limit={limit}
-                    length={length}
-                    selectDetail={selectDetail}
-                    history={history}
-                    isWatching={isWatching}
-                    ep={ep}
-                    epName={epName}
-                    epLength={epLength}
-                    stop={stop}
-                    rowId={rowId}
-                    changeRow={changeRow}
-                    love={love}
-                  />
-                )}
-              </span>
+              <span>{hover === index && !select && <BobOpen {...bob} />}</span>
             </div>
           </div>
-          {isWatching && !select && (
-            <div className="progress">
-              <span className="progress-bar">
-                <span
-                  role="presentation"
-                  className="progress-completed"
-                  style={{ width: `${(stop * 100) / epLength}%` }}
-                ></span>
-              </span>
-            </div>
-          )}
         </div>
       </div>
     );
@@ -141,174 +137,164 @@ export default SliderItem;
 
 export const BobOpen = ({
   id,
-  movId,
   url,
-  href,
   name,
   score,
-  limit,
+  cer,
   length,
   selectDetail,
-  history,
-  isWatching,
-  ep,
-  epName,
-  epLength,
-  stop,
   rowId,
   changeRow,
-  love
-}) => (
-  <div
-    className="bob-card bob-card-adult-video-merch"
-    style={{
-      transform: "scale(0.99999)",
-      visibility: "visible",
-      width: "124%",
-      height: "124%",
-      top: "-12%",
-      left: "-12%",
-      transitionDuration: "500ms"
-    }}
-  >
-    <div>
-      <div className="bob-background">
-        <div
-          className="image-container"
-          style={{
-            backgroundImage: `url(${url})`
-          }}
-        ></div>
-      </div>
-      <div className="bob-overlay">
-        <div
-          className="bob-play-hitzone"
-          onClick={() => history.push(`/watch/${id}`)}
-        ></div>
-        <a
-          aria-label={name}
-          className="bob-jaw-hitzone"
-          onClick={() => {
-            selectDetail(movId);
-            changeRow(rowId);
-          }}
-        ></a>
-        <div className="bob-overview-wrapper">
-          <div className="bob-overview">
-            <Link tabIndex="0" className="bob-play-button playLink" to={href}>
-              <span className="play-button">
-                <svg
-                  className="svg-icon svg-icon-play-with-ring"
-                  focusable="true"
-                >
-                  {Play}
-                </svg>
-              </span>
-            </Link>
-            <div className="bob-title">{name}</div>
-            {isWatching ? (
-              <>
-                <div className="bob-overview-resume-title-wrapper">
-                  <div className="watched-title watched-title--bob-overview watched-title--no-wrap">
-                    <span>
-                      <b>{ep}</b> {epName}
-                    </span>
-                  </div>
-                </div>
-                <div className="bob-overview-progress-wrapper">
-                  <div className="progress progress--bob-overview">
-                    <span className="progress-bar">
-                      <span
-                        role="presentation"
-                        className="progress-completed"
-                        style={{ width: `${(stop * 100) / epLength}%` }}
-                      ></span>
-                    </span>
-                    <span className="summary">
-                      {stop} of {epLength}m
-                    </span>
-                  </div>
-                </div>
-              </>
-            ) : (
-              <>
-                <div className="bob-metadata-wrapper">
-                  <div className="meta video-meta video-meta--bob-overview">
-                    <span className="match-score-wrapper">
-                      <div className="show-match-score rating-inner"></div>
-                      <div className="meta-thumb-container thumb-up"></div>
-                      <span className="match-score">{score}</span>
-                    </span>
-                    <span className="maturity-rating ">
-                      <span className="maturity-number">{limit}</span>
-                    </span>
-                    <span className="duration">{length}</span>
-                  </div>
-                </div>
-                <div className="bob-overview-evidence-wrapper">
-                  <div className="evidence-tags">
-                    <div className="evidence-list">
-                      <div className="evidence-item">
-                        <span className="evidence-text">Comedy</span>
-                      </div>
-                      <div className="evidence-item">
-                        <span className="evidence-separator"></span>
-                        <span className="evidence-text">Alien Sci-Fi</span>
-                      </div>
-                      <div className="evidence-item">
-                        <span className="evidence-separator"></span>
-                        <span className="evidence-text">Action </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </>
-            )}
-          </div>
+  favorite,
+  genres
+}) => {
+  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+
+  const handleAddToFavorite = () => {
+    setLoading(true);
+
+    dispatch(actionAddToFavorite({ id })).then(() => {
+      dispatch({ type: ADD_TO_FAVORITE, id });
+      setLoading(false);
+    });
+  };
+
+  return (
+    <div
+      className="bob-card bob-card-adult-video-merch"
+      style={{
+        transform: "scale(0.99999)",
+        visibility: "visible",
+        width: "195%",
+        height: "195%",
+        top: "-47.5%",
+        left: "-47.5%",
+        transitionDuration: "500ms"
+      }}
+    >
+      <div>
+        <div className="bob-background">
+          <div
+            className="image-container"
+            style={{
+              backgroundImage: `url(${url})`
+            }}
+          ></div>
         </div>
-        <div className="bob-actions-wrapper">
-          <span className="ActionButtons">
-            <div className="ptrack-content">
-              <div
-                className="nf-svg-button-wrapper mylist-button"
-                data-uia="myListButton"
+        <div className="bob-overlay">
+          <div
+            className="bob-play-hitzone"
+            onClick={() => history.push(`/title/${id}`)}
+          ></div>
+          <a
+            aria-label={name}
+            className="bob-jaw-hitzone"
+            onClick={() => {
+              selectDetail(id);
+              changeRow(rowId);
+            }}
+          ></a>
+          <div className="bob-overview-wrapper">
+            <div className="bob-overview">
+              <Link
+                tabIndex="0"
+                className="bob-play-button playLink"
+                to={`/title/${id}`}
               >
-                <a
-                  role="link"
-                  tabIndex="0"
-                  className="nf-svg-button simpleround"
-                >
-                  {!love ? (
-                    <svg
-                      className="svg-icon svg-icon-mylist-add"
-                      focusable="true"
-                    >
-                      {AddToList}
-                    </svg>
-                  ) : (
-                    <svg
-                      className="svg-icon svg-icon-mylist-added"
-                      focusable="true"
-                    >
-                      {AddedToList}
-                    </svg>
-                  )}
-                </a>
-                <span
-                  className="nf-svg-button-tooltip"
-                  role="status"
-                  aria-live="assertive"
-                >
-                  {love ? "Remove from My Favorites" : "Add To My Favorites"}
+                <span className="play-button">
+                  <svg
+                    className="svg-icon svg-icon-play-with-ring"
+                    focusable="true"
+                  >
+                    {Play}
+                  </svg>
                 </span>
+              </Link>
+              <div className="bob-title">{name}</div>
+              <div className="bob-metadata-wrapper">
+                <div className="meta video-meta video-meta--bob-overview">
+                  <span className="match-score-wrapper">
+                    <div className="show-match-score rating-inner"></div>
+                    <div className="meta-thumb-container thumb-up"></div>
+                    <span className="match-score">{score}</span>
+                  </span>
+                  {/* <span className="maturity-rating">
+                    <span className="maturity-number" title={cer.meaning}>
+                      {cer.certification}
+                    </span>
+                  </span> */}
+                  <span className="duration">{length}</span>
+                </div>
+              </div>
+              <div className="bob-overview-evidence-wrapper">
+                <div className="evidence-tags">
+                  <div className="evidence-list">
+                    {genres &&
+                      genres.map(({ id, name }, i) => (
+                        <div className="evidence-item" key={id}>
+                          {i > 0 && (
+                            <span className="evidence-separator"></span>
+                          )}
+                          <span className="evidence-text">{name}</span>
+                        </div>
+                      ))}
+                  </div>
+                </div>
               </div>
             </div>
-          </span>
-        </div>
-        <div className="bob-chevron-wrapper">
-          <div className="bob-jawbone-chevron">{ChevronDown}</div>
+          </div>
+          <div className="bob-actions-wrapper">
+            <span className="ActionButtons">
+              <div className="ptrack-content">
+                <div
+                  className="nf-svg-button-wrapper mylist-button"
+                  data-uia="myListButton"
+                >
+                  <a
+                    role="link"
+                    tabIndex="0"
+                    className="nf-svg-button simpleround"
+                    onClick={handleAddToFavorite}
+                  >
+                    {!favorite ? (
+                      <svg
+                        className="svg-icon svg-icon-mylist-add"
+                        focusable="true"
+                      >
+                        {AddToList}
+                      </svg>
+                    ) : (
+                      <svg
+                        className="svg-icon svg-icon-mylist-added"
+                        focusable="true"
+                      >
+                        {AddedToList}
+                      </svg>
+                    )}
+                  </a>
+                  <span
+                    className="nf-svg-button-tooltip"
+                    role="status"
+                    aria-live="assertive"
+                  >
+                    {loading
+                      ? favorite
+                        ? "Removing ..."
+                        : "Adding ..."
+                      : favorite
+                      ? "Remove from My Favorites"
+                      : "Add To My Favorites"}
+                  </span>
+                </div>
+              </div>
+            </span>
+          </div>
+          <div className="bob-chevron-wrapper">
+            <div className="bob-jawbone-chevron">{ChevronDown}</div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-);
+  );
+};

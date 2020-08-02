@@ -10,7 +10,9 @@ import {
   deleteMovieRating,
   actionReviewMovie,
   actionGetUserReview,
-  actionGetSimilarMovies
+  actionGetSimilarMovies,
+  actionGetPopularMovies,
+  actionTopRatedMovies
 } from "../action/movies";
 import {
   getMovieById,
@@ -18,11 +20,14 @@ import {
   deleteRatingService,
   reviewMovieService,
   getUserReviewService,
-  getSimilarMoviesService
+  getSimilarMoviesService,
+  getPopularMoviesService,
+  getTopRatedMoviesService
 } from "../../services/movieServices";
 import { toast, toastErr } from "../../utils/toast";
 import { FORM_KEY_REVIEW } from "../reducers/formReducer";
 import { SET_LOADING } from "../reducers/loadingReducer";
+import { ADD_MOVIE } from "../reducers/movieReducer";
 
 export function* getMovieByIdSaga(action) {
   try {
@@ -116,6 +121,40 @@ export function* getSimilarMoviesSaga(action) {
   }
 }
 
+export function* getPopularMoviesSaga(action) {
+  try {
+    const token = yield localStorage.getItem("authen");
+
+    const result = yield call(getPopularMoviesService, { token });
+    const response = result.data.data;
+
+    const { list } = response;
+
+    yield put({ type: ADD_MOVIE, response: list });
+
+    yield call(resolvePromiseAction, action, response);
+  } catch (err) {
+    yield toastErr(err);
+  }
+}
+
+export function* getTopRatedMoviesSaga(action) {
+  try {
+    const token = yield localStorage.getItem("authen");
+
+    const result = yield call(getTopRatedMoviesService, { token });
+    const response = result.data.data;
+
+    const { list } = response;
+
+    yield put({ type: ADD_MOVIE, response: list });
+
+    yield call(resolvePromiseAction, action, response);
+  } catch (err) {
+    yield toastErr(err);
+  }
+}
+
 export default function* movieSaga() {
   yield takeEvery(actionGetMovieById, getMovieByIdSaga);
   yield takeEvery(actionRateMovie, rateMovieSaga);
@@ -123,4 +162,6 @@ export default function* movieSaga() {
   yield takeEvery(actionReviewMovie, reviewMovieSaga);
   yield takeEvery(actionGetUserReview, getUserReviewSaga);
   yield takeEvery(actionGetSimilarMovies, getSimilarMoviesSaga);
+  yield takeEvery(actionGetPopularMovies, getPopularMoviesSaga);
+  yield takeEvery(actionTopRatedMovies, getTopRatedMoviesSaga);
 }

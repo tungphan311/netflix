@@ -1,16 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Detail.scss";
 import { Link } from "react-router-dom";
-import { FILM_DETAILS } from "../../constants";
+import { useSelector } from "react-redux";
 import DetailMenu from "./DetailMenu";
 import Overview from "./Overview";
 import EpisodeContainer from "./Episode";
 import ShowDetail from "./ShowDetail";
 
-function Detail({ select, selectDetail, width, changeRow }) {
+function Detail({ select, selectDetail, changeRow }) {
   const [selectedPane, setSelectedPane] = useState("Overview");
 
-  const { background, logo, seasons } = select && FILM_DETAILS[select];
+  const movies = useSelector(state => state.movie.movies);
+
+  if (!select) return null;
+
+  const movie = movies.find(m => m.id === select);
+
+  const { background, name } = movie;
 
   return (
     <div className={`jawBoneContent ${select === 0 ? "" : "open"}`}>
@@ -56,13 +62,13 @@ function Detail({ select, selectDetail, width, changeRow }) {
                       transitionDuration: "500ms"
                     }}
                   >
-                    <img
-                      alt="Lucifer"
+                    <span
                       className={`${
                         selectedPane === "Overview" ? "logo" : "logo small-logo"
                       }`}
-                      src={logo}
-                    />
+                    >
+                      {name}
+                    </span>
                   </div>
                 </Link>
               </h3>
@@ -81,11 +87,11 @@ function Detail({ select, selectDetail, width, changeRow }) {
                   >
                     <div className="ptrack-container">
                       {selectedPane === "Overview" && <Overview id={select} />}
-                      {selectedPane === "Episodes" && (
-                        <EpisodeContainer id={select} width={width} />
+                      {selectedPane === "More" && (
+                        <EpisodeContainer id={select} />
                       )}
                       {selectedPane === "ShowDetails" && (
-                        <ShowDetail id={select} width={width} />
+                        <ShowDetail id={select} />
                       )}
                     </div>
                   </div>
@@ -94,7 +100,6 @@ function Detail({ select, selectDetail, width, changeRow }) {
               <DetailMenu
                 selected={selectedPane}
                 handleSelect={setSelectedPane}
-                seasons={seasons}
               />
             </div>
             <button

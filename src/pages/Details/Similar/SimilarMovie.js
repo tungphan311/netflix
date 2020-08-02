@@ -68,12 +68,12 @@ const Movie = ({
                 <a className="maturity-number">{certification || "PG"}</a>
               </span>
               {genres.map((genre, index) => (
-                <>
+                <React.Fragment key={index}>
                   <span>{genre}</span>
                   {index < genres.length - 1 && (
                     <span className="ghost">|</span>
                   )}
-                </>
+                </React.Fragment>
               ))}
             </>
           ) : (

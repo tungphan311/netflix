@@ -7,13 +7,42 @@
   }
 }
 
-// .d-flex {
-//   cursor: pointer;
-//   align-items: center;
-// }
+.user-section {
+  height: 80%;
+  padding: 0 16px;
+  position: relative;
 
-@media (max-width: $ipad-screen) {
-  .avatar__wrapper {
-    @include set-width-height(16px, 16px);
+  .ipc-icon {
+    margin-right: 0;
+    opacity: 1;
+    transition: opacity 0.2s;
+  }
+
+  .callout-arrow {
+    position: absolute;
+    bottom: -19px;
+    left: 50%;
+    border-width: 7px;
+    margin-left: -7px;
+    border-color: transparent transparent #e5e5e5;
+    border-style: solid;
+    height: 0;
+    width: 0;
+    opacity: 0;
+    transition: opacity 300ms;
+  }
+}
+
+.account-drop-down {
+  position: absolute !important;
+  right: 15px;
+  top: 44px !important;
+  width: 181px;
+  margin-left: 0;
+  padding: 0;
+  transition: opacity 300ms;
+
+  .sub-menu-item > a:hover {
+    text-decoration: underline;
   }
 }

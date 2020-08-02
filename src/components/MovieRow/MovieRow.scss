@@ -9,15 +9,16 @@
 }
 
 .mvRow.mvRow_title_card {
-  margin: 3vw 0;
+  margin: 3vw auto;
   padding: 0;
   box-sizing: border-box;
+  max-width: 1290px;
 
   .rowTitle {
     font-size: 1.4vw;
     color: #e5e5e5;
     font-weight: bold;
-    margin: 0 4% 0.5em 4%;
+    margin: 0 0 0.5em 0;
     text-decoration: none;
     display: inline-block;
     min-width: 6em;
@@ -29,6 +30,15 @@
       font-size: 1.4vw;
     }
   }
+}
+
+.img-skeleton {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
 }
 
 .mvRow,
@@ -52,8 +62,9 @@
 
 .slide {
   position: relative;
-  margin: 0;
-  padding: 0 4%;
+  margin: auto;
+  padding: 0;
+  max-width: 1290px;
   touch-action: pan-y;
 
   .handle {
@@ -82,6 +93,14 @@
 .carousel-control-next,
 .carousel-control-prev {
   width: 30px;
+}
+
+.carousel-control-next {
+  right: -60px;
+}
+
+.carousel-control-prev {
+  left: -60px;
 }
 
 .carousel-control-next,
@@ -274,8 +293,8 @@ a.rowTitle:focus .aro-row-header .see-all-link {
 }
 
 .verticalBoxArtRow .is-bob-open.title-card {
-  width: 250%;
-  transform: translate(-30%, 0);
+  width: 100% !important;
+  transform: translate(0, 0) !important;
 }
 
 a {
@@ -284,18 +303,18 @@ a {
   color: #fff;
 }
 
-.boxart-size-vertical {
+.boxart-size-16x9 {
   width: 100%;
   height: 0;
   position: relative;
   overflow: hidden;
-  padding: 70.255061% 0;
+  padding: 28.125% 0;
 }
 
-.verticalBoxArtRow .is-bob-open.title-card .boxart-size-vertical {
-  padding: 28.125% 0;
-  opacity: 0;
-}
+// .verticalBoxArtRow .is-bob-open.title-card .boxart-size-vertical {
+//   padding: 28.125% 0;
+//   opacity: 0;
+// }
 
 .boxart-image-in-padded-container {
   position: absolute;
@@ -1043,7 +1062,7 @@ span:focus {
 }
 @media screen and (min-width: 1100px) and (max-width: 1440px) {
   .rowContainer.verticalBoxArtRow .rowContent .slide .slider-item {
-    width: 12.5%;
+    width: calc(100% / 6);
   }
   .bob-overview .bob-play-button .play-button {
     width: 2vw;
@@ -1081,7 +1100,7 @@ span:focus {
     font-size: 1.2vw;
   }
   .rowContainer.verticalBoxArtRow .rowContent .slide .slider-item {
-    width: calc(100% / 9);
+    width: calc(100% / 6);
   }
   .bob-overview .bob-play-button .play-button {
     width: 1.8vw;

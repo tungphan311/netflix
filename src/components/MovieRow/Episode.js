@@ -1,32 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Carousel } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { FILM_DETAILS } from "../../constants";
+import { useDispatch } from "react-redux";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import { actionGetSimilarMovies } from "../../state/action/movies";
 
-export const Episode = ({
-  href,
-  title,
-  ep,
-  length,
-  description,
-  background,
-  progress,
-  width
-}) => (
+export const Episode = ({ href, title, length, description, background }) => (
   <div className="slider-item">
     <div className="episodeLockup">
       <div className="ptrack-content">
-        <div
-          className="episodeArt video-artwork"
-          style={{
-            backgroundImage: `url('${background}')`
-          }}
-        >
-          <div className="numberVignette"></div>
-          <div className={`episodeNumber ${progress ? "" : "noProgress"}`}>
+        <SkeletonTheme highlightColor="#444">
+          {background ? (
+            <div
+              className="episodeArt video-artwork"
+              style={{
+                backgroundImage: `url('${background}')`
+              }}
+            >
+              <div className="numberVignette"></div>
+              {/* <div className={`episodeNumber ${progress ? "" : "noProgress"}`}>
             <span aria-hidden="true">{ep}</span>
-          </div>
-          {progress && (
+          </div> */}
+              {/* {progress && (
             <div class="progress">
               <span class="progress-bar">
                 <span
@@ -36,43 +31,49 @@ export const Episode = ({
                 ></span>
               </span>
             </div>
-          )}
-          <Link className="episodePlay slider-refocus playLink" to={href}>
-            <div
-              className="playRing"
-              style={width < 1100 ? { left: "50%" } : {}}
-            >
-              <div className="play icon-play"></div>
+          )} */}
+              <Link className="episodePlay slider-refocus playLink" to={href}>
+                <div className="playRing">
+                  <div className="play icon-play"></div>
+                </div>
+              </Link>
             </div>
-          </Link>
-        </div>
-        <div className="episodeTitle">
-          <p className="ellipsized">{title}</p>
-          <span className="duration">{length}</span>
-        </div>
-        <div className="episodeSynopsis">{description}</div>
+          ) : (
+            <Skeleton duration={2} height={118} />
+          )}
+
+          <div className="episodeTitle">
+            <p className="ellipsized">{title || <Skeleton duration={2} />}</p>
+            <span className="duration">{length}</span>
+          </div>
+          <div className="episodeSynopsis">
+            {description || <Skeleton duration={2} count={4} />}
+          </div>
+        </SkeletonTheme>
       </div>
     </div>
   </div>
 );
 
-function EpisodeContainer({ id, width }) {
-  const { episode, seasons } = id && FILM_DETAILS[id];
+function EpisodeContainer({ id }) {
+  const [list, setList] = useState(new Array(5).fill({}));
+  const dispatch = useDispatch();
 
-  const [open, setOpen] = useState(false);
-  const [season, setSeason] = useState(1);
+  useEffect(() => {
+    dispatch(actionGetSimilarMovies({ id })).then(res => setList(res));
+  }, [dispatch, id]);
 
-  const handleSelect = season => {
-    setSeason(season);
-    setOpen(false);
-  };
+  // const [open, setOpen] = useState(false);
 
-  const list = episode && splitList(width, episode[season]);
+  // const handleSelect = season => {
+  //   setSeason(season);
+  //   setOpen(false);
+  // };
 
   return (
-    <div className="episodesContainer">
+    <div className="episodesContainer" style={{ marginTop: "20px" }}>
       <div className="ptrack-content">
-        {seasons && seasons.length === 1 ? (
+        {/* {seasons && seasons.length === 1 ? (
           <div className="single-season-label">Season 1</div>
         ) : (
           <div className="nfDropDown widthRestricted theme-lakira">
@@ -101,7 +102,7 @@ function EpisodeContainer({ id, width }) {
               </ul>
             </div>
           </div>
-        )}
+        )} */}
         <div className="episodeWrapper">
           <div className="ptrack-container">
             <div className="slider">
@@ -129,32 +130,22 @@ function EpisodeContainer({ id, width }) {
                       </span>
                     }
                   >
-                    {list.map((sub, index) => (
-                      <Carousel.Item key={index}>
-                        {sub.map(
-                          ({
-                            href,
-                            title,
-                            ep,
-                            length,
-                            description,
-                            background,
-                            progress
-                          }) => (
-                            <Episode
-                              key={href}
-                              href={href}
-                              title={title}
-                              ep={ep}
-                              length={length}
-                              description={description}
-                              background={background}
-                              progress={progress}
-                            />
-                          )
-                        )}
-                      </Carousel.Item>
-                    ))}
+                    {/* {list.map((sub, index) => ( */}
+                    <Carousel.Item>
+                      {list.map(
+                        ({ id, title, length, overview, img }, index) => (
+                          <Episode
+                            key={index}
+                            href={`/title/${id}`}
+                            title={title}
+                            length={length}
+                            description={overview}
+                            background={img}
+                          />
+                        )
+                      )}
+                    </Carousel.Item>
+                    {/* ))} */}
                   </Carousel>
                 </div>
               </div>
@@ -167,36 +158,3 @@ function EpisodeContainer({ id, width }) {
 }
 
 export default EpisodeContainer;
-
-const splitList = (width, list) => {
-  const item =
-    width < 500
-      ? 1
-      : width >= 500 && width < 800
-      ? 2
-      : width >= 800 && width < 1100
-      ? 3
-      : width >= 1100 && width < 1400
-      ? 4
-      : 5;
-
-  let temp = [];
-  let newList = [];
-
-  list.map((sub, index) => {
-    temp = [...temp, sub];
-
-    if (index % item === item - 1) {
-      newList = [...newList, temp];
-      temp = [];
-    }
-
-    if (index === list.length - 1) {
-      newList = [...newList, temp];
-    }
-
-    return null;
-  });
-
-  return newList;
-};

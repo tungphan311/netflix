@@ -43,7 +43,7 @@
 .info-layer {
   background: linear-gradient(
     77deg,
-    rgba(0, 0, 0, 0.6) 0%,
+    rgba(0, 0, 0, 0.8) 0%,
     rgba(0, 0, 0, 0) 85%
   );
   position: absolute;
@@ -111,13 +111,19 @@
 .info-meta-layer {
   position: absolute;
   top: 0;
-  bottom: 35%;
+  bottom: 20%;
   left: 4%;
   width: 36%;
   z-index: 10;
   display: flex;
   justify-content: flex-end;
   flex-direction: column;
+}
+
+.svg-icon.panel-icon {
+  height: 16px;
+  width: 16px;
+  margin-right: 0.71em;
 }
 
 .logo-and-text {
@@ -136,6 +142,14 @@
   min-height: 13.2vw;
   position: relative;
   margin-bottom: 1.2vw;
+  display: flex;
+  align-items: flex-end;
+
+  .title__name {
+    font-size: 56px;
+    font-weight: bold;
+    vertical-align: middle;
+  }
 }
 
 .title-logo {
