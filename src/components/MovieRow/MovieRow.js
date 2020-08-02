@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./MovieRow.scss";
 import { Carousel } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import SliderItem from "./SliderItem";
 import Detail from "./Detail";
 
@@ -71,25 +72,31 @@ class MovieRow extends Component {
         onMouseEnter={() => this.setState({ show: true })}
         onMouseLeave={() => this.setState({ show: false })}
       >
-        <h2 className="rowHeader">
-          {href ? (
-            <Link className="rowTitle" aria-label={title} to={href}>
-              <div className="row-header-title">{title}</div>
-              <div className="aro-row-header">
-                <div className="see-all-link">Explore All</div>
-                <div
-                  className={`aro-row-chevron icon-akiraCaretRight ${
-                    this.state.show ? "show-chevron" : ""
-                  }`}
-                ></div>
-              </div>
-            </Link>
-          ) : (
-            <span className="rowTitle" aria-label={title}>
-              <div className="row-header-title">{title}</div>
-            </span>
-          )}
-        </h2>
+        <SkeletonTheme highlightColor="#444">
+          <h2 className="rowHeader">
+            {href ? (
+              <Link className="rowTitle" aria-label={title} to={href}>
+                <div className="row-header-title">{title}</div>
+                <div className="aro-row-header">
+                  <div className="see-all-link">Explore All</div>
+                  <div
+                    className={`aro-row-chevron icon-akiraCaretRight ${
+                      this.state.show ? "show-chevron" : ""
+                    }`}
+                  ></div>
+                </div>
+              </Link>
+            ) : (
+              <span className="rowTitle" aria-label={title}>
+                {title ? (
+                  <div className="row-header-title">{title}</div>
+                ) : (
+                  <Skeleton duration={2} width={200} />
+                )}
+              </span>
+            )}
+          </h2>
+        </SkeletonTheme>
         <div className="rowContainer verticalBoxArtRow rowContainer_title_card">
           <div className="ptrack-container">
             <div
@@ -171,7 +178,9 @@ const splitList = (item, list) => {
       }
 
       if (index === list.length - 1) {
-        newList = [...newList, temp];
+        if (temp.length) {
+          newList = [...newList, temp];
+        }
       }
 
       return null;

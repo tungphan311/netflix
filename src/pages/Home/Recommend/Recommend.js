@@ -5,17 +5,21 @@ import { actionGetRecommend } from "../../../state/action/user";
 
 function Recommend({ changeRow, rowSelect }) {
   const [list, setList] = useState(new Array(6).fill({}));
+  const [title, setTile] = useState(null);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(actionGetRecommend()).then(res => setList(res));
+    dispatch(actionGetRecommend()).then(res => {
+      setList(res);
+      setTile("Films you may like");
+    });
   }, [dispatch]);
 
   return (
     <MovieRow
       rowId={1}
       rowSelect={rowSelect}
-      title="Films you may like"
+      title={title}
       list={list}
       changeRow={changeRow}
     />

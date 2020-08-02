@@ -17,7 +17,7 @@ function ShowDetail({ id }) {
     casts
   } = movies.find(m => m.id === id);
 
-  const cer = certification
+  const cer = CERTIFICATES.find(c => c.certification === certification)
     ? CERTIFICATES.find(c => c.certification === certification)
     : {
         certification: "G",
@@ -33,9 +33,9 @@ function ShowDetail({ id }) {
               <div>
                 <h4 className="listLabel">Genres</h4>
                 <ul>
-                  {genres.map(({ href, title }) => (
-                    <li key={href}>
-                      <Link to={href}>{title}</Link>
+                  {genres.map(({ id, name }) => (
+                    <li key={id}>
+                      <Link to={`/genres/${id}`}>{name}</Link>
                     </li>
                   ))}
                 </ul>

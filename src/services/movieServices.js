@@ -45,3 +45,9 @@ export async function getUserReviewService({ id, token }) {
 export async function getSimilarMoviesService({ id }) {
   return await API.get(`/movies/${id}/similar`);
 }
+
+export async function getPopularMoviesService({ token }) {
+  return await API.get("/movies/popular", {
+    headers: { Authorization: `Bearer ${token}` }
+  });
+}

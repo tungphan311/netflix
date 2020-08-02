@@ -10,7 +10,8 @@ import {
   deleteMovieRating,
   actionReviewMovie,
   actionGetUserReview,
-  actionGetSimilarMovies
+  actionGetSimilarMovies,
+  actionGetPopularMovies
 } from "../action/movies";
 import {
   getMovieById,
@@ -18,7 +19,8 @@ import {
   deleteRatingService,
   reviewMovieService,
   getUserReviewService,
-  getSimilarMoviesService
+  getSimilarMoviesService,
+  getPopularMoviesService
 } from "../../services/movieServices";
 import { toast, toastErr } from "../../utils/toast";
 import { FORM_KEY_REVIEW } from "../reducers/formReducer";
@@ -116,6 +118,19 @@ export function* getSimilarMoviesSaga(action) {
   }
 }
 
+export function* getPopularMoviesSaga(action) {
+  try {
+    const token = yield localStorage.getItem("authen");
+
+    const result = yield call(getPopularMoviesService, { token });
+    const response = result.data.data;
+
+    yield call(resolvePromiseAction, action, response);
+  } catch (err) {
+    yield toastErr(err);
+  }
+}
+
 export default function* movieSaga() {
   yield takeEvery(actionGetMovieById, getMovieByIdSaga);
   yield takeEvery(actionRateMovie, rateMovieSaga);
@@ -123,4 +138,5 @@ export default function* movieSaga() {
   yield takeEvery(actionReviewMovie, reviewMovieSaga);
   yield takeEvery(actionGetUserReview, getUserReviewSaga);
   yield takeEvery(actionGetSimilarMovies, getSimilarMoviesSaga);
+  yield takeEvery(actionGetPopularMovies, getPopularMoviesSaga);
 }

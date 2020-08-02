@@ -22,7 +22,7 @@ function Overview({ id }) {
 
   const year = release_date ? release_date.substring(0, 4) : "";
 
-  const cer = certification
+  const cer = CERTIFICATES.find(c => c.certification === certification)
     ? CERTIFICATES.find(c => c.certification === certification)
     : {
         certification: "G",

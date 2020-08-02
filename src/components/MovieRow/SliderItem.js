@@ -1,7 +1,8 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { Link } from "react-router-dom";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import LazyLoad from "react-lazyload";
+import { useDispatch } from "react-redux";
 import {
   AddToList,
   ChevronDown,
@@ -11,6 +12,8 @@ import {
 } from "../../constants";
 import { formatSlideItem } from "../../utils/utils";
 import history from "../../state/history";
+import { actionAddToFavorite } from "../../state/action/user";
+import { ADD_TO_FAVORITE } from "../../state/reducers/movieReducer";
 
 class SliderItem extends Component {
   render() {
@@ -37,7 +40,7 @@ class SliderItem extends Component {
       genres
     } = details;
 
-    const cer = certification
+    const cer = CERTIFICATES.find(c => c.certification === certification)
       ? CERTIFICATES.find(c => c.certification === certification)
       : {
           certification: "G",
@@ -139,133 +142,154 @@ export const BobOpen = ({
   changeRow,
   favorite,
   genres
-}) => (
-  <div
-    className="bob-card bob-card-adult-video-merch"
-    style={{
-      transform: "scale(0.99999)",
-      visibility: "visible",
-      width: "195%",
-      height: "195%",
-      top: "-47.5%",
-      left: "-47.5%",
-      transitionDuration: "500ms"
-    }}
-  >
-    <div>
-      <div className="bob-background">
-        <div
-          className="image-container"
-          style={{
-            backgroundImage: `url(${url})`
-          }}
-        ></div>
-      </div>
-      <div className="bob-overlay">
-        <div
-          className="bob-play-hitzone"
-          onClick={() => history.push(`/title/${id}`)}
-        ></div>
-        <a
-          aria-label={name}
-          className="bob-jaw-hitzone"
-          onClick={() => {
-            selectDetail(id);
-            changeRow(rowId);
-          }}
-        ></a>
-        <div className="bob-overview-wrapper">
-          <div className="bob-overview">
-            <Link
-              tabIndex="0"
-              className="bob-play-button playLink"
-              to={`/title/${id}`}
-            >
-              <span className="play-button">
-                <svg
-                  className="svg-icon svg-icon-play-with-ring"
-                  focusable="true"
-                >
-                  {Play}
-                </svg>
-              </span>
-            </Link>
-            <div className="bob-title">{name}</div>
-            <div className="bob-metadata-wrapper">
-              <div className="meta video-meta video-meta--bob-overview">
-                <span className="match-score-wrapper">
-                  <div className="show-match-score rating-inner"></div>
-                  <div className="meta-thumb-container thumb-up"></div>
-                  <span className="match-score">{score}</span>
+}) => {
+  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+
+  const handleAddToFavorite = () => {
+    setLoading(true);
+
+    dispatch(actionAddToFavorite({ id })).then(() => {
+      dispatch({ type: ADD_TO_FAVORITE, id });
+      setLoading(false);
+    });
+  };
+
+  return (
+    <div
+      className="bob-card bob-card-adult-video-merch"
+      style={{
+        transform: "scale(0.99999)",
+        visibility: "visible",
+        width: "195%",
+        height: "195%",
+        top: "-47.5%",
+        left: "-47.5%",
+        transitionDuration: "500ms"
+      }}
+    >
+      <div>
+        <div className="bob-background">
+          <div
+            className="image-container"
+            style={{
+              backgroundImage: `url(${url})`
+            }}
+          ></div>
+        </div>
+        <div className="bob-overlay">
+          <div
+            className="bob-play-hitzone"
+            onClick={() => history.push(`/title/${id}`)}
+          ></div>
+          <a
+            aria-label={name}
+            className="bob-jaw-hitzone"
+            onClick={() => {
+              selectDetail(id);
+              changeRow(rowId);
+            }}
+          ></a>
+          <div className="bob-overview-wrapper">
+            <div className="bob-overview">
+              <Link
+                tabIndex="0"
+                className="bob-play-button playLink"
+                to={`/title/${id}`}
+              >
+                <span className="play-button">
+                  <svg
+                    className="svg-icon svg-icon-play-with-ring"
+                    focusable="true"
+                  >
+                    {Play}
+                  </svg>
                 </span>
-                <span className="maturity-rating">
-                  <span className="maturity-number" title={cer.meaning}>
-                    {cer.certification}
+              </Link>
+              <div className="bob-title">{name}</div>
+              <div className="bob-metadata-wrapper">
+                <div className="meta video-meta video-meta--bob-overview">
+                  <span className="match-score-wrapper">
+                    <div className="show-match-score rating-inner"></div>
+                    <div className="meta-thumb-container thumb-up"></div>
+                    <span className="match-score">{score}</span>
                   </span>
-                </span>
-                <span className="duration">{length}</span>
+                  <span className="maturity-rating">
+                    <span className="maturity-number" title={cer.meaning}>
+                      {cer.certification}
+                    </span>
+                  </span>
+                  <span className="duration">{length}</span>
+                </div>
               </div>
-            </div>
-            <div className="bob-overview-evidence-wrapper">
-              <div className="evidence-tags">
-                <div className="evidence-list">
-                  {genres &&
-                    genres.map(({ id, name }, i) => (
-                      <div className="evidence-item" key={id}>
-                        {i > 0 && <span className="evidence-separator"></span>}
-                        <span className="evidence-text">{name}</span>
-                      </div>
-                    ))}
+              <div className="bob-overview-evidence-wrapper">
+                <div className="evidence-tags">
+                  <div className="evidence-list">
+                    {genres &&
+                      genres.map(({ id, name }, i) => (
+                        <div className="evidence-item" key={id}>
+                          {i > 0 && (
+                            <span className="evidence-separator"></span>
+                          )}
+                          <span className="evidence-text">{name}</span>
+                        </div>
+                      ))}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className="bob-actions-wrapper">
-          <span className="ActionButtons">
-            <div className="ptrack-content">
-              <div
-                className="nf-svg-button-wrapper mylist-button"
-                data-uia="myListButton"
-              >
-                <a
-                  role="link"
-                  tabIndex="0"
-                  className="nf-svg-button simpleround"
+          <div className="bob-actions-wrapper">
+            <span className="ActionButtons">
+              <div className="ptrack-content">
+                <div
+                  className="nf-svg-button-wrapper mylist-button"
+                  data-uia="myListButton"
                 >
-                  {!favorite ? (
-                    <svg
-                      className="svg-icon svg-icon-mylist-add"
-                      focusable="true"
-                    >
-                      {AddToList}
-                    </svg>
-                  ) : (
-                    <svg
-                      className="svg-icon svg-icon-mylist-added"
-                      focusable="true"
-                    >
-                      {AddedToList}
-                    </svg>
-                  )}
-                </a>
-                <span
-                  className="nf-svg-button-tooltip"
-                  role="status"
-                  aria-live="assertive"
-                >
-                  {favorite
-                    ? "Remove from My Favorites"
-                    : "Add To My Favorites"}
-                </span>
+                  <a
+                    role="link"
+                    tabIndex="0"
+                    className="nf-svg-button simpleround"
+                    onClick={handleAddToFavorite}
+                  >
+                    {!favorite ? (
+                      <svg
+                        className="svg-icon svg-icon-mylist-add"
+                        focusable="true"
+                      >
+                        {AddToList}
+                      </svg>
+                    ) : (
+                      <svg
+                        className="svg-icon svg-icon-mylist-added"
+                        focusable="true"
+                      >
+                        {AddedToList}
+                      </svg>
+                    )}
+                  </a>
+                  <span
+                    className="nf-svg-button-tooltip"
+                    role="status"
+                    aria-live="assertive"
+                  >
+                    {loading
+                      ? favorite
+                        ? "Removing ..."
+                        : "Adding ..."
+                      : favorite
+                      ? "Remove from My Favorites"
+                      : "Add To My Favorites"}
+                  </span>
+                </div>
               </div>
-            </div>
-          </span>
-        </div>
-        <div className="bob-chevron-wrapper">
-          <div className="bob-jawbone-chevron">{ChevronDown}</div>
+            </span>
+          </div>
+          <div className="bob-chevron-wrapper">
+            <div className="bob-jawbone-chevron">{ChevronDown}</div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-);
+  );
+};

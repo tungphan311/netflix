@@ -69,7 +69,7 @@ function Details(props) {
 
   const movie_rate = { rating, total_rating, user_rate };
 
-  const cer = certification
+  const cer = CERTIFICATES.find(c => c.certification === certification)
     ? CERTIFICATES.find(c => c.certification === certification)
     : {
         certification: "G",

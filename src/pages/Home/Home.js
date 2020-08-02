@@ -1,10 +1,10 @@
 /* eslint-disable react/style-prop-object */
 import React, { Component } from "react";
 import Panel from "../../components/Panel/Panel";
-import { RECOMMENDS, SLIDERS } from "../../constants";
-import MovieRow from "../../components/MovieRow/MovieRow";
+import { RECOMMENDS } from "../../constants";
 import "./Home.scss";
 import Recommend from "./Recommend/Recommend";
+import Popular from "./Recommend/Popular";
 
 class Home extends Component {
   constructor(props) {
@@ -36,16 +36,7 @@ class Home extends Component {
       >
         <Panel film={recommend} />
         <Recommend changeRow={this.changeRow} rowSelect={rowSelect} />
-        {/* {SLIDERS.map(({ title, list, id }) => (
-          <MovieRow
-            rowId={id}
-            rowSelect={rowSelect}
-            key={title}
-            title={title}
-            list={list}
-            changeRow={this.changeRow}
-          />
-        ))} */}
+        <Popular changeRow={this.changeRow} rowSelect={rowSelect} />
       </div>
     );
   }
