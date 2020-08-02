@@ -148,7 +148,8 @@ export const BobOpen = ({
   rowId,
   changeRow,
   favorite,
-  genres
+  genres,
+  setHover
 }) => {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
@@ -195,6 +196,7 @@ export const BobOpen = ({
             onClick={() => {
               selectDetail(id);
               changeRow(rowId);
+              setHover(0);
             }}
           ></a>
           <div className="bob-overview-wrapper">
@@ -221,11 +223,11 @@ export const BobOpen = ({
                     <div className="meta-thumb-container thumb-up"></div>
                     <span className="match-score">{score}</span>
                   </span>
-                  {/* <span className="maturity-rating">
+                  <span className="maturity-rating">
                     <span className="maturity-number" title={cer.meaning}>
                       {cer.certification}
                     </span>
-                  </span> */}
+                  </span>
                   <span className="duration">{length}</span>
                 </div>
               </div>

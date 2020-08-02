@@ -7,7 +7,7 @@ import Overview from "./Overview";
 import EpisodeContainer from "./Episode";
 import ShowDetail from "./ShowDetail";
 
-function Detail({ select, selectDetail, changeRow }) {
+function Detail({ select, selectDetail, changeRow, rowId, rowSelect }) {
   const [selectedPane, setSelectedPane] = useState("Overview");
 
   const movies = useSelector(state => state.movie.movies);
@@ -19,7 +19,7 @@ function Detail({ select, selectDetail, changeRow }) {
   const { background, name } = movie;
 
   return (
-    <div className={`jawBoneContent ${select === 0 ? "" : "open"}`}>
+    <div className={`jawBoneContent ${rowId === rowSelect ? "open" : ""}`}>
       <span
         className={`jawBoneOpenContainer ${
           select === 0 ? "jawBoneOpen-leave jawBoneOpen-leave-active" : ""
@@ -86,9 +86,11 @@ function Detail({ select, selectDetail, changeRow }) {
                     style={{ opacity: 1, transitionDuration: "300ms" }}
                   >
                     <div className="ptrack-container">
-                      {selectedPane === "Overview" && <Overview id={select} />}
+                      {selectedPane === "Overview" && (
+                        <Overview id={select} movieId={movie.id} />
+                      )}
                       {selectedPane === "More" && (
-                        <EpisodeContainer id={select} />
+                        <EpisodeContainer id={select} movieId={movie.id} />
                       )}
                       {selectedPane === "ShowDetails" && (
                         <ShowDetail id={select} />

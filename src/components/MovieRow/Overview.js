@@ -5,7 +5,7 @@ import { CERTIFICATES } from "../../constants";
 import { actionAddToFavorite } from "../../state/action/user";
 import { ADD_TO_FAVORITE } from "../../state/reducers/movieReducer";
 
-function Overview({ id }) {
+function Overview({ id, movieId }) {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const movies = useSelector(state => state.movie.movies);
@@ -18,7 +18,7 @@ function Overview({ id }) {
     overview,
     release_date,
     casts
-  } = movies.find(m => m.id === id);
+  } = movies.find(m => m.id === movieId);
 
   const year = release_date ? release_date.substring(0, 4) : "";
 
@@ -31,8 +31,8 @@ function Overview({ id }) {
 
   const handleAddToFavorite = () => {
     setLoading(true);
-    dispatch(actionAddToFavorite({ id })).then(() => {
-      dispatch({ type: ADD_TO_FAVORITE, id });
+    dispatch(actionAddToFavorite({ id: movieId })).then(() => {
+      dispatch({ type: ADD_TO_FAVORITE, id: movieId });
       setLoading(false);
     });
   };

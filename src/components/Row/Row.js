@@ -5,6 +5,7 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { BobOpen } from "../MovieRow/SliderItem";
 import Detail from "../MovieRow/Detail";
 import { formatSlideItem } from "../../utils/utils";
+import { CERTIFICATES } from "../../constants";
 
 class Row extends Component {
   constructor(props) {
@@ -63,6 +64,8 @@ class Row extends Component {
             select={select}
             selectDetail={this.selectDetail}
             changeRow={changeRow}
+            rowId={rowId}
+            rowSelect={rowSelect}
           />
         </div>
       </div>
@@ -73,7 +76,7 @@ class Row extends Component {
 export default Row;
 
 const Movie = ({
-  detail: { id, background, name, href, score, length },
+  detail: { id, background, name, href, score, length, certification },
   selectDetail,
   rowId,
   changeRow,
@@ -81,48 +84,59 @@ const Movie = ({
   setHover,
   select,
   index
-}) => (
-  <div
-    className="slider-item"
-    style={formatSlideItem(index, hover, select)}
-    onMouseEnter={() => setHover(index)}
-    onMouseLeave={() => setHover(0)}
-  >
-    <div className="title-card-container">
-      <div
-        className={`slider-refocus title-card ${
-          hover === index && !select ? "is-bob-open" : ""
-        }`}
-      >
-        <div className="ptrack-content">
-          <Link className="slider-refocus" to="#">
-            <SkeletonTheme highlightColor="#444">
-              <div className="boxart-size-16x9 boxart-container">
-                <img
-                  className="boxart-image boxart-image-in-padded-container"
-                  src={background}
-                  alt="logo"
-                />
-              </div>
-            </SkeletonTheme>
-          </Link>
-        </div>
-        <div className="bob-container">
-          {hover === index && !select && (
-            <BobOpen
-              id={id}
-              url={background}
-              href={href}
-              name={name}
-              score={score}
-              length={length}
-              selectDetail={selectDetail}
-              rowId={rowId}
-              changeRow={changeRow}
-            />
-          )}
+}) => {
+  const cer = CERTIFICATES.find(c => c.certification === certification)
+    ? CERTIFICATES.find(c => c.certification === certification)
+    : {
+        certification: "G",
+        meaning: ""
+      };
+
+  return (
+    <div
+      className="slider-item"
+      style={formatSlideItem(index, hover, select)}
+      onMouseEnter={() => setHover(index)}
+      onMouseLeave={() => setHover(0)}
+    >
+      <div className="title-card-container">
+        <div
+          className={`slider-refocus title-card ${
+            hover === index && !select ? "is-bob-open" : ""
+          }`}
+        >
+          <div className="ptrack-content">
+            <Link className="slider-refocus" to="#">
+              <SkeletonTheme highlightColor="#444">
+                <div className="boxart-size-16x9 boxart-container">
+                  <img
+                    className="boxart-image boxart-image-in-padded-container"
+                    src={background}
+                    alt="logo"
+                  />
+                </div>
+              </SkeletonTheme>
+            </Link>
+          </div>
+          <div className="bob-container">
+            {hover === index && !select && (
+              <BobOpen
+                id={id}
+                url={background}
+                href={href}
+                name={name}
+                score={score}
+                length={length}
+                selectDetail={selectDetail}
+                rowId={rowId}
+                changeRow={changeRow}
+                setHover={setHover}
+                cer={cer}
+              />
+            )}
+          </div>
         </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
