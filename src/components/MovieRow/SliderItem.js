@@ -61,10 +61,12 @@ class SliderItem extends Component {
       genres
     };
 
+    const styles = formatSlideItem(index, hover, select);
+
     return (
       <div
         className="slider-item"
-        style={formatSlideItem(index, hover, item, select)}
+        style={styles}
         onMouseEnter={() => background && setHover(index)}
         onMouseLeave={() => background && setHover(0)}
       >
