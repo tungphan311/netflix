@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import MovieRow from "../../../components/MovieRow/MovieRow";
 import { actionGetRecommend } from "../../../state/action/user";
 
@@ -8,12 +8,19 @@ function Recommend({ changeRow, rowSelect }) {
   const [title, setTile] = useState(null);
   const dispatch = useDispatch();
 
+  const recommends = useSelector(state => state.movie.recommends);
+
   useEffect(() => {
-    dispatch(actionGetRecommend()).then(res => {
-      setList(res);
+    if (!recommends.length) {
+      dispatch(actionGetRecommend()).then(res => {
+        setList(res);
+        setTile("Films you may like");
+      });
+    } else {
+      setList(recommends);
       setTile("Films you may like");
-    });
-  }, [dispatch]);
+    }
+  }, [dispatch, recommends, recommends.length]);
 
   return (
     <MovieRow

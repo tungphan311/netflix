@@ -27,6 +27,14 @@ class Home extends Component {
     this.setState({ film: nextProps.recommends[random] });
   };
 
+  componentDidMount = () => {
+    if (this.props.recommends.length) {
+      const length = this.props.recommends.length;
+      const random = Math.floor(Math.random() * length);
+      this.setState({ film: this.props.recommends[random] });
+    }
+  };
+
   changeRow = id => {
     this.setState({ rowSelect: id });
   };

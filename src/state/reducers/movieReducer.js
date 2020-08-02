@@ -6,6 +6,8 @@ export const GET_RECOMMEND = "movie/GET_RECOMMEND";
 export const GET_FAVORITES = "movie/GET_FAVORITES";
 export const GET_FAVORITES_SUCCESS = "movie/GET_FAVORITES_SUCCESS";
 
+export const MOVIE_DEFAULT = "movie/MOVIE_DEFAULT";
+
 const initState = {
   movies: [],
   recommends: [],
@@ -55,6 +57,13 @@ export function movieReducer(state = initState, action = {}) {
       const { response } = action;
 
       newState.favorites = response;
+
+      return newState;
+    }
+
+    case MOVIE_DEFAULT: {
+      newState.recommends = [];
+      newState.favorites = { hasMore: null, list: [] };
 
       return newState;
     }

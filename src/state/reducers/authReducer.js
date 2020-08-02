@@ -14,6 +14,9 @@ export const REFRESH_TOKEN = "auth/REFRESH_TOKEN";
 export const REFRESH_TOKEN_SUCCESS = "auth/REFRESH_TOKEN_SUCCESS";
 export const REFRESH_TOKEN_FAIL = "auth/REFRESH_TOKEN_FAIL";
 
+export const LOGOUT = "auth/LOGOUT";
+export const LOGOUT_SUCCESS = "auth/LOGOUT_SUCCESS";
+
 const initState = {
   token: null,
   refreshToken: null,
@@ -79,6 +82,13 @@ export function authReducer(state = initState, action = {}) {
       localStorage.removeItem("refresh");
       localStorage.removeItem("authen");
       return newState;
+    }
+
+    case LOGOUT_SUCCESS: {
+      localStorage.removeItem("authen");
+      localStorage.removeItem("refresh");
+
+      return { token: null, refreshToken: null, identity: {} };
     }
 
     default:

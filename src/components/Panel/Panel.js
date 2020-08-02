@@ -28,8 +28,6 @@ function Panel({ film }) {
     });
   };
 
-  console.log(name);
-
   return (
     <SkeletonTheme highlightColor="#444">
       <div className="panel">
