@@ -39,8 +39,15 @@ export function movieReducer(state = initState, action = {}) {
       const { id } = action;
 
       const index = newState.movies.findIndex(m => m.id === id);
-
       newState.movies[index].is_favorite = !newState.movies[index].is_favorite;
+
+      let newList = [...newState.favorites.list];
+      const i = newList.findIndex(m => m.id === id);
+
+      if (i > -1) {
+        newList = newList.filter(m => m.id !== id);
+      }
+      newState.favorites.list = newList;
 
       return newState;
     }
