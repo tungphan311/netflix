@@ -25,7 +25,7 @@ function DetailMenu({ selected, handleSelect }) {
         </a>
         <span></span>
       </li>
-      <li
+      {/* <li
         className={`ShowDetails ${className("ShowDetails")}`}
         id="ShowDetails"
         onClick={() => handleSelect("ShowDetails")}
@@ -34,7 +34,7 @@ function DetailMenu({ selected, handleSelect }) {
           DETAILS
         </a>
         <span></span>
-      </li>
+      </li> */}
     </ul>
   );
 }

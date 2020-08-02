@@ -62,7 +62,8 @@ function Details(props) {
     writers = [],
     casts: cast_list,
     videos = [],
-    review: first_review
+    review: first_review,
+    keywords
   } = film;
 
   const video = videos[0] || {};
@@ -247,7 +248,7 @@ function Details(props) {
                 ))}
               </div>
               <div className="credit-summary-item">
-                <h4 className="inline">Stars: </h4>
+                <h4 className="inline">Casts: </h4>
                 {casts.map(({ id, name }, index) => (
                   <React.Fragment key={index}>
                     <Link to={`/person/${id}`}>{name}</Link>
@@ -267,7 +268,13 @@ function Details(props) {
               </div>
               <div className="credit-summary-item">
                 <h4 className="inline">Tagline: </h4>
-                <h4 className="inline">{tagline}</h4>
+                {keywords &&
+                  keywords.map(({ id, name }, index) => (
+                    <React.Fragment key={index}>
+                      <Link to={`/keywords/${id}`}>{name}</Link>
+                      {index < keywords.length - 1 && ", "}
+                    </React.Fragment>
+                  ))}
               </div>
             </div>
             <div className="btn-add-wrapper">
