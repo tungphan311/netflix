@@ -6,7 +6,7 @@ import {
   addToFavoriteService,
   getRecommendService
 } from "../../services/userServices";
-import { ADD_MOVIE } from "../reducers/movieReducer";
+import { ADD_MOVIE, GET_RECOMMEND } from "../reducers/movieReducer";
 
 export function* addToFavoriteSaga(action) {
   try {
@@ -29,6 +29,7 @@ export function* getRecommendSaga(action) {
     const response = result.data.data;
 
     yield put({ type: ADD_MOVIE, response });
+    yield put({ type: GET_RECOMMEND, response });
 
     yield call(resolvePromiseAction, action, response);
   } catch (err) {

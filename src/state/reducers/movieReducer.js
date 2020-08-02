@@ -1,9 +1,11 @@
 export const ADD_MOVIE = "movie/ADD_MOVIE";
 
 export const ADD_TO_FAVORITE = "movie/ADD_TO_FAVORITE";
+export const GET_RECOMMEND = "movie/GET_RECOMMEND";
 
 const initState = {
-  movies: []
+  movies: [],
+  recommends: []
 };
 
 export function movieReducer(state = initState, action = {}) {
@@ -30,6 +32,14 @@ export function movieReducer(state = initState, action = {}) {
       const index = newState.movies.findIndex(m => m.id === id);
 
       newState.movies[index].is_favorite = !newState.movies[index].is_favorite;
+
+      return newState;
+    }
+
+    case GET_RECOMMEND: {
+      const { response } = action;
+
+      newState.recommends = response;
 
       return newState;
     }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import MovieRow from "../../../components/MovieRow/MovieRow";
-import { actionGetPopularMovies } from "../../../state/action/movies";
+import { actionTopRatedMovies } from "../../../state/action/movies";
 
 const DEFAULT = {
   rowId: 2,
@@ -9,12 +9,12 @@ const DEFAULT = {
   list: new Array(6).fill({})
 };
 
-function Popular({ changeRow, rowSelect }) {
+function TopRated({ rowSelect, changeRow }) {
   const [populars, setPopulars] = useState(DEFAULT);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(actionGetPopularMovies()).then(res => setPopulars(res));
+    dispatch(actionTopRatedMovies()).then(res => setPopulars(res));
   }, [dispatch]);
 
   const { rowId, title, list } = populars;
@@ -30,4 +30,4 @@ function Popular({ changeRow, rowSelect }) {
   );
 }
 
-export default Popular;
+export default TopRated;

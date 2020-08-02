@@ -13,3 +13,5 @@ export const actionGetUserReview = createPromiseAction("GET_USER_REVIEW");
 export const actionGetSimilarMovies = createPromiseAction("GET_SIMILAR_MOVIES");
 
 export const actionGetPopularMovies = createPromiseAction("GET_POPULAR_MOVIES");
+
+export const actionTopRatedMovies = createPromiseAction("GET_TOP_RATED_MOVIES");

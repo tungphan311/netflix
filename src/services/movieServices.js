@@ -51,3 +51,9 @@ export async function getPopularMoviesService({ token }) {
     headers: { Authorization: `Bearer ${token}` }
   });
 }
+
+export async function getTopRatedMoviesService({ token }) {
+  return await API.get("/movies/top-rated", {
+    headers: { Authorization: `Bearer ${token}` }
+  });
+}

@@ -3,7 +3,7 @@ import "./Panel.scss";
 import { Link } from "react-router-dom";
 
 function Panel({ film }) {
-  const { background, name, detail, limit, id } = film;
+  const { background, name, overview, certification, id, is_favorite } = film;
 
   return (
     <div className="panel">
@@ -16,7 +16,7 @@ function Panel({ film }) {
           </div>
           <div className="embedded-component">
             <span className="maturity-rating">
-              <span className="maturity-number">{limit}</span>
+              <span className="maturity-number">{certification}</span>
             </span>
           </div>
         </div>
@@ -25,16 +25,11 @@ function Panel({ film }) {
             <div className="logo-and-text">
               <div className="title__wrapper">
                 <div className="billboard-title">
-                  <img
-                    className="title-logo"
-                    src={name}
-                    title="Spider-Man: Into the Spider-Verse"
-                    alt="Spider-Man: Into the Spider-Verse"
-                  />
+                  <span className="title__name">{name}</span>
                 </div>
               </div>
               <div className="info__wrapper">
-                <div className="synopsis no-supplemental">{` ${detail} `}</div>
+                <div className="synopsis no-supplemental">{` ${overview} `}</div>
               </div>
               <div className="button__wrapper">
                 <Link className="play-btn" to={`/watch/${id}`}>

@@ -11,7 +11,8 @@ import {
   actionReviewMovie,
   actionGetUserReview,
   actionGetSimilarMovies,
-  actionGetPopularMovies
+  actionGetPopularMovies,
+  actionTopRatedMovies
 } from "../action/movies";
 import {
   getMovieById,
@@ -20,11 +21,13 @@ import {
   reviewMovieService,
   getUserReviewService,
   getSimilarMoviesService,
-  getPopularMoviesService
+  getPopularMoviesService,
+  getTopRatedMoviesService
 } from "../../services/movieServices";
 import { toast, toastErr } from "../../utils/toast";
 import { FORM_KEY_REVIEW } from "../reducers/formReducer";
 import { SET_LOADING } from "../reducers/loadingReducer";
+import { ADD_MOVIE } from "../reducers/movieReducer";
 
 export function* getMovieByIdSaga(action) {
   try {
@@ -125,6 +128,27 @@ export function* getPopularMoviesSaga(action) {
     const result = yield call(getPopularMoviesService, { token });
     const response = result.data.data;
 
+    const { list } = response;
+
+    yield put({ type: ADD_MOVIE, response: list });
+
+    yield call(resolvePromiseAction, action, response);
+  } catch (err) {
+    yield toastErr(err);
+  }
+}
+
+export function* getTopRatedMoviesSaga(action) {
+  try {
+    const token = yield localStorage.getItem("authen");
+
+    const result = yield call(getTopRatedMoviesService, { token });
+    const response = result.data.data;
+
+    const { list } = response;
+
+    yield put({ type: ADD_MOVIE, response: list });
+
     yield call(resolvePromiseAction, action, response);
   } catch (err) {
     yield toastErr(err);
@@ -139,4 +163,5 @@ export default function* movieSaga() {
   yield takeEvery(actionGetUserReview, getUserReviewSaga);
   yield takeEvery(actionGetSimilarMovies, getSimilarMoviesSaga);
   yield takeEvery(actionGetPopularMovies, getPopularMoviesSaga);
+  yield takeEvery(actionTopRatedMovies, getTopRatedMoviesSaga);
 }
