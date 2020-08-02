@@ -120,6 +120,12 @@
   flex-direction: column;
 }
 
+.svg-icon.panel-icon {
+  height: 16px;
+  width: 16px;
+  margin-right: 0.71em;
+}
+
 .logo-and-text {
   width: 100%;
   transition: transform 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);

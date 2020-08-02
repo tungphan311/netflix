@@ -65,14 +65,14 @@ class MovieRow extends Component {
     const { page, hover, item, movies, width, select } = this.state;
 
     return (
-      <div
-        className={`mvRow mvRow_title_card ${
-          rowSelect === rowId ? "mvRow-open" : ""
-        }`}
-        onMouseEnter={() => this.setState({ show: true })}
-        onMouseLeave={() => this.setState({ show: false })}
-      >
-        <SkeletonTheme highlightColor="#444">
+      <SkeletonTheme highlightColor="#444">
+        <div
+          className={`mvRow mvRow_title_card ${
+            rowSelect === rowId ? "mvRow-open" : ""
+          }`}
+          onMouseEnter={() => this.setState({ show: true })}
+          onMouseLeave={() => this.setState({ show: false })}
+        >
           <h2 className="rowHeader">
             {href ? (
               <Link className="rowTitle" aria-label={title} to={href}>
@@ -96,68 +96,69 @@ class MovieRow extends Component {
               </span>
             )}
           </h2>
-        </SkeletonTheme>
-        <div className="rowContainer verticalBoxArtRow rowContainer_title_card">
-          <div className="ptrack-container">
-            <div
-              className={`rowContent slider-hover-trigger-layer ${
-                list.length <= item ? "no-indicator" : ""
-              } `}
-            >
-              <Carousel
-                interval={null}
-                onSelect={this.handleSelect}
-                prevIcon={
-                  <span
-                    className="handle handlePrev active"
-                    tabIndex="0"
-                    role="button"
-                  >
-                    <b className="indicator-icon icon-leftCaret"></b>
-                  </span>
-                }
-                nextIcon={
-                  <span
-                    className="handle handleNext active"
-                    tabIndex="0"
-                    role="button"
-                  >
-                    <b className="indicator-icon icon-rightCaret"></b>
-                  </span>
-                }
+
+          <div className="rowContainer verticalBoxArtRow rowContainer_title_card">
+            <div className="ptrack-container">
+              <div
+                className={`rowContent slider-hover-trigger-layer ${
+                  list.length <= item ? "no-indicator" : ""
+                } `}
               >
-                {movies &&
-                  movies.map((subList, i) => (
-                    <Carousel.Item key={i}>
-                      {subList.map((sub, index) => (
-                        <SliderItem
-                          index={index + 1}
-                          key={index}
-                          hover={hover}
-                          setHover={this.setHover}
-                          details={sub}
-                          page={page}
-                          item={item}
-                          selectDetail={this.selectDetail}
-                          select={select}
-                          rowId={rowId}
-                          changeRow={changeRow}
-                          width={width}
-                        />
-                      ))}
-                    </Carousel.Item>
-                  ))}
-              </Carousel>
+                <Carousel
+                  interval={null}
+                  onSelect={this.handleSelect}
+                  prevIcon={
+                    <span
+                      className="handle handlePrev active"
+                      tabIndex="0"
+                      role="button"
+                    >
+                      <b className="indicator-icon icon-leftCaret"></b>
+                    </span>
+                  }
+                  nextIcon={
+                    <span
+                      className="handle handleNext active"
+                      tabIndex="0"
+                      role="button"
+                    >
+                      <b className="indicator-icon icon-rightCaret"></b>
+                    </span>
+                  }
+                >
+                  {movies &&
+                    movies.map((subList, i) => (
+                      <Carousel.Item key={i}>
+                        {subList.map((sub, index) => (
+                          <SliderItem
+                            index={index + 1}
+                            key={index}
+                            hover={hover}
+                            setHover={this.setHover}
+                            details={sub}
+                            page={page}
+                            item={item}
+                            selectDetail={this.selectDetail}
+                            select={select}
+                            rowId={rowId}
+                            changeRow={changeRow}
+                            width={width}
+                          />
+                        ))}
+                      </Carousel.Item>
+                    ))}
+                </Carousel>
+              </div>
+              <Detail
+                select={select}
+                selectDetail={this.selectDetail}
+                width={width}
+                changeRow={changeRow}
+              />
             </div>
-            <Detail
-              select={select}
-              selectDetail={this.selectDetail}
-              width={width}
-              changeRow={changeRow}
-            />
           </div>
         </div>
-      </div>
+      </SkeletonTheme>
     );
   }
 }

@@ -81,19 +81,24 @@ class SliderItem extends Component {
                 onClick={() => background && selectDetail(id)}
               >
                 <SkeletonTheme highlightColor="#444">
-                  {background ? (
-                    <div className="boxart-size-16x9 boxart-container">
-                      <LazyLoad once>
+                  <div className="boxart-size-16x9 boxart-container">
+                    {background ? (
+                      <LazyLoad
+                        placeholder={
+                          <Skeleton duration={2} className="img-skeleton" />
+                        }
+                        once
+                      >
                         <img
                           className="boxart-image boxart-image-in-padded-container"
                           src={background}
                           alt=""
                         />
                       </LazyLoad>
-                    </div>
-                  ) : (
-                    <Skeleton duration={2} height={121} />
-                  )}
+                    ) : (
+                      <Skeleton duration={2} className="img-skeleton" />
+                    )}
+                  </div>
                 </SkeletonTheme>
                 {select !== id && (
                   <div className="click-to-change-JAW-indicator is-another-JAW-open">

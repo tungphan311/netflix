@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Panel.scss";
 import { Link } from "react-router-dom";
+import { AddToList, AddedToList } from "../../constants";
 
 function Panel({ film }) {
+  const [loading, setLoading] = useState(false);
+
   const { background, name, overview, certification, id, is_favorite } = film;
+
+  const handleAddToFavorite = () => {
+    setLoading(!loading);
+  };
 
   return (
     <div className="panel">
@@ -41,13 +48,33 @@ function Panel({ film }) {
                     <span className="nf-flat-button-text">Play</span>
                   </span>
                 </Link>
-                <a className="love-btn">
+                <a className="love-btn" onClick={handleAddToFavorite}>
                   <span
                     tabIndex="-1"
                     className="nf-icon-button nf-flat-button nf-flat-button-uppercase"
                   >
-                    <span className="nf-flat-button-icon icon-button-mylist-add"></span>
-                    <span className="nf-flat-button-text">My Favorites</span>
+                    {is_favorite ? (
+                      <svg
+                        className="svg-icon svg-icon-mylist-add panel-icon"
+                        focusable="true"
+                      >
+                        {AddToList}
+                      </svg>
+                    ) : (
+                      <svg
+                        className="svg-icon svg-icon-mylist-added panel-icon"
+                        focusable="true"
+                      >
+                        {AddedToList}
+                      </svg>
+                    )}
+                    <span className="nf-flat-button-text">
+                      {loading
+                        ? is_favorite
+                          ? "Removing ..."
+                          : "Adding ..."
+                        : "My Favorites"}
+                    </span>
                   </span>
                 </a>
                 <Link className="more-btn" to={`/title/${id}`}>
