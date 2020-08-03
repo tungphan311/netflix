@@ -14,6 +14,7 @@ import ReviewPage from "../pages/Reviews/Review";
 import BrowseTitle from "../pages/Browse/BrowseTitle";
 import Activity from "../pages/Activity/Activity";
 import Actor from "../pages/Browse/Actor";
+import Genres from "../pages/Browse/Genres/Genres";
 
 export const AuthorizedRoute = ({ component: Component, isUser, ...rest }) => (
   <Route
@@ -49,7 +50,9 @@ class Routes extends Component {
             "/title/:id/reviews",
             "/browse/title",
             "/user/activity",
-            "/person/:id"
+            "/person/:id",
+            "/genres/:id",
+            "/genres"
           ]}
         >
           <DefaultLayout history={history}>
@@ -96,6 +99,18 @@ class Routes extends Component {
               exact
               path="/person/:id"
               component={Actor}
+              isUser={isUser}
+            />
+            <AuthorizedRoute
+              exact
+              path="/genres/:id"
+              component={Genres}
+              isUser={isUser}
+            />
+            <AuthorizedRoute
+              exact
+              path="/genres"
+              component={Genres}
               isUser={isUser}
             />
           </DefaultLayout>

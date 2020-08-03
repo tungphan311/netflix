@@ -1,0 +1,78 @@
+.aro-gallery-header {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0;
+  min-height: 0;
+  padding: 0;
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+
+  .genreTitle {
+    font-size: 38px;
+    font-weight: 700;
+    white-space: nowrap;
+    margin-right: 15px;
+  }
+
+  .subgenres {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 7px;
+  }
+}
+
+.aro-genre-details {
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  flex-direction: row;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: start;
+  justify-content: flex-start;
+
+  .subgenres {
+    margin: 0 30px;
+  }
+}
+
+.aro-toggle {
+  margin-left: auto;
+  display: flex;
+  z-index: 2;
+}
+
+.nfDropDown.theme-lakira {
+  position: relative;
+  text-align: left;
+
+  .label {
+    height: 26px;
+    padding-left: 10px;
+    line-height: 26px;
+    letter-spacing: 1px;
+    font-size: 14px;
+    font-weight: 700;
+    box-sizing: border-box;
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    display: inline-block;
+    color: #fff;
+    background-color: #000;
+    appearance: none;
+    border-radius: 0;
+    position: relative;
+    padding-right: 50px;
+  }
+}
+
+.sub-menu.theme-lakira .sub-menu-list.multi-column {
+  display: table-cell;
+}
+
+.sub-menu-link:hover {
+  text-decoration: underline;
+}

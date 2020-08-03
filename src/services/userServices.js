@@ -27,3 +27,14 @@ export async function actorGetMovie({ id, token, page }) {
     headers: { Authorization: `Bearer ${token}` }
   });
 }
+
+export async function getGenres() {
+  return await API.get("/genres");
+}
+
+export async function genreGetMovie({ id = 0, token, page }) {
+  console.log(id);
+  return await API.get(`/genres/${id}?page=${page}`, {
+    headers: { Authorization: `Bearer ${token}` }
+  });
+}
