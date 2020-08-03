@@ -18,20 +18,7 @@ export const Episode = ({ href, title, length, description, background }) => (
               }}
             >
               <div className="numberVignette"></div>
-              {/* <div className={`episodeNumber ${progress ? "" : "noProgress"}`}>
-            <span aria-hidden="true">{ep}</span>
-          </div> */}
-              {/* {progress && (
-            <div class="progress">
-              <span class="progress-bar">
-                <span
-                  role="presentation"
-                  class="progress-completed"
-                  style={{ width: "47%" }}
-                ></span>
-              </span>
-            </div>
-          )} */}
+
               <Link className="episodePlay slider-refocus playLink" to={href}>
                 <div className="playRing">
                   <div className="play icon-play"></div>

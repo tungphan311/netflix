@@ -78,6 +78,7 @@ function BrowseTitle() {
           </div>
         }
         next={fetchData}
+        style={{ overflow: "hidden" }}
       >
         <div>
           <div className={`gallery ${rowSelect > 0 ? "gallery-open" : ""}`}>

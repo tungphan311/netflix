@@ -189,7 +189,7 @@ function Search() {
                   <Movie {...m} key={i} outFocus={outFocus} />
                 ))}
                 {search && celebs.length && (
-                  <Link class="cBtiSu" to={`/browse/celebs?q=${text}`}>
+                  <Link className="cBtiSu" to={`/browse/celebs?q=${text}`}>
                     See all celebs with "{text}"
                   </Link>
                 )}
@@ -197,7 +197,7 @@ function Search() {
                   <Movie {...m} key={i} outFocus={outFocus} />
                 ))}
                 {search && movie.length && (
-                  <Link class="cBtiSu" to={`/browse/title?q=${text}`}>
+                  <Link className="cBtiSu" to={`/browse/title?q=${text}`}>
                     See all movies with "{text}"
                   </Link>
                 )}
