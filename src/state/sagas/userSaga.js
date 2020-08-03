@@ -16,6 +16,7 @@ import {
 import { TOKEN_EXPIRED } from "../../constants";
 import { REFRESH_TOKEN, CHECK_TOKEN_FAIL } from "../reducers/authReducer";
 import history from "../history";
+import { getPopularMoviesService } from "../../services/movieServices";
 
 export function* addToFavoriteSaga(action) {
   try {
@@ -37,8 +38,17 @@ export function* getRecommendSaga(action) {
     const result = yield call(getRecommendService, { token });
     const response = result.data.data;
 
-    yield put({ type: ADD_MOVIE, response });
-    yield put({ type: GET_RECOMMEND, response });
+    if (response.length) {
+      yield put({ type: ADD_MOVIE, response });
+      yield put({ type: GET_RECOMMEND, response });
+    } else {
+      const res = yield call(getPopularMoviesService, { token });
+      const resp = res.data.data;
+
+      const { list } = resp;
+      yield put({ type: ADD_MOVIE, response: list });
+      yield put({ type: GET_RECOMMEND, response: list });
+    }
 
     yield call(resolvePromiseAction, action, response);
   } catch (err) {

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./UserSection.scss";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { Person, DownArrow } from "../../Svg";
 import OutsideClickWrapper from "../../OutsideClickWrapper/OutsideClickWrapper";
 import { LOGOUT } from "../../../state/reducers/authReducer";
@@ -34,12 +35,16 @@ function UserSection() {
             <div className="topbar"></div>
             <ul className="account-links sub-menu-list" aria-label="Account">
               <li className="sub-menu-item">
-                <a className="sub-menu-link" href="/YourAccount">
+                <Link className="sub-menu-link" to="/user/activity">
                   Your activity
-                </a>
+                </Link>
               </li>
               <li className="sub-menu-item">
-                <a className="sub-menu-link" href="https://help.netflix.com/">
+                <a
+                  className="sub-menu-link"
+                  target="_blank"
+                  href="https://help.netflix.com/"
+                >
                   Help Center
                 </a>
               </li>

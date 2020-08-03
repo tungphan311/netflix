@@ -22,6 +22,8 @@ function Recommend({ changeRow, rowSelect }) {
     }
   }, [dispatch, recommends, recommends.length]);
 
+  if (!list.length) return null;
+
   return (
     <MovieRow
       rowId={1}
