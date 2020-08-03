@@ -5,7 +5,8 @@ import { toastErr } from "../../utils/toast";
 import {
   addToFavoriteService,
   getRecommendService,
-  getFavoritesService
+  getFavoritesService,
+  actorGetMovie
 } from "../../services/userServices";
 import {
   ADD_MOVIE,
@@ -17,6 +18,8 @@ import { TOKEN_EXPIRED } from "../../constants";
 import { REFRESH_TOKEN, CHECK_TOKEN_FAIL } from "../reducers/authReducer";
 import history from "../history";
 import { getPopularMoviesService } from "../../services/movieServices";
+import { actionGetActorMovies } from "../action/browse";
+import { SET_LOADING } from "../reducers/loadingReducer";
 
 export function* addToFavoriteSaga(action) {
   try {
@@ -88,8 +91,35 @@ export function* getFavoritesSaga() {
   }
 }
 
+export function* getActorMoviesSaga(action) {
+  try {
+    const { id, page } = action.payload;
+
+    if (page === 1) {
+      yield put({ type: SET_LOADING });
+    }
+
+    const token = yield localStorage.getItem("authen");
+
+    const result = yield call(actorGetMovie, { id, token, page });
+    const response = result.data.data;
+
+    const { list } = response;
+
+    yield put({ type: ADD_MOVIE, response: list });
+
+    yield call(resolvePromiseAction, action, response);
+  } catch (err) {
+    yield toastErr(err);
+    yield put({ type: SET_LOADING, status: false });
+  } finally {
+    yield put({ type: SET_LOADING, status: false });
+  }
+}
+
 export default function* userSaga() {
   yield takeEvery(actionAddToFavorite, addToFavoriteSaga);
   yield takeEvery(actionGetRecommend, getRecommendSaga);
+  yield takeEvery(actionGetActorMovies, getActorMoviesSaga);
   yield takeEvery(GET_FAVORITES, getFavoritesSaga);
 }

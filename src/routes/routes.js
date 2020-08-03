@@ -13,6 +13,7 @@ import Favorites from "../pages/Favorites/Favorites";
 import ReviewPage from "../pages/Reviews/Review";
 import BrowseTitle from "../pages/Browse/BrowseTitle";
 import Activity from "../pages/Activity/Activity";
+import Actor from "../pages/Browse/Actor";
 
 export const AuthorizedRoute = ({ component: Component, isUser, ...rest }) => (
   <Route
@@ -47,7 +48,8 @@ class Routes extends Component {
             "/my-favorites",
             "/title/:id/reviews",
             "/browse/title",
-            "/user/activity"
+            "/user/activity",
+            "/person/:id"
           ]}
         >
           <DefaultLayout history={history}>
@@ -88,6 +90,12 @@ class Routes extends Component {
               exact
               path="/user/activity"
               component={Activity}
+              isUser={isUser}
+            />
+            <AuthorizedRoute
+              exact
+              path="/person/:id"
+              component={Actor}
               isUser={isUser}
             />
           </DefaultLayout>

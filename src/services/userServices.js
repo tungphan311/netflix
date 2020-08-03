@@ -21,3 +21,9 @@ export async function getFavoritesService({ token }) {
     headers: { Authorization: `Bearer ${token}` }
   });
 }
+
+export async function actorGetMovie({ id, token, page }) {
+  return await API.get(`/actor/${id}?page=${page}`, {
+    headers: { Authorization: `Bearer ${token}` }
+  });
+}
