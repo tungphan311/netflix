@@ -1,7 +1,7 @@
 import { takeEvery, call, put } from "redux-saga/effects";
 import { resolvePromiseAction, dispatch } from "@adobe/redux-saga-promise";
 import { actionAddToFavorite, actionGetRecommend } from "../action/user";
-import { toastErr, toast } from "../../utils/toast";
+import { toastErr } from "../../utils/toast";
 import {
   addToFavoriteService,
   getRecommendService,

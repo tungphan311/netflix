@@ -53,7 +53,6 @@ function Details(props) {
     length: runtime,
     overview: description,
     genres,
-    tagline,
     certification,
     rating,
     total_rating,

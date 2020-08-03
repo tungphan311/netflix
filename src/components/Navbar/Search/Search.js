@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Search.scss";
 import { useDispatch, useSelector } from "react-redux";
-import Axios from "axios";
 import { Link } from "react-router-dom";
 import { css } from "@emotion/core";
 import PulseLoader from "react-spinners/PulseLoader";

@@ -68,7 +68,7 @@ function Overview({ id, movieId }) {
             <div className="video-title"></div>
             <div className="synopsiss">{overview}</div>
             <div className="jawbone-actions">
-              <Link className="playLink" to={`/watch/${id}`}>
+              <Link className="playLink" to={`/title/${id}`}>
                 <span className="nf-icon-button nf-flat-button nf-flat-button-primary nf-flat-button-uppercase">
                   <span className="nf-flat-button-icon nf-flat-button-icon-play"></span>
                   <span className="nf-flat-button-text">Play</span>

@@ -228,9 +228,9 @@ export function* getTopRatedMoviesSaga(action) {
 
 export function* searchMoviesSaga(action) {
   try {
-    const { type, query, short, cancel } = action.payload;
+    const { type, query, short, page } = action.payload;
 
-    if (short === 0) {
+    if (short === 0 && page === 1) {
       yield put({ type: SET_LOADING });
     }
     const token = yield localStorage.getItem("authen");
@@ -240,7 +240,7 @@ export function* searchMoviesSaga(action) {
       query,
       short,
       token,
-      cancel
+      page
     });
     const response = result.data.data;
     if (short === 1) {

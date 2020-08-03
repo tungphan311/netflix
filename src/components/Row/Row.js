@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Row.scss";
 import { Link } from "react-router-dom";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import { SkeletonTheme } from "react-loading-skeleton";
 import { BobOpen } from "../MovieRow/SliderItem";
 import Detail from "../MovieRow/Detail";
 import { formatSlideItem } from "../../utils/utils";
