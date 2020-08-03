@@ -1,3 +1,4 @@
+import qs from "query-string";
 import API from "../utils/axios";
 
 export async function getMovieById({ id, token }) {
@@ -61,5 +62,21 @@ export async function getPopularMoviesService({ token }) {
 export async function getTopRatedMoviesService({ token }) {
   return await API.get("/movies/top-rated", {
     headers: { Authorization: `Bearer ${token}` }
+  });
+}
+
+export async function searchMovies({
+  type = "All",
+  query,
+  short = 1,
+  token,
+  cancel,
+  page = 1
+}) {
+  const queryString = qs.stringify({ type, query, short, page });
+
+  return await API.get(`/movies?${queryString}`, {
+    headers: { Authorization: `Bearer ${token}` }
+    // cancelToken: cancel.token
   });
 }

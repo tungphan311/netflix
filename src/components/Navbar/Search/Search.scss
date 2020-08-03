@@ -7,6 +7,20 @@
   border-radius: 4px;
   background-color: rgb(24, 26, 27);
   position: relative;
+
+  &.focus {
+    box-shadow: inset 0 0 0 2px $primary;
+    border: 0;
+
+    .ipc-button {
+      border-right-color: $primary;
+    }
+  }
+}
+
+.search__input__wrapper {
+  width: 100%;
+  position: relative;
 }
 
 .navbar__search__input {
@@ -27,6 +41,169 @@
 .navbar__search__button {
   background-color: transparent;
   border: none;
+}
+
+.search__menu {
+  background-color: rgb(23, 25, 26);
+  width: 100%;
+  left: 0px;
+  right: 0px;
+  top: calc(100% + 0.25rem);
+  position: absolute;
+  border-radius: 4px;
+  opacity: 0;
+  transition: opacity 300ms;
+
+  &.show {
+    opacity: 1;
+  }
+}
+
+.cBtiSu {
+  display: flex;
+  cursor: pointer;
+  width: 100%;
+  text-decoration: none;
+  padding: 0.5rem;
+  transition: all 0.125s ease 0s;
+  border-top: 1px solid #e6e6e6;
+}
+
+.suggestion__list {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+
+  li {
+    display: inline;
+  }
+
+  li {
+    margin-bottom: 0.5em;
+  }
+}
+
+.suggestion--link {
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: #fff;
+  display: flex;
+  cursor: pointer;
+  width: 100%;
+  padding: 0.5rem;
+  transition: all 0.125s ease 0s;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.03125em;
+  text-transform: inherit;
+  -webkit-font-smoothing: auto;
+
+  &:hover {
+    background-color: rgba($color: $grey, $alpha: 0.1);
+  }
+}
+
+.suggestion-image {
+  min-width: 3rem;
+  width: 3rem;
+  font-size: 2rem;
+  display: flex;
+}
+
+.ipc-media {
+  display: inline-flex;
+  overflow: hidden;
+  position: relative;
+
+  &--poster {
+    background: rgba(24, 26, 27, 0.1);
+    color: rgba(232, 230, 227, 0.1);
+
+    &:before {
+      padding-bottom: 148%;
+    }
+  }
+
+  &:before {
+    content: "";
+    display: block;
+    position: relative;
+    width: 100%;
+  }
+
+  .ipc-image {
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    font-size: 1rem;
+  }
+}
+
+.suggestion-info {
+  display: flex;
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+  flex-direction: column;
+  overflow: hidden;
+  margin: 0px 0px 0px 1rem;
+  padding: 0px;
+}
+
+.bFZBPn {
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+
+  &--title {
+    color: rgb(232, 230, 227);
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 400;
+    letter-spacing: 0.03125em;
+    text-decoration: inherit;
+    text-transform: inherit;
+    -webkit-font-smoothing: auto;
+  }
+
+  &--year {
+    color: rgba(232, 230, 227, 0.7);
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 400;
+    letter-spacing: 0.01786em;
+    text-decoration: inherit;
+    text-transform: inherit;
+    -webkit-font-smoothing: auto;
+  }
+}
+
+.dYwgNK {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  height: 200px;
+  width: 100%;
+}
+
+.ipc-error-message {
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  justify-content: center;
+}
+
+.ipc-error-message--on-baseAlt {
+  color: rgb(250, 123, 71);
 }
 
 .ipc-button {

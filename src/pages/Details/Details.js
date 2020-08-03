@@ -322,9 +322,9 @@ function Details(props) {
                   ))}
               </tbody>
             </table>
-            <div className="see-more">
+            {/* <div className="see-more">
               <a href={`/title/${id}/casts`}>See full cast »</a>
-            </div>
+            </div> */}
           </Card>
           <Card title="User Reviews">
             {first_review ? (

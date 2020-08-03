@@ -14,7 +14,8 @@ import {
   actionGetSimilarMovies,
   actionGetPopularMovies,
   actionTopRatedMovies,
-  actionGetMovieReview
+  actionGetMovieReview,
+  actionSearchMovies
 } from "../action/movies";
 import {
   getMovieById,
@@ -25,7 +26,8 @@ import {
   getSimilarMoviesService,
   getPopularMoviesService,
   getTopRatedMoviesService,
-  getMovieReview
+  getMovieReview,
+  searchMovies
 } from "../../services/movieServices";
 import { toast, toastErr } from "../../utils/toast";
 import { FORM_KEY_REVIEW } from "../reducers/formReducer";
@@ -38,6 +40,7 @@ import {
 import { TOKEN_EXPIRED } from "../../constants";
 import { REFRESH_TOKEN, CHECK_TOKEN_FAIL } from "../reducers/authReducer";
 import history from "../history";
+import { ADD_RESULT } from "../reducers/searchReducer";
 
 export function* getMovieByIdSaga(action) {
   try {
@@ -223,6 +226,29 @@ export function* getTopRatedMoviesSaga(action) {
   }
 }
 
+export function* searchMoviesSaga(action) {
+  try {
+    const { type, query, short, cancel } = action.payload;
+    const token = yield localStorage.getItem("authen");
+
+    const result = yield call(searchMovies, {
+      type,
+      query,
+      short,
+      token,
+      cancel
+    });
+    const response = result.data.data;
+    const { query: label, title, celebs } = response;
+
+    yield put({ type: ADD_RESULT, label, title, celebs, requestType: type });
+
+    yield call(resolvePromiseAction, action, response);
+  } catch (err) {
+    yield toastErr(err);
+  }
+}
+
 export default function* movieSaga() {
   yield takeEvery(actionGetMovieById, getMovieByIdSaga);
   yield takeEvery(actionGetMovieReview, getMovieReviewSaga);
@@ -233,4 +259,5 @@ export default function* movieSaga() {
   yield takeEvery(actionGetSimilarMovies, getSimilarMoviesSaga);
   yield takeEvery(actionGetPopularMovies, getPopularMoviesSaga);
   yield takeEvery(actionTopRatedMovies, getTopRatedMoviesSaga);
+  yield takeEvery(actionSearchMovies, searchMoviesSaga);
 }
