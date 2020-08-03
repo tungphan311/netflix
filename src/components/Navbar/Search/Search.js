@@ -189,12 +189,17 @@ function Search() {
                 {celebs.map((m, i) => (
                   <Movie {...m} key={i} outFocus={outFocus} />
                 ))}
+                {search && celebs.length && (
+                  <Link class="cBtiSu" to={`/browse/celebs?q=${text}`}>
+                    See all celebs with "{text}"
+                  </Link>
+                )}
                 {movie.map((m, i) => (
                   <Movie {...m} key={i} outFocus={outFocus} />
                 ))}
-                {search && (celebs.length || movie.length) && (
-                  <Link class="cBtiSu" to="">
-                    See all results for "{text}"
+                {search && movie.length && (
+                  <Link class="cBtiSu" to={`/browse/title?q=${text}`}>
+                    See all movies with "{text}"
                   </Link>
                 )}
               </ul>

@@ -58,7 +58,8 @@ class SliderItem extends Component {
       rowId,
       changeRow,
       favorite,
-      genres
+      genres,
+      setHover
     };
 
     const styles = formatSlideItem(index, hover, select);

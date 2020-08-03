@@ -229,6 +229,10 @@ export function* getTopRatedMoviesSaga(action) {
 export function* searchMoviesSaga(action) {
   try {
     const { type, query, short, cancel } = action.payload;
+
+    if (short === 0) {
+      yield put({ type: SET_LOADING });
+    }
     const token = yield localStorage.getItem("authen");
 
     const result = yield call(searchMovies, {
@@ -239,13 +243,25 @@ export function* searchMoviesSaga(action) {
       cancel
     });
     const response = result.data.data;
-    const { query: label, title, celebs } = response;
+    if (short === 1) {
+      const { query: label, title, celebs } = response;
 
-    yield put({ type: ADD_RESULT, label, title, celebs, requestType: type });
+      yield put({ type: ADD_RESULT, label, title, celebs, requestType: type });
+    } else {
+      const {
+        title: { list }
+      } = response;
+
+      yield put({ type: ADD_MOVIE, response: list });
+    }
 
     yield call(resolvePromiseAction, action, response);
   } catch (err) {
     yield toastErr(err);
+
+    yield put({ type: SET_LOADING, status: false });
+  } finally {
+    yield put({ type: SET_LOADING, status: false });
   }
 }
 
