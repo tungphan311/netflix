@@ -2,6 +2,8 @@ export const ADD_MOVIE = "movie/ADD_MOVIE";
 
 export const ADD_TO_FAVORITE = "movie/ADD_TO_FAVORITE";
 export const GET_RECOMMEND = "movie/GET_RECOMMEND";
+export const GET_TOP_RATED = "movie/GET_TOP_RATED";
+export const GET_POPULAR = "movie/GET_POPULAR";
 
 export const GET_FAVORITES = "movie/GET_FAVORITES";
 export const GET_FAVORITES_SUCCESS = "movie/GET_FAVORITES_SUCCESS";
@@ -11,6 +13,8 @@ export const MOVIE_DEFAULT = "movie/MOVIE_DEFAULT";
 const initState = {
   movies: [],
   recommends: [],
+  topRates: {},
+  populars: {},
   favorites: {
     hasMore: null,
     list: []
@@ -56,6 +60,22 @@ export function movieReducer(state = initState, action = {}) {
       const { response } = action;
 
       newState.recommends = response;
+
+      return newState;
+    }
+
+    case GET_TOP_RATED: {
+      const { response } = action;
+
+      newState.topRates = response;
+
+      return newState;
+    }
+
+    case GET_POPULAR: {
+      const { response } = action;
+
+      newState.populars = response;
 
       return newState;
     }

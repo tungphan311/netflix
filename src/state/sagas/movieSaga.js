@@ -1,7 +1,8 @@
 import { takeEvery, call, select, put } from "redux-saga/effects";
 import {
   resolvePromiseAction,
-  rejectPromiseAction
+  rejectPromiseAction,
+  dispatch
 } from "@adobe/redux-saga-promise";
 import { getFormValues } from "redux-form";
 import {
@@ -29,7 +30,14 @@ import {
 import { toast, toastErr } from "../../utils/toast";
 import { FORM_KEY_REVIEW } from "../reducers/formReducer";
 import { SET_LOADING } from "../reducers/loadingReducer";
-import { ADD_MOVIE } from "../reducers/movieReducer";
+import {
+  ADD_MOVIE,
+  GET_POPULAR,
+  GET_TOP_RATED
+} from "../reducers/movieReducer";
+import { TOKEN_EXPIRED } from "../../constants";
+import { REFRESH_TOKEN, CHECK_TOKEN_FAIL } from "../reducers/authReducer";
+import history from "../history";
 
 export function* getMovieByIdSaga(action) {
   try {
@@ -153,10 +161,29 @@ export function* getPopularMoviesSaga(action) {
     const { list } = response;
 
     yield put({ type: ADD_MOVIE, response: list });
+    yield put({ type: GET_POPULAR, response });
 
     yield call(resolvePromiseAction, action, response);
   } catch (err) {
-    yield toastErr(err);
+    const {
+      response: {
+        status,
+        data: { sub_status }
+      }
+    } = err;
+
+    if (status === 401) {
+      if (sub_status === TOKEN_EXPIRED) {
+        yield put({ type: REFRESH_TOKEN });
+
+        yield dispatch(actionGetPopularMovies());
+      } else {
+        yield toastErr(err);
+
+        yield put({ type: CHECK_TOKEN_FAIL });
+        history.push("/login");
+      }
+    }
   }
 }
 
@@ -170,10 +197,29 @@ export function* getTopRatedMoviesSaga(action) {
     const { list } = response;
 
     yield put({ type: ADD_MOVIE, response: list });
+    yield put({ type: GET_TOP_RATED, response });
 
     yield call(resolvePromiseAction, action, response);
   } catch (err) {
-    yield toastErr(err);
+    const {
+      response: {
+        status,
+        data: { sub_status }
+      }
+    } = err;
+
+    if (status === 401) {
+      if (sub_status === TOKEN_EXPIRED) {
+        yield put({ type: REFRESH_TOKEN });
+
+        yield dispatch(actionTopRatedMovies());
+      } else {
+        yield toastErr(err);
+
+        yield put({ type: CHECK_TOKEN_FAIL });
+        history.push("/login");
+      }
+    }
   }
 }
 

@@ -1,5 +1,5 @@
 import { takeEvery, call, put } from "redux-saga/effects";
-import { resolvePromiseAction } from "@adobe/redux-saga-promise";
+import { resolvePromiseAction, dispatch } from "@adobe/redux-saga-promise";
 import { actionAddToFavorite, actionGetRecommend } from "../action/user";
 import { toastErr, toast } from "../../utils/toast";
 import {
@@ -13,6 +13,9 @@ import {
   GET_FAVORITES,
   GET_FAVORITES_SUCCESS
 } from "../reducers/movieReducer";
+import { TOKEN_EXPIRED } from "../../constants";
+import { REFRESH_TOKEN, CHECK_TOKEN_FAIL } from "../reducers/authReducer";
+import history from "../history";
 
 export function* addToFavoriteSaga(action) {
   try {
@@ -39,7 +42,25 @@ export function* getRecommendSaga(action) {
 
     yield call(resolvePromiseAction, action, response);
   } catch (err) {
-    yield toastErr(err);
+    const {
+      response: {
+        status,
+        data: { sub_status }
+      }
+    } = err;
+
+    if (status === 401) {
+      if (sub_status === TOKEN_EXPIRED) {
+        yield put({ type: REFRESH_TOKEN });
+
+        yield dispatch(actionGetRecommend());
+      } else {
+        yield toastErr(err);
+
+        yield put({ type: CHECK_TOKEN_FAIL });
+        history.push("/login");
+      }
+    }
   }
 }
 

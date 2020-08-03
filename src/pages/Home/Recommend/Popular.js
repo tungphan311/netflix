@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import MovieRow from "../../../components/MovieRow/MovieRow";
 import { actionGetPopularMovies } from "../../../state/action/movies";
 
@@ -13,9 +13,15 @@ function Popular({ changeRow, rowSelect }) {
   const [populars, setPopulars] = useState(DEFAULT);
   const dispatch = useDispatch();
 
+  const popular = useSelector(state => state.movie.populars);
+
   useEffect(() => {
-    dispatch(actionGetPopularMovies()).then(res => setPopulars(res));
-  }, [dispatch]);
+    if (!Object.keys(popular).length) {
+      dispatch(actionGetPopularMovies()).then(res => setPopulars(res));
+    } else {
+      setPopulars(popular);
+    }
+  }, [dispatch, popular]);
 
   const { rowId, title, list } = populars;
 
