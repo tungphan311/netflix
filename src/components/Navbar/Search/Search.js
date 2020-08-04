@@ -7,6 +7,7 @@ import PulseLoader from "react-spinners/PulseLoader";
 import OutsideClickWrapper from "../../OutsideClickWrapper/OutsideClickWrapper";
 import { actionSearchMovies } from "../../../state/action/movies";
 import { SearchIcon } from "../../Svg";
+import history from "../../../state/history";
 
 const override = css`
   display: block;
@@ -122,8 +123,18 @@ function Search() {
     setTitle(label);
   };
 
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    history.push(`/browse/title?q=${text}`);
+    outFocus();
+  };
+
   return (
-    <form className={`navbar__search ${focus ? "focus" : ""}`}>
+    <form
+      className={`navbar__search ${focus ? "focus" : ""}`}
+      onSubmit={handleSubmit}
+    >
       <div className="category-selector">
         <div style={{ position: "relative" }}>
           <OutsideClickWrapper isShowing={popup} onClickOutside={closePopup}>
